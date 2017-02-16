@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="1" x="146" y="94" name="header">
+    <widgets xsi:type="model:Image" id="2" width="303" height="123" src="mememajandus.png"/>
+    <widgets xsi:type="model:ButtonBar" id="3" x="318" y="77" width="521" height="46" text="UUED, TOP, TÕUSVAD, PROFIIL" selection="0" background="#6fa8dc">
+      <font/>
+      <items text="UUED"/>
+      <items text="TOP"/>
+      <items text="TÕUSVAD"/>
+      <items text="PROFIIL"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="4" x="685" y="49" text="Yo yo &lt;kasutaja_nimi> !">
+      <font size="13px"/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

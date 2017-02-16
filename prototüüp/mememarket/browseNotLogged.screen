@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:o="http://wireframesketcher.com/1.0/model/overrides">
+  <widgets xsi:type="model:Browser" id="2" x="136" y="32" width="873" height="1033" text="Browse - Meemi majandus - Browser&#xA;https://www.meemimajandus.eu" measuredWidth="873" measuredHeight="1033">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="64" x="146" y="94" measuredWidth="839" measuredHeight="123">
+    <screen xsi:type="model:WidgetGroup" href="assets/header.screen#header"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Delete" ref="4"/>
+      <widgets ref="3" text="UUED, TOP, TÕUSVAD, REGISTER/LOGIN">
+        <items ref="@items.3" text="REGISTER/LOGIN"/>
+      </widgets>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:VScrollbar" id="28" x="992" y="234" height="831" measuredWidth="17" measuredHeight="831" value="3"/>
+  <widgets xsi:type="model:WidgetGroup" id="59" x="146" y="240" measuredWidth="631" measuredHeight="401" name="Rare pepe">
+    <widgets xsi:type="model:Panel" id="13" width="631" height="401" measuredWidth="631" measuredHeight="401"/>
+    <widgets xsi:type="model:Image" id="11" x="14" y="72" width="417" height="309" measuredWidth="417" measuredHeight="309" src="assets/enhanced-mid-29607-1445980104-1.jpg"/>
+    <widgets xsi:type="model:Label" id="16" x="14" y="10" text="Rare pepe" measuredWidth="197" measuredHeight="67">
+      <font size="43px"/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="18" x="446" y="320" width="33" text="↑" measuredWidth="33" measuredHeight="27">
+      <font size="13px" bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="19" x="446" y="352" width="33" text="↓" measuredWidth="33" measuredHeight="25">
+      <font bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="24" x="495" y="352" text="Comment" measuredWidth="74" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Text" id="25" x="446" y="76" width="151" height="120" text="Kategooria: &#xD;&#xA;Lisatud: &#xD;&#xA;&#xD;&#xA;Keywords: pepe, drawing, rare&#xD;&#xA;" measuredWidth="151" measuredHeight="120">
+      <font size="13px" bold="false"/>
+    </widgets>
+    <widgets xsi:type="model:Link" id="31" x="515" y="72" text="pepe" measuredWidth="33" measuredHeight="25">
+      <font size="13px"/>
+    </widgets>
+    <widgets xsi:type="model:Link" id="32" x="493" y="89" text="dankmemes64" measuredWidth="87" measuredHeight="25">
+      <font size="13px"/>
+    </widgets>
+    <widgets xsi:type="model:Link" id="51" x="588" y="376" text="Report" measuredWidth="38" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="60" x="146" y="654" measuredWidth="633" measuredHeight="401" name="We are number one">
+    <widgets xsi:type="model:Panel" id="14" width="631" height="401" measuredWidth="631" measuredHeight="401"/>
+    <widgets xsi:type="model:Image" id="9" x="14" y="76" width="417" height="299" measuredWidth="417" measuredHeight="299" src="assets/b80.jpg"/>
+    <widgets xsi:type="model:Label" id="17" x="14" y="10" text="We are number one but..." measuredWidth="482" measuredHeight="67">
+      <font size="43px"/>
+    </widgets>
+    <widgets xsi:type="model:Text" id="41" x="446" y="76" width="151" height="159" text="Kategooria: &#xD;&#xA;Lisatud: &#xD;&#xA;&#xD;&#xA;Keywords: we are number one, lazytown, robbie rotten&#xD;&#xA;" measuredWidth="151" measuredHeight="159">
+      <font size="13px" bold="false"/>
+    </widgets>
+    <widgets xsi:type="model:Link" id="42" x="516" y="73" text="we are number one" measuredWidth="117" measuredHeight="25">
+      <font size="13px"/>
+    </widgets>
+    <widgets xsi:type="model:Link" id="43" x="492" y="90" text="dankmemes64" measuredWidth="87" measuredHeight="25">
+      <font size="13px"/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="45" x="443" y="314" width="33" text="↑" measuredWidth="33" measuredHeight="27">
+      <font size="13px" bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="46" x="443" y="346" width="33" text="↓" measuredWidth="33" measuredHeight="25">
+      <font bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="47" x="488" y="346" text="Comment" measuredWidth="74" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Link" id="52" x="588" y="374" text="Report" measuredWidth="38" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Master" id="63" x="782" y="240" measuredWidth="203" measuredHeight="339">
+    <screen xsi:type="model:WidgetGroup" href="assets/sideBar.screen#side%20bar"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

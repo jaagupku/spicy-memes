@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="1" x="10" y="10" name="side bar">
+    <widgets xsi:type="model:Panel" id="2" width="203" height="339"/>
+    <widgets xsi:type="model:SearchField" id="3" x="2" y="12" width="201" text="Otsi siit">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="4" x="10" y="50" text="Filtrid">
+      <font size="23px"/>
+    </widgets>
+    <widgets xsi:type="model:Text" id="5" x="11" y="86" width="160" height="89" text="pepe&#xD;&#xA;we are number one&#xD;&#xA;rage comics&#xD;&#xA;dank memes">
+      <font size="13px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="6" x="10" y="176" text="Misc">
+      <font size="23px"/>
+    </widgets>
+    <widgets xsi:type="model:Link" id="7" x="12" y="210" text="Anneta">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Link" id="8" x="13" y="232" text="About us">
+      <font/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
