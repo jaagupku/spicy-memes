@@ -1,6 +1,6 @@
 # Spicy Memes
 
-[Wiki leht](https://github.com/jaagupku/meemi-majandus/wiki)
+[Wiki leht](https://github.com/jaagupku/meemi-majandus/wiki), [Test keskkond](http://spicymemes.cs.ut.ee/)
 
 ## Guide to run locally
 
