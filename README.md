@@ -2,6 +2,8 @@
 
 [Wiki leht](https://github.com/jaagupku/meemi-majandus/wiki), [Test keskkond](http://spicymemes.cs.ut.ee/)
 
+### [Phase deployment guide](https://github.com/jaagupku/spicy-memes/wiki/Deployment-tasks)
+
 ## Guide to run locally
 
 ### 1. Download and install [XAMPP](https://www.apachefriends.org/index.html)
