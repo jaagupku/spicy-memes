@@ -26,6 +26,3 @@
         <a href="#" class="button_login">LOG IN</a>
       </div>
     </div>
-
-  </body>
-</html>
