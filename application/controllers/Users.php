@@ -35,14 +35,14 @@ class Users extends CI_Controller {
             } else {
                 $this->load->view('pages/header.php');
                 $this->load->view('pages/login.php');
-                $this->load->view('pages/footer.php');
                 $this->output->append_output('Invalid username or password');
+                $this->load->view('pages/footer.php');
             }
         }
     }
 
     public function logout() {
-        if ($this->session->logged_in) {
+        if ($this->session->logged_in === true) {
             session_destroy();
         }
 
@@ -50,7 +50,7 @@ class Users extends CI_Controller {
     }
 
     public function register() {
-        if ($this->session->logged_in) {
+        if ($this->session->logged_in === true) {
             redirect('/', 'refresh');
         }
 
