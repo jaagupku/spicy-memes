@@ -5,7 +5,7 @@ class Users extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
-        $this->load->helper('url');
+        $this->load->helper(array('form', 'url'));
         $this->load->model('user');
     }
 
@@ -19,7 +19,7 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('username', 'Username', 'required|alpha_numeric');
         $this->form_validation->set_rules('password', 'Password', 'required');
 
-        if ($this->form_validation->run() == FALSE) {
+        if ($this->form_validation->run() === false) {
             $this->load->view('pages/header.php');
             $this->load->view('pages/login.php');
             $this->load->view('pages/footer.php');
@@ -56,11 +56,11 @@ class Users extends CI_Controller {
 
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('username', 'Username', 'required|alpha_numeric|unique[user.username]');
+        $this->form_validation->set_rules('username', 'Username', 'required|alpha_numeric|is_unique[users.User_Name]');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('email', 'E-mail', 'required');
+        $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|is_unique[users.Email]');
 
-        if ($this->form_validation->run() == FALSE) {
+        if ($this->form_validation->run() === false) {
             $this->load->view('pages/header.php');
             $this->load->view('pages/register.php');
             $this->load->view('pages/footer.php');
@@ -85,7 +85,7 @@ class Users extends CI_Controller {
 
         if ($userdata) {
             $this->load->view('pages/header.php', array('username' => $this->session->username));
-            $this->load->view('pages/profile.php', array('username' => $userdata->username, 'email' => $userdata->email));
+            $this->load->view('pages/profile.php', array('username' => $userdata->User_Name, 'email' => $userdata->Email));
             $this->load->view('pages/footer.php');
         } else {
             show_404();

@@ -32,7 +32,7 @@ CREATE  PROCEDURE `sp_add_meme` (IN `a_title` VARCHAR(255), IN `a_user_id` INT, 
 INSERT INTO `meme` (`Id`, `Title`, `User_Id`, `Data_Type`, `Data`, `Date`, `Up_Points`, `Down_Points`, `hotness`) VALUES (NULL, a_title, a_user_id, a_data_type, a_data, CURRENT_TIMESTAMP, '0', '0', '0')$$
 
 CREATE  PROCEDURE `sp_add_user` (IN `a_user_type` INT(1), IN `a_user_name` VARCHAR(32) CHARSET utf8, IN `a_passwdhash` VARCHAR(255) CHARSET utf8, IN `a_email` VARCHAR(128) CHARSET utf8, IN `a_mobile` VARCHAR(15) CHARSET utf8)  MODIFIES SQL DATA
-INSERT INTO `users` (`Id`, `User_Type`, `User_Name`, `Password_Hash`, `Email`, `Creation_Date`, `Last_Login_Time`, `ProfileImg_Id`, `mobile_number`) VALUES (NULL, a_user_type, a_user_name, a_passwdhash, a_email, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, a_mobile)$$
+INSERT INTO `users` (`Id`, `User_Type`, `User_Name`, `Password_Hash`, `Email`, `Creation_Date`, `Last_Login_Time`, `ProfileImg_Id`, `mobile_number`) VALUES (NULL, a_user_type, a_user_name, a_passwdhash, a_email, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'noprofileimg.jpg', a_mobile)$$
 
 CREATE  PROCEDURE `sp_meme_comments_login` (IN `a_meme_id` INT, IN `a_user_id` INT)  READS SQL DATA
     COMMENT 'shows comments on given meme with given user upvotes'
