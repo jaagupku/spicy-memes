@@ -28,10 +28,12 @@ class Users extends CI_Controller {
 
     public function logout() {
         $this->load->view('pages/header.php');
+        $this->load->view('pages/footer.php');
     }
 
     public function register() {
         $this->load->view('pages/header.php');
+        $this->load->view('pages/footer.php');
     }
 
     public function profile($username) {
