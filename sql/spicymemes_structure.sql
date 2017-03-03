@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2017 at 04:02 PM
+-- Generation Time: Mar 03, 2017 at 09:17 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -208,7 +208,6 @@ CREATE TABLE `users` (
   `User_Type` int(1) NOT NULL DEFAULT '0' COMMENT '0 means ordinary user, 1 is admin',
   `User_Name` varchar(32) CHARACTER SET utf8 COLLATE utf8_estonian_ci NOT NULL,
   `Password_Hash` varchar(255) COLLATE utf8_bin NOT NULL COMMENT 'default test user password "test" http://php.net/manual/en/function.password-hash.php , current test passwords are made with crypt()',
-  `salt` varchar(30) COLLATE utf8_bin NOT NULL COMMENT 'salt for password',
   `Email` varchar(128) COLLATE utf8_bin NOT NULL,
   `Creation_Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Last_Login_Time` datetime DEFAULT CURRENT_TIMESTAMP,
@@ -399,7 +398,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --

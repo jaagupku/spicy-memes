@@ -6,7 +6,7 @@ class Users extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper(array('form', 'url'));
-        $this->load->model('user');
+        $this->load->model('user_model');
     }
 
     public function login() {
@@ -27,7 +27,7 @@ class Users extends CI_Controller {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
-            if ($this->user->verify($username, $password)) {
+            if ($this->user_model->verify($username, $password)) {
                 $this->session->logged_in = true;
                 $this->session->username = $username;
 
@@ -69,7 +69,7 @@ class Users extends CI_Controller {
             $password = $this->input->post('password');
             $email = $this->input->post('email');
 
-            if ($this->user->create($username, $password, $email)) {
+            if ($this->user_model->create($username, $password, $email)) {
                 $this->output->append_output('Username: ' . $username . '; password: ' . $password . '; e-mail: ' . $email);
             } else {
                 $this->load->view('pages/header.php');
@@ -81,7 +81,7 @@ class Users extends CI_Controller {
     }
 
     public function profile($username) {
-        $userdata = $this->user->retrieve($username);
+        $userdata = $this->user_model->retrieve($username);
 
         if ($userdata) {
             $this->load->view('pages/header.php', array('username' => $this->session->username));
