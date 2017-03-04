@@ -57,5 +57,6 @@ $route['login'] = 'users/login';
 $route['logout'] = 'users/logout';
 $route['register'] = 'users/register';
 $route['profile/(:any)'] = 'users/profile/$1';
+$route['meme/(:any)'] = 'meme/view/$1';
 
 //$route['(.*)'] = 'errors/show_404';

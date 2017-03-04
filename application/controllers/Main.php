@@ -12,11 +12,7 @@ class Main extends CI_Controller {
         $data['memes'] = $this->meme_model->get_hot_memes(0, 20);
 
         foreach ($data['memes'] as $key => $row) {
-          if ($row['Data_Type']=="P") {
-             $data['memes'][$key]['Data']=cl_image_tag($row['Data'], array("width" => 560, "crop"=>"limit"));
-          } else {
-             $data['memes'][$key]['Data']="<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/{$row['Data']}\" frameborder=\"0\" allowfullscreen></iframe>";
-          }
+          $data['memes'][$key]['Data']=$this->cloudinarylib->get_html_data($row['Data_Type'], $row['Data']);
         }
 
         $this->load->view('pages/header', array('username' => $this->session->username));

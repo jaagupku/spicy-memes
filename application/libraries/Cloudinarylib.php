@@ -20,4 +20,12 @@ class Cloudinarylib {
           include 'application/config/cloudinary.php';
         }
     }
+
+    public function get_html_data($data_type, $data, $width=560) {
+      if ($data_type=="P") {
+         return cl_image_tag($data, array("width" => $width, "crop"=>"limit"));
+      } else {
+         return "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/{$data}\" frameborder=\"0\" allowfullscreen></iframe>";
+      }
+    }
 }

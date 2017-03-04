@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/css/page.css">
   </head>
   <body>
-
     <div class="header section group">
       <div class="search_bar col span_1_of_3">
         <input type="text" class="searchbar">

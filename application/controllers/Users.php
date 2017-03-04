@@ -90,8 +90,10 @@ class Users extends CI_Controller {
     }
 
     private function _login_and_redirect($username, $uri) {
+        $user = $this->user_model->retrieve($username);
         $this->session->logged_in = true;
-        $this->session->username = $this->user_model->retrieve($username)->User_Name;
+        $this->session->username = $user->User_Name;
+        $this->session->user_id = $user->Id;
         redirect($uri, 'refresh');
     }
 }

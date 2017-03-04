@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2017 at 09:17 PM
+-- Generation Time: Mar 04, 2017 at 12:49 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -227,6 +227,8 @@ CREATE TABLE `v_comments` (
 ,`User_Id` int(11)
 ,`User_Name` varchar(32)
 ,`Message` text
+,`Points` int(11)
+,`ProfileImg_Id` varchar(100)
 );
 
 -- --------------------------------------------------------
@@ -286,7 +288,7 @@ CREATE TABLE `v_top_memes` (
 --
 DROP TABLE IF EXISTS `v_comments`;
 
-CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_comments`  AS  select `comments`.`Id` AS `Id`,`comments`.`Meme_Id` AS `Meme_Id`,`comments`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`comments`.`Message` AS `Message` from (`comments` join `users` on((`comments`.`User_Id` = `users`.`Id`))) ;
+CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_comments`  AS  select `comments`.`Id` AS `Id`,`comments`.`Meme_Id` AS `Meme_Id`,`comments`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`comments`.`Message` AS `Message`,`comments`.`Points` AS `Points`,`users`.`ProfileImg_Id` AS `ProfileImg_Id` from (`comments` join `users` on((`comments`.`User_Id` = `users`.`Id`))) ;
 
 -- --------------------------------------------------------
 
@@ -378,7 +380,7 @@ ALTER TABLE `commentpoints`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `meme`
 --
