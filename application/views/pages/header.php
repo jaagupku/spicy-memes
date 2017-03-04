@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Spicy Memes</title>
+    <title><?php echo $title; ?> - Spicy Memes</title>
     <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/header-style.css">
     <link rel="stylesheet" href="/css/page.css">
@@ -57,9 +57,9 @@
       <div class="row text-center">
         <div class="col-xs-8 col-centered">
           <div class="row">
-            <div class="col-xs-4"><a href="#" id="hot">HOT</a></div>
-            <div class="col-xs-4"><a href="#" id="top">TOP</a></div>
-            <div class="col-xs-4"><a href="#" id="new">NEW</a></div>
+            <div class="col-xs-4"><a href="<?php echo site_url('hot') ?>" id="hot">HOT</a></div>
+            <div class="col-xs-4"><a href="<?php echo site_url('top') ?>" id="top">TOP</a></div>
+            <div class="col-xs-4"><a href="<?php echo site_url('new') ?>" id="new">NEW</a></div>
           </div>
         </div>
       </div>

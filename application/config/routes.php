@@ -57,6 +57,18 @@ $route['login'] = 'users/login';
 $route['logout'] = 'users/logout';
 $route['register'] = 'users/register';
 $route['profile/(:any)'] = 'users/profile/$1';
-$route['meme/(:any)'] = 'meme/view/$1';
+$route['meme/(:num)'] = 'meme/view/$1';
+
+$route['hot'] = 'main/hot';
+$route['hot/(:num)'] = 'main/hot/$1';
+$route['hot/(:num)/(:num)'] = 'main/hot/$1/$2';
+
+$route['top'] = 'main/top';
+$route['top/(:num)'] = 'main/top/$1';
+$route['top/(:num)/(:num)'] = 'main/top/$1/$2';
+
+$route['new'] = 'main/new_memes';
+$route['new/(:num)'] = 'main/new/$1';
+$route['new/(:num)/(:num)'] = 'main/new/$1/$2';
 
 //$route['(.*)'] = 'errors/show_404';

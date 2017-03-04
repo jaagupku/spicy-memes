@@ -9,7 +9,7 @@
       </form>
     <?php endif; ?>
     <?php if ($comment_added) : ?>
-      <h3>Comment successfully added.</h3>
+      <h3>Comment successfully added</h3>
     <?php endif; ?>
     <table>
     <?php if(empty($comments)) : ?>
