@@ -9,25 +9,30 @@ class Main extends CI_Controller {
     }
 
     public function index() {
-        $data['memes'] = $this->meme_model->get_hot_memes(0, 20);
-
-        foreach ($data['memes'] as $key => $row) {
-          $data['memes'][$key]['Data']=$this->cloudinarylib->get_html_data($row['Data_Type'], $row['Data']);
-        }
-
-        $this->load->view('pages/header', array('username' => $this->session->username));
-        $this->load->view('pages/testmemebody.php', $data);
-        $this->load->view('pages/footer.php');
+      redirect('/hot');
     }
 
-    public function view($page = 'header') {
-        if (!file_exists(APPPATH . 'views/pages/' . $page . '.php')) {
-            // Whoops, we don't have a page for that!
-            show_404();
-        }
+    public function hot($from=0, $amount=20) {
+      $this->_display_memes($this->meme_model->get_hot_memes($from, $amount), "Hot");
+    }
 
-        $this->load->view('pages/' . $page);
+    public function top($from=0, $amount=20) {
+      $this->_display_memes($this->meme_model->get_top_memes($from, $amount), "Top");
+    }
+
+    public function new_memes($from=0, $amount=20) {
+      $this->_display_memes($this->meme_model->get_new_memes($from, $amount), "New");
+    }
+
+    private function _display_memes($memes, $title) {
+      $data['memes'] = $memes;
+
+      foreach ($data['memes'] as $key => $row) {
+        $data['memes'][$key]['Data']=$this->cloudinarylib->get_html_data($row['Data_Type'], $row['Data']);
+      }
+
+      $this->load->view('pages/header', array('username' => $this->session->username, 'title' => $title));
+      $this->load->view('pages/testmemebody.php', $data);
+      $this->load->view('pages/footer.php');
     }
 }
-
-?>

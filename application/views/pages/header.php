@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Spicy Memes</title>
+    <title><?php echo $title; ?> - Spicy Memes</title>
     <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/header-style.css">
     <link rel="stylesheet" href="/css/page.css">
@@ -25,9 +25,9 @@
 
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-left list-inline">
-            <li class="active"><a href="#" id="hot">HOT</a></li>
-            <li><a href="#" id="top">TOP</a></li>
-            <li><a href="#" id="new">NEW</a></li>
+            <li class="active"><a href="<?php echo site_url('hot') ?>" id="hot">HOT</a></li>
+            <li><a href="<?php echo site_url('top') ?>" id="top">TOP</a></li>
+            <li><a href="<?php echo site_url('new') ?>" id="new">NEW</a></li>
           </ul>
 
           <form class="navbar-form navbar-left">

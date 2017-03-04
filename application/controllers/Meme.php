@@ -30,7 +30,7 @@ class Meme extends CI_Controller {
       }
       $data['meme']['Data']=$this->cloudinarylib->get_html_data($data['meme']['Data_Type'], $data['meme']['Data']);
 
-      $this->load->view('pages/header', array('username' => $this->session->username));
+      $this->load->view('pages/header', array('username' => $this->session->username, 'title' => $data['meme']['Title']));
       $this->load->view('pages/testcommentsbody.php', $data);
       $this->load->view('pages/footer.php');
     }

@@ -33,7 +33,7 @@ class Users extends CI_Controller {
             $error = validation_errors();
         }
 
-        $this->load->view('pages/header.php');
+        $this->load->view('pages/header.php', array('title' => 'Log in'));
         $this->load->view('pages/login.php', array('error' => $error));
         $this->load->view('pages/footer.php');
     }
@@ -72,7 +72,7 @@ class Users extends CI_Controller {
             $error = validation_errors();
         }
 
-        $this->load->view('pages/header.php');
+        $this->load->view('pages/header.php', array('title' => 'Register'));
         $this->load->view('pages/register.php', array('error' => $error));
         $this->load->view('pages/footer.php');
     }
@@ -81,7 +81,7 @@ class Users extends CI_Controller {
         $userdata = $this->user_model->retrieve($username);
 
         if ($userdata) {
-            $this->load->view('pages/header.php', array('username' => $this->session->username));
+            $this->load->view('pages/header.php', array('username' => $this->session->username, 'title' => $userdata->User_Name));
             $this->load->view('pages/profile.php', array('username' => $userdata->User_Name, 'email' => $userdata->Email));
             $this->load->view('pages/footer.php');
         } else {
