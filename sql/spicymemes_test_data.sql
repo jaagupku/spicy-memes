@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2017 at 09:20 PM
+-- Generation Time: Mar 04, 2017 at 02:41 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -40,7 +40,20 @@ INSERT INTO `comments` (`Id`, `Meme_Id`, `User_Id`, `Message`, `Date`, `Points`)
 (3, 1, 2, 'WEll this is 3rd one', '2017-02-27 18:32:48', 0),
 (4, 2, 1, 'great meme xd', '2017-02-27 18:32:48', 1),
 (5, 2, 1, 'COPY PAGPAGPAJKDFPGJAPERJGPAJERGT', '2017-02-27 18:32:48', 0),
-(6, 4, 2, 'This is very spicy, top quality meme!', '2017-03-03 16:41:24', 0);
+(6, 4, 2, 'This is very spicy, top quality meme!', '2017-03-03 16:41:24', 0),
+(7, 4, 1, ' tere', '2017-03-04 13:37:56', 0),
+(8, 4, 1, ' tere', '2017-03-04 13:38:45', 0),
+(9, 4, 1, ' my name is bob\r\n', '2017-03-04 13:38:50', 0),
+(10, 4, 1, ' tere', '2017-03-04 13:41:23', 0),
+(11, 4, 1, ' tere', '2017-03-04 13:41:28', 0),
+(12, 2, 1, ' What is the point of this?', '2017-03-04 13:41:58', 0),
+(13, 2, 1, ' Weird stuff <h1>Needs escaping</h1>', '2017-03-04 13:42:17', 0),
+(14, 2, 1, ' cool \'', '2017-03-04 13:42:30', 0),
+(15, 4, 1, ' &lt;h1&gt;test&lt;/h1&gt;', '2017-03-04 13:44:52', 0),
+(16, 4, 1, ' ;', '2017-03-04 13:45:06', 0),
+(17, 5, 1, ' ok\r\n', '2017-03-04 13:46:59', 0),
+(18, 5, 1, ' ok\r\n', '2017-03-04 13:47:11', 0),
+(19, 4, 2, ' i am test1\r\n', '2017-03-04 14:00:38', 0);
 
 --
 -- Dumping data for table `meme`
