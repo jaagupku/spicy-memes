@@ -2,3 +2,7 @@
     float: none;
     margin: 0 auto;
 }
+
+.container-fluid .break {
+  height: 5vh;
+}

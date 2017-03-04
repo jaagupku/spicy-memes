@@ -14,16 +14,22 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
 
-        <div class="navbar-header navbar-left">
+        <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span></a>
+          <a class="navbar-brand" href="">Spicy Memes</a>
         </div>
 
         <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-left list-inline">
+            <li class="active"><a href="#" id="hot">HOT</a></li>
+            <li><a href="#" id="top">TOP</a></li>
+            <li><a href="#" id="new">NEW</a></li>
+          </ul>
+
           <form class="navbar-form navbar-left">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search">
@@ -37,30 +43,14 @@
 
           <ul class="nav navbar-nav navbar-right">
             <?php if (isset($username)) { ?>
-              <li><a href="/index.php/profile/<?= $username ?>"><span class="glyphicon glyphicon-user"></span><?= $username ?></a></li>
-              <li><a href="/index.php/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              <li><a href="/index.php/profile/<?= $username ?>" id="username"><span class="glyphicon glyphicon-user"></span><?= $username ?></a></li>
+              <li><a href="/index.php/logout" id="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             <?php } else { ?>
-              <li><a href="/index.php/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="/index.php/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li><a href="/index.php/register" id="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="/index.php/login" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <?php } ?>
           </ul>
         </div>
 
       </div>
     </nav>
-
-    <div class="container page-header text-center">
-      <h1>Spicy Memes</h1>
-    </div>
-
-    <div class="container-fluid">
-      <div class="row text-center">
-        <div class="col-xs-8 col-centered">
-          <div class="row">
-            <div class="col-xs-4"><a href="#" id="hot">HOT</a></div>
-            <div class="col-xs-4"><a href="#" id="top">TOP</a></div>
-            <div class="col-xs-4"><a href="#" id="new">NEW</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
