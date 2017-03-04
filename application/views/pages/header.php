@@ -22,8 +22,8 @@
         <h1>Spicy Memes</h1>
       </div>
       <div class="login_signup col span_1_of_3">
-          <?php if (isset($username) && $username != '') { ?>
-            <a href="/index.php/profile/<?php echo($username) ?>" class="button_login"><?php echo($username) ?></a>
+          <?php if (isset($username)) { ?>
+            <a href="/index.php/profile/<?= $username ?>" class="button_login"><?= $username ?></a>
             <a href="/index.php/logout" class="button_signup">LOG OUT</a>
           <?php } else { ?>
             <a href="/index.php/register" class="button_signup">SIGN UP</a>

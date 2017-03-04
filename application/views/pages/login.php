@@ -1,4 +1,4 @@
-    <?php echo validation_errors(); ?>
+    <?php if (isset($error)) echo $error ?>
     <form method="POST">
       <input type="text" name="username" placeholder="Username"/>
       <input type="password" name="password" placeholder="Password"/>
