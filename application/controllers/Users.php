@@ -5,7 +5,7 @@ class Users extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper('url');
         $this->load->model('user_model');
     }
 
@@ -80,7 +80,7 @@ class Users extends CI_Controller {
             $username = $userdata->User_Name;
             $email = $userdata->Email;
 
-            $this->load->view('pages/profile.php', array('username' => $username, 'email' => $email));
+            $this->load->view('pages/profile', array('username' => $username, 'email' => $email));
         } else {
             show_404();
         }
