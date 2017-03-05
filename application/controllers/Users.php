@@ -33,9 +33,7 @@ class Users extends CI_Controller {
             $error = validation_errors();
         }
 
-        $this->load->view('pages/header.php', array('title' => 'Log in'));
-        $this->load->view('pages/login.php', array('error' => $error));
-        $this->load->view('pages/footer.php');
+        $this->load->view('pages/login', array('error' => $error));
     }
 
     public function logout() {
@@ -54,7 +52,7 @@ class Users extends CI_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('username', 'Username', 'required|alpha_numeric|is_unique[users.User_Name]');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|is_unique[users.Email]');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.Email]');
 
         $error = null;
 
@@ -72,18 +70,17 @@ class Users extends CI_Controller {
             $error = validation_errors();
         }
 
-        $this->load->view('pages/header.php', array('title' => 'Register'));
-        $this->load->view('pages/register.php', array('error' => $error));
-        $this->load->view('pages/footer.php');
+        $this->load->view('pages/register', array('error' => $error));
     }
 
     public function profile($username) {
         $userdata = $this->user_model->retrieve($username);
 
         if ($userdata) {
-            $this->load->view('pages/header.php', array('username' => $this->session->username, 'title' => $userdata->User_Name));
-            $this->load->view('pages/profile.php', array('username' => $userdata->User_Name, 'email' => $userdata->Email));
-            $this->load->view('pages/footer.php');
+            $username = $userdata->User_Name;
+            $email = $userdata->Email;
+
+            $this->load->view('pages/profile.php', array('username' => $username, 'email' => $email));
         } else {
             show_404();
         }
