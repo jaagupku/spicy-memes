@@ -1,27 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User_model extends CI_Model
-{
-    public function __construct()
-    {
+require_once('Base_Model.php');
+
+class User_model extends Base_Model {
+    public function __construct() {
         parent::__construct();
         $this->table = 'users';
-        $this->load->database();
     }
 
     public function create($username, $password, $email) {
-        $procedure = 'call sp_add_user(?, ?, ?, ?, ?)';
-
-        $parameters = array(
-            'PARAM_1' => 0, // type
-            'PARAM_2' => $username,
-            'PARAM_3' => password_hash($password, PASSWORD_BCRYPT),
-            'PARAM_4' => $email,
-            'PARAM_5' => "1234567" // mobile
+        $arguments = array(
+            0, // type
+            $username,
+            password_hash($password, PASSWORD_BCRYPT),
+            $email,
+            "1234567" // mobile
         );
 
-        return $this->db->query($procedure, $parameters);
+        return $this->_call_procedure('sp_add_user', $arguments);
     }
 
     public function verify($username, $password) {
