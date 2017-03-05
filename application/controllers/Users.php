@@ -5,7 +5,6 @@ class Users extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
-        $this->load->helper('url');
         $this->load->model('user_model');
     }
 
@@ -88,6 +87,7 @@ class Users extends CI_Controller {
 
     private function _login_and_redirect($username, $uri) {
         $user = $this->user_model->retrieve($username);
+        $this->user_model->update_last_login_date($user->Id);
         $this->session->logged_in = true;
         $this->session->username = $user->User_Name;
         $this->session->user_id = $user->Id;

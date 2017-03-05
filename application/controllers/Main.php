@@ -13,26 +13,26 @@ class Main extends CI_Controller {
     }
 
     public function hot($from=0, $amount=20) {
-      $this->_display_memes($this->meme_model->get_hot_memes($from, $amount), "Hot");
+      $this->_display_memes($this->meme_model->get_hot_memes($from, $amount), "Hot", 'hot');
     }
 
     public function top($from=0, $amount=20) {
-      $this->_display_memes($this->meme_model->get_top_memes($from, $amount), "Top");
+      $this->_display_memes($this->meme_model->get_top_memes($from, $amount), "Top", 'top');
     }
 
     public function new_memes($from=0, $amount=20) {
-      $this->_display_memes($this->meme_model->get_new_memes($from, $amount), "New");
+      $this->_display_memes($this->meme_model->get_new_memes($from, $amount), "New", 'new');
     }
 
-    private function _display_memes($memes, $title) {
+    private function _display_memes($memes, $title, $selection) {
       $data['memes'] = $memes;
 
       foreach ($data['memes'] as $key => $row) {
         $data['memes'][$key]['Data']=$this->cloudinarylib->get_html_data($row['Data_Type'], $row['Data']);
       }
 
-      $this->load->view('pages/header', array('username' => $this->session->username, 'title' => $title));
-      $this->load->view('pages/testmemebody.php', $data);
+      $this->load->view('pages/header', array('username' => $this->session->username, 'title' => $title, 'selection' => $selection));
+      $this->load->view('pages/memebody.php', $data);
       $this->load->view('pages/footer.php');
     }
 }

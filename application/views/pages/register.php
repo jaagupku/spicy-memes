@@ -1,5 +1,6 @@
 <?php
 $title = 'Register';
+$selection = 'register';
 include('header.php');
 ?>
 

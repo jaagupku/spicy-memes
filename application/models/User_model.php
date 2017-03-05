@@ -9,6 +9,10 @@ class User_model extends Base_Model {
         $this->table = 'users';
     }
 
+    public function update_last_login_date($user_id) {
+      return $this->_call_procedure( 'sp_update_user_last_login', array( $user_id, date("Y-m-d H:i:s") ) );
+    }
+
     public function create($username, $password, $email) {
         $arguments = array(
             0, // type

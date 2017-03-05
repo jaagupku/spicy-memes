@@ -17,6 +17,14 @@ class Meme_model extends Base_Model {
         return $this->_call_procedure('sp_add_comment', array($meme_id, $user_id, $message));
     }
 
+    public function vote_meme($meme_id, $user_id, $vote) {
+      return $this->_call_procedure('sp_vote_meme', array($meme_id, $user_id, $vote));
+    }
+
+    public function vote_comment($comment_id, $user_id, $vote) {
+      return $this->_call_procedure('sp_vote_comment', array($comment_id, $user_id, $vote));
+    }
+
     public function get_meme($id) {
         $query = $this->db->query("SELECT * FROM v_top_memes WHERE Id=$id");
         return $query->row_array();
@@ -37,8 +45,8 @@ class Meme_model extends Base_Model {
         return $query->result_array();
     }
 
-    public function get_meme_comments($id) {
-        $query = $this->db->query("SELECT * FROM v_comments WHERE Meme_Id=$id");
+    public function get_meme_comments($id, $order) {
+        $query = $this->db->query("SELECT * FROM v_comments WHERE Meme_Id=$id ORDER BY $order DESC");
         return $query->result_array();
     }
 }

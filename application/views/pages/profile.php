@@ -1,5 +1,6 @@
 <?php
 $title = $username;
+$selection = 'profile';
 include('header.php');
 ?>
 
