@@ -4,7 +4,6 @@ class Main extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
-        $this->load->library('cloudinarylib');
         $this->load->model('meme_model');
     }
 
@@ -26,11 +25,6 @@ class Main extends CI_Controller {
 
     private function _display_memes($memes, $title, $selection) {
       $data['memes'] = $memes;
-
-      foreach ($data['memes'] as $key => $row) {
-        $data['memes'][$key]['Data']=$this->cloudinarylib->get_html_data($row['Data_Type'], $row['Data']);
-      }
-
       $this->load->view('pages/header', array('username' => $this->session->username, 'title' => $title, 'selection' => $selection));
       $this->load->view('pages/memebody.php', $data);
       $this->load->view('pages/footer.php');

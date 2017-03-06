@@ -11,7 +11,12 @@
           <h2><a href="<?php echo site_url('/meme/'.$row['Id'])?>"><?php echo $row['Title']; ?></a></h2>
 
           <div class="embed-responsive embed-responsive-4by3">
-            <?php echo $row['Data']; ?>
+            <?php if ($row['Data_Type']=="P") {
+               echo '<img src="http://res.cloudinary.com/spicy-memes/image/upload/c_limit,w_560/'.$row['Data'].'" />';
+            } else {
+               echo "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/{$row['Data']}\" frameborder=\"0\" allowfullscreen></iframe>";
+            }
+            ?>
           </div>
 
           <p>Added by: <a href="<?php echo site_url('/profile/'.$row['User_Name']) ?>"><?php echo $row['User_Name'] ?></a> ; Points: <?php echo $row['Points']; ?></p>

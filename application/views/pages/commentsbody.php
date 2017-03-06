@@ -9,7 +9,12 @@
           <h2><?php echo $meme['Title'] ?></h2>
 
           <div class="embed-responsive embed-responsive-4by3">
-            <?php echo $meme['Data']; ?>
+            <?php if ($meme['Data_Type']=="P") {
+               echo '<img src="http://res.cloudinary.com/spicy-memes/image/upload/c_limit,w_560/'.$meme['Data'].'" />';
+            } else {
+               echo "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/{$meme['Data']}\" frameborder=\"0\" allowfullscreen></iframe>";
+            }
+            ?>
           </div>
 
           <p>Added by: <a href="<?php echo site_url('/profile/'.$meme['User_Name']) ?>"><?php echo $meme['User_Name'] ?></a> ; Points: <?php echo $meme['Points']; ?></p>
@@ -43,7 +48,7 @@
               <td>Points: <?php echo $comment['Points'] ?></td>
             </tr>
             <tr>
-              <td><?php echo $comment['ProfileImg_Id'] ?></td>
+              <td><?php echo '<img src="http://res.cloudinary.com/spicy-memes/image/upload/c_limit,w_48/'.$comment['ProfileImg_Id'].'" />' ?></td>
               <td><?php echo $comment['Message'] ?></td>
             </tr>
           <?php endforeach ?>
