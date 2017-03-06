@@ -11,8 +11,8 @@
     $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
   }
 });</script>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.ui.widget.js"></script>
-    <script type="text/javascript" src="/js/jquery.iframe-transport.js"></script>
-    <script type="text/javascript" src="/js/jquery.fileupload.js"></script>
-    <script type="text/javascript" src="/js/jquery.cloudinary.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.cloudinary.js"></script>

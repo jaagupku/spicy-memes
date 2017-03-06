@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?> - Spicy Memes</title>
-    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/header-style.css">
-    <link rel="stylesheet" href="/css/page.css">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/header-style.css">
+    <link rel="stylesheet" href="/assets/css/page.css">
   </head>
   <body>
 
