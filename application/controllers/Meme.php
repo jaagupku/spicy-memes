@@ -12,6 +12,7 @@ class Meme extends CI_Controller {
       if (!isset($this->session->logged_in)) {
         redirect('/login', 'refresh');
       }
+      $this->load->view('pages/header', array('username' => $this->session->username, 'title' => "Add spice", 'selection' => 'addspice'));
       $this->load->view('pages/addmeme');
     }
 

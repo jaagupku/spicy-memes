@@ -8,6 +8,11 @@ class Upload extends CI_Controller {
         $this->load->model('meme_model');
     }
 
+    private function _display_error($error) {
+      $this->load->view('pages/header', array('username' => $this->session->username, 'title' => "Add spice", 'selection' => 'addspice'));
+      $this->load->view('pages/addmeme', array('error' => $error));
+    }
+
     public function index() {
       if (!$this->session->logged_in) {
         redirect('/login', 'refresh');
@@ -17,7 +22,7 @@ class Upload extends CI_Controller {
       $this->form_validation->set_rules('link', 'link', 'valid_url');
 
       if ($this->form_validation->run() === FALSE) {
-        $this->load->view('pages/addmeme', array('error' => validation_errors()));
+        $this->_display_error(validation_errors());
         return;
       }
 
@@ -45,7 +50,7 @@ class Upload extends CI_Controller {
           try {
             $data = \Cloudinary\Uploader::upload($this->input->post('link'));
           } catch (Exception $e) {
-            $this->load->view('pages/addmeme', array('error' => 'Check your link. It is not valid.'));
+            $this->_display_error('Check your link. It is not valid.');
             return;
           }
         }
@@ -54,7 +59,7 @@ class Upload extends CI_Controller {
 
       if($missing_link_or_img){
         if (!$this->upload->do_upload('userfile')) {
-          $this->load->view('pages/addmeme', array('error' => 'Something went wrong with upload'));
+          $this->_display_error('Something went wrong with upload');
           return;
         }
         else {
@@ -63,7 +68,7 @@ class Upload extends CI_Controller {
             $data = \Cloudinary\Uploader::upload($temp['upload_data']['full_path']);
             $missing_link_or_img = FALSE;
           } catch (Exception $e) {
-            $this->load->view('pages/addmeme', array('error' => 'Something went wrong with uploading to cloud.'));
+            $this->_display_error('Something went wrong with uploading to cloud.');
             return;
           }
           unlink($temp['upload_data']['full_path']);
@@ -71,7 +76,7 @@ class Upload extends CI_Controller {
       }
 
       if ($missing_link_or_img) {
-        $this->load->view('pages/addmeme', array('error' => 'Link or image is missing.'));
+        $this->_display_error('Link or image is missing.');
         return;
       }
 

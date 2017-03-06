@@ -1,9 +1,3 @@
-<?php
-$title = 'Add spice';
-$selection = 'addspice';
-include('header.php');
-?>
-
     <h1>Add meme</h1>
     <?php if (isset($error)) echo $error ?>
     <?php echo form_open_multipart('upload');?>
