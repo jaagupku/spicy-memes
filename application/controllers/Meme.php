@@ -12,12 +12,9 @@ class Meme extends CI_Controller {
       if (!isset($this->session->logged_in)) {
         redirect('/login', 'refresh');
       }
-      $this->load->library('cloudinarylib');
-
-      $this->load->view('pages/header', array('username' => $this->session->username, 'title' => 'Add spice', 'selection' => 'addspice'));
-      $this->load->view('pages/addmeme', array('cloudinary_js_auto_config' => cloudinary_js_config()));
-      $this->load->view('pages/footer');
+      $this->load->view('pages/addmeme');
     }
+
 
     public function view($meme_id) {
       $data['meme'] = $this->meme_model->get_meme($meme_id);
