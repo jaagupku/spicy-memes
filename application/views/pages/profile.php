@@ -1,10 +1,10 @@
 <?php
-$title = $username;
+$title = $target;
 $selection = 'profile';
 include('header.php');
 ?>
 
-Username: <?php echo($username) ?> </br>
+Username: <?php echo($target) ?> </br>
 Email: <?php echo($email) ?>
 
 <?php

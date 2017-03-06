@@ -79,7 +79,7 @@ class Users extends CI_Controller {
             $username = $userdata->User_Name;
             $email = $userdata->Email;
 
-            $this->load->view('pages/profile', array('username' => $username, 'email' => $email));
+            $this->load->view('pages/profile', array('username' => $this->session->username, 'target' => $username, 'email' => $email));
         } else {
             show_404();
         }
