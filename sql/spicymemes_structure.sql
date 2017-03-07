@@ -48,7 +48,7 @@ CREATE  PROCEDURE `sp_username_to_userid` (IN `a_user_name` VARCHAR(32))  READS 
 SELECT users.Id FROM users WHERE users.User_Name=a_user_name$$
 
 CREATE  PROCEDURE `sp_user_total_memes` (IN `a_user_id` INT)  READS SQL DATA
-SELECT COUNT(*) FROM meme WHERE meme.User_Id=a_user_id$$
+SELECT meme.Data_Type, COUNT(*) AS `count` FROM meme WHERE meme.User_Id=a_user_id GROUP BY meme.Data_Type$$
 
 CREATE  PROCEDURE `sp_vote_comment` (IN `a_comment_id` INT, IN `a_user_id` INT, IN `a_vote` INT)  MODIFIES SQL DATA
     COMMENT 'adds vote to comment'
