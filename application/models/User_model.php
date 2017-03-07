@@ -13,6 +13,10 @@ class User_model extends Base_Model {
       return $this->_call_procedure( 'sp_update_user_last_login', array( $user_id, date("Y-m-d H:i:s") ) );
     }
 
+    public function get_user_meme_data($user_id) {
+      return $this->_call_procedure('sp_user_total_memes', array($user_id))->result();
+    }
+
     public function create($username, $password, $email) {
         $arguments = array(
             0, // type

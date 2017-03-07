@@ -74,12 +74,23 @@ class Users extends CI_Controller {
 
     public function profile($username) {
         $userdata = $this->user_model->retrieve($username);
+        $data = $this->user_model->get_user_meme_data($userdata->Id);
+        $processed_data = array('picture' => 0, 'video' => 0, 'total' => 0);
+        foreach ($data as $value) {
+          if ($value->Data_Type == "P") {
+            $processed_data['picture'] = $value->count;
+          } else {
+            $processed_data['video'] = $value->count;
+          }
+        }
+
+        $processed_data['total'] = $processed_data['picture'] + $processed_data['video'];
 
         if ($userdata) {
             $username = $userdata->User_Name;
             $email = $userdata->Email;
 
-            $this->load->view('pages/profile', array('username' => $this->session->username, 'target' => $username, 'email' => $email));
+            $this->load->view('pages/profile', array('username' => $this->session->username, 'target' => $username, 'email' => $email, 'meme_count' => $processed_data));
         } else {
             show_404();
         }
