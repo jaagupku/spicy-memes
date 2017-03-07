@@ -12,7 +12,7 @@
 
           <div class="embed-responsive embed-responsive-4by3">
             <?php if ($row['Data_Type']=="P") {
-               echo '<img src="http://res.cloudinary.com/spicy-memes/image/upload/c_limit,w_560/'.$row['Data'].'" />';
+               echo '<img src="http://res.cloudinary.com/spicy-memes/image/upload/t_meme/'.$row['Data'].'" />';
             } else {
                echo "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/{$row['Data']}\" frameborder=\"0\" allowfullscreen></iframe>";
             }

@@ -68,7 +68,7 @@ $route['top/(:num)'] = 'main/top/$1';
 $route['top/(:num)/(:num)'] = 'main/top/$1/$2';
 
 $route['new'] = 'main/new_memes';
-$route['new/(:num)'] = 'main/new/$1';
-$route['new/(:num)/(:num)'] = 'main/new/$1/$2';
+$route['new/(:num)'] = 'main/new_memes/$1';
+$route['new/(:num)/(:num)'] = 'main/new_memes/$1/$2';
 
 //$route['(.*)'] = 'errors/show_404';
