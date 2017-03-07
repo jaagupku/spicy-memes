@@ -6,3 +6,7 @@
 .container-fluid .break {
   height: 5vh;
 }
+
+.active-vote {
+    color: orange;
+}

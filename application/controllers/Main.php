@@ -24,7 +24,16 @@ class Main extends CI_Controller {
     }
 
     private function _display_memes($memes, $title, $selection) {
-      $data['memes'] = $memes;
+      $data = array();
+
+      $data['memes'] = array();
+      foreach ($memes as &$meme) {
+          $meme_array = (array) $meme;
+          $meme_array['User_Vote'] = $this->meme_model->get_vote_meme($meme_array['Id'], $this->session->user_id);
+
+          array_push($data['memes'], $meme_array);
+      }
+
       $this->load->view('pages/header', array('username' => $this->session->username, 'title' => $title, 'selection' => $selection));
       $this->load->view('pages/memebody.php', $data);
       $this->load->view('pages/footer.php');

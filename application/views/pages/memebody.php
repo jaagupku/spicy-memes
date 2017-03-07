@@ -21,8 +21,8 @@
 
           <p>Added by: <a href="<?php echo site_url('/profile/'.$row['User_Name']) ?>"><?php echo $row['User_Name'] ?></a> ; Points: <span class="points"><?php echo $row['Points']; ?></span></p>
 
-          <div class="glyphicon glyphicon-chevron-up upvote"></div>
-          <div class="glyphicon glyphicon-chevron-down downvote"></div>
+          <div class="glyphicon glyphicon-chevron-up upvote<?php if ($row['User_Vote'] == 1) echo(' active-vote') ?>"></div>
+          <div class="glyphicon glyphicon-chevron-down downvote<?php if ($row['User_Vote'] == -1) echo(' active-vote') ?>"></div>
         </div>
       </div>
     </div>
