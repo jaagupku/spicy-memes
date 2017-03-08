@@ -27,13 +27,12 @@ class Meme_model extends Base_Model {
         $this->db->delete('memepoints');
     }
 
-    public function get_vote_meme($meme_id, $user_id) {
+    public function get_meme_votes($meme_ids) {
         $this->db->from('memepoints');
-        $this->db->select('Up_Vote');
-        $this->db->where('Meme_Id', $meme_id);
-        $this->db->where('User_Id', $user_id);
+        $this->db->select('*');
+        $this->db->where_in('Meme_Id', $meme_ids);
 
-        return $this->db->get()->row('Up_Vote');
+        return $this->db->get()->result();
     }
 
     public function vote_comment($comment_id, $user_id, $vote) {
