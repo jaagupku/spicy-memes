@@ -1,4 +1,10 @@
-  <?php foreach($memes as $row) : ?>
+<?php
+include('header.php');
+
+array_push($scripts, '/assets/js/script.js');
+?>
+
+    <?php foreach($memes as $row) : ?>
 
     <div class="container-fluid">
       <div class="break"></div>
@@ -28,3 +34,7 @@
     </div>
 
   <?php endforeach ?>
+
+<?php
+include('footer.php')
+?>

@@ -1,3 +1,8 @@
+<?php
+$scripts = array();
+array_push($scripts, 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js');
+array_push($scripts, '/assets/js/bootstrap.min.js');
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

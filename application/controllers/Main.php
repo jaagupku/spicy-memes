@@ -41,8 +41,6 @@ class Main extends CI_Controller {
         $data['selection'] = $selection;
         $data['memes'] = $memes;
 
-        $this->load->view('pages/header', $data);
         $this->load->view('pages/memebody.php', $data);
-        $this->load->view('pages/footer.php');
     }
 }

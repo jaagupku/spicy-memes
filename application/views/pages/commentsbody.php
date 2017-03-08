@@ -1,3 +1,9 @@
+<?php
+$title = $meme['Title'];
+$selection = null;
+include('header.php');
+?>
+
     <div class="container-fluid">
       <div class="break"></div>
     </div>
@@ -58,3 +64,7 @@
         </div>
       </div>
     </div>
+
+<?php
+include('footer.php');
+?>

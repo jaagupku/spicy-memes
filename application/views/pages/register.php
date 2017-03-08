@@ -13,5 +13,5 @@ include('header.php');
 </form>
 
 <?php
-include('footer.php')
+include('footer.php');
 ?>

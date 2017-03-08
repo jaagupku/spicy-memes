@@ -12,8 +12,8 @@ class Meme extends CI_Controller {
         if (!isset($this->session->logged_in)) {
             redirect('/login', 'refresh');
         }
-        $this->load->view('pages/header', array('username' => $this->session->username, 'title' => "Add spice", 'selection' => 'addspice'));
-        $this->load->view('pages/addmeme');
+
+        $this->load->view('pages/addmeme', array('username' => $this->session->username));
     }
 
     public function view($meme_id) {
@@ -31,9 +31,9 @@ class Meme extends CI_Controller {
             }
         }
 
+        $data['username'] = $this->session->username;
         $data['comments'] = $this->meme_model->get_meme_comments($meme_id, 'Points');
-        $this->load->view('pages/header', array('username' => $this->session->username, 'title' => $data['meme']['Title'], 'selection' => null));
+
         $this->load->view('pages/commentsbody', $data);
-        $this->load->view('pages/footer');
     }
 }

@@ -9,8 +9,7 @@ class Upload extends CI_Controller {
     }
 
     private function _display_error($error) {
-      $this->load->view('pages/header', array('username' => $this->session->username, 'title' => "Add spice", 'selection' => 'addspice'));
-      $this->load->view('pages/addmeme', array('error' => $error));
+      $this->load->view('pages/addmeme', array('username' => $this->session->username, 'error' => $error));
     }
 
     public function index() {
