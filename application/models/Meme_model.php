@@ -18,7 +18,7 @@ class Meme_model extends Base_Model {
     }
 
     public function vote_meme($meme_id, $user_id, $vote) {
-      return $this->_call_procedure('sp_vote_meme', array($meme_id, $user_id, $vote));
+        return $this->_call_procedure('sp_vote_meme', array($meme_id, $user_id, $vote));
     }
 
     public function delete_vote_meme($meme_id, $user_id) {
@@ -37,7 +37,7 @@ class Meme_model extends Base_Model {
     }
 
     public function vote_comment($comment_id, $user_id, $vote) {
-      return $this->_call_procedure('sp_vote_comment', array($comment_id, $user_id, $vote));
+        return $this->_call_procedure('sp_vote_comment', array($comment_id, $user_id, $vote));
     }
 
     public function get_meme($id) {
