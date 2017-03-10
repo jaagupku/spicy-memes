@@ -13,15 +13,15 @@ $scripts = array();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?> - Spicy Memes</title>
     <link href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/all-pages-style.css">
-    <link rel="stylesheet" href="/assets/css/header-style.css">
-    <link rel="stylesheet" href="/assets/css/comments-page-style.css">
-    <link rel="stylesheet" href="/assets/css/front-page-body-style.css">
-    <link rel="stylesheet" href="/assets/css/user-page-style.css">
+    <link href="/assets/css/allpagesstyle.css" rel="stylesheet">
+    <link href="/assets/css/headerstyle.css" rel="stylesheet">
+    <link href="/assets/css/commentspagestyle.css" rel="stylesheet">
+    <link href="/assets/css/frontpagebodystyle.css" rel="stylesheet">
+    <link href="/assets/css/userpagestyle.css" rel="stylesheet">
   </head>
   <body>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-custom">
       <div class="container-fluid">
 
         <div class="navbar-header">
@@ -53,7 +53,7 @@ $scripts = array();
             </div>
           </form>
 
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right loginsignup">
             <?php if (isset($username)) { ?>
               <li><a href="/index.php/profile/<?= $username ?>" id="username"><span class="glyphicon glyphicon-user"></span><?= $username ?></a></li>
               <li><a href="/index.php/logout" id="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
@@ -122,7 +122,7 @@ $scripts = array();
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-lg-12 addsomespice">
-          <a role="button" class="btn btn-addsomespice btn-lg" href="/index.php/meme/add">ADD SOME SPICE</a>
+            <a role="button" class="btn btn-lg" href="/index.php/meme/add">ADD SOME SPICE</a>
         </div>
       </div>
     </div>

@@ -15,6 +15,10 @@
 .addsomespice {
   text-align: right;
 }
+.addsomespice a{
+  background-color: rgb(246, 113, 5);
+  color: white;
+}
 
 @media (max-width: 818px) {
   .navbar-header {
