@@ -13,6 +13,7 @@ class Meme extends CI_Controller {
             redirect('/login', 'refresh');
         }
 
+        $this->session->referenced_form = site_url("/meme/add");
         $this->load->view('pages/addmeme', array('username' => $this->session->username));
     }
 
@@ -34,6 +35,7 @@ class Meme extends CI_Controller {
         $data['username'] = $this->session->username;
         $data['comments'] = $this->meme_model->get_meme_comments($meme_id, 'Points');
 
+        $this->session->referenced_form = site_url("/meme/$meme_id");
         $this->load->view('pages/commentsbody', $data);
     }
 }

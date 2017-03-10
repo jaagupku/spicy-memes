@@ -24,7 +24,7 @@ class Users extends CI_Controller {
             $password = $this->input->post('password');
 
             if ($this->user_model->verify($username, $password)) {
-                $this->_login_and_redirect($username, '/');
+                $this->_login_and_redirect($username);
             } else {
                 $error = 'Invalid username or password';
             }
@@ -49,8 +49,8 @@ class Users extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('username', 'Username', 'required|alpha_numeric|is_unique[users.User_Name]');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required|max_length[32]|alpha_numeric|is_unique[users.User_Name]');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[7]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.Email]');
 
         $error = null;
@@ -61,7 +61,7 @@ class Users extends CI_Controller {
             $email = $this->input->post('email');
 
             if ($this->user_model->create($username, $password, $email)) {
-                $this->_login_and_redirect($username, '/');
+                $this->_login_and_redirect($username);
             } else {
                 $error = 'Couldn\'t create the user';
             }
@@ -90,18 +90,19 @@ class Users extends CI_Controller {
             $username = $userdata->User_Name;
             $email = $userdata->Email;
 
+            $this->session->referenced_form = site_url("/profile/$username");
             $this->load->view('pages/profile', array('username' => $this->session->username, 'target' => $username, 'email' => $email, 'meme_count' => $processed_data));
         } else {
             show_404();
         }
     }
 
-    private function _login_and_redirect($username, $uri) {
+    private function _login_and_redirect($username) {
         $user = $this->user_model->retrieve($username);
         $this->user_model->update_last_login_date($user->Id);
         $this->session->logged_in = true;
         $this->session->username = $user->User_Name;
         $this->session->user_id = $user->Id;
-        redirect($uri, 'refresh');
+        redirect($this->session->referenced_form, 'refresh');
     }
 }

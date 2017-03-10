@@ -1,6 +1,6 @@
 <?php
 $title = 'Add spice';
-$selection = 'addspice';
+$selection = 'addmeme';
 include('header.php');
 ?>
 

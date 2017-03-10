@@ -12,14 +12,17 @@ class Main extends CI_Controller {
     }
 
     public function hot($from = 0, $amount = 20) {
+        $this->session->referenced_form = site_url("hot/$from/$amount");
         $this->_display_memes($this->meme_model->get_hot_memes($from, $amount), "Hot", 'hot');
     }
 
     public function top($from = 0, $amount = 20) {
+        $this->session->referenced_form = site_url("top/$from/$amount");
         $this->_display_memes($this->meme_model->get_top_memes($from, $amount), "Top", 'top');
     }
 
     public function new_memes($from = 0, $amount = 20) {
+        $this->session->referenced_form = site_url("new/$from/$amount");
         $this->_display_memes($this->meme_model->get_new_memes($from, $amount), "New", 'new');
     }
 

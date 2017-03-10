@@ -46,7 +46,7 @@ $scripts = array();
 
           <ul class="nav navbar-nav navbar-right">
             <?php if (isset($username)) { ?>
-              <li <?php if($selection==='addspice') {echo 'class="active"';} ?> ><a href="/index.php/meme/add">Add Some Spice</a></li>
+              <li <?php if($selection==='addmeme') {echo 'class="active"';} ?> ><a href="/index.php/meme/add">Add Some Spice</a></li>
               <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="/index.php/profile/<?= $username ?>" id="username"><span class="glyphicon glyphicon-user"></span><?= $username ?></a></li>
               <li><a href="/index.php/logout" id="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             <?php } else { ?>
