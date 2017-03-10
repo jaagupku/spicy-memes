@@ -4,9 +4,102 @@ $selection = 'profile';
 include('header.php');
 ?>
 
-Username: <?php echo($target) ?> </br>
-Email: <?php echo($email) ?> </br>
-I have added total of <?php echo $meme_count['total'] ?> memes, which includes <?php echo $meme_count['picture'] ?> pictures and <?php echo $meme_count['video'] ?> videos.
+<!-- USER PAGE -->
+
+    <div class="container-fluid"><div class="break"></div></div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-custom-userpage col-centered">
+
+          <div class="user-profile-userpage">
+              <div class="profile-pic-userpage"></div>
+              <h2><?php echo($target) ?></h2>
+          </div>
+
+          <br>
+
+          <!-- THIS DIV ONLY VISIBLE TO THE OWNER WHO IS LOGGED IN -->
+
+          <div class="user-data-userpage">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td><strong>E-MAIL: </strong></td>
+                  <td><?php echo($email) ?></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="edit-profile-pswd">
+            <a href="#">edit profile</a>
+            <a href="#">change password</a>
+          </div>
+
+          <p>
+          I have added total of <?php echo $meme_count['total'] ?> memes, which includes <?php echo $meme_count['picture'] ?> pictures and <?php echo $meme_count['video'] ?> videos.
+          </p>
+
+          <!-- THIS DIV ONLY VISIBLE TO THE OWNER WHO IS LOGGED IN ENDS HERE -->
+
+        </div>
+      </div>
+    </div>
+
+    <!-- UPLOADS DIV -->
+
+    <div class="container-fluid"><div class="break"></div></div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-custom-userpage col-centered">
+
+          <h2>UPLOADS: </h2>
+
+          <div class="sortingsection-userpage">
+            <p><strong>Sort by: </strong></p>
+            <a href="#"><span class="label label-default">top</span></a>
+            <a href="#"><span class="label label-default">comments</span></a>
+            <a href="#"><span class="label label-default">date</span></a>
+          </div>
+
+          <div class="container-fluid"><div class="break"></div></div>
+
+          <!-- START LOADING HERE -->
+
+          <div class="uploads-userpage">
+            <table class="table">
+              <tbody>
+                <thead>
+                  <tr>
+                    <th>TITLE</th>
+                    <th>SPICE LEVEL</th>
+                    <th>COMMENTS</th>
+                    <th>DATE</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td><a href="comments_page.html">Some Shitty Meme Title</a></td>
+                  <td>Spice Level: 666</td>
+                  <td>Comments: <a href="comments_page.html"><span class="badge">1001</span></a></td>
+                  <td>Added on: 10.03.2017 2:25PM</td>
+                </tr>
+                <tr>
+                  <td><a href="comments_page.html">Some Shitty Meme Title</a></td>
+                  <td>Spice Level: 666</td>
+                  <td>Comments: <a href="comments_page.html"><span class="badge">1001</span></a></td>
+                  <td>Added on: 10.03.2017 2:25PM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- END LOADING HERE -->
+
+        </div>
+      </div>
+    </div>
 
 <?php
 include('footer.php');

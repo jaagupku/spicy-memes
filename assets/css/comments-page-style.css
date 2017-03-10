@@ -1,0 +1,45 @@
+.col-custom-commentspage {
+  display: block;
+  width: 580px;
+}
+.insert-comments textarea {
+  resize: none;
+}
+.updownvote-comments *{
+  font-size: 20px;
+}
+.comment {
+  width: 100%;
+  background-color: rgb(247, 247, 247);
+  padding: 5px 10px 5px 10px;
+}
+.comment-data {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.profile-pic-comments {
+  width: 100px;
+  margin-right: 3px;
+}
+.read-comments {
+  display: flex;
+  flex-flow: row;
+}
+.comment p {
+  text-align: justify;
+}
+@media (max-width: 580px) {
+  .col-custom-commentspage {
+    width: auto;
+  }
+  .profile-pic-comments {
+    height: 70px;
+    width: 70px;
+    margin-right: 3px;
+  }
+  .updownvote-comments *{
+    font-size: 18px;
+  }
+}

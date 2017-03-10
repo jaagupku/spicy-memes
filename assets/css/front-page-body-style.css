@@ -1,0 +1,22 @@
+.meme img {
+  width: 100%;
+}
+.memedata {
+  display: flex;
+  justify-content: space-between;
+}
+.updownvote-frontpage *{
+  font-size: 40px;
+}
+.col-custom-frontpage {
+  display: block;
+  width: 580px;
+}
+@media (max-width: 580px) {
+  .col-custom-frontpage {
+    width: auto;
+  }
+  .updownvote-frontpage *{
+    font-size: 35px;
+  }
+}

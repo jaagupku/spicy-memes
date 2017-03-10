@@ -1,6 +1,9 @@
-#notselected{
+.top{
   color: rgb(28, 28, 28);
 }
-#selected{
+.hot{
   color: rgb(214, 64, 0);
+}
+.new{
+  color: rgb(28, 28, 28);
 }
