@@ -16,7 +16,7 @@ include('header.php');
 
           <div class="meme">
             <?php if ($meme['Data_Type']=="P") {
-               echo '<img alt="'.$row['Title'].'" src="http://res.cloudinary.com/spicy-memes/image/upload/t_meme/'.$meme['Data'].'" />';
+               echo '<img alt="'.$meme['Title'].'" src="http://res.cloudinary.com/spicy-memes/image/upload/t_meme/'.$meme['Data'].'" />';
             } else {
                echo "<div class=\"embed-responsive embed-responsive-16by9\">
                <iframe class=\"embed-responsive-item\" src=\"https://www.youtube.com/embed/{$meme['Data']}\" allowfullscreen></iframe>
