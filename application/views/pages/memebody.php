@@ -42,6 +42,22 @@ array_push($scripts, '/assets/js/script.js');
 
 <?php endforeach ?>
 
+<?php if($nextpage != FALSE) : ?>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-custom-frontpage col-centered">
+        <a role="button" class="btn btn-lg" href="<?php echo site_url($nextpage) ?>">Load next page.</a>
+    </div>
+  </div>
+</div>
+<?php else : ?>
+<div class="container-fluid">
+  <div class="row col-centered col-custom-frontpage">
+    <p>End of page, no more memes.</p>
+  </div>
+</div>
+<?php endif; ?>
+
 <?php
 include('footer.php')
 ?>

@@ -55,8 +55,8 @@ $scripts = array();
 
           <ul class="nav navbar-nav navbar-right loginsignup">
             <?php if (isset($username)) { ?>
-              <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="/index.php/profile/<?= $username ?>" id="username"><span class="glyphicon glyphicon-user"></span><?= $username ?></a></li>
-              <li><a href="/index.php/logout" id="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="<?php echo site_url("profile/".$username) ?>" id="username"><span class="glyphicon glyphicon-user"></span><?= $username ?></a></li>
+              <li><a href="<?php echo site_url("logout"); ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             <?php } else { ?>
               <li><a role="button" class="btn btn-signup btn-md" id="signup" data-toggle="modal" data-target="#signuploginmodal"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
               <li><a role="button" class="btn btn-login btn-md" id="login" data-toggle="modal" data-target="#signuploginmodal"><span class="glyphicon glyphicon-log-in"></span> LOG IN</a></li>
@@ -126,7 +126,7 @@ $scripts = array();
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-lg-12 addsomespice">
-            <a role="button" class="btn btn-lg" href="/index.php/meme/add">ADD SOME SPICE</a>
+            <a role="button" class="btn btn-lg" href="<?php echo site_url("meme/add") ?>">ADD SOME SPICE</a>
         </div>
       </div>
     </div>
