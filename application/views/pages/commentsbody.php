@@ -16,10 +16,10 @@ include('header.php');
 
           <div class="meme">
             <?php if ($meme['Data_Type']=="P") {
-               echo '<img src="http://res.cloudinary.com/spicy-memes/image/upload/t_meme/'.$meme['Data'].'" />';
+               echo '<img alt="'.$row['Title'].'" src="http://res.cloudinary.com/spicy-memes/image/upload/t_meme/'.$meme['Data'].'" />';
             } else {
                echo "<div class=\"embed-responsive embed-responsive-16by9\">
-               <iframe class=\"embed-responsive-item\" src=\"https://www.youtube.com/embed/{$meme['Data']}\" frameborder=\"0\" allowfullscreen></iframe>
+               <iframe class=\"embed-responsive-item\" src=\"https://www.youtube.com/embed/{$meme['Data']}\" allowfullscreen></iframe>
                  </div>";
             }
             ?>
@@ -42,11 +42,11 @@ include('header.php');
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-custom-commentspage col-centered">
-          <?php if (isset($username)) : ?>
+          <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']===TRUE) : ?>
             <form method="POST">
               <div class="form-group insert-comments">
                 <label for="">INSERT SPICY COMMENT HERE:</label>
-                <textarea class="form-control" rows="4"></textarea>
+                <textarea name="message" class="form-control" rows="4"></textarea>
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
@@ -84,7 +84,7 @@ include('header.php');
           <?php foreach($comments as $comment) : ?>
             <div class="container-fluid"><div class="break"></div></div>
             <div class="read-comments">
-              <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>"><div class="profile-pic-comments"><?php echo '<img src="http://res.cloudinary.com/spicy-memes/image/upload/t_profile/'.$comment['ProfileImg_Id'].'" />' ?></div></a>
+              <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>"><div class="profile-pic-comments"><?php echo '<img alt="Profile Image" src="http://res.cloudinary.com/spicy-memes/image/upload/t_profile/'.$comment['ProfileImg_Id'].'" />' ?></div></a>
               <div class="comment">
                 <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>" class="user-comments"><?php echo $comment['User_Name'] ?></a>
                 <br>

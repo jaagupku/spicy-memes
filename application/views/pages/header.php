@@ -37,9 +37,9 @@ $scripts = array();
         <div class="collapse navbar-collapse" id="burger-material">
 
           <ul class="nav navbar-nav">
-            <li <?php if($selection==='hot') {echo 'class="active"';} ?> ><a href="<?php echo site_url('hot') ?>" <?php if($selection==='hot') {echo 'id="selected"';} else {echo 'id="notselected"';} ?> class="hot">HOT</a></li>
-            <li <?php if($selection==='top') {echo 'class="active"';} ?> ><a href="<?php echo site_url('top') ?>" <?php if($selection==='top') {echo 'id="selected"';} else {echo 'id="notselected"';} ?> class="top">TOP</a></li>
-            <li <?php if($selection==='new') {echo 'class="active"';} ?> ><a href="<?php echo site_url('new') ?>" <?php if($selection==='new') {echo 'id="selected"';} else {echo 'id="notselected"';} ?> class="new">NEW</a></li>
+            <li <?php if($selection==='hot') {echo 'class="active"';} ?> ><a href="<?php echo site_url('hot') ?>" class="hot">HOT</a></li>
+            <li <?php if($selection==='top') {echo 'class="active"';} ?> ><a href="<?php echo site_url('top') ?>" class="top">TOP</a></li>
+            <li <?php if($selection==='new') {echo 'class="active"';} ?> ><a href="<?php echo site_url('new') ?>" class="new">NEW</a></li>
           </ul>
 
           <form class="navbar-form navbar-left">
@@ -55,7 +55,7 @@ $scripts = array();
 
           <ul class="nav navbar-nav navbar-right loginsignup">
             <?php if (isset($username)) { ?>
-              <li><a href="/index.php/profile/<?= $username ?>" id="username"><span class="glyphicon glyphicon-user"></span><?= $username ?></a></li>
+              <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="/index.php/profile/<?= $username ?>" id="username"><span class="glyphicon glyphicon-user"></span><?= $username ?></a></li>
               <li><a href="/index.php/logout" id="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             <?php } else { ?>
               <li><a role="button" class="btn btn-signup btn-md" id="signup" data-toggle="modal" data-target="#signuploginmodal"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
@@ -72,38 +72,42 @@ $scripts = array();
                   <h4 class="modal-title">LOG IN</h4>
                 </div>
                 <div class="modal-body">
-                  <div class="form-group">
-                    <label for="usr">Username:</label>
-                    <input type="text" class="form-control" id="usr">
-                  </div>
-                  <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd">
-                  </div>
-                  <a href="#">Forgot password?</a><br><br>
-                  <button type="button" class="btn btn-login btn-sm">LOG IN</button>
+                  <form method="POST" action="<?php echo site_url("login"); ?>">
+                    <div class="form-group">
+                      <label for="usr">Username:</label>
+                      <input name="username" type="text" class="form-control" id="usr">
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Password:</label>
+                      <input name="password" type="password" class="form-control" id="pwd">
+                    </div>
+                    <a href="#">Forgot password?</a><br><br>
+                    <button type="submit" class="btn btn-login btn-sm">LOG IN</button>
+                  </form>
                 </div>
                 <div class="modal-header">
                   <h4 class="modal-title">SIGN UP</h4>
                 </div>
                 <div class="modal-body">
-                  <div class="form-group">
-                    <label for="usr">Choose username:</label>
-                    <input type="text" class="form-control" id="usr_choose">
-                  </div>
-                  <div class="form-group">
-                    <label for="pwd">Choose password:</label>
-                    <input type="password" class="form-control" id="pwd_choose">
-                  </div>
-                  <div class="form-group">
-                    <label for="pwd">Repeat password:</label>
-                    <input type="password" class="form-control" id="pwd_repeat">
-                  </div>
-                  <div class="form-group">
-                    <label for="pwd">Enter e-mail:</label>
-                    <input type="password" class="form-control" id="email">
-                  </div>
-                  <button type="button" class="btn btn-signup btn-sm">SIGN UP</button>
+                  <form method="POST" action="<?php echo site_url("register"); ?>">
+                    <div class="form-group">
+                      <label for="usr">Choose username:</label>
+                      <input name="username" type="text" class="form-control" id="usr_choose">
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Choose password:</label>
+                      <input name="password" type="password" class="form-control" id="pwd_choose">
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Repeat password:</label>
+                      <input type="password" class="form-control" id="pwd_repeat">  <!-- TODO kontroll repeat == password -->
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Enter e-mail:</label>
+                      <input name="email" type="email" class="form-control" id="email">
+                    </div>
+                    <button type="submit" class="btn btn-signup btn-sm">SIGN UP</button>
+                  </form>
                 </div>
               </div>
 

@@ -89,9 +89,10 @@ class Users extends CI_Controller {
         if ($userdata) {
             $username = $userdata->User_Name;
             $email = $userdata->Email;
+            $profile_image = $userdata->ProfileImg_Id;
 
             $this->session->referenced_form = site_url("/profile/$username");
-            $this->load->view('pages/profile', array('username' => $this->session->username, 'target' => $username, 'email' => $email, 'meme_count' => $processed_data));
+            $this->load->view('pages/profile', array('username' => $this->session->username, 'target' => $username, 'email' => $email, 'meme_count' => $processed_data, 'profile_image' => $profile_image));
         } else {
             show_404();
         }

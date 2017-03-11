@@ -13,14 +13,15 @@ include('header.php');
         <div class="col-xs-12 col-custom-userpage col-centered">
 
           <div class="user-profile-userpage">
-              <div class="profile-pic-userpage"></div>
+              <div class="profile-pic-userpage"><img alt="Profile Image" src="http://res.cloudinary.com/spicy-memes/image/upload/t_profile/<?php echo $profile_image;?>"  /> </div>
               <h2><?php echo($target) ?></h2>
           </div>
 
           <br>
 
-          <!-- THIS DIV ONLY VISIBLE TO THE OWNER WHO IS LOGGED IN -->
 
+          <?php if(isset($_SESSION['logged_in']) && $target===$username) :?>
+          <!-- THIS DIV ONLY VISIBLE TO THE OWNER WHO IS LOGGED IN -->
           <div class="user-data-userpage">
             <table class="table">
               <tbody>
@@ -36,12 +37,8 @@ include('header.php');
             <a href="#">edit profile</a>
             <a href="#">change password</a>
           </div>
-
-          <p>
-          I have added total of <?php echo $meme_count['total'] ?> memes, which includes <?php echo $meme_count['picture'] ?> pictures and <?php echo $meme_count['video'] ?> videos.
-          </p>
-
           <!-- THIS DIV ONLY VISIBLE TO THE OWNER WHO IS LOGGED IN ENDS HERE -->
+         <?php endif; ?>
 
         </div>
       </div>
@@ -55,6 +52,9 @@ include('header.php');
       <div class="row">
         <div class="col-xs-12 col-custom-userpage col-centered">
 
+          <p>
+          I have added total of <?php echo $meme_count['total'] ?> memes, which includes <?php echo $meme_count['picture'] ?> pictures and <?php echo $meme_count['video'] ?> videos.
+          </p>
           <h2>UPLOADS: </h2>
 
           <div class="sortingsection-userpage">

@@ -20,6 +20,10 @@
   color: white;
 }
 
+.active-vote {
+    color: orange;
+}
+
 @media (max-width: 818px) {
   .navbar-header {
       float: none;

@@ -16,10 +16,10 @@ array_push($scripts, '/assets/js/script.js');
 
       <div class="meme">
         <?php if ($row['Data_Type']=="P") {
-           echo '<img src="http://res.cloudinary.com/spicy-memes/image/upload/t_meme/'.$row['Data'].'" />';
+           echo '<img alt="'.$row['Title'].'" src="http://res.cloudinary.com/spicy-memes/image/upload/t_meme/'.$row['Data'].'" />';
         } else {
            echo "<div class=\"embed-responsive embed-responsive-16by9\">
-           <iframe class=\"embed-responsive-item\" src=\"https://www.youtube.com/embed/{$row['Data']}\" frameborder=\"0\" allowfullscreen></iframe>
+           <iframe class=\"embed-responsive-item\" src=\"https://www.youtube.com/embed/{$row['Data']}\" allowfullscreen></iframe>
              </div>";
         }
         ?>

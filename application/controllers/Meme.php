@@ -9,11 +9,12 @@ class Meme extends CI_Controller {
     }
 
     public function add() {
+        $this->session->referenced_form = site_url("/meme/add");
+
         if (!isset($this->session->logged_in)) {
             redirect('/login', 'refresh');
         }
 
-        $this->session->referenced_form = site_url("/meme/add");
         $this->load->view('pages/addmeme', array('username' => $this->session->username));
     }
 
@@ -26,7 +27,7 @@ class Meme extends CI_Controller {
         $data['comment_added'] = FALSE;
 
         $this->form_validation->set_rules('message', 'Message', 'required');
-        if ($this->form_validation->run()) {
+        if ($this->form_validation->run() && $this->session->logged_in) {
             if ($this->meme_model->add_comment($meme_id, $this->session->user_id, html_escape($this->input->post('message')))) {
                 $data['comment_added'] = TRUE;
             }
