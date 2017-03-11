@@ -51,3 +51,38 @@ $(function () {
         vote($(this), -1);
     });
 });
+
+function yHandler(){
+	var body =document.getElementById('memebody');
+	var contentHeight = body.offsetHeight;
+	var y = window.pageYOffset + window.innerHeight;
+	if(y + 333 >= contentHeight){
+    window.onscroll = null;
+		loadMore();
+	}
+}
+
+window.onscroll = yHandler;
+
+function loadMore() {
+  var xhttp = new XMLHttpRequest();
+  var loadbutton = document.getElementById('load-button');
+  var from = loadbutton.getAttribute('data-load-from');
+  var amount = loadbutton.getAttribute('data-load-amount');
+  var params = "from="+from+"&amount=" + amount;
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var nextFrom = parseInt(from) + parseInt(amount);
+      $("#load-more").append(this.response);
+      loadbutton.setAttribute('data-load-from', nextFrom);
+      loadbutton.setAttribute('href', "/index.php/" + loadbutton.getAttribute('data-load-type') + "/" + from + "/" + amount);
+      window.onscroll = yHandler;
+    } else {
+      $("#load-button").hide();
+    }
+  };
+  console.log(params);
+  xhttp.open("POST", "/index.php/" + $("#load-button").data("loadType"), true);
+  xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhttp.send(params);
+}

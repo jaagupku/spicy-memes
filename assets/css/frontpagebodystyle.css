@@ -12,6 +12,9 @@
   display: block;
   width: 580px;
 }
+div#memebody {
+  margin: 0px auto;
+}
 @media (max-width: 580px) {
   .col-custom-frontpage {
     width: auto;
