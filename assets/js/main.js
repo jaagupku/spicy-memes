@@ -8,7 +8,9 @@ function yHandler(){
 	var y = window.pageYOffset + window.innerHeight;
 	if(y + 400 >= contentHeight){
     window.onscroll = null;
-		loadMore();
+    if ($('.meme').length < 50) {
+  		loadMore();
+    }
 	}
 }
 
