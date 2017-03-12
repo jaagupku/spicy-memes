@@ -1,7 +1,8 @@
 <?php
 include('header.php');
 
-array_push($scripts, '/assets/js/script.js');
+array_push($scripts, '/assets/js/voting.js');
+array_push($scripts, '/assets/js/main.js');
 ?>
 <div id="memebody">
   <?php foreach($memes as $row) : ?>

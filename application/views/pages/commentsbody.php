@@ -2,6 +2,9 @@
 $title = $meme['Title'];
 $selection = null;
 include('header.php');
+
+array_push($scripts, "/assets/js/voting.js");
+array_push($scripts, "/assets/js/comments.js");
 ?>
 
 
@@ -83,7 +86,7 @@ include('header.php');
           <?php else : ?>
           <?php foreach($comments as $comment) : ?>
             <div class="container-fluid"><div class="break"></div></div>
-            <div class="read-comments">
+            <div class="read-comments" data-id="<?= $comment['Id'] ?>">
               <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>"><?php echo '<img class="profile-pic-comments" alt="Profile Image" src="http://res.cloudinary.com/spicy-memes/image/upload/t_profile/'.$comment['ProfileImg_Id'].'" />' ?></a>
               <div class="comment">
                 <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>" class="user-comments"><?php echo $comment['User_Name'] ?></a>
@@ -91,10 +94,10 @@ include('header.php');
                 <p><?php echo $comment['Message'] ?></p>
                 <div class="comment-data">
                   <div class="updownvote-comments">
-                    <span class="	glyphicon glyphicon-arrow-up"></span>
-                    <span class="	glyphicon glyphicon-arrow-down"></span>
+                    <span class="glyphicon glyphicon-arrow-up upvote<?php if ($comment['User_Vote'] == 1) echo(' active-vote') ?>"></span>
+                    <span class="glyphicon glyphicon-arrow-down downvote<?php if ($comment['User_Vote'] == -1) echo(' active-vote') ?>"></span>
                   </div>
-                  <p>Points: <span class="badge"><?php echo $comment['Points'] ?></span></p>
+                  <p>Points: <span class="badge points"><?php echo $comment['Points'] ?></span></p>
                 </div>
               </div>
             </div>
