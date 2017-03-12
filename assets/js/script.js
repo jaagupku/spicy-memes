@@ -38,7 +38,9 @@ $(function () {
                 update_score(element, vote, previous);
             },
             error: function (jqXHR, status, error) {
-                alert(error)
+                if (error == 'Not Found') {
+                    $('#signuploginmodal').modal();
+                }
             }
         });
     }
