@@ -27,7 +27,7 @@ class Main extends CI_Controller {
       $type = $_REQUEST["type"];
 		  $from = $_REQUEST["from"];
       $amount = $_REQUEST["amount"];
-      
+
       if ($type === "new") {
         $this->_display_ajax_memes( $this->meme_model->get_new_memes($from, $amount), 'new', $from, $amount);
       } else if ($type === "top") {
@@ -38,17 +38,15 @@ class Main extends CI_Controller {
     }
 
     private function _display_ajax_memes($memes, $selection, $from, $amount) {
-      $this->session->referenced_form = site_url("$selection/$from/$amount");
-
       $data = array();
 
       $data['memes'] = $this->_add_votes_to_memes($memes);
 
       $this->load->view("pages/meme_xml", $data);
+      $this->session->referenced_form = site_url("$selection/$from/$amount");
     }
 
     private function _display_memes($memes, $title, $selection, $from, $amount) {
-        $this->session->referenced_form = site_url("$selection/$from/$amount");
         $data = array();
 
         if (count($memes) > $amount) {
@@ -60,13 +58,13 @@ class Main extends CI_Controller {
           $data['nextpage'] = FALSE;
         }
 
-
         $data['username'] = $this->session->username;
         $data['title'] = $title;
         $data['selection'] = $selection;
         $data['memes'] = $this->_add_votes_to_memes($memes);
 
         $this->load->view('pages/memebody.php', $data);
+        $this->session->referenced_form = site_url("$selection/$from/$amount");
     }
 
     private function _add_votes_to_memes($memes) {
