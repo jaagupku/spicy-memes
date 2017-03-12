@@ -46,10 +46,10 @@ function loadVoting(containerClassName, ajaxSubPath) {
     };
 
     $(document).on('click tap', '.upvote', function () {
-        vote($(this).parents('.' + containerClassName).first(), 1);
+        vote($(this).closest('.' + containerClassName), 1);
     });
 
     $(document).on('click tap', '.downvote', function () {
-        vote($(this).parents('.' + containerClassName).first(), -1);
+        vote($(this).closest('.' + containerClassName), -1);
     });
 }
