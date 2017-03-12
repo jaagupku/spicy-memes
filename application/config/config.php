@@ -24,9 +24,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
+<<<<<<< HEAD
+$config['base_url'] = 'https://231498b0.ngrok.io/';
+=======
 
+>>>>>>> dd5f399ed9575bec5caf268526428731a1bafe54
 //$config['base_url'] = 'http://spicymemes.cs.ut.ee';
-$config['base_url'] = 'http://localhost/';
+//$config['base_url'] = 'http://localhost/';
 
 /*
 |--------------------------------------------------------------------------
