@@ -80,10 +80,10 @@ class Upload extends CI_Controller {
       }
 
       if (!$youtube) {
-        $database_error = $this->meme_model->add_meme(html_escape($this->input->post('title')), $this->session->user_id, "P" , $data['public_id'].'.'.$data['format'] );
+        $database_error = $this->meme_model->add(html_escape($this->input->post('title')), $this->session->user_id, "P" , $data['public_id'].'.'.$data['format'] );
       }
       else {
-        $database_error = $this->meme_model->add_meme(html_escape($this->input->post('title')), $this->session->user_id, "V" , $youtube );
+        $database_error = $this->meme_model->add(html_escape($this->input->post('title')), $this->session->user_id, "V" , $youtube );
       }
 
       if($database_error) {

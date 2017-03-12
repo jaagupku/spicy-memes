@@ -57,10 +57,10 @@ $scripts = array();
           <ul class="nav navbar-nav navbar-right loginsignup">
             <?php if (isset($username)) { ?>
               <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="<?php echo site_url("profile/".$username) ?>" id="username"><span class="glyphicon glyphicon-user"></span> <?= $username ?></a></li>
-              <li><a href="<?php echo site_url("logout"); ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> LOG OUT</a></li>
+              <li><a href="<?= site_url("logout") ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> LOG OUT</a></li>
             <?php } else { ?>
-              <li><a role="button" class="btn btn-signup btn-md" id="signup" data-toggle="modal" data-target="#signuploginmodal"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
-              <li><a role="button" class="btn btn-login btn-md" id="login" data-toggle="modal" data-target="#signuploginmodal"><span class="glyphicon glyphicon-log-in"></span> LOG IN</a></li>
+              <li><a href="<?= site_url("register") ?>" role="button" class="btn btn-signup btn-md" data-toggle="modal" data-target="#signuploginmodal" data-remote="false"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
+              <li><a href="<?= site_url("login") ?>" role="button" class="btn btn-login btn-md" data-toggle="modal" data-target="#signuploginmodal" data-remote="false"><span class="glyphicon glyphicon-log-in"></span> LOG IN</a></li>
             <?php } ?>
           </ul>
 

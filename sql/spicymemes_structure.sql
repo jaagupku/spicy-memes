@@ -77,15 +77,15 @@ CREATE TABLE `commentpoints` (
 --
 DELIMITER $$
 CREATE TRIGGER `tg_add_commentvote` BEFORE INSERT ON `commentpoints` FOR EACH ROW BEGIN
-	IF (NEW.Up_Vote > 1) THEN
+	IF (NEW.Up_Vote > 0) THEN
     	SET NEW.Up_Vote:=1;
-    ELSEIF (NEW.Up_Vote < -1) THEN
+    ELSEIF (NEW.Up_Vote < 0) THEN
     	SET NEW.Up_Vote:=-1;
     ELSE
     	SIGNAL SQLSTATE '45000';
     END IF;
 	UPDATE comments
-     	SET comments.Points=comments.Points+NEW.Up_Vote
+     	SET comments.Points:=comments.Points+NEW.Up_Vote
    		WHERE id = NEW.comment_Id;
 END
 $$

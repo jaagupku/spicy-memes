@@ -57,7 +57,7 @@
           </div>
 
           <div class="updownvote-frontpage">
-            <a role="button" class="btn btn-upvotes btn-md"><xsl:element name="span"><xsl:attribute name="class">glyphicon glyphicon-arrow-up downvote <xsl:if test="vote=1">active-vote</xsl:if></xsl:attribute></xsl:element></a>
+            <a role="button" class="btn btn-upvotes btn-md"><xsl:element name="span"><xsl:attribute name="class">glyphicon glyphicon-arrow-up upvote <xsl:if test="vote=1">active-vote</xsl:if></xsl:attribute></xsl:element></a>
             <a role="button" class="btn btn-upvotes btn-md"><xsl:element name="span"><xsl:attribute name="class">glyphicon glyphicon-arrow-down downvote <xsl:if test="vote=-1">active-vote</xsl:if></xsl:attribute></xsl:element></a>
           </div>
         </div>

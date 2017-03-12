@@ -9,25 +9,21 @@ class Meme_model extends Base_Model {
         $this->table = 'meme';
     }
 
-    public function add_meme($title, $user_id, $data_type, $data) {
+    public function add($title, $user_id, $data_type, $data) {
         return $this->_call_procedure('sp_add_meme', array($title, $user_id, $data_type, $data));
     }
 
-    public function add_comment($meme_id, $user_id, $message) {
-        return $this->_call_procedure('sp_add_comment', array($meme_id, $user_id, $message));
-    }
-
-    public function vote_meme($meme_id, $user_id, $vote) {
+    public function vote($meme_id, $user_id, $vote) {
         return $this->_call_procedure('sp_vote_meme', array($meme_id, $user_id, $vote));
     }
 
-    public function delete_vote_meme($meme_id, $user_id) {
+    public function delete_vote($meme_id, $user_id) {
         $this->db->where('Meme_Id', $meme_id);
         $this->db->where('User_Id', $user_id);
         $this->db->delete('memepoints');
     }
 
-    public function get_meme_votes($meme_ids, $user_id) {
+    public function get_votes($meme_ids, $user_id) {
         $this->db->from('memepoints');
         $this->db->select('*');
         $this->db->where('User_Id', $user_id);
@@ -36,11 +32,7 @@ class Meme_model extends Base_Model {
         return $this->db->get()->result();
     }
 
-    public function vote_comment($comment_id, $user_id, $vote) {
-        return $this->_call_procedure('sp_vote_comment', array($comment_id, $user_id, $vote));
-    }
-
-    public function get_meme($id) {
+    public function get($id) {
         $query = $this->db->query("SELECT * FROM v_top_memes WHERE Id=$id");
         return $query->row_array();
     }
@@ -60,7 +52,7 @@ class Meme_model extends Base_Model {
         return $query->result_array();
     }
 
-    public function get_meme_comments($id, $order) {
+    public function get_comments($id, $order) {
         $query = $this->db->query("SELECT * FROM v_comments WHERE Meme_Id=$id ORDER BY $order DESC");
         return $query->result_array();
     }
