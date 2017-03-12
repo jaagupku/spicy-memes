@@ -5,8 +5,13 @@
   display: flex;
   justify-content: space-between;
 }
-.updownvote-frontpage *{
+.updownvote-frontpage a{
+  opacity: 0.8;
+  color: #2d1e2f;
   font-size: 40px;
+}
+.updownvote-frontpage a:hover{
+  opacity: 1;
 }
 .col-custom-frontpage {
   display: block;
@@ -22,4 +27,14 @@ div#memebody {
   .updownvote-frontpage *{
     font-size: 35px;
   }
+}
+.meme a {
+  text-decoration: none;
+}
+.meme a {
+  opacity: 0.8;
+  color: #2d1e2f;
+}
+.meme a:hover {
+  opacity: 1;
 }

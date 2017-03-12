@@ -1,8 +1,5 @@
 .profile-pic-userpage {
-  background-color: rgb(198, 116, 8);
-  height: 120px;
   width: 120px;
-  margin-right: 10px;
 }
 .user-profile-userpage {
   display: flex;
