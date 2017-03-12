@@ -1,6 +1,6 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match="/">
-	<xsl:for-each select="root/memes/meme">
+	<xsl:for-each select="memes/meme">
     <div class="container-fluid"><div class="break"></div></div>
 
     <div class="container-fluid">
@@ -58,7 +58,7 @@
 
           <div class="updownvote-frontpage">
             <a role="button" class="btn btn-upvotes btn-md"><xsl:element name="span"><xsl:attribute name="class">glyphicon glyphicon-arrow-up upvote <xsl:if test="vote=1">active-vote</xsl:if></xsl:attribute></xsl:element></a>
-            <a role="button" class="btn btn-upvotes btn-md"><xsl:element name="span"><xsl:attribute name="class">glyphicon glyphicon-arrow-down downvote <xsl:if test="vote=-1">active-vote</xsl:if></xsl:attribute></xsl:element></a>
+            <a role="button" class="btn btn-downvotes btn-md"><xsl:element name="span"><xsl:attribute name="class">glyphicon glyphicon-arrow-down downvote <xsl:if test="vote=-1">active-vote</xsl:if></xsl:attribute></xsl:element></a>
           </div>
         </div>
         </xsl:element>

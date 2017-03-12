@@ -1,14 +1,16 @@
+$(function() {
+    loadVoting('row', 'meme');
+});
+
 function yHandler(){
 	var body =document.getElementById('memebody');
 	var contentHeight = body.offsetHeight;
 	var y = window.pageYOffset + window.innerHeight;
-	if(y + 333 >= contentHeight){
+	if(y + 400 >= contentHeight){
     window.onscroll = null;
 		loadMore();
 	}
 }
-
-window.onscroll = yHandler;
 
 function loadMore() {
   var loadbutton = document.getElementById('load-button');
@@ -39,6 +41,5 @@ function loadMore() {
   });
 }
 
-$(function() {
-    loadVoting('row', 'meme');
-});
+
+window.onscroll = yHandler;
