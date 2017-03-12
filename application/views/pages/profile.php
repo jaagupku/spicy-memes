@@ -69,15 +69,15 @@ include('header.php');
 
           <div class="uploads-userpage">
             <table class="table">
+              <thead>
+                <tr>
+                  <th>TITLE</th>
+                  <th>SPICE LEVEL</th>
+                  <th>COMMENTS</th>
+                  <th>DATE</th>
+                </tr>
+              </thead>
               <tbody>
-                <thead>
-                  <tr>
-                    <th>TITLE</th>
-                    <th>SPICE LEVEL</th>
-                    <th>COMMENTS</th>
-                    <th>DATE</th>
-                  </tr>
-                </thead>
                 <tr>
                   <td><a href="comments_page.html">Some Shitty Meme Title</a></td>
                   <td>Spice Level: 666</td>

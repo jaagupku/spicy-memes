@@ -21,7 +21,7 @@ $scripts = array();
   </head>
   <body>
 
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
 
         <div class="navbar-header">

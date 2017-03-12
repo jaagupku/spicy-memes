@@ -48,7 +48,7 @@ array_push($scripts, "/assets/js/comments.js");
           <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']===TRUE) : ?>
             <form method="POST">
               <div class="form-group insert-comments">
-                <label for="">INSERT SPICY COMMENT HERE:</label>
+                <label for="message">INSERT SPICY COMMENT HERE:</label>
                 <textarea name="message" class="form-control" rows="4"></textarea>
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
@@ -74,7 +74,7 @@ array_push($scripts, "/assets/js/comments.js");
         <div class="col-xs-12 col-custom-commentspage col-centered">
 
           <div class="form-group">
-            <label for="">READ SPICY COMMENTS HERE:</label>
+            <h3>READ SPICY COMMENTS HERE:</h3>
           </div>
 
           <!-- MUST START LOADING COMMENTS HERE -->

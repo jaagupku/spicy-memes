@@ -24,7 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-//$config['base_url'] = 'http://de017562.ngrok.io';
 //$config['base_url'] = 'http://spicymemes.cs.ut.ee';
 $config['base_url'] = 'http://localhost/';
 

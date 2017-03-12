@@ -36,11 +36,12 @@ class Users extends CI_Controller {
     }
 
     public function logout() {
+        $uri = $this->session->referenced_form;
         if ($this->session->logged_in) {
             session_destroy();
         }
 
-        redirect('/', 'refresh');
+        redirect($uri, 'refresh');
     }
 
     public function register() {
