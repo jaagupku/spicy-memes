@@ -53,6 +53,7 @@ $route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['ajax'] = 'main/ajax';
 $route['login'] = 'users/login';
 $route['logout'] = 'users/logout';
 $route['register'] = 'users/register';

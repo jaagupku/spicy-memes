@@ -8,37 +8,32 @@ class Main extends CI_Controller {
     }
 
     public function index() {
-        redirect('/hot');
+        $this->hot();
     }
 
     public function hot($from = 0, $amount = 3) {
-        if ($this->input->method(false) != 'post') {
-          $this->_display_memes($this->meme_model->get_hot_memes($from, $amount+1), "Hot", 'hot', $from, $amount);
-        } else {
-          $ajax_from = $this->input->post('from');
-          $ajax_amount = $this->input->post('amount');
-          $this->_display_ajax_memes( $this->meme_model->get_hot_memes($ajax_from, $ajax_amount), 'hot', $ajax_from, $ajax_amount);
-        }
-
+      $this->_display_memes($this->meme_model->get_hot_memes($from, $amount+1), "Hot", 'hot', $from, $amount);
     }
 
     public function top($from = 0, $amount = 3) {
-      if ($this->input->method(false) != 'post') {
-        $this->_display_memes($this->meme_model->get_top_memes($from, $amount+1), "Top", 'top', $from, $amount);
-      } else {
-        $ajax_from = $this->input->post('from');
-        $ajax_amount = $this->input->post('amount');
-        $this->_display_ajax_memes( $this->meme_model->get_top_memes($ajax_from, $ajax_amount), 'top', $ajax_from, $ajax_amount);
-      }
+      $this->_display_memes($this->meme_model->get_top_memes($from, $amount+1), "Top", 'top', $from, $amount);
     }
 
     public function new_memes($from = 0, $amount = 3) {
-      if ($this->input->method(false) != 'post') {
-        $this->_display_memes($this->meme_model->get_new_memes($from, $amount+1), "New", 'new', $from, $amount);
-      } else {
-        $ajax_from = $this->input->post('from');
-        $ajax_amount = $this->input->post('amount');
-        $this->_display_ajax_memes( $this->meme_model->get_new_memes($ajax_from, $ajax_amount), 'new', $ajax_from, $ajax_amount);
+      $this->_display_memes($this->meme_model->get_new_memes($from, $amount+1), "New", 'new', $from, $amount);
+    }
+
+    public function ajax() {
+      $type = $_REQUEST["type"];
+		  $from = $_REQUEST["from"];
+      $amount = $_REQUEST["amount"];
+      
+      if ($type === "new") {
+        $this->_display_ajax_memes( $this->meme_model->get_new_memes($from, $amount), 'new', $from, $amount);
+      } else if ($type === "top") {
+        $this->_display_ajax_memes( $this->meme_model->get_top_memes($from, $amount), 'top', $from, $amount);
+      } else if ($type === "hot") {
+        $this->_display_ajax_memes( $this->meme_model->get_hot_memes($from, $amount), 'hot', $from, $amount);
       }
     }
 
@@ -49,7 +44,7 @@ class Main extends CI_Controller {
 
       $data['memes'] = $this->_add_votes_to_memes($memes);
 
-      $this->load->view("pages/memecontainer", $data);
+      $this->load->view("pages/meme_xml", $data);
     }
 
     private function _display_memes($memes, $title, $selection, $from, $amount) {
