@@ -21,7 +21,7 @@ $scripts = array();
   </head>
   <body>
 
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
 
         <div class="navbar-header">
@@ -44,10 +44,11 @@ $scripts = array();
 
           <form class="navbar-form navbar-left">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <label for="srch" class="hidden-label">Search: </label>
+              <input type="search" class="form-control" placeholder="Search" id="srch">
               <div class="input-group-btn">
                 <button class="btn btn-default" type="submit">
-                  <i class="glyphicon glyphicon-search"></i>
+                  <span class="glyphicon glyphicon-search"></span>
                 </button>
               </div>
             </div>
@@ -56,7 +57,7 @@ $scripts = array();
           <ul class="nav navbar-nav navbar-right loginsignup">
             <?php if (isset($username)) { ?>
               <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="<?php echo site_url("profile/".$username) ?>" id="username"><span class="glyphicon glyphicon-user"></span> <?= $username ?></a></li>
-              <li><a href="<?php echo site_url("logout"); ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              <li><a href="<?php echo site_url("logout"); ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> LOG OUT</a></li>
             <?php } else { ?>
               <li><a role="button" class="btn btn-signup btn-md" id="signup" data-toggle="modal" data-target="#signuploginmodal"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
               <li><a role="button" class="btn btn-login btn-md" id="login" data-toggle="modal" data-target="#signuploginmodal"><span class="glyphicon glyphicon-log-in"></span> LOG IN</a></li>
@@ -91,19 +92,19 @@ $scripts = array();
                 <div class="modal-body">
                   <form method="POST" action="<?php echo site_url("register"); ?>">
                     <div class="form-group">
-                      <label for="usr">Choose username:</label>
+                      <label for="usr_choose">Choose username:</label>
                       <input name="username" type="text" class="form-control" id="usr_choose">
                     </div>
                     <div class="form-group">
-                      <label for="pwd">Choose password:</label>
+                      <label for="pwd_choose">Choose password:</label>
                       <input name="password" type="password" class="form-control" id="pwd_choose">
                     </div>
                     <div class="form-group">
-                      <label for="pwd">Repeat password:</label>
+                      <label for="pwd_repeat">Repeat password:</label>
                       <input type="password" class="form-control" id="pwd_repeat">  <!-- TODO kontroll repeat == password -->
                     </div>
                     <div class="form-group">
-                      <label for="pwd">Enter e-mail:</label>
+                      <label for="email">Enter e-mail:</label>
                       <input name="email" type="email" class="form-control" id="email">
                     </div>
                     <button type="submit" class="btn btn-signup btn-sm">SIGN UP</button>
