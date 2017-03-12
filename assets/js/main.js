@@ -6,7 +6,7 @@ function yHandler(){
 	var body =document.getElementById('memebody');
 	var contentHeight = body.offsetHeight;
 	var y = window.pageYOffset + window.innerHeight;
-	if(y + 333 >= contentHeight){
+	if(y + 400 >= contentHeight){
     window.onscroll = null;
 		loadMore();
 	}

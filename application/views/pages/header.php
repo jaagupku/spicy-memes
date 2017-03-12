@@ -119,15 +119,12 @@ $scripts = array();
       </div><!-- /.container-fluid -->
     </nav>
 
-
 <!-- ADD SOME SPICE BODY  -->
-
-
 
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-lg-12 addsomespice">
-            <a role="button" class="btn btn-lg" href="<?php echo site_url("meme/add") ?>">ADD SOME SPICE</a>
+            <a role="button" class="btn btn-lg" href="<?php echo site_url("meme/add"); ?>" <?php if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']===FALSE) {echo 'data-toggle="modal" data-remote="false" data-target="#signuploginmodal"';} ?>>ADD SOME SPICE</a>
         </div>
       </div>
     </div>

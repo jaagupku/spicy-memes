@@ -11,15 +11,15 @@ class Main extends CI_Controller {
         $this->hot();
     }
 
-    public function hot($from = 0, $amount = 3) {
+    public function hot($from = 0, $amount = 5) {
       $this->_display_memes($this->meme_model->get_hot_memes($from, $amount+1), "Hot", 'hot', $from, $amount);
     }
 
-    public function top($from = 0, $amount = 3) {
+    public function top($from = 0, $amount = 5) {
       $this->_display_memes($this->meme_model->get_top_memes($from, $amount+1), "Top", 'top', $from, $amount);
     }
 
-    public function new_memes($from = 0, $amount = 3) {
+    public function new_memes($from = 0, $amount = 5) {
       $this->_display_memes($this->meme_model->get_new_memes($from, $amount+1), "New", 'new', $from, $amount);
     }
 

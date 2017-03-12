@@ -70,7 +70,7 @@ class Upload extends CI_Controller {
             $this->_display_error('Something went wrong with uploading to cloud.');
             return;
           }
-          unlink($temp['upload_data']['full_path']);
+          //unlink($temp['upload_data']['full_path']);
         }
       }
 
