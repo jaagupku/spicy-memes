@@ -1,3 +1,6 @@
+body {
+  background-color: #fbfffe;
+}
 .col-centered{
     float: none;
     margin: 0 auto;
@@ -16,15 +19,18 @@
   text-align: right;
 }
 .addsomespice a{
-  background-color: rgb(246, 113, 5);
-  color: white;
+  background-color: #f72c25;
+  color: #fbfffe;
 }
-
+.addsomespice a:hover {
+  color: #ffc62b;
+}
 .active-vote {
-    color: orange;
+  background-color: none;
+  color: #f72c25;
 }
 
-@media (max-width: 818px) {
+@media (max-width: 839px) {
   .navbar-header {
       float: none;
   }

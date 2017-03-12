@@ -84,7 +84,7 @@ include('header.php');
           <?php foreach($comments as $comment) : ?>
             <div class="container-fluid"><div class="break"></div></div>
             <div class="read-comments">
-              <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>"><div class="profile-pic-comments"><?php echo '<img alt="Profile Image" src="http://res.cloudinary.com/spicy-memes/image/upload/t_profile/'.$comment['ProfileImg_Id'].'" />' ?></div></a>
+              <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>"><?php echo '<img class="profile-pic-comments" alt="Profile Image" src="http://res.cloudinary.com/spicy-memes/image/upload/t_profile/'.$comment['ProfileImg_Id'].'" />' ?></a>
               <div class="comment">
                 <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>" class="user-comments"><?php echo $comment['User_Name'] ?></a>
                 <br>

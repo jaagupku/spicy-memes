@@ -6,9 +6,8 @@
   <div class="row" data-id="<?= $row['Id'] ?>">
     <div class="col-xs-12 col-custom-frontpage col-centered">
 
-      <h2><a href="<?php echo site_url('/meme/'.$row['Id'])?>"><?php echo $row['Title']; ?></a></h2>
-
       <div class="meme">
+        <h2><a href="<?php echo site_url('/meme/'.$row['Id'])?>"><?php echo $row['Title']; ?></a></h2>
         <?php if ($row['Data_Type']=="P") {
            echo '<img alt="'.$row['Title'].'" src="http://res.cloudinary.com/spicy-memes/image/upload/t_meme/'.$row['Data'].'" />';
         } else {

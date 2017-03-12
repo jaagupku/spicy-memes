@@ -13,15 +13,15 @@ $scripts = array();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?> - Spicy Memes</title>
     <link href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/allpagesstyle.css" rel="stylesheet">
     <link href="/assets/css/headerstyle.css" rel="stylesheet">
+    <link href="/assets/css/allpagesstyle.css" rel="stylesheet">
     <link href="/assets/css/commentspagestyle.css" rel="stylesheet">
     <link href="/assets/css/frontpagebodystyle.css" rel="stylesheet">
     <link href="/assets/css/userpagestyle.css" rel="stylesheet">
   </head>
   <body>
 
-    <nav class="navbar navbar-custom">
+    <nav class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
 
         <div class="navbar-header">
@@ -55,7 +55,7 @@ $scripts = array();
 
           <ul class="nav navbar-nav navbar-right loginsignup">
             <?php if (isset($username)) { ?>
-              <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="<?php echo site_url("profile/".$username) ?>" id="username"><span class="glyphicon glyphicon-user"></span><?= $username ?></a></li>
+              <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="<?php echo site_url("profile/".$username) ?>" id="username"><span class="glyphicon glyphicon-user"></span> <?= $username ?></a></li>
               <li><a href="<?php echo site_url("logout"); ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             <?php } else { ?>
               <li><a role="button" class="btn btn-signup btn-md" id="signup" data-toggle="modal" data-target="#signuploginmodal"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>

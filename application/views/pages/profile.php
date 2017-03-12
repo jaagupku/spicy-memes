@@ -13,12 +13,11 @@ include('header.php');
         <div class="col-xs-12 col-custom-userpage col-centered">
 
           <div class="user-profile-userpage">
-              <div class="profile-pic-userpage"><img alt="Profile Image" src="http://res.cloudinary.com/spicy-memes/image/upload/t_profile/<?php echo $profile_image;?>"  /> </div>
+              <img class="profile-pic-userpage" alt="Profile Image" src="http://res.cloudinary.com/spicy-memes/image/upload/t_profile/<?php echo $profile_image;?>"  />
               <h2><?php echo($target) ?></h2>
           </div>
 
           <br>
-
 
           <?php if(isset($_SESSION['logged_in']) && $target===$username) :?>
           <!-- THIS DIV ONLY VISIBLE TO THE OWNER WHO IS LOGGED IN -->
