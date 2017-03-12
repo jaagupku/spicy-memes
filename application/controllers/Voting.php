@@ -15,10 +15,10 @@ class Voting extends CI_Controller {
         $meme_id = $this->input->post('meme_id');
         $vote = $this->input->post('vote');
 
-        $this->meme_model->delete_vote_meme($meme_id, $this->session->user_id);
+        $this->meme_model->delete_vote($meme_id, $this->session->user_id);
 
         if ($vote != 0) {
-            $this->meme_model->vote_meme($meme_id, $this->session->user_id, $vote);
+            $this->meme_model->vote($meme_id, $this->session->user_id, $vote);
         }
 
         echo('voted');

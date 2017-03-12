@@ -74,7 +74,7 @@ class Main extends CI_Controller {
           $meme_dictionary[$meme['Id']] = &$meme;
       }
 
-      foreach ($this->meme_model->get_meme_votes(array_keys($meme_dictionary), $this->session->user_id) as $vote) {
+      foreach ($this->meme_model->get_votes(array_keys($meme_dictionary), $this->session->user_id) as $vote) {
           $meme_dictionary[$vote->Meme_Id]['User_Vote'] = $vote->Up_Vote;
       }
       return $memes;
