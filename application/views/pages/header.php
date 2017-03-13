@@ -68,6 +68,7 @@ $scripts = array();
       </div><!-- /.container-fluid -->
     </nav>
 
+    <?php if (!isset($username)): ?>
     <div class="modal fade" id="signuploginmodal" role="dialog">
       <div class="modal-dialog">
 
@@ -118,6 +119,7 @@ $scripts = array();
 
       </div>
     </div>
+    <?php endif ?>
 
 <!-- ADD SOME SPICE BODY  -->
 
