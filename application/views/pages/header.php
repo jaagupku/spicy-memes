@@ -64,60 +64,60 @@ $scripts = array();
             <?php } ?>
           </ul>
 
-          <div class="modal fade" id="signuploginmodal" role="dialog">
-            <div class="modal-dialog">
-
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">LOG IN</h4>
-                </div>
-                <div class="modal-body">
-                  <form method="POST" action="<?php echo site_url("login"); ?>">
-                    <div class="form-group">
-                      <label for="usr">Username:</label>
-                      <input name="username" type="text" class="form-control" id="usr">
-                    </div>
-                    <div class="form-group">
-                      <label for="pwd">Password:</label>
-                      <input name="password" type="password" class="form-control" id="pwd">
-                    </div>
-                    <a href="#">Forgot password?</a><br><br>
-                    <button type="submit" class="btn btn-login btn-sm">LOG IN</button>
-                  </form>
-                </div>
-                <div class="modal-header">
-                  <h4 class="modal-title">SIGN UP</h4>
-                </div>
-                <div class="modal-body">
-                  <form method="POST" action="<?php echo site_url("register"); ?>">
-                    <div class="form-group">
-                      <label for="usr_choose">Choose username:</label>
-                      <input name="username" type="text" class="form-control" id="usr_choose">
-                    </div>
-                    <div class="form-group">
-                      <label for="pwd_choose">Choose password:</label>
-                      <input name="password" type="password" class="form-control" id="pwd_choose">
-                    </div>
-                    <div class="form-group">
-                      <label for="pwd_repeat">Repeat password:</label>
-                      <input type="password" class="form-control" id="pwd_repeat">  <!-- TODO kontroll repeat == password -->
-                    </div>
-                    <div class="form-group">
-                      <label for="email">Enter e-mail:</label>
-                      <input name="email" type="email" class="form-control" id="email">
-                    </div>
-                    <button type="submit" class="btn btn-signup btn-sm">SIGN UP</button>
-                  </form>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+
+    <div class="modal fade" id="signuploginmodal" role="dialog">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">LOG IN</h4>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="<?php echo site_url("login"); ?>">
+              <div class="form-group">
+                <label for="usr">Username:</label>
+                <input name="username" type="text" class="form-control" id="usr">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input name="password" type="password" class="form-control" id="pwd">
+              </div>
+              <a href="#">Forgot password?</a><br><br>
+              <button type="submit" class="btn btn-login btn-sm">LOG IN</button>
+            </form>
+          </div>
+          <div class="modal-header">
+            <h4 class="modal-title">SIGN UP</h4>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="<?php echo site_url("register"); ?>">
+              <div class="form-group">
+                <label for="usr_choose">Choose username:</label>
+                <input name="username" type="text" class="form-control" id="usr_choose">
+              </div>
+              <div class="form-group">
+                <label for="pwd_choose">Choose password:</label>
+                <input name="password" type="password" class="form-control" id="pwd_choose">
+              </div>
+              <div class="form-group">
+                <label for="pwd_repeat">Repeat password:</label>
+                <input type="password" class="form-control" id="pwd_repeat">  <!-- TODO kontroll repeat == password -->
+              </div>
+              <div class="form-group">
+                <label for="email">Enter e-mail:</label>
+                <input name="email" type="email" class="form-control" id="email">
+              </div>
+              <button type="submit" class="btn btn-signup btn-sm">SIGN UP</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 <!-- ADD SOME SPICE BODY  -->
 
