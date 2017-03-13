@@ -94,8 +94,8 @@ array_push($scripts, "/assets/js/comments.js");
                 <p><?php echo $comment['Message'] ?></p>
                 <div class="comment-data">
                   <div class="updownvote-comments">
-                    <span class="glyphicon glyphicon-arrow-up upvote<?php if ($comment['User_Vote'] == 1) echo(' active-vote') ?>"></span>
-                    <span class="glyphicon glyphicon-arrow-down downvote<?php if ($comment['User_Vote'] == -1) echo(' active-vote') ?>"></span>
+                    <span class="glyphicon glyphicon-arrow-up upvote<?php if (isset($comment['User_Vote']) && $comment['User_Vote'] == 1) echo(' active-vote') ?>"></span>
+                    <span class="glyphicon glyphicon-arrow-down downvote<?php if (isset($comment['User_Vote']) && $comment['User_Vote'] == -1) echo(' active-vote') ?>"></span>
                   </div>
                   <p>Points: <span class="badge points"><?php echo $comment['Points'] ?></span></p>
                 </div>

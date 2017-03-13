@@ -34,27 +34,26 @@ class Meme extends CI_Controller {
             }
         }
 
-        $comments = $this->meme_model->get_comments($meme_id, 'Points');
-
-        if (count($comments) > 0) {
-          $id_to_comment = array();
-
-          foreach ($comments as &$comment) {
-              $comment['User_Vote'] = 0;
-              $id_to_comment[$comment['Id']] = &$comment;
-          }
-
-          $votes = $this->comment_model->get_votes(array_keys($id_to_comment), $this->session->user_id);
-
-          foreach ($votes as $vote) {
-              $id_to_comment[$vote->Comment_Id]['User_Vote'] = $vote->Up_Vote;
-          }
-        }
-
-        $data['comments'] = $comments;
         $data['username'] = $this->session->username;
+        $data['comments'] = $this->_add_votes_to_comments($this->meme_model->get_comments($meme_id, 'Points'));
 
         $this->session->referenced_form = site_url("/meme/$meme_id");
         $this->load->view('pages/commentsbody', $data);
+    }
+
+    private function _add_votes_to_comments($comments) {
+        if ($this->session->logged_in && count($comments) > 0) {
+            $id_to_comment = array();
+
+            foreach ($comments as &$comment) {
+                $id_to_comment[$comment['Id']] = &$comment;
+            }
+
+            foreach ($this->comment_model->get_votes(array_keys($id_to_comment), $this->session->user_id) as $vote) {
+                $id_to_comment[$vote->Comment_Id]['User_Vote'] = $vote->Up_Vote;
+            }
+        }
+
+        return $comments;
     }
 }

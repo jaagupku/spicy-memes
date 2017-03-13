@@ -31,8 +31,8 @@ array_push($scripts, '/assets/js/main.js');
         </div>
 
         <div class="updownvote-frontpage">
-          <a role="button" class="btn btn-upvotes btn-md"><span class="	glyphicon glyphicon-arrow-up upvote<?php if ($row['User_Vote'] == 1) echo(' active-vote') ?>"></span></a>
-          <a role="button" class="btn btn-downvotes btn-md"><span class="	glyphicon glyphicon-arrow-down downvote<?php if ($row['User_Vote'] == -1) echo(' active-vote') ?>"></span></a>
+          <a role="button" class="btn btn-upvotes btn-md"><span class="	glyphicon glyphicon-arrow-up upvote<?php if (isset($row['User_Vote']) && $row['User_Vote'] == 1) echo(' active-vote') ?>"></span></a>
+          <a role="button" class="btn btn-downvotes btn-md"><span class="	glyphicon glyphicon-arrow-down downvote<?php if (isset($row['User_Vote']) && $row['User_Vote'] == -1) echo(' active-vote') ?>"></span></a>
         </div>
 
       </div>

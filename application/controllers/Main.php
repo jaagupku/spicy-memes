@@ -68,15 +68,18 @@ class Main extends CI_Controller {
     }
 
     private function _add_votes_to_memes($memes) {
-      $meme_dictionary = array();
-      foreach ($memes as &$meme) {
-          $meme['User_Vote'] = 0;
-          $meme_dictionary[$meme['Id']] = &$meme;
-      }
+        if ($this->session->logged_in && count($memes) > 0) {
+            $id_to_meme = array();
 
-      foreach ($this->meme_model->get_votes(array_keys($meme_dictionary), $this->session->user_id) as $vote) {
-          $meme_dictionary[$vote->Meme_Id]['User_Vote'] = $vote->Up_Vote;
-      }
-      return $memes;
+            foreach ($memes as &$meme) {
+                $id_to_meme[$meme['Id']] = &$meme;
+            }
+
+            foreach ($this->meme_model->get_votes(array_keys($id_to_meme), $this->session->user_id) as $vote) {
+                $id_to_meme[$vote->Meme_Id]['User_Vote'] = $vote->Up_Vote;
+            }
+        }
+
+        return $memes;
     }
 }

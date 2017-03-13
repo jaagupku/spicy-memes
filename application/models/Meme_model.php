@@ -24,8 +24,6 @@ class Meme_model extends Base_Model {
     }
 
     public function get_votes($meme_ids, $user_id) {
-        if ($user_id == NULL)
-          return array();
         $this->db->from('memepoints');
         $this->db->select('*');
         $this->db->where('User_Id', $user_id);
