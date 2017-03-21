@@ -130,6 +130,7 @@ if (!isset($username)) {
 
 <!-- ADD SOME SPICE BODY  -->
    <div class="container-fluid"><div class="break"></div></div>
+   <div class="container-fluid"><div class="break"></div></div>
 
     <div class="container-fluid">
       <div class="row">

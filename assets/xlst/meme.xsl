@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <xsl:element name="div">
           <xsl:attribute name="class">
-			       row
+                meme-container
 		      </xsl:attribute>
           <xsl:attribute name="data-id">
 			       <xsl:value-of select="id"/>

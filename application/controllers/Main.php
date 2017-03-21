@@ -22,6 +22,25 @@ class Main extends CI_Controller {
       $this->_display_memes($this->meme_model->get_new_memes($from, $amount+1), "New", 'new', $from, $amount);
     }
 
+    public function newest() {
+        if ($this->input->method(false) !== 'post') {
+            show_404();
+        }
+
+        $last_meme = $this->input->post('lastMeme');
+
+        if (!isset($last_meme)) {
+            show_404();
+        }
+
+        $last_meme_date = $this->meme_model->retrieve(intval($last_meme))->Date;
+        $new_memes = $this->meme_model->get_newer_than($last_meme_date);
+
+        if (count($new_memes) > 0) {
+            $this->load->view("pages/meme_xml", array('memes' => $new_memes));
+        }
+    }
+
     public function ajax() {
       $type = $_REQUEST["type"];
 		  $from = $_REQUEST["from"];

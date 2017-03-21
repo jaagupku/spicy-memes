@@ -32,6 +32,13 @@ class Meme_model extends Base_Model {
         return $this->db->get()->result();
     }
 
+    public function retrieve($id) {
+        $this->db->from('meme');
+        $this->db->where('Id', $id);
+
+        return $this->db->get()->row();
+    }
+
     public function get($id) {
         $query = $this->db->query("SELECT * FROM v_top_memes WHERE Id=$id");
         return $query->row_array();
@@ -55,5 +62,12 @@ class Meme_model extends Base_Model {
     public function get_comments($id, $order) {
         $query = $this->db->query("SELECT * FROM v_comments WHERE Meme_Id=$id ORDER BY $order DESC");
         return $query->result_array();
+    }
+
+    public function get_newer_than($date) {
+        $this->db->from('v_new_memes');
+        $this->db->where('Date >', $date);
+
+        return $this->db->get()->result_array();
     }
 }

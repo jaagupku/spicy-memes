@@ -1,6 +1,10 @@
 <?php
 include('header.php');
 
+if ($selection === 'new') {
+    array_push($scripts, '/assets/js/polling.js');
+}
+
 array_push($scripts, '/assets/js/voting.js');
 array_push($scripts, '/assets/js/main.js');
 ?>
@@ -10,7 +14,7 @@ array_push($scripts, '/assets/js/main.js');
   <div class="container-fluid"><div class="break"></div></div>
 
   <div class="container-fluid">
-    <div class="row" data-id="<?= $row['Id'] ?>">
+    <div class="meme-container" data-id="<?= $row['Id'] ?>">
       <div class="col-xs-12 col-custom-frontpage col-centered">
         <div class="meme">
           <h2><a href="<?php echo site_url('/meme/'.$row['Id'])?>"><?php echo $row['Title']; ?></a></h2>
