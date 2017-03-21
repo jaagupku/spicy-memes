@@ -1,5 +1,8 @@
 <?php
 $scripts = array();
+if (!isset($username)) {
+  array_push($scripts, '/assets/js/facebook.js');
+}
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +90,10 @@ $scripts = array();
                 <label for="pwd">Password:</label>
                 <input name="password" type="password" class="form-control" id="pwd">
               </div>
+              <div class="form-group">
+                <p>OR</p>
+                <p><a href="#" onClick="logInWithFacebook()">Log In with Facebook</a></p>
+              </div>
               <a href="#">Forgot password?</a><br><br>
               <button type="submit" class="btn btn-login btn-sm">LOG IN</button>
             </form>
@@ -122,6 +129,7 @@ $scripts = array();
     <?php endif ?>
 
 <!-- ADD SOME SPICE BODY  -->
+   <div class="container-fluid"><div class="break"></div></div>
 
     <div class="container-fluid">
       <div class="row">

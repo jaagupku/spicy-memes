@@ -25,12 +25,12 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `users` (`Id`, `User_Type`, `User_Name`, `Password_Hash`, `Email`, `Creation_Date`, `Last_Login_Time`, `ProfileImg_Id`, `mobile_number`) VALUES
-(1, 0, 'test', '$5$$sljnGYK4EExoItGYm2l5Wqg0JwDfZE4.67vp/tIXZk6', 'randoom@email.pirate', '2017-02-27 18:29:17', '2017-02-27 18:29:17', 'noprofileimg.jpg', NULL),
-(2, 0, 'test1', '$5$$sljnGYK4EExoItGYm2l5Wqg0JwDfZE4.67vp/tIXZk6', 'test.test@test.test', '2017-02-28 00:18:49', '2017-02-28 00:18:49', 'noprofileimg.jpg', NULL),
-(3, 0, 'test2', '$5$$sljnGYK4EExoItGYm2l5Wqg0JwDfZE4.67vp/tIXZk6', 'test.31test@test.test', '2017-02-28 00:18:49', '2017-02-28 00:18:49', 'noprofileimg.jpg', NULL),
-(4, 0, 'jaagup', '$2y$10$UGv4a2/xq8LQmNzQF5zb0OJ.IAJ.Xed4hksHxdCM1VmTAd9cnqCpS', 'tere.tere@tere.tere', '2017-03-03 19:35:21', '2017-03-03 19:35:21', 'noprofileimg.jpg', '1234567'),
-(5, 0, 'tere', '$2y$10$uTFznvP2etJw/MLwNL8v1e23FZYVv44iBFN7xvqfe0nTRJkYdWTF.', 'tere.terte@tere.tere', '2017-03-03 21:22:25', '2017-03-03 21:22:25', 'noprofileimg.jpg', '1234567'),
-(6, 0, 'tere1', '$2y$10$/ZZAHErj0ouljg3qbpNzjOKUsCWBTpwaEhc3RmGhCgT1mO2Sg5u5C', 'tere.tttere@tere.tere', '2017-03-03 21:23:21', '2017-03-03 21:23:21', 'noprofileimg.jpg', '1234567');
+(1, 0, 'test', '$5$$sljnGYK4EExoItGYm2l5Wqg0JwDfZE4.67vp/tIXZk6', 'randoom@email.pirate', '2017-02-27 18:29:17', '2017-02-27 18:29:17', 'noprofileimg.jpg', NULL, NULL),
+(2, 0, 'test1', '$5$$sljnGYK4EExoItGYm2l5Wqg0JwDfZE4.67vp/tIXZk6', 'test.test@test.test', '2017-02-28 00:18:49', '2017-02-28 00:18:49', 'noprofileimg.jpg', NULL, NULL),
+(3, 0, 'test2', '$5$$sljnGYK4EExoItGYm2l5Wqg0JwDfZE4.67vp/tIXZk6', 'test.31test@test.test', '2017-02-28 00:18:49', '2017-02-28 00:18:49', 'noprofileimg.jpg', NULL, NULL),
+(4, 0, 'jaagup', '$2y$10$UGv4a2/xq8LQmNzQF5zb0OJ.IAJ.Xed4hksHxdCM1VmTAd9cnqCpS', 'tere.tere@tere.tere', '2017-03-03 19:35:21', '2017-03-03 19:35:21', 'noprofileimg.jpg', '1234567', NULL),
+(5, 0, 'tere', '$2y$10$uTFznvP2etJw/MLwNL8v1e23FZYVv44iBFN7xvqfe0nTRJkYdWTF.', 'tere.terte@tere.tere', '2017-03-03 21:22:25', '2017-03-03 21:22:25', 'noprofileimg.jpg', '1234567', NULL),
+(6, 0, 'tere1', '$2y$10$/ZZAHErj0ouljg3qbpNzjOKUsCWBTpwaEhc3RmGhCgT1mO2Sg5u5C', 'tere.tttere@tere.tere', '2017-03-03 21:23:21', '2017-03-03 21:23:21', 'noprofileimg.jpg', '1234567', NULL);
 
 --
 -- Dumping data for table `meme`

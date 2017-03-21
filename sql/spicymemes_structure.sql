@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2017 at 12:49 PM
+-- Generation Time: Mar 21, 2017 at 03:04 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -24,6 +24,9 @@ DELIMITER $$
 --
 -- Procedures
 --
+CREATE  PROCEDURE `sb_link_fb_user` (IN `a_user_id` INT, IN `a_fb_id` VARCHAR(64))  NO SQL
+UPDATE users SET users.FB_Id=a_fb_id WHERE users.Id=a_user_id$$
+
 CREATE  PROCEDURE `sp_add_comment` (IN `a_meme_id` INT, IN `a_user_id` INT, IN `a_message` TEXT CHARSET utf8)  NO SQL
 INSERT INTO `comments` (`Id`, `Meme_Id`, `User_Id`, `Message`, `Date`, `Points`) VALUES (NULL, a_meme_id, a_user_id, a_message, CURRENT_TIMESTAMP, '0')$$
 
@@ -37,6 +40,9 @@ INSERT INTO `users` (`Id`, `User_Type`, `User_Name`, `Password_Hash`, `Email`, `
 CREATE  PROCEDURE `sp_meme_comments_login` (IN `a_meme_id` INT, IN `a_user_id` INT)  READS SQL DATA
     COMMENT 'shows comments on given meme with given user upvotes'
 SELECT Comments.Message, Comments.Date, Comments.Points, comments.User_Id, IF(commentpoints.User_Id=a_user_id,commentpoints.Up_Vote,0) AS vote FROM Comments LEFT JOIN commentpoints ON comments.Id=commentpoints.Comment_Id WHERE Comments.meme_id=a_meme_id GROUP BY comments.Id$$
+
+CREATE  PROCEDURE `sp_unlink_fb` (IN `a_user_id` INT)  NO SQL
+UPDATE users SET users.FB_Id=NULL WHERE users.Id=a_user_id$$
 
 CREATE  PROCEDURE `sp_update_user_last_login` (IN `a_user_id` INT, IN `a_datetime` DATETIME)  NO SQL
 UPDATE users SET users.Last_Login_Time=a_datetime WHERE users.Id=a_user_id$$
@@ -85,7 +91,7 @@ CREATE TRIGGER `tg_add_commentvote` BEFORE INSERT ON `commentpoints` FOR EACH RO
     	SIGNAL SQLSTATE '45000';
     END IF;
 	UPDATE comments
-     	SET comments.Points:=comments.Points+NEW.Up_Vote
+     	SET comments.Points=comments.Points+NEW.Up_Vote
    		WHERE id = NEW.comment_Id;
 END
 $$
@@ -212,7 +218,8 @@ CREATE TABLE `users` (
   `Creation_Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Last_Login_Time` datetime DEFAULT CURRENT_TIMESTAMP,
   `ProfileImg_Id` varchar(100) COLLATE utf8_bin NOT NULL DEFAULT 'noprofileimg.jpg',
-  `mobile_number` varchar(15) COLLATE utf8_bin DEFAULT NULL
+  `mobile_number` varchar(15) COLLATE utf8_bin DEFAULT NULL,
+  `FB_Id` varchar(64) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -229,6 +236,7 @@ CREATE TABLE `v_comments` (
 ,`Message` text
 ,`Points` int(11)
 ,`ProfileImg_Id` varchar(100)
+,`Date` datetime
 );
 
 -- --------------------------------------------------------
@@ -288,7 +296,7 @@ CREATE TABLE `v_top_memes` (
 --
 DROP TABLE IF EXISTS `v_comments`;
 
-CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_comments`  AS  select `comments`.`Id` AS `Id`,`comments`.`Meme_Id` AS `Meme_Id`,`comments`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`comments`.`Message` AS `Message`,`comments`.`Points` AS `Points`,`users`.`ProfileImg_Id` AS `ProfileImg_Id` from (`comments` join `users` on((`comments`.`User_Id` = `users`.`Id`))) ;
+CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_comments`  AS  select `comments`.`Id` AS `Id`,`comments`.`Meme_Id` AS `Meme_Id`,`comments`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`comments`.`Message` AS `Message`,`comments`.`Points` AS `Points`,`users`.`ProfileImg_Id` AS `ProfileImg_Id`,`comments`.`Date` AS `Date` from (`comments` join `users` on((`comments`.`User_Id` = `users`.`Id`))) ;
 
 -- --------------------------------------------------------
 
@@ -365,7 +373,8 @@ ALTER TABLE `report`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `User_Name` (`User_Name`),
-  ADD UNIQUE KEY `Email` (`Email`);
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD UNIQUE KEY `FB_Id` (`FB_Id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -375,22 +384,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `commentpoints`
 --
 ALTER TABLE `commentpoints`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `meme`
 --
 ALTER TABLE `meme`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `memepoints`
 --
 ALTER TABLE `memepoints`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
 --
 -- AUTO_INCREMENT for table `report`
 --
@@ -400,7 +409,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --

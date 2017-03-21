@@ -29,6 +29,19 @@ class User_model extends Base_Model {
         return $this->_call_procedure('sp_add_user', $arguments);
     }
 
+    public function link_fb($userid, $fbid) {
+      $arguments = array(
+        $userid,
+        $fbid
+      );
+
+      return $this->_call_procedure('sb_link_fb_user', $arguments);
+    }
+
+    public function unlink_fb($userid) {
+      return $this->_call_procedure('sp_unlink_fb', array($userid));
+    }
+
     public function verify($username, $password) {
         $this->db->from($this->table);
         $this->db->select('Password_Hash');
@@ -44,5 +57,12 @@ class User_model extends Base_Model {
         $this->db->where('User_Name', $username);
 
         return $this->db->get()->row();
+    }
+
+    public function retrieve_fb($fb_id) {
+      $this->db->from($this->table);
+      $this->db->where('FB_Id', $fb_id);
+
+      return $this->db->get()->row();
     }
 }

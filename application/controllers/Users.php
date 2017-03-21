@@ -1,10 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once __DIR__ . '/../third_party/Facebook/autoload.php';
+require_once __DIR__ . '/../config/facebook.php';
 
 class Users extends CI_Controller {
     public function __construct() {
         parent::__construct();
-        $this->load->library('session');
         $this->load->model('user_model');
     }
 
@@ -32,7 +33,80 @@ class Users extends CI_Controller {
             $error = validation_errors();
         }
 
+        $fberror = $this->session->flashdata('login_error');
+        if (isset($fberror)) {
+          $error = $fberror;
+        }
+
         $this->load->view('pages/login', array('error' => $error));
+    }
+
+    public function login_fb_callback() {
+      # /js-login.php
+      $fb = new Facebook\Facebook([
+        'app_id' => FB_API_KEY,
+        'app_secret' => FB_API_SECRET,
+        'default_graph_version' => API_VERSION,
+        ]);
+
+      $helper = $fb->getJavaScriptHelper();
+
+      try {
+        $accessToken = $helper->getAccessToken();
+
+        if (! isset($accessToken)) {
+          echo 'No cookie set or no OAuth data could be obtained from cookie.';
+          exit;
+        }
+        // OAuth 2.0 client handler
+        $oAuth2Client = $fb->getOAuth2Client();
+
+        // Exchanges a short-lived access token for a long-lived one
+        $longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+        $fb->setDefaultAccessToken($longLivedAccessToken);
+
+        $response = $fb->get('/me?fields=id,email,name');
+        $userNode = $response->getGraphUser();
+      } catch(Facebook\Exceptions\FacebookResponseException $e) {
+        // When Graph returns an error
+        echo 'Graph returned an error: ' . $e->getMessage();
+        exit;
+      } catch(Facebook\Exceptions\FacebookSDKException $e) {
+        // When validation fails or other local issues
+        echo 'Facebook SDK returned an error: ' . $e->getMessage();
+        exit;
+      }
+
+      $_SESSION['fb_access_token'] = (string) $accessToken;
+
+      $userData = $this->user_model->retrieve_fb($userNode->getId());
+
+      if (isset($this->session->logged_in) && $this->session->logged_in) {
+        if (is_null($userData)) {
+          $this->user_model->link_fb($this->session->user_id, $userNode->getId()); // Link account with facebook
+          $this->session->fb_linked = true;
+          redirect($this->session->referenced_form, "refresh");
+        } else {
+          redirect($this->session->referenced_form, "refresh"); // User is logged in, and has linked fb account with other account
+        }
+      } else {
+        if (is_null($userData)) {
+          $this->session->set_flashdata('login_error', "Facebook accont is not linked to any Spicy Memes account.");
+          redirect(site_url("login")); // user is not logged in, facebook acc is unlinked
+        } else {
+          $this->_login_and_redirect_data($userData); // Log in with facebook
+        }
+      }
+    }
+
+    public function unlink_fb() {
+      if (!isset($this->session->logged_in)) {
+          redirect('/login', 'refresh');
+      }
+
+      $this->user_model->unlink_fb($this->session->user_id);
+      $this->session->fb_linked = false;
+      redirect($this->session->referenced_form, 'refresh');
     }
 
     public function logout() {
@@ -100,11 +174,15 @@ class Users extends CI_Controller {
     }
 
     private function _login_and_redirect($username) {
-        $user = $this->user_model->retrieve($username);
+      $this->_login_and_redirect_data($this->user_model->retrieve($username));
+    }
+
+    private function _login_and_redirect_data($user) {
         $this->user_model->update_last_login_date($user->Id);
         $this->session->logged_in = true;
         $this->session->username = $user->User_Name;
         $this->session->user_id = $user->Id;
+        $this->session->fb_linked = isset($user->FB_Id);
         redirect($this->session->referenced_form, 'refresh');
     }
 }

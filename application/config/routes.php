@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['ajax'] = 'main/ajax';
 $route['login'] = 'users/login';
+$route['login_fb_callback'] = 'users/login_fb_callback';
 $route['logout'] = 'users/logout';
 $route['register'] = 'users/register';
 $route['profile/(:any)'] = 'users/profile/$1';
