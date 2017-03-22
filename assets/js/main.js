@@ -38,7 +38,7 @@ function loadMore() {
         $("#load-button").hide();
       }
     }).done(function(result) {
-      addElementFromXML(result, xlst, '#load-more', 'append');
+      addFromXML(result, xlst, '#load-more', 'append');
       var nextFrom = parseInt(from) + parseInt(amount);
       loadbutton.setAttribute('data-load-from', nextFrom);
       loadbutton.setAttribute('href', "/index.php/" + type + "/" + from + "/" + amount);

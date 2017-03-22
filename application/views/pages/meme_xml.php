@@ -9,7 +9,7 @@
     <points><?php echo $row['Points']; ?></points>
 		<profile><?php echo site_url('/profile/'.$row['User_Name']) ?></profile>
     <uploader><?php echo $row['User_Name']; ?></uploader>
-    <vote><?php echo $row['User_Vote']; ?></vote>
+    <vote><?php if(array_key_exists ('User_Vote', $row )) {echo $row['User_Vote'];} else {echo "0";} ?></vote>
 		<comments>1001</comments>
 	</meme>
 <?php endforeach; ?>
