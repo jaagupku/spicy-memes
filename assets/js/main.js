@@ -1,5 +1,5 @@
 $(function() {
-    loadVoting('row', 'meme');
+    loadVoting('meme-container', 'meme');
 });
 
 function yHandler(){
@@ -12,6 +12,13 @@ function yHandler(){
   		loadMore();
     }
 	}
+}
+
+function addFromXML(data, xlst, selector, fn) {
+    var parsedXML = jQuery.parseXML(data);
+    var xsltProcessor = new XSLTProcessor;
+    xsltProcessor.importStylesheet(xlst);
+    $(selector)[fn](xsltProcessor.transformToFragment(parsedXML, document));
 }
 
 function loadMore() {
@@ -31,10 +38,7 @@ function loadMore() {
         $("#load-button").hide();
       }
     }).done(function(result) {
-      var parsedXML = jQuery.parseXML(result);
-      var xsltProcessor = new XSLTProcessor;
-      xsltProcessor.importStylesheet(xlst);
-      $("#load-more").append(xsltProcessor.transformToFragment(parsedXML, document));
+      addElementFromXML(result, xlst, '#load-more', 'append');
       var nextFrom = parseInt(from) + parseInt(amount);
       loadbutton.setAttribute('data-load-from', nextFrom);
       loadbutton.setAttribute('href', "/index.php/" + type + "/" + from + "/" + amount);
