@@ -47,7 +47,7 @@ class Users extends CI_Controller {
         'app_id' => FB_API_KEY,
         'app_secret' => FB_API_SECRET,
         'default_graph_version' => API_VERSION,
-        ]);
+      ]);
 
       $helper = $fb->getJavaScriptHelper();
 
@@ -61,9 +61,13 @@ class Users extends CI_Controller {
         // OAuth 2.0 client handler
         $oAuth2Client = $fb->getOAuth2Client();
 
+        $tokenMetadata = $oAuth2Client->debugToken($accessToken);
+        $tokenMetadata->validateAppId(FB_API_KEY);
+        $tokenMetadata->validateExpiration();
+
         // Exchanges a short-lived access token for a long-lived one
-        $longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-        $fb->setDefaultAccessToken($longLivedAccessToken);
+        $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+        $fb->setDefaultAccessToken($accessToken);
 
         $response = $fb->get('/me?fields=id,email,name');
         $userNode = $response->getGraphUser();
@@ -77,7 +81,21 @@ class Users extends CI_Controller {
         exit;
       }
 
-      $_SESSION['fb_access_token'] = (string) $accessToken;
+      if (! isset($accessToken)) {
+        if ($helper->getError()) {
+        header('HTTP/1.0 401 Unauthorized');
+        echo "Error: " . $helper->getError() . "\n";
+        echo "Error Code: " . $helper->getErrorCode() . "\n";
+        echo "Error Reason: " . $helper->getErrorReason() . "\n";
+        echo "Error Description: " . $helper->getErrorDescription() . "\n";
+        } else {
+          header('HTTP/1.0 400 Bad Request');
+          echo 'Bad request';
+        }
+        exit;
+      }
+
+      $this->session->fb_access_token = (string) $accessToken;
 
       $userData = $this->user_model->retrieve_fb($userNode->getId());
 

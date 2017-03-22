@@ -2,35 +2,10 @@
 $title = $target;
 $selection = 'profile';
 include('header.php');
+if (isset($username)) {
+  array_push($scripts, '/assets/js/facebook.js');
+}
 ?>
-<script>
-  logInWithFacebook = function() {
-    FB.login(function(response) {
-      if (response.authResponse) {
-        window.location.href = location.protocol + '//' + location.hostname + "/index.php/login_fb_callback";
-      } else {
-        alert('User cancelled login or did not fully authorize.');
-      }
-    });
-    return false;
-  };
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId: '1239529539502104',
-      cookie: true, // This is important, it's not enabled by default
-      version: 'v2.8'
-    });
-  };
-
-  (function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
 <!-- USER PAGE -->
 
     <div class="container-fluid"><div class="break"></div></div>
@@ -67,7 +42,7 @@ include('header.php');
           <?php if(!$this->session->fb_linked) {
             echo '<p><a href="#" onClick="logInWithFacebook()">LINK FB with the JavaScript SDK</a></p>';
           } else {
-            echo '<p><a href="'.site_url('users/unlink_fb').'" >Unlink fb</a></p>';
+            echo '<p id="unlink"><a href="#" onClick="unLinkFacebook()" >Unlink fb</a></p>';
           } ?>
 
           <!-- THIS DIV ONLY VISIBLE TO THE OWNER WHO IS LOGGED IN ENDS HERE -->

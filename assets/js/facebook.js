@@ -8,6 +8,23 @@ logInWithFacebook = function() {
   });
   return false;
 };
+unLinkFacebook = function() {
+  $( "#unlink" ).append( " Loading..." );
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+      accessToken = response.authResponse.accessToken;
+      FB.api('/me/permissions', 'DELETE', { access_token : accessToken }, function(response) {
+        if (!response || response.error) {
+          alert('Error occured');
+        } else {
+          window.location.href = location.protocol + '//' + location.hostname + "/index.php/users/unlink_fb";
+        }
+      });
+    } else {
+      alert('Log in Facebook and try again.');
+    }
+  });
+};
 window.fbAsyncInit = function() {
   FB.init({
     appId: '1239529539502104',
