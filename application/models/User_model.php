@@ -42,6 +42,10 @@ class User_model extends Base_Model {
       return $this->_call_procedure('sp_unlink_fb', array($userid));
     }
 
+    public function unlink_fb_by_fbid($fbid) {
+      return $this->_call_procedure('sp_unlink_fb_by_fbid', array($fbid));
+    }
+
     public function verify($username, $password) {
         $this->db->from($this->table);
         $this->db->select('Password_Hash');

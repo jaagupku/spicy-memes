@@ -24,10 +24,10 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE  PROCEDURE `sb_link_fb_user` (IN `a_user_id` INT, IN `a_fb_id` VARCHAR(64))  NO SQL
+CREATE  PROCEDURE `sb_link_fb_user` (IN `a_user_id` INT, IN `a_fb_id` VARCHAR(64))  MODIFIES SQL DATA
 UPDATE users SET users.FB_Id=a_fb_id WHERE users.Id=a_user_id$$
 
-CREATE  PROCEDURE `sp_add_comment` (IN `a_meme_id` INT, IN `a_user_id` INT, IN `a_message` TEXT CHARSET utf8)  NO SQL
+CREATE  PROCEDURE `sp_add_comment` (IN `a_meme_id` INT, IN `a_user_id` INT, IN `a_message` TEXT CHARSET utf8)  MODIFIES SQL DATA
 INSERT INTO `comments` (`Id`, `Meme_Id`, `User_Id`, `Message`, `Date`, `Points`) VALUES (NULL, a_meme_id, a_user_id, a_message, CURRENT_TIMESTAMP, '0')$$
 
 CREATE  PROCEDURE `sp_add_meme` (IN `a_title` VARCHAR(255), IN `a_user_id` INT, IN `a_data_type` ENUM('P','V'), IN `a_data` VARCHAR(100))  MODIFIES SQL DATA
@@ -41,10 +41,13 @@ CREATE  PROCEDURE `sp_meme_comments_login` (IN `a_meme_id` INT, IN `a_user_id` I
     COMMENT 'shows comments on given meme with given user upvotes'
 SELECT Comments.Message, Comments.Date, Comments.Points, comments.User_Id, IF(commentpoints.User_Id=a_user_id,commentpoints.Up_Vote,0) AS vote FROM Comments LEFT JOIN commentpoints ON comments.Id=commentpoints.Comment_Id WHERE Comments.meme_id=a_meme_id GROUP BY comments.Id$$
 
-CREATE  PROCEDURE `sp_unlink_fb` (IN `a_user_id` INT)  NO SQL
+CREATE  PROCEDURE `sp_unlink_fb` (IN `a_user_id` INT)  MODIFIES SQL DATA
 UPDATE users SET users.FB_Id=NULL WHERE users.Id=a_user_id$$
 
-CREATE  PROCEDURE `sp_update_user_last_login` (IN `a_user_id` INT, IN `a_datetime` DATETIME)  NO SQL
+CREATE  PROCEDURE `sp_unlink_fb_by_fbid` (IN `a_fb_id` INT)  MODIFIES SQL DATA
+UPDATE users SET users.FB_Id=NULL WHERE users.FB_Id=a_fb_id$$
+
+CREATE  PROCEDURE `sp_update_user_last_login` (IN `a_user_id` INT, IN `a_datetime` DATETIME)  MODIFIES SQL DATA
 UPDATE users SET users.Last_Login_Time=a_datetime WHERE users.Id=a_user_id$$
 
 CREATE  PROCEDURE `sp_userid_to_username` (IN `a_user_id` INT)  READS SQL DATA

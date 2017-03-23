@@ -117,6 +117,41 @@ class Users extends CI_Controller {
       }
     }
 
+    public function facebook_deauthorize() {
+      $this->load->library('form_validation');
+      $this->form_validation->set_rules('signed_request', 'signed_request', 'required');
+
+      if ($this->form_validation->run()) {
+        $data = _parse_signed_request($this->input->post('signed_request'));
+        $this->user_model->unlink_fb_by_fbid($data->user_id);
+      } else {
+        show_404();
+      }
+    }
+
+    private function _parse_signed_request($signed_request) {
+      list($encoded_sig, $payload) = explode('.', $signed_request, 2);
+
+      $secret = FB_API_SECRET; // Use your app secret here
+
+      // decode the data
+      $sig = _base64_url_decode($encoded_sig);
+      $data = json_decode(_base64_url_decode($payload), true);
+
+      // confirm the signature
+      $expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
+      if ($sig !== $expected_sig) {
+        error_log('Bad Signed JSON signature!');
+        return null;
+      }
+
+      return $data;
+    }
+
+    private function _base64_url_decode($input) {
+      return base64_decode(strtr($input, '-_', '+/'));
+    }
+
     public function unlink_fb() {
       if (!isset($this->session->logged_in)) {
           redirect('/login', 'refresh');
