@@ -108,7 +108,9 @@ if (!isset($username)) {
               </div>
               <div class="form-group">
                 <p>OR</p>
-                <p><a href="#" onClick="logInWithFacebook()">Log In with Facebook</a></p>
+                <div class="social-wrap">
+                  <button id="facebook" onClick="logInWithFacebook()" type="button">Sign in with Facebook</button>
+                </div>
               </div>
               <a href="#">Forgot password?</a><br><br>
               <button type="submit" class="btn btn-login btn-sm">LOG IN</button>

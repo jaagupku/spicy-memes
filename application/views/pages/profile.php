@@ -40,9 +40,13 @@ if (isset($username)) {
           </div>
 
           <?php if(!$this->session->fb_linked) {
-            echo '<p><a href="#" onClick="logInWithFacebook()">LINK FB with the JavaScript SDK</a></p>';
+            echo '<div class="social-wrap">
+                    <button id="facebook" onClick="logInWithFacebook()" type="button">Link with Facebook</button>
+                </div>';
           } else {
-            echo '<p id="unlink"><a href="#" onClick="unLinkFacebook()" >Unlink fb</a></p>';
+            echo '<div class="social-wrap">
+                    <button id="facebook" onClick="unLinkFacebook()" type="button">Unlink with Facebook</button>
+                </div>';
           } ?>
 
           <!-- THIS DIV ONLY VISIBLE TO THE OWNER WHO IS LOGGED IN ENDS HERE -->

@@ -16,7 +16,7 @@ function yHandler(){
 
 function addFromXML(data, xlst, selector, fn) {
     var parsedXML = jQuery.parseXML(data);
-    var xsltProcessor = new XSLTProcessor;
+    var xsltProcessor = new XSLTProcessor();
     xsltProcessor.importStylesheet(xlst);
     $(selector)[fn](xsltProcessor.transformToFragment(parsedXML, document));
 }

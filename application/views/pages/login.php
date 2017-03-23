@@ -13,7 +13,9 @@ array_push($scripts, '/assets/js/facebook.js');
   <input type="submit"/>
 </form>
 
-<p><a href="#" onClick="logInWithFacebook()">Log In with Facebook</a></p>
+<div class="social-wrap">
+  <button id="facebook" onClick="logInWithFacebook()" type="button">Sign in with Facebook</button>
+</div>
 
 <?php
 include('footer.php');
