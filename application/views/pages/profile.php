@@ -45,7 +45,7 @@ if (isset($username)) {
                 </div>';
           } else {
             echo '<div class="social-wrap">
-                    <button id="facebook" onClick="unLinkFacebook()" type="button">Unlink with Facebook</button>
+                    <button id="facebook" onClick="unLinkFacebook()" type="button">Unlink Facebook</button>
                 </div>';
           } ?>
 

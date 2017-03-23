@@ -2,7 +2,7 @@
     <div class="container-fluid"><div class="break"></div></div>
 
     <div class="container-fluid footer">
-      <a class="link-about" href="">ABOUT US</a>
+      <a class="link-about" href="<?php echo site_url("aboutus"); ?>">ABOUT US</a>
       <div class="social-media">
         <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square social"></i></a>
         <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square social"></i></a>

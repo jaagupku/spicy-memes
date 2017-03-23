@@ -76,7 +76,7 @@ if (!isset($username)) {
     <!-- ADD SOME SPICE BODY  -->
    <div class="container-fluid"><div class="break"></div></div>
    <div class="container-fluid"><div class="break"></div></div>
-
+   <?php if($selection !== 'addmeme') : ?>
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-lg-12 addsomespice">
@@ -84,6 +84,7 @@ if (!isset($username)) {
         </div>
       </div>
     </div>
+   <?php endif; ?>
 
     <!-- signuploginmodal  -->
 
