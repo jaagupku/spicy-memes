@@ -116,5 +116,8 @@ button#facebook {
     background-image: url(http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png);
 }
 button#facebook:hover {
-  background-color: #4b69B8;
+  background-color: #4563B3;
+}
+button#facebook:active {
+  background-color: #32508a;
 }
