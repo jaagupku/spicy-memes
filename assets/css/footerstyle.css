@@ -1,0 +1,38 @@
+#social-fb:hover {
+    color: #ffc62b;
+}
+#social-tw:hover {
+    color: #ffc62b;
+}
+#social-ig:hover {
+    color: #ffc62b;
+}
+.social {
+  color: #fbfffe;
+}
+
+.footer {
+  background-color: #2d1e2f;
+  display: flex;
+  height: 170px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.link-about {
+  font-size: 24px;
+  text-decoration: none;
+  border-radius: 10px;
+  color: #fbfffe;
+}
+
+.link-about:hover {
+  color: #ffc62b;
+  text-decoration: none;
+}
+
+.social-media .social{
+  font-size: 50px;
+  margin: 0 6px;
+}

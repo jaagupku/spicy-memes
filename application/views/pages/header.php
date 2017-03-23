@@ -17,10 +17,12 @@ if (!isset($username)) {
     <title><?php echo $title; ?> - Spicy Memes</title>
     <link href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/headerstyle.css" rel="stylesheet">
+    <link href="/assets/css/footerstyle.css" rel="stylesheet">
     <link href="/assets/css/allpagesstyle.css" rel="stylesheet">
     <link href="/assets/css/commentspagestyle.css" rel="stylesheet">
     <link href="/assets/css/frontpagebodystyle.css" rel="stylesheet">
     <link href="/assets/css/userpagestyle.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
 
@@ -70,6 +72,20 @@ if (!isset($username)) {
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+
+    <!-- ADD SOME SPICE BODY  -->
+   <div class="container-fluid"><div class="break"></div></div>
+   <div class="container-fluid"><div class="break"></div></div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-lg-12 addsomespice">
+            <a role="button" class="btn btn-lg" href="<?php echo site_url("meme/add"); ?>" <?php if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']===FALSE) {echo 'data-toggle="modal" data-remote="false" data-target="#signuploginmodal"';} ?>>ADD SOME SPICE</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- signuploginmodal  -->
 
     <?php if (!isset($username)): ?>
     <div class="modal fade" id="signuploginmodal" role="dialog">
@@ -127,15 +143,3 @@ if (!isset($username)) {
       </div>
     </div>
     <?php endif ?>
-
-<!-- ADD SOME SPICE BODY  -->
-   <div class="container-fluid"><div class="break"></div></div>
-   <div class="container-fluid"><div class="break"></div></div>
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12 col-lg-12 addsomespice">
-            <a role="button" class="btn btn-lg" href="<?php echo site_url("meme/add"); ?>" <?php if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']===FALSE) {echo 'data-toggle="modal" data-remote="false" data-target="#signuploginmodal"';} ?>>ADD SOME SPICE</a>
-        </div>
-      </div>
-    </div>
