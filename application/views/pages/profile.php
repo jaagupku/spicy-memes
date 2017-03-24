@@ -15,7 +15,7 @@ if (isset($username)) {
         <div class="col-xs-12 col-custom-userpage col-centered">
 
           <div class="user-profile-userpage">
-              <img class="profile-pic-userpage" alt="Profile Image" src="http://res.cloudinary.com/spicy-memes/image/upload/t_profile/<?php echo $profile_image;?>"  />
+              <img class="profile-pic-userpage" alt="Profile Image" src="https://res.cloudinary.com/spicy-memes/image/upload/t_profile/<?php echo $profile_image;?>"  />
               <h2><?php echo($target) ?></h2>
           </div>
 

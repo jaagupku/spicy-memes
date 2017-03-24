@@ -44,7 +44,7 @@ SELECT Comments.Message, Comments.Date, Comments.Points, comments.User_Id, IF(co
 CREATE  PROCEDURE `sp_unlink_fb` (IN `a_user_id` INT)  MODIFIES SQL DATA
 UPDATE users SET users.FB_Id=NULL WHERE users.Id=a_user_id$$
 
-CREATE  PROCEDURE `sp_unlink_fb_by_fbid` (IN `a_fb_id` INT)  MODIFIES SQL DATA
+CREATE  PROCEDURE `sp_unlink_fb_by_fbid` (IN `a_fb_id` VARCHAR(64))  MODIFIES SQL DATA
 UPDATE users SET users.FB_Id=NULL WHERE users.FB_Id=a_fb_id$$
 
 CREATE  PROCEDURE `sp_update_user_last_login` (IN `a_user_id` INT, IN `a_datetime` DATETIME)  MODIFIES SQL DATA
@@ -170,9 +170,9 @@ CREATE TRIGGER `tg_add_memevote` BEFORE INSERT ON `memepoints` FOR EACH ROW BEGI
     ELSE
     	SIGNAL SQLSTATE '45000';
     END IF;
-    
-    
-	UPDATE meme SET meme.hotness:=IF(TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP)<72,IF(NEW.Up_Vote=1,meme.hotness+(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/48,meme.hotness-(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/52),0) WHERE meme.Id=NEW.meme_Id; 
+
+
+	UPDATE meme SET meme.hotness:=IF(TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP)<72,IF(NEW.Up_Vote=1,meme.hotness+(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/48,meme.hotness-(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/52),0) WHERE meme.Id=NEW.meme_Id;
 END
 $$
 DELIMITER ;
@@ -187,7 +187,7 @@ CREATE TRIGGER `tg_remove_memevote` AFTER DELETE ON `memepoints` FOR EACH ROW BE
      		SET meme.Down_Points=meme.Down_Points-OLD.Up_Vote
    				WHERE id = OLD.meme_Id;
     END IF;
-    UPDATE meme SET meme.hotness:=IF(TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP)<72,IF(OLD.Up_Vote=1,meme.hotness-(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/48,meme.hotness+(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/52),0) WHERE meme.Id=OLD.meme_Id; 
+    UPDATE meme SET meme.hotness:=IF(TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP)<72,IF(OLD.Up_Vote=1,meme.hotness-(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/48,meme.hotness+(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/52),0) WHERE meme.Id=OLD.meme_Id;
 END
 $$
 DELIMITER ;
