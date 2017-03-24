@@ -7,8 +7,6 @@ array_push($scripts, "/assets/js/voting.js");
 array_push($scripts, "/assets/js/comments.js");
 ?>
 
-
-
     <div class="container-fluid"><div class="break"></div></div>
 
     <div class="container-fluid">
@@ -38,9 +36,7 @@ array_push($scripts, "/assets/js/comments.js");
       </div>
     </div>
 
-
     <div class="container-fluid"><div class="break"></div></div>
-
 
     <div class="container-fluid">
       <div class="row">
@@ -62,12 +58,9 @@ array_push($scripts, "/assets/js/comments.js");
       </div>
     </div>
 
-
     <!-- HERE STARTS COMMENT READING SECTION BODY -->
 
-
     <div class="container-fluid"><div class="break"></div></div>
-
 
     <div class="container-fluid">
       <div class="row">
@@ -78,8 +71,6 @@ array_push($scripts, "/assets/js/comments.js");
           </div>
 
           <!-- MUST START LOADING COMMENTS HERE -->
-
-
           <?php if(empty($comments)) : ?>
             <div class="container-fluid"><div class="break"></div></div>
             <p>It seems to be empty. No comments here.</p>
@@ -103,7 +94,6 @@ array_push($scripts, "/assets/js/comments.js");
             </div>
           <?php endforeach ?>
           <?php endif; ?>
-
 
           <!-- COMMENTS LOADING ENDS HERE -->
 

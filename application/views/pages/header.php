@@ -4,11 +4,8 @@ if (!isset($username)) {
   array_push($scripts, '/assets/js/facebook.js');
 }
 ?>
-
 <!DOCTYPE html>
-
 <!-- HEADER -->
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -73,10 +70,10 @@ if (!isset($username)) {
       </div><!-- /.container-fluid -->
     </nav>
 
-    <!-- ADD SOME SPICE BODY  -->
    <div class="container-fluid"><div class="break"></div></div>
    <div class="container-fluid"><div class="break"></div></div>
    <?php if($selection !== 'addmeme') : ?>
+    <!-- ADD SOME SPICE BODY  -->
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-lg-12 addsomespice">
@@ -86,9 +83,8 @@ if (!isset($username)) {
     </div>
    <?php endif; ?>
 
+    <?php if (!isset($username) && $selection !== 'login' && $selection !== 'register'): ?>
     <!-- signuploginmodal  -->
-
-    <?php if (!isset($username)): ?>
     <div class="modal fade" id="signuploginmodal" role="dialog">
       <div class="modal-dialog">
 
@@ -101,11 +97,11 @@ if (!isset($username)) {
             <form method="POST" action="<?php echo site_url("login"); ?>">
               <div class="form-group">
                 <label for="usr">Username:</label>
-                <input name="username" type="text" class="form-control" id="usr">
+                <input name="username" type="text" class="form-control" id="usr" placeholder="Username">
               </div>
               <div class="form-group">
                 <label for="pwd">Password:</label>
-                <input name="password" type="password" class="form-control" id="pwd">
+                <input name="password" type="password" class="form-control" id="pwd" placeholder="Password">
               </div>
               <div class="form-group">
                 <p>OR</p>
@@ -124,19 +120,19 @@ if (!isset($username)) {
             <form method="POST" action="<?php echo site_url("register"); ?>">
               <div class="form-group">
                 <label for="usr_choose">Choose username:</label>
-                <input name="username" type="text" class="form-control" id="usr_choose">
+                <input name="username" type="text" class="form-control" id="usr_choose" placeholder="Username">
               </div>
               <div class="form-group">
                 <label for="pwd_choose">Choose password:</label>
-                <input name="password" type="password" class="form-control" id="pwd_choose">
+                <input name="password" type="password" class="form-control" id="pwd_choose" placeholder="Password">
               </div>
               <div class="form-group">
                 <label for="pwd_repeat">Repeat password:</label>
-                <input type="password" class="form-control" id="pwd_repeat">  <!-- TODO kontroll repeat == password -->
+                <input name="password_rpt" type="password" class="form-control" id="pwd_repeat" placeholder="Repeat password">
               </div>
               <div class="form-group">
                 <label for="email">Enter e-mail:</label>
-                <input name="email" type="email" class="form-control" id="email">
+                <input name="email" type="email" class="form-control" id="email" placeholder="E-mail">
               </div>
               <button type="submit" class="btn btn-signup btn-sm">SIGN UP</button>
             </form>
