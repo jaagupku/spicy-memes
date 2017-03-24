@@ -1,22 +1,29 @@
 function initMap() {
-  var base = {lat: 58.378273, lng: 26.714576};
+  var pepe = {lat: 58.378263, lng: 26.714566};
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 18,
-    center: base
+    center: pepe
   });
   var marker = new google.maps.Marker({
-    position: base,
-    icon: location.protocol + '//' + location.hostname + '/assets/feelsgoodman48.png',
+    position: pepe,
+    icon: location.protocol + '//' + location.hostname + '/assets/feelsbadman48.png',
     title: 'FeelsGoodMan',
     map: map
   });
   marker.setAnimation(google.maps.Animation.DROP);
-  toggleBounce = function() {
+  marker.addListener('mouseover', function() {
+    marker.setIcon(location.protocol + '//' + location.hostname + '/assets/feelsgoodman48.png');
+  });
+  marker.addListener('mouseout', function() {
+    if (marker.getAnimation() == null) {
+      marker.setIcon(location.protocol + '//' + location.hostname + '/assets/feelsbadman48.png');
+    }
+  });
+  marker.addListener('click', function() {
     if (marker.getAnimation() !== null) {
       marker.setAnimation(null);
     } else {
       marker.setAnimation(google.maps.Animation.BOUNCE);
     }
-  }
-  marker.addListener('click', toggleBounce);
+  });
 }
