@@ -5,7 +5,7 @@ logInWithFacebook = function() {
     } else {
       alert('User cancelled login or did not fully authorize.');
     }
-  });
+  }, {scope: 'email'});
   return false;
 };
 unLinkFacebook = function() {

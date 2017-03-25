@@ -23,8 +23,9 @@ include('header.php');
         </div>
         <div class="form-group">
           <label for="email">Enter e-mail:</label>
-          <input name="email" type="email" class="form-control" id="email" placeholder="E-mail">
+          <input name="email" type="email" class="form-control" id="email" placeholder="E-mail" value="<?php if(isset($email)) echo $email; ?>">
         </div>
+        <?php if(isset($fbid)) echo "<input type=\"hidden\" name=\"facebookid\" value=\"$fbid\">"; ?>
         <button type="submit" class="btn btn-signup btn-sm">SIGN UP</button>
       </form>
     </div>

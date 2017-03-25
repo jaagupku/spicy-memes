@@ -69,4 +69,11 @@ class User_model extends Base_Model {
 
       return $this->db->get()->row();
     }
+
+    public function retrieve_email($email) {
+      $this->db->from($this->table);
+      $this->db->where('Email', $email);
+
+      return $this->db->get()->row();
+    }
 }

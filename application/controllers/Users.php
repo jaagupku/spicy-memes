@@ -33,11 +33,6 @@ class Users extends CI_Controller {
             $error = validation_errors();
         }
 
-        $fberror = $this->session->flashdata('login_error');
-        if (isset($fberror)) {
-          $error = $fberror;
-        }
-
         $this->load->view('pages/login', array('error' => $error));
     }
 
@@ -101,18 +96,25 @@ class Users extends CI_Controller {
 
       if (isset($this->session->logged_in) && $this->session->logged_in) {
         if (is_null($userData)) {
-          $this->user_model->link_fb($this->session->user_id, $userNode->getId()); // Link account with facebook
-          $this->session->fb_linked = true;
+          $this->_link_user_facebook($this->session->user_id, $userNode->getId()); // User is logged in, Link account with facebook
           redirect($this->session->referenced_form, "refresh");
         } else {
-          redirect($this->session->referenced_form, "refresh"); // User is logged in, and has linked fb account with other account
+          redirect($this->session->referenced_form, "refresh"); // User is logged in, and has linked fb account with other account, do nothing
         }
       } else {
         if (is_null($userData)) {
-          $this->session->set_flashdata('login_error', "Facebook accont is not linked to any Spicy Memes account.");
-          redirect(site_url("login")); // user is not logged in, facebook acc is unlinked
+          $userData = $this->user_model->retrieve_email($userNode->getField('email'));
+          if (is_null($userData)) {
+            $this->session->set_flashdata('login_error', "Facebook accont is not linked to any Spicy Memes account. Create account and it will be linked with your Facebook.");
+            $this->session->set_flashdata('facebook_id', $userNode->getId());
+            $this->session->set_flashdata('facebook_email', $userNode->getField('email'));
+            redirect(site_url("register")); // user is not logged in, facebook acc is unlinked, facebook email is not used in this site.
+          } else {
+            $this->_link_user_facebook($userData->Id, $userNode->getId()); // user is not logged in, facebook acc is unlinked,
+            $this->_login_and_redirect_data($userData, true); //facebook email is used in this site. link that acc with facebook and login
+          }
         } else {
-          $this->_login_and_redirect_data($userData); // Log in with facebook
+          $this->_login_and_redirect_data($userData); // user is not logged in, facebook is linked, Log in with facebook
         }
       }
     }
@@ -126,6 +128,11 @@ class Users extends CI_Controller {
       } else {
         show_404();
       }
+    }
+
+    private function _link_user_facebook($userid, $fbid) {
+      $this->user_model->link_fb($userid, $fbid);
+      $this->session->fb_linked = true;
     }
 
     private function _parse_signed_request($signed_request) {
@@ -179,6 +186,7 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('username', 'Username', 'required|max_length[32]|alpha_numeric|is_unique[users.User_Name]');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[7]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.Email]');
+        $this->form_validation->set_rules('facebookid', '', 'numeric');
 
         $error = null;
 
@@ -186,9 +194,14 @@ class Users extends CI_Controller {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $email = $this->input->post('email');
+            $fbid = $this->input->post('facebookid');
 
             if ($this->user_model->create($username, $password, $email)) {
-                $this->_login_and_redirect($username);
+                if (isset($fbid)) {
+                  $this->_login_and_redirect($username, true, $fbid);
+                } else {
+                  $this->_login_and_redirect($username);
+                }
             } else {
                 $error = 'Couldn\'t create the user';
             }
@@ -196,24 +209,43 @@ class Users extends CI_Controller {
             $error = validation_errors();
         }
 
-        $this->load->view('pages/register', array('error' => $error));
+        $data = array();
+
+        $fberror = $this->session->flashdata('login_error');
+        if (isset($fberror)) {
+          $error = $fberror;
+        }
+        $data['error'] = $error;
+
+        $fbid = $this->session->flashdata('facebook_id');
+        if (isset($fbid)) {
+          $data['fbid'] = $fbid;
+        }
+
+        $fbemail = $this->session->flashdata('facebook_email');
+        if (isset($fbid)) {
+          $data['email'] = $fbemail;
+        }
+
+        $this->load->view('pages/register', $data);
     }
 
     public function profile($username) {
         $userdata = $this->user_model->retrieve($username);
-        $data = $this->user_model->get_user_meme_data($userdata->Id);
-        $processed_data = array('picture' => 0, 'video' => 0, 'total' => 0);
-        foreach ($data as $value) {
-          if ($value->Data_Type == "P") {
-            $processed_data['picture'] = $value->count;
-          } else {
-            $processed_data['video'] = $value->count;
-          }
-        }
-
-        $processed_data['total'] = $processed_data['picture'] + $processed_data['video'];
 
         if ($userdata) {
+            $data = $this->user_model->get_user_meme_data($userdata->Id);
+            $processed_data = array('picture' => 0, 'video' => 0, 'total' => 0);
+            foreach ($data as $value) {
+              if ($value->Data_Type == "P") {
+                $processed_data['picture'] = $value->count;
+              } else {
+                $processed_data['video'] = $value->count;
+              }
+            }
+
+            $processed_data['total'] = $processed_data['picture'] + $processed_data['video'];
+
             $username = $userdata->User_Name;
             $email = $userdata->Email;
             $profile_image = $userdata->ProfileImg_Id;
@@ -225,16 +257,20 @@ class Users extends CI_Controller {
         }
     }
 
-    private function _login_and_redirect($username) {
-      $this->_login_and_redirect_data($this->user_model->retrieve($username));
+    private function _login_and_redirect($username, $link_with_fb=false, $fbid=null) {
+      $user = $this->user_model->retrieve($username);
+      if ($link_with_fb) {
+        $this->_link_user_facebook($user->Id, $fbid);
+      }
+      $this->_login_and_redirect_data($user, $link_with_fb);
     }
 
-    private function _login_and_redirect_data($user) {
+    private function _login_and_redirect_data($user, $link_with_fb=false) {
         $this->user_model->update_last_login_date($user->Id);
         $this->session->logged_in = true;
         $this->session->username = $user->User_Name;
         $this->session->user_id = $user->Id;
-        $this->session->fb_linked = isset($user->FB_Id);
+        $this->session->fb_linked = isset($user->FB_Id) || $link_with_fb;
         redirect($this->session->referenced_form, 'refresh');
     }
 }
