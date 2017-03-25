@@ -1,5 +1,6 @@
 body {
   background-color: #fbfffe;
+  min-height: 100%;
 }
 .hidden-label {
   display: none;

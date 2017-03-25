@@ -1,0 +1,32 @@
+.col-custom-about {
+  display: block;
+  width: 580px;
+}
+.col-custom-about h2 {
+  text-align: center;
+}
+.col-custom-about p {
+  text-align: justify;
+}
+.col-custom-about a {
+  text-align: center;
+  width: 100%;
+  background-color: #f72c25;
+  color: #fbfffe;
+}
+.col-custom-about a:hover {
+  color: #ffc62b;
+}
+#map {
+  height: 400px;
+  width: 100%;
+}
+.aboutus-location h2{
+  text-align: center;
+}
+
+@media (max-width: 580px) {
+  .col-custom-about {
+    width: auto;
+  }
+}
