@@ -8,13 +8,13 @@
 .col-custom-about p {
   text-align: justify;
 }
-.col-custom-about a {
+.donate-button {
   text-align: center;
   width: 100%;
   background-color: #f72c25;
   color: #fbfffe;
 }
-.col-custom-about a:hover {
+.donate-button:hover {
   color: #ffc62b;
 }
 #map {
