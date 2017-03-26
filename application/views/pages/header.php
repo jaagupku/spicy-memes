@@ -20,7 +20,7 @@ if (!isset($username)) {
     <link href="/assets/css/frontpagebodystyle.css" rel="stylesheet">
     <link href="/assets/css/userpagestyle.css" rel="stylesheet">
     <link href="/assets/css/aboutpagestyle.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
 
@@ -104,14 +104,14 @@ if (!isset($username)) {
                 <label for="pwd">Password:</label>
                 <input name="password" type="password" class="form-control" id="pwd" placeholder="Password">
               </div>
+              <button type="submit" class="btn btn-login btn-sm">LOG IN</button><br><br>
+              <a href="#">Forgot password?</a>
               <div class="form-group">
                 <p>OR</p>
                 <div class="social-wrap">
                   <button id="facebook" onClick="logInWithFacebook()" type="button">Sign in with Facebook</button>
                 </div>
               </div>
-              <a href="#">Forgot password?</a><br><br>
-              <button type="submit" class="btn btn-login btn-sm">LOG IN</button>
             </form>
           </div>
           <div class="modal-header">

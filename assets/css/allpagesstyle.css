@@ -32,6 +32,10 @@ body {
 .active-vote {
   color: #f72c25;
 }
+.col-custom-block {
+  display: block;
+  width: 580px;
+}
 
 @media (max-width: 839px) {
   .navbar-header {

@@ -4,9 +4,9 @@
     <div class="container-fluid footer">
       <a class="link-about" href="<?php echo site_url("aboutus"); ?>">ABOUT US</a>
       <div class="social-media">
-        <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square social"></i></a>
-        <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square social"></i></a>
-        <a href="https://instagram.com/"><i id="social-ig" class="fa fa-instagram social"></i></a>
+        <a href="https://www.facebook.com/"><span id="social-fb" class="fa fa-facebook-square social"></span></a>
+        <a href="https://twitter.com/"><span id="social-tw" class="fa fa-twitter-square social"></span></a>
+        <a href="https://instagram.com/"><span id="social-ig" class="fa fa-instagram social"></span></a>
       </div>
     </div>
 

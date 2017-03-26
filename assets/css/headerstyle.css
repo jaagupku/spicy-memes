@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
 .navbar-default {
   background-color: #f72c25;
   border-color: #2d1e2f;
@@ -87,8 +88,6 @@
     background-color: #2d1e2f;
   }
 }
-@import "compass/css3";
-@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
 .social-wrap button {
     padding-right: 45px;
     height: 35px;

@@ -7,7 +7,7 @@ include('header.php');
 <?php if (isset($error)) echo $error ?>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-lg-12">
+    <div class="col-xs-12 col-custom-block col-centered">
       <form method="POST" action="<?php echo site_url("register"); ?>">
         <div class="form-group">
           <label for="usr_choose">Choose username:</label>

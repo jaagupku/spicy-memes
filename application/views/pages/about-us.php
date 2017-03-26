@@ -27,38 +27,47 @@ array_push($scripts, 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDuSD8hPd
 
 <div class="container-fluid"><div class="break"></div></div>
 
-
-
 <?php
 
 $private_key = openssl_pkey_get_private(
-"-----BEGIN RSA PRIVATE KEY-----
-MIICXAIBAAKBgQDyuO5rqXoY0Hks9ezyYNk3WBwBOTqbuvTBiIeSJmZk4WxGICV2
-lNeWnHX5tZ9iZ9DRWAi2cr8KKMFAlltbByHOLBFO063tk0jYB/LMOFx596RAi3qq
-FESKc+m7U+f6BOb2/CIzGNrDV+pyMFPzJlXZio0mgZIZ1w/Nj89qNUN2FwIDAQAB
-AoGAdwHvfIAzKlmFIGNQEyMjPbyItpzdvJ91BDMx7ZnAWLQiR1vZooOmFOWP/qhr
-hm9KdmpIk1Q9kPickFNoZYBgtOZ7Ah8sXmT9wmGf5CzWEj6fXS94tvXlYlRavQs1
-lm6ar98yLJQ+y/RlOYTqPWrvQVi+wkRcVIildzUmBnxSBSECQQD58XoNZWawuuSc
-EwkPuEDufm28v0S3e57AOt7uTVpMHM9l0s/WmR4efHsOaV7LL5P9COsLNCu/qdIv
-+lUGmiRxAkEA+Jqo6lZonavrWQ3aNYm1VmnrARl3K+nIRnTb2wXeebkLwn59YP9m
-LkpYmSidceO867E4oA2Jek6p/NmSLhNnBwJBAOXj9GYT6VMOY60mWQRLbfWu9dJQ
-fqzhGFApFdlL7ozpRt2Z/C6fITPbPPgxdM4gUda/+CiS8NZWJYyZjNEIwBECQATM
-b3A+hLxuYheQ9eJMqyxk1P1rcWpuk8gQX2IF5fpxgPGbIW5q350LIFSsfQWCwNXH
-0PD98eZjeFKCHJk5FKcCQEu1ffs0bKpFELMqQFpoh2Pe8ITeO2USI7WfoYpkqoG3
-tC6MqDd13VFYmOsqyxLxWFwsON2PINHu+zqcuMpxGAk=
+ "-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAt5MFUTdzFUMUxVfl4GCiGKSiU2DXkXRPxQvOc8py0RBw+Yu/
+Jo8osXM+c/svIF0gxgGRtkoN85G6M+zaliPzUUrEEpHE+qBG8nE1QQEyzB1vHKz2
+1u4VJXeIMAnJ07KnrL4DgtkQfrn8agMl7i7x2IxVBFLrJpsBpPcjjAf+2bVTDEyv
+4Nfyj/q/NHwRtv0o1vTcyg3JX+eSsJpUDy4fj/3QSkOIdKxLXeMEMvK1+Zj1oLAL
+4riPLdGgEpfI8LGOm/4rQuESVSLBcSVWQ3eYhiHvXSIKeTjw/aA/Uk40xCbipsRX
+JNx5EXl0zoKVg+pdYo6i5HIl9nMCcfl6AU0F/QIDAQABAoIBAGwGCtn4/DKlz8I0
+8COyGZDQyGiyEwgX3p0ATpOarSfTOffOwUQKeBK70yNiyx+LTa7W24zeVQlgVqcZ
+mKNDMnpCudCHkNc+m6Es9v5ymxa7t1ezfGmLnkv24+AI0ohNmBexlNVZsDgyb5Ne
+mOJpI42fPqQVuyRzkGsntvY++jvXVUuppaHy//UmFuLMVJFyueasmUUkx//vWAxx
+hfQdOmYM4gTY9skYPckRH/rkxbvkVDNuSF+B4KNMlF2wqZtZi0+4I8fxiFXk8Rr+
+MeyqXqMOJR1oUIH13a4fSyIeo2rW+xBswM+7aM2uq9NBUjxbxoIUmBm6p9TEGvff
+RLroo40CgYEA4sXCgeHXALSKvXWsaXUycPs9vVowhqUL0IeNHOmcE8bJfAbdFnPU
+1517jhg5005xLtN/B1wVjYx2Aa2UMS4gq07S2OYGkf0sg0o1A6naIIzki/J87+Rf
+Jj5gLz1fC/ODxOr31G+Bong6M6brlqAVxKTOz14RGGKVPzBOuAL2d3sCgYEAzzv1
+fWyWrpXSsHEu6zeo/Mrv+pcg6mlLFIjUYILtmkB/IklXZ93P2+HQhCuk/JskzVQT
+SWeaDPDGctcGIhy0TfzpPFY4TZeX4a7mMzWOccwbxz5ztA2yF3UhAFHwtY3BVxq4
+CXdVTGsdkAQq78wE9Nb68A9mDfJQboi2p+5UwucCgYBW309+FhgZSxCDN9sOozjp
+kzW5nh1M11lJT0Q9uThzUwnIm5CCk2kMGGZGrv0n97rgJ2FYXmxbR13Fkstcc8FM
+Huwi7yvBLW2p9fmNJ7pKEe9TtVcrRx80NVz/e9E3cNgfzauXFAhjRw90zhMeJsFw
+DXq0ceK2pr1p8YWWdHwalQKBgQDG7wf6HwOHFMvsFLq1kfjmsukr5WfznqA0ViWJ
+gCYWrVNd1onRa1zd9yfzuPHojAYIFW1uScXYJkpac4+vr15mfyJmiV4DHkLuorbY
+8dCL7SO9YHYxofQUEJxdcktf/XRb6YpBjAyWDz2Rwm51Q6R+ZOD/EckmGjab5SFy
+k5dKgQKBgQCDoldwSZnZLnsSDTzchhX+4WAf70F0dr3MNj9/ZTi9yH9f3Od1eSnz
+ILrOIVltD9KoeLufXJq8mPjA3Kw42BUd75GE+uFm5gxMMdllEXeSnIAxw+0dkS6J
+qOI62bCy6Q1u74kdH/YUWesXZEe9wgsCymJ3atMeXxoZFJUreivLQw==
 -----END RSA PRIVATE KEY-----");   /*Selle key peaks enda omaga asendama*/
-
 
 function getCurrentDate() {
     $dt = new DateTime("now", new DateTimeZone('Europe/Helsinki'));
-	return $dt->format('Y-m-d\TH:i:s\+0200');
+	return $dt->format('Y-m-d\TH:i:s\+0300');
 
 }
 
 $fields = array(
         "VK_SERVICE"     => "1011",
         "VK_VERSION"     => "008",
-        "VK_SND_ID"      => "uid100036",
+        "VK_SND_ID"      => "uid100023",
         "VK_STAMP"       => "12345",
         "VK_AMOUNT"      => "5",
         "VK_CURR"        => "EUR",
@@ -67,8 +76,8 @@ $fields = array(
         "VK_REF"         => "1234561",
         "VK_LANG"        => "EST",
         "VK_MSG"         => "Donation For Spicy Memes OÜ",
-        "VK_RETURN"      => "http://localhost/aboutus/received",
-        "VK_CANCEL"      => "http://localhost/aboutus/notreceived",
+        "VK_RETURN"      => site_url("aboutus/received"),
+        "VK_CANCEL"      => site_url("aboutus/notreceived"),
         "VK_DATETIME"    => getCurrentDate(),
         "VK_ENCODING"    => "utf-8",
 );
@@ -93,14 +102,12 @@ openssl_sign ($data, $signature, $private_key, OPENSSL_ALGO_SHA1);
 $fields["VK_MAC"] = base64_encode($signature);
 ?>
 
-
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-custom-about col-centered">
       <h2>DONATIONS</h2>
       <p>To help us boost our creativity and make everything more spicy, we have included a big red donate button. So everyone who thinks we deserve some recognition, fill the form and hit that button. </p>
-      <strong>NB! Donations cost 5 euros!</strongs>
+      <strong>NB! Donations cost 5 euros!</strong>
     </div>
   </div>
   <div class="break"></div>

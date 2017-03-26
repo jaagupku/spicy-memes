@@ -10,6 +10,7 @@ function initMap() {
     title: 'FeelsGoodMan',
     map: map
   });
+  var messageWindow = new google.maps.InfoWindow({content: "FeelsGoodMan"});
   marker.setAnimation(google.maps.Animation.DROP);
   marker.addListener('mouseover', function() {
     marker.setIcon(location.protocol + '//' + location.hostname + '/assets/feelsgoodman48.png');
@@ -22,8 +23,10 @@ function initMap() {
   marker.addListener('click', function() {
     if (marker.getAnimation() !== null) {
       marker.setAnimation(null);
+      messageWindow.close();
     } else {
       marker.setAnimation(google.maps.Animation.BOUNCE);
+      messageWindow.open(map, marker);
     }
   });
 }
