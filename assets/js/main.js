@@ -2,14 +2,18 @@ $(function() {
     loadVoting('meme-container', 'meme');
 });
 
+$('#load-button').text("Loading...");
+
 function yHandler(){
-	var body =document.getElementById('memebody');
+	var body = document.getElementById('memebody');
 	var contentHeight = body.offsetHeight;
 	var y = window.pageYOffset + window.innerHeight;
 	if(y + 400 >= contentHeight){
     window.onscroll = null;
     if ($('.meme').length < 50) {
   		loadMore();
+    } else {
+      $('#load-button').text("Click here for more spice!");
     }
 	}
 }
@@ -38,14 +42,19 @@ function loadMore() {
         $("#load-button").hide();
       }
     }).done(function(result) {
-      addFromXML(result, xlst, '#load-more', 'append');
-      var nextFrom = parseInt(from) + parseInt(amount);
-      loadbutton.setAttribute('data-load-from', nextFrom);
-      loadbutton.setAttribute('href', "/index.php/" + type + "/" + from + "/" + amount);
-      window.onscroll = yHandler;
+      if (result == 'null') {
+        window.onscroll = null;
+        $("#load-button").hide();
+        $('#load-more').append("<p>You have reached the end.</p>");
+      } else {
+        addFromXML(result, xlst, '#load-more', 'append');
+        var nextFrom = parseInt(from) + parseInt(amount);
+        loadbutton.setAttribute('data-load-from', nextFrom);
+        loadbutton.setAttribute('href', "/index.php/" + type + "/" + from + "/" + amount);
+        window.onscroll = yHandler;
+      }
     });
   });
 }
-
 
 window.onscroll = yHandler;

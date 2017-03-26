@@ -9,7 +9,8 @@ logInWithFacebook = function() {
   return false;
 };
 unLinkFacebook = function() {
-  $( "#facebook" ).text( " Loading..." );
+  $("#facebook").text("Loading...");
+  $("#facebook").attr("onClick", "");
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
       accessToken = response.authResponse.accessToken;

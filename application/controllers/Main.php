@@ -56,6 +56,11 @@ class Main extends CI_Controller {
     }
 
     private function _display_ajax_memes($memes, $selection, $from, $amount) {
+      if (count($memes) === 0) {
+        echo "null";
+        exit;
+      }
+
       $data = array();
 
       $data['memes'] = $this->_add_votes_to_memes($memes);
