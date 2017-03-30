@@ -120,3 +120,8 @@ button#facebook:hover {
 button#facebook:active {
   background-color: #32508a;
 }
+/* scroll bar is not removed and page doesn't shift if modal is open */
+.modal-open {
+    overflow-y: scroll;
+    padding-right: 0 !important;
+}
