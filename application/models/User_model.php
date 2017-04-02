@@ -17,6 +17,20 @@ class User_model extends Base_Model {
       return $this->_call_procedure('sp_user_total_memes', array($user_id))->result();
     }
 
+    public function get_top_memes($user_id) {
+        $this->db->from('v_top_memes');
+        $this->db->where('User_Id', $user_id);
+
+        return $this->db->get()->result_array();
+    }
+
+    public function get_new_memes($user_id) {
+        $this->db->from('v_new_memes');
+        $this->db->where('User_Id', $user_id);
+
+        return $this->db->get()->result_array();
+    }
+
     public function create($username, $password, $email) {
         $arguments = array(
             0, // type

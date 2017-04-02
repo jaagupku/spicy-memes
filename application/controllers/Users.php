@@ -230,28 +230,44 @@ class Users extends CI_Controller {
         $this->load->view('pages/register', $data);
     }
 
-    public function profile($username) {
+    public function profile($username, $sort_by='top') {
         $userdata = $this->user_model->retrieve($username);
 
-        if ($userdata) {
+        if ($userdata && in_array($sort_by, array('top', 'comments', 'date'))) {
+            $memes = array();
+
+            if ($sort_by == 'top') {
+                $memes = $this->user_model->get_top_memes($userdata->Id);
+            } else {
+                $memes = $this->user_model->get_new_memes($userdata->Id);
+
+                // TODO: Sort by comments
+            }
+
             $data = $this->user_model->get_user_meme_data($userdata->Id);
             $processed_data = array('picture' => 0, 'video' => 0, 'total' => 0);
+
             foreach ($data as $value) {
-              if ($value->Data_Type == "P") {
-                $processed_data['picture'] = $value->count;
-              } else {
-                $processed_data['video'] = $value->count;
-              }
+                if ($value->Data_Type == "P") {
+                    $processed_data['picture'] = $value->count;
+                } else {
+                    $processed_data['video'] = $value->count;
+                }
             }
 
             $processed_data['total'] = $processed_data['picture'] + $processed_data['video'];
 
-            $username = $userdata->User_Name;
-            $email = $userdata->Email;
-            $profile_image = $userdata->ProfileImg_Id;
+            $data = array(
+                'username' => $this->session->username,
+                'target' => $userdata->User_Name,
+                'email' => $userdata->Email,
+                'profile_image' => $userdata->ProfileImg_Id,
+                'memes' => $memes,
+                'meme_count' => $processed_data
+            );
 
             $this->session->referenced_form = site_url("/profile/$username");
-            $this->load->view('pages/profile', array('username' => $this->session->username, 'target' => $username, 'email' => $email, 'meme_count' => $processed_data, 'profile_image' => $profile_image));
+            $this->load->view('pages/profile', $data);
         } else {
             show_404();
         }

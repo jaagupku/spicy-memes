@@ -63,17 +63,25 @@ if (isset($username)) {
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-custom-userpage col-centered">
+          <?php if (count($memes) == 0): ?>
 
           <p>
-          I have added total of <?php echo $meme_count['total'] ?> memes, which includes <?php echo $meme_count['picture'] ?> pictures and <?php echo $meme_count['video'] ?> videos.
+            I haven't uploaded anything yet.
           </p>
+
+          <?php else: ?>
+
+          <p>
+            I have added total of <?php echo $meme_count['total'] ?> memes, which includes <?php echo $meme_count['picture'] ?> pictures and <?php echo $meme_count['video'] ?> videos.
+          </p>
+
           <h2>UPLOADS: </h2>
 
           <div class="sortingsection-userpage">
             <p><strong>Sort by: </strong></p>
-            <a href="#"><span class="label label-default">top</span></a>
-            <a href="#"><span class="label label-default">comments</span></a>
-            <a href="#"><span class="label label-default">date</span></a>
+            <a href="<?= site_url("profile/$target/top") ?>"><span class="label label-default">top</span></a>
+            <a href="<?= site_url("profile/$target/comments") ?>"><span class="label label-default">comments</span></a>
+            <a href="<?= site_url("profile/$target/date") ?>"><span class="label label-default">date</span></a>
           </div>
 
           <div class="container-fluid"><div class="break"></div></div>
@@ -91,21 +99,21 @@ if (isset($username)) {
                 </tr>
               </thead>
               <tbody>
+                <?php foreach($memes as $meme): ?>
+
                 <tr>
-                  <td><a href="comments_page.html">Some Shitty Meme Title</a></td>
-                  <td>Spice Level: 666</td>
-                  <td>Comments: <a href="comments_page.html"><span class="badge">1001</span></a></td>
-                  <td>Added on: 10.03.2017 2:25PM</td>
+                  <td><a href="<?= site_url('meme/' . $meme['Id']) ?>"><?= $meme['Title'] ?></a></td>
+                  <td>Spice Level: <?= $meme['Points'] ?></td>
+                  <td>Comments: <a href="<?= site_url('meme/' . $meme['Id']) ?>"><span class="badge">1001</span></a></td>
+                  <td>Added on: <?= $meme['Date'] ?></td>
                 </tr>
-                <tr>
-                  <td><a href="comments_page.html">Some Shitty Meme Title</a></td>
-                  <td>Spice Level: 666</td>
-                  <td>Comments: <a href="comments_page.html"><span class="badge">1001</span></a></td>
-                  <td>Added on: 10.03.2017 2:25PM</td>
-                </tr>
+
+                <?php endforeach ?>
               </tbody>
             </table>
           </div>
+
+          <?php endif ?>
 
           <!-- END LOADING HERE -->
 

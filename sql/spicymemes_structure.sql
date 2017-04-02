@@ -326,7 +326,7 @@ CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_new_memes`  AS  select 
 --
 DROP TABLE IF EXISTS `v_top_memes`;
 
-CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_top_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points` from (`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) order by (`meme`.`Up_Points` + `meme`.`Down_Points`) desc ;
+CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_top_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points` from (`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) order by (`meme`.`Up_Points` + `meme`.`Down_Points`) desc ;
 
 --
 -- Indexes for dumped tables
