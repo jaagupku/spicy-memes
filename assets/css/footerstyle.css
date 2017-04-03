@@ -37,3 +37,18 @@
   font-size: 50px;
   margin: 0 6px;
 }
+
+/* Sticky footer CSS */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 170px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
