@@ -41,9 +41,9 @@ if (!isset($username)) {
         <div class="collapse navbar-collapse" id="burger-material">
 
           <ul class="nav navbar-nav">
-            <li <?php if($selection==='hot') {echo 'class="active"';} ?> ><a href="<?php echo site_url('hot') ?>" class="hot">HOT</a></li>
-            <li <?php if($selection==='top') {echo 'class="active"';} ?> ><a href="<?php echo site_url('top') ?>" class="top">TOP</a></li>
-            <li <?php if($selection==='new') {echo 'class="active"';} ?> ><a href="<?php echo site_url('new') ?>" class="new">NEW</a></li>
+            <li <?php if($selection==='hot') {echo 'class="active"';} ?> ><a href="<?php echo site_url('hot') ?>" class="hot"><?= lang('header_hot') ?></a></li>
+            <li <?php if($selection==='top') {echo 'class="active"';} ?> ><a href="<?php echo site_url('top') ?>" class="top"><?= lang('header_top') ?></a></li>
+            <li <?php if($selection==='new') {echo 'class="active"';} ?> ><a href="<?php echo site_url('new') ?>" class="new"><?= lang('header_new') ?></a></li>
           </ul>
 
           <form class="navbar-form navbar-left">

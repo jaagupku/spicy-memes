@@ -32,6 +32,14 @@ include('header.php');
           <input value="<?= $email ?>" name="email" type="email" class="form-control" id="email" placeholder="Email">
         </div>
 
+        <div class="form-group">
+          <label for="language">Language:</label>
+          <select name="language" class="form-control" id="language">
+            <option<?= $language == 'english' ? ' selected="selected"' : ''?>>english</option>
+            <option<?= $language == 'estonian' ? ' selected="selected"' : ''?>>estonian</option>
+          </select>
+        </div>
+
         <button type="submit" class="btn btn-login btn-sm">UPDATE</button>
         <br><br>
       </form>
