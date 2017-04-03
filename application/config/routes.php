@@ -60,6 +60,7 @@ $route['logout'] = 'users/logout';
 $route['register'] = 'users/register';
 $route['profile/(:any)'] = 'users/profile/$1';
 $route['profile/(:any)/(:any)'] = 'users/profile/$1/$2';
+$route['edit_profile'] = 'users/edit_profile';
 $route['meme/(:num)'] = 'meme/view/$1';
 
 $route['hot'] = 'main/hot';

@@ -273,6 +273,86 @@ class Users extends CI_Controller {
         }
     }
 
+    public function edit_profile() {
+        if (!isset($this->session->logged_in)) {
+            show_404();
+        }
+
+        $error = null;
+
+        $username_changed = !$this->_exists_and_equals($this->input->post('username'), $this->session->username);
+        $email_changed = !$this->_exists_and_equals($this->input->post('email'), $this->session->email);
+        $uploading_image = !empty($_FILES['userfile']) && file_exists($_FILES['userfile']['tmp_name']);
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username', 'Username', 'required|max_length[32]|alpha_numeric' . ($username_changed ? '|is_unique[users.User_Name]' : ''));
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email' . ($email_changed ? '|is_unique[users.Email]' : ''));
+
+        if ($this->form_validation->run()) {
+            $updated_columns = array();
+
+            if ($email_changed) {
+                // TODO: Change email
+            }
+
+            if ($username_changed) {
+                // TODO: Change usename
+            }
+
+            if ($uploading_image) {
+                $this->load->helper('upload_helper');
+
+                $result = false;
+
+                try {
+                    $result = upload_image($this, 'userfile');
+                } catch (Exception $exception) {
+                    $this->_load_edit_profile('Something went wrong with uploading to cloud.');
+                    return;
+                }
+
+                if ($result === false) {
+                    $this->_load_edit_profile('Something went wrong with upload');
+                    return;
+                }
+
+                $updated_columns['ProfileImg_Id'] = $result['public_id'] . '.' . $result['format'];
+            }
+
+            if (count($updated_columns) > 0) {
+                $this->user_model->update($this->session->user_id, $updated_columns);
+            }
+
+            redirect('/profile/' . $this->session->username, 'refresh');
+        } else {
+            $error = validation_errors();
+        }
+
+        $this->_load_edit_profile($error);
+    }
+
+    private function _load_edit_profile($error = null) {
+        $user_data = $this->user_model->retrieve($this->session->username);
+
+        $data = array(
+            'username' => $user_data->User_Name,
+            'email' => $user_data->Email,
+            'mobile_number' => $user_data->mobile_number,
+            'profile_image' => $user_data->ProfileImg_Id,
+            'error' => $error
+        );
+
+        $this->load->view('pages/edit_profile', $data);
+    }
+
+    private function _exists_and_equals($what, $from) {
+        if (!isset($what) || $what === null) {
+            return false;
+        }
+
+        return $what === $from;
+    }
+
     private function _login_and_redirect($username, $link_with_fb=false, $fbid=null) {
       $user = $this->user_model->retrieve($username);
       if ($link_with_fb) {
@@ -285,6 +365,7 @@ class Users extends CI_Controller {
         $this->user_model->update_last_login_date($user->Id);
         $this->session->logged_in = true;
         $this->session->username = $user->User_Name;
+        $this->session->email = $user->Email;
         $this->session->user_id = $user->Id;
         $this->session->fb_linked = isset($user->FB_Id) || $link_with_fb;
         redirect($this->session->referenced_form, 'refresh');

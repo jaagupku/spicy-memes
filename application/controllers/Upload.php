@@ -24,21 +24,10 @@ class Upload extends CI_Controller {
         return;
       }
 
-      $config['upload_path'] = './temp/';
-      $config['allowed_types'] = 'gif|jpg|png';
-      $config['max_size'] = '4096';
-
-      $this->load->library('upload', $config);
+      $this->load->helper('upload_helper');
 
       $missing_link_or_img = TRUE;
       $youtube = FALSE;
-
-      require APPPATH .'third_party/cloudinary/Cloudinary.php';
-      require APPPATH .'third_party/cloudinary/Uploader.php';
-      require APPPATH .'third_party/cloudinary/Api.php';
-      if (file_exists('application/config/cloudinary.php')) {
-        include 'application/config/cloudinary.php';
-      }
 
       $link = $this->input->post('link');
 
@@ -46,7 +35,7 @@ class Upload extends CI_Controller {
         $youtube = $this->_youtube_id_from_url($link); // check if it is youtube link
         if (!$youtube) { // if not, try to upload it to cloudinary.
           try {
-            $data = \Cloudinary\Uploader::upload($this->input->post('link'));
+            $data = upload_link($this, $this->input->post('link'));
           } catch (Exception $e) {
             $this->_display_error('Check your link. It is not valid.');
             return;
@@ -55,22 +44,23 @@ class Upload extends CI_Controller {
         $missing_link_or_img = FALSE;
       }
 
-      if($missing_link_or_img){
-        if (!$this->upload->do_upload('userfile')) {
-          $this->_display_error('Something went wrong with upload');
-          return;
-        }
-        else {
-          $temp = array('upload_data' => $this->upload->data());
+      if ($missing_link_or_img) {
+          $result = false;
+
           try {
-            $data = \Cloudinary\Uploader::upload($temp['upload_data']['full_path']);
-            $missing_link_or_img = FALSE;
-          } catch (Exception $e) {
-            $this->_display_error('Something went wrong with uploading to cloud.');
-            return;
+              $result = upload_image($this, 'userfile');
+          } catch (Exception $exception) {
+              $this->_display_error('Something went wrong with uploading to cloud.');
+              return;
           }
-          //unlink($temp['upload_data']['full_path']);
-        }
+
+          if ($result === false) {
+              $this->_display_error('Something went wrong with upload');
+              return;
+          }
+
+          $data = $result;
+          $missing_link_or_img = false;
       }
 
       if ($missing_link_or_img) {

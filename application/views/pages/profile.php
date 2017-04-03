@@ -35,7 +35,7 @@ if (isset($username)) {
           </div>
 
           <div class="edit-profile-pswd">
-            <a href="#">edit profile</a>
+            <a href="<?= site_url('/edit_profile') ?>">edit profile</a>
             <a href="#">change password</a>
           </div>
 

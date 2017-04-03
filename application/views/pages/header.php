@@ -19,6 +19,7 @@ if (!isset($username)) {
     <link href="/assets/css/commentspagestyle.css" rel="stylesheet">
     <link href="/assets/css/frontpagebodystyle.css" rel="stylesheet">
     <link href="/assets/css/userpagestyle.css" rel="stylesheet">
+    <link href="/assets/css/editprofilestyle.css" rel="stylesheet">
     <link href="/assets/css/aboutpagestyle.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
   </head>
