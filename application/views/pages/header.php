@@ -11,7 +11,7 @@ if (!isset($username)) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo $title; ?> - Spicy Memes</title>
+    <title><?php echo $title; ?> - <?= lang('title_spicymemes') ?></title>
     <link href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/headerstyle.css" rel="stylesheet">
     <link href="/assets/css/footerstyle.css" rel="stylesheet">
@@ -34,9 +34,8 @@ if (!isset($username)) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo site_url() ?>">SPICY MEMES</a>
+          <a class="navbar-brand" href="<?php echo site_url() ?>"><?= lang('header_spicymemes') ?></a>
         </div>
-
 
         <div class="collapse navbar-collapse" id="burger-material">
 
@@ -48,8 +47,8 @@ if (!isset($username)) {
 
           <form class="navbar-form navbar-left">
             <div class="input-group">
-              <label for="srch" class="hidden-label">Search: </label>
-              <input type="search" class="form-control" placeholder="Search" id="srch">
+              <label for="srch" class="hidden-label"><?= lang('header_search') ?>: </label>
+              <input type="search" class="form-control" placeholder="<?= lang('header_search') ?>" id="srch">
               <div class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                   <span class="glyphicon glyphicon-search"></span>
@@ -61,10 +60,10 @@ if (!isset($username)) {
           <ul class="nav navbar-nav navbar-right loginsignup">
             <?php if (isset($username)) { ?>
               <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="<?php echo site_url("profile/".$username) ?>" id="username"><span class="glyphicon glyphicon-user"></span> <?= $username ?></a></li>
-              <li><a href="<?= site_url("logout") ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> LOG OUT</a></li>
+              <li><a href="<?= site_url("logout") ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> <?= lang('header_logout') ?></a></li>
             <?php } else { ?>
-              <li><a href="<?= site_url("register") ?>" role="button" class="btn-signup" data-toggle="modal" data-target="#signuploginmodal" data-remote="false"><span class="glyphicon glyphicon-user"></span> SIGN UP</a></li>
-              <li><a href="<?= site_url("login") ?>" role="button" class="btn-login" data-toggle="modal" data-target="#signuploginmodal" data-remote="false"><span class="glyphicon glyphicon-log-in"></span> LOG IN</a></li>
+              <li><a href="<?= site_url("register") ?>" role="button" class="btn-signup" data-toggle="modal" data-target="#signuploginmodal" data-remote="false"><span class="glyphicon glyphicon-user"></span> <?= lang('header_signup') ?></a></li>
+              <li><a href="<?= site_url("login") ?>" role="button" class="btn-login" data-toggle="modal" data-target="#signuploginmodal" data-remote="false"><span class="glyphicon glyphicon-log-in"></span> <?= lang('header_login') ?></a></li>
             <?php } ?>
           </ul>
 
@@ -79,7 +78,7 @@ if (!isset($username)) {
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-lg-12 addsomespice">
-            <a role="button" class="btn btn-lg" href="<?php echo site_url("meme/add"); ?>" <?php if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']===FALSE) {echo 'data-toggle="modal" data-remote="false" data-target="#signuploginmodal"';} ?>>ADD SOME SPICE</a>
+            <a role="button" class="btn btn-lg" href="<?php echo site_url("meme/add"); ?>" <?php if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']===FALSE) {echo 'data-toggle="modal" data-remote="false" data-target="#signuploginmodal"';} ?>><?= lang('addsomespice') ?></a>
         </div>
       </div>
     </div>
@@ -93,50 +92,50 @@ if (!isset($username)) {
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">LOG IN</h4>
+            <h4 class="modal-title"><?= lang('modal_login') ?></h4>
           </div>
           <div class="modal-body">
             <form method="POST" action="<?php echo site_url("login"); ?>">
               <div class="form-group">
-                <label for="usr">Username:</label>
-                <input name="username" type="text" class="form-control" id="usr" placeholder="Username">
+                <label for="usr"><?= lang('modal_username') ?>:</label>
+                <input name="username" type="text" class="form-control" id="usr" placeholder="<?= lang('modal_username') ?>">
               </div>
               <div class="form-group">
-                <label for="pwd">Password:</label>
-                <input name="password" type="password" class="form-control" id="pwd" placeholder="Password">
+                <label for="pwd"><?= lang('modal_password') ?>:</label>
+                <input name="password" type="password" class="form-control" id="pwd" placeholder="<?= lang('modal_password') ?>">
               </div>
-              <button type="submit" class="btn btn-login btn-sm">LOG IN</button><br><br>
-              <a href="#">Forgot password?</a>
+              <button type="submit" class="btn btn-login btn-sm"><?= lang('modal_login') ?></button><br><br>
+              <a href="#"><?= lang('modal_forgotpassword') ?></a>
               <div class="form-group">
-                <p>OR</p>
+                <p><?= lang('modal_or') ?></p>
                 <div class="social-wrap">
-                  <button id="facebook" onClick="logInWithFacebook()" type="button">Sign in with Facebook</button>
+                  <button id="facebook" onClick="logInWithFacebook()" type="button"><?= lang('modal_signupwithfacebook') ?></button>
                 </div>
               </div>
             </form>
           </div>
           <div class="modal-header">
-            <h4 class="modal-title">SIGN UP</h4>
+            <h4 class="modal-title"><?= lang('modal_signup') ?></h4>
           </div>
           <div class="modal-body">
             <form method="POST" action="<?php echo site_url("register"); ?>">
               <div class="form-group">
-                <label for="usr_choose">Choose username:</label>
-                <input name="username" type="text" class="form-control" id="usr_choose" placeholder="Username">
+                <label for="usr_choose"><?= lang('modal_chooseusername') ?>:</label>
+                <input name="username" type="text" class="form-control" id="usr_choose" placeholder="<?= lang('modal_chooseusername_placeholder') ?>">
               </div>
               <div class="form-group">
-                <label for="pwd_choose">Choose password:</label>
-                <input name="password" type="password" class="form-control" id="pwd_choose" placeholder="Password">
+                <label for="pwd_choose"><?= lang('modal_choosepassword') ?>:</label>
+                <input name="password" type="password" class="form-control" id="pwd_choose" placeholder="<?= lang('modal_choosepassword_placeholder') ?>">
               </div>
               <div class="form-group">
-                <label for="pwd_repeat">Repeat password:</label>
-                <input name="password_rpt" type="password" class="form-control" id="pwd_repeat" placeholder="Repeat password">
+                <label for="pwd_repeat"><?= lang('modal_repeatpassword') ?>:</label>
+                <input name="password_rpt" type="password" class="form-control" id="pwd_repeat" placeholder="<?= lang('modal_repeatpassword') ?>">
               </div>
               <div class="form-group">
-                <label for="email">Enter e-mail:</label>
-                <input name="email" type="email" class="form-control" id="email" placeholder="E-mail">
+                <label for="email"><?= lang('modal_enteremail') ?>:</label>
+                <input name="email" type="email" class="form-control" id="email" placeholder="<?= lang('modal_enteremail_placeholder') ?>">
               </div>
-              <button type="submit" class="btn btn-signup btn-sm">SIGN UP</button>
+              <button type="submit" class="btn btn-signup btn-sm"><?= lang('modal_signup') ?></button>
             </form>
           </div>
         </div>
