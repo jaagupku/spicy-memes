@@ -1,3 +1,6 @@
+var SPLITPATHNAME = location.pathname.split('/');
+var FROM = SPLITPATHNAME.length > 2 ? parseInt(SPLITPATHNAME[2]) : 0;
+
 $(function() {
     loadVoting('meme-container', 'meme');
 });
@@ -10,7 +13,7 @@ function yHandler(){
 	var y = window.pageYOffset + window.innerHeight;
 	if(y + 400 >= contentHeight){
     window.onscroll = null;
-    if ($('.meme').length < 50) {
+    if ($('.meme').length < 10) {
   		loadMore();
     } else {
       $('#load-button').text("Click here for more spice!");
@@ -50,8 +53,11 @@ function loadMore() {
         addFromXML(result, xlst, '#load-more', 'append');
         var nextFrom = parseInt(from) + parseInt(amount);
         loadbutton.setAttribute('data-load-from', nextFrom);
-        loadbutton.setAttribute('href', "/index.php/" + type + "/" + from + "/" + amount);
+        loadbutton.setAttribute('href', "/index.php/" + type + "/" + nextFrom + "/" + amount);
         window.onscroll = yHandler;
+
+        var memeCount = $('.meme').length;
+        history.replaceState({}, '', '/' + type + '/' + FROM + '/' + memeCount);
       }
     });
   });
