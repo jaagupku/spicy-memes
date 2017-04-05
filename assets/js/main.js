@@ -13,7 +13,7 @@ function yHandler(){
 	var y = window.pageYOffset + window.innerHeight;
 	if(y + 400 >= contentHeight){
     window.onscroll = null;
-    if ($('.meme').length < 10) {
+    if ($('.meme').length < 50) {
   		loadMore();
     } else {
       $('#load-button').text("Click here for more spice!");
