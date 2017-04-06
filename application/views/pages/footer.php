@@ -8,6 +8,21 @@
         <a href="https://twitter.com/"><span id="social-tw" class="fa fa-twitter-square social"></span></a>
         <a href="https://instagram.com/"><span id="social-ig" class="fa fa-instagram social"></span></a>
       </div>
+      <div>
+        <h3>Site map</h3>
+        <ul>
+          <li><a href="<?php echo site_url("hot"); ?>">Hot</a></li>
+          <li><a href="<?php echo site_url("top"); ?>">Top</a></li>
+          <li><a href="<?php echo site_url("new"); ?>">New</a></li>
+          <?php if (isset($_SESSION['logged_in'])) : ?>
+          <li><a href="<?php echo site_url("meme/add"); ?>">Add some spice</a></li>
+          <?php else : ?>
+          <li><a href="<?php echo site_url("login"); ?>">Log In</a></li>
+          <li><a href="<?php echo site_url("register"); ?>">Register</a></li>
+          <?php endif; ?>
+          <li><a href="<?php echo site_url("aboutus"); ?>">About Us</a></li>
+        </ul>
+      </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

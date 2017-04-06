@@ -14,11 +14,24 @@
 .footer {
   background-color: #2d1e2f;
   display: flex;
-  height: 170px;
+  height: 285px;
   width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+
+.footer div h3 {
+  color: #fbfffe;
+}
+
+.footer div ul li a {
+  color: #fbfffe;
+}
+
+.footer div ul li a:hover {
+  color: #ffc62b;
+  text-decoration: none;
 }
 
 .link-about {
@@ -45,7 +58,7 @@ html {
 }
 
 body {
-  margin-bottom: 170px;
+  margin-bottom: 285px;
 }
 
 .footer {
