@@ -257,6 +257,7 @@ CREATE TABLE `v_hot_memes` (
 ,`Data` varchar(100)
 ,`Date` datetime
 ,`Points` bigint(12)
+,`comments` bigint(21)
 );
 
 -- --------------------------------------------------------
@@ -274,6 +275,7 @@ CREATE TABLE `v_new_memes` (
 ,`Data` varchar(100)
 ,`Date` datetime
 ,`Points` bigint(12)
+,`comments` bigint(21)
 );
 
 -- --------------------------------------------------------
@@ -289,7 +291,9 @@ CREATE TABLE `v_top_memes` (
 ,`User_Name` varchar(32)
 ,`Data_Type` enum('P','V')
 ,`Data` varchar(100)
+,`Date` datetime
 ,`Points` bigint(12)
+,`comments` bigint(21)
 );
 
 -- --------------------------------------------------------
@@ -299,7 +303,7 @@ CREATE TABLE `v_top_memes` (
 --
 DROP TABLE IF EXISTS `v_comments`;
 
-CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_comments`  AS  select `comments`.`Id` AS `Id`,`comments`.`Meme_Id` AS `Meme_Id`,`comments`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`comments`.`Message` AS `Message`,`comments`.`Points` AS `Points`,`users`.`ProfileImg_Id` AS `ProfileImg_Id`,`comments`.`Date` AS `Date` from (`comments` join `users` on((`comments`.`User_Id` = `users`.`Id`))) ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_comments`  AS  select `comments`.`Id` AS `Id`,`comments`.`Meme_Id` AS `Meme_Id`,`comments`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`comments`.`Message` AS `Message`,`comments`.`Points` AS `Points`,`users`.`ProfileImg_Id` AS `ProfileImg_Id`,`comments`.`Date` AS `Date` from (`comments` join `users` on((`comments`.`User_Id` = `users`.`Id`))) ;
 
 -- --------------------------------------------------------
 
@@ -308,7 +312,7 @@ CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_comments`  AS  select `
 --
 DROP TABLE IF EXISTS `v_hot_memes`;
 
-CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_hot_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points` from (`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) order by `meme`.`hotness` desc ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_hot_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points`,count(`comments`.`Id`) AS `comments` from ((`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) left join `comments` on((`comments`.`Meme_Id` = `meme`.`Id`))) group by `meme`.`Id` order by `meme`.`hotness` desc,(`meme`.`Up_Points` + `meme`.`Down_Points`) desc ;
 
 -- --------------------------------------------------------
 
@@ -317,7 +321,7 @@ CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_hot_memes`  AS  select 
 --
 DROP TABLE IF EXISTS `v_new_memes`;
 
-CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_new_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points` from (`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) order by `meme`.`Date` desc ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_new_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points`,count(`comments`.`Id`) AS `comments` from ((`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) left join `comments` on((`comments`.`Meme_Id` = `meme`.`Id`))) group by `meme`.`Id` order by `meme`.`Date` desc ;
 
 -- --------------------------------------------------------
 
@@ -326,7 +330,7 @@ CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_new_memes`  AS  select 
 --
 DROP TABLE IF EXISTS `v_top_memes`;
 
-CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_top_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points` from (`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) order by (`meme`.`Up_Points` + `meme`.`Down_Points`) desc ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_top_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points`,count(`comments`.`Id`) AS `comments` from ((`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) left join `comments` on((`comments`.`Meme_Id` = `meme`.`Id`))) group by `meme`.`Id` order by (`meme`.`Up_Points` + `meme`.`Down_Points`) desc ;
 
 --
 -- Indexes for dumped tables

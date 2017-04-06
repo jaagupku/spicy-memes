@@ -6,10 +6,10 @@ include('header.php');
 array_push($scripts, '/assets/js/facebook.js');
 ?>
 
-<?php if (isset($error)) echo $error ?>
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-custom-block col-centered">
+      <?php if (isset($error)) echo "<p>".$error."</p>" ?>
       <form method="POST" action="<?php echo site_url("login"); ?>">
         <div class="form-group">
           <label for="usr">Username:</label>

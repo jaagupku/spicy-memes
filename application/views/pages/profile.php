@@ -104,7 +104,7 @@ if (isset($username)) {
                 <tr>
                   <td><a href="<?= site_url('meme/' . $meme['Id']) ?>"><?= $meme['Title'] ?></a></td>
                   <td>Spice Level: <?= $meme['Points'] ?></td>
-                  <td>Comments: <a href="<?= site_url('meme/' . $meme['Id']) ?>"><span class="badge">1001</span></a></td>
+                  <td>Comments: <a href="<?= site_url('meme/' . $meme['Id']) ?>"><span class="badge"><?php echo $meme['comments'] ?></span></a></td>
                   <td>Added on: <?= $meme['Date'] ?></td>
                 </tr>
 

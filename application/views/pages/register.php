@@ -4,14 +4,14 @@ $selection = 'register';
 include('header.php');
 ?>
 
-<?php if (isset($error)) echo $error ?>
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-custom-block col-centered">
+      <?php if (isset($error)) echo "<p>".$error."</p>" ?>
       <form method="POST" action="<?php echo site_url("register"); ?>">
         <div class="form-group">
           <label for="usr_choose">Choose username:</label>
-          <input name="username" type="text" class="form-control" id="usr_choose" placeholder="Username">
+          <input name="username" type="text" class="form-control" id="usr_choose" placeholder="Username" value="<?php if(isset($username)) echo $username; ?>">
         </div>
         <div class="form-group">
           <label for="pwd_choose">Choose password:</label>

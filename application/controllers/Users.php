@@ -189,6 +189,7 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('facebookid', '', 'numeric');
 
         $error = null;
+        $data = array();
 
         if ($this->form_validation->run()) {
             $username = $this->input->post('username');
@@ -206,10 +207,20 @@ class Users extends CI_Controller {
                 $error = 'Couldn\'t create the user';
             }
         } else {
+            $email = $this->input->post('email');
+            $fbid = $this->input->post('facebookid');
+            $username = $this->input->post('username');
+            if (isset($email)) {
+              $data['email'] = $email;
+            }
+            if (isset($fbid)) {
+              $data['fbid'] = $fbid;
+            }
+            if (isset($username)) {
+              $data['username'] = $username;
+            }
             $error = validation_errors();
         }
-
-        $data = array();
 
         $fberror = $this->session->flashdata('login_error');
         if (isset($fberror)) {
