@@ -31,7 +31,7 @@ array_push($scripts, '/assets/js/main.js');
         <div class="memedata">
           <p>Spice Level: <span class="points badge"><?php echo $row['Points']; ?></span></p>
           <p>Added by: <a href="<?php echo site_url('/profile/'.$row['User_Name']) ?>"><?php echo $row['User_Name'] ?></a></p>
-          <p>Comments: <a href="comments_page.html"><span class="badge">1001</span></a></p>
+          <p>Comments: <a href="comments_page.html"><span class="badge"><?php echo $row['comments'] ?></span></a></p>
         </div>
 
         <div class="updownvote-frontpage">

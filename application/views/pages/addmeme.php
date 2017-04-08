@@ -6,7 +6,7 @@ array_push($scripts, '/assets/js/inittooltip.js');
 ?>
     <div class="container-fluid col-xs-12 col-custom-frontpage col-centered">
     <h1>Add meme</h1>
-    <?php if (isset($error)) echo $error ?>
+    <?php if (isset($error)) echo "<p>".$error."</p>" ?>
     <?php echo form_open_multipart('upload');?>
       <input type="text" name="title" size="43" maxlength="255" placeholder="Title" data-toggle="tooltip" title="This is place for spicy title." data-placement="auto right" /><br />
       <input type="text" name="link" size="43" placeholder="https://www.youtube.com/watch?v=KMU0tzLwhbE" data-toggle="tooltip" title="Clean youtube link or image link." data-placement="auto right" /><br />
