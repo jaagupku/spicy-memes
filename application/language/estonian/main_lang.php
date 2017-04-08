@@ -28,3 +28,36 @@ $lang['modal_choosepassword_placeholder'] = 'Parool';
 $lang['modal_repeatpassword'] = 'Korda parool';
 $lang['modal_enteremail'] = 'Sisesta e-mail';
 $lang['modal_enteremail_placeholder'] = 'E-mail';
+
+$lang['title_login'] = 'Logi sisse';
+$lang['login_username'] = 'Kasutajanimi';
+$lang['login_password'] = 'Parool';
+$lang['login_forgotpassword'] = 'Unustasid parooli?';
+$lang['login_or'] = 'VÕI';
+$lang['login_loginwithfacebook'] = 'Logi sisse Facebookiga';
+$lang['login_login'] = 'LOGI SISSE';
+
+$lang['title_signup'] = 'Registreeri';
+$lang['signup_chooseusername'] = 'Vali kasutajanimi';
+$lang['signup_chooseusername_placeholder'] = 'Kasutajanimi';
+$lang['signup_choosepassword'] = 'Vali parool';
+$lang['signup_choosepassword_placeholder'] = 'Parool';
+$lang['signup_repeatpassword'] = 'Korda parool';
+$lang['signup_enteremail'] = 'Sisesta e-mail';
+$lang['signup_enteremail_placeholder'] = 'E-mail';
+$lang['signup_signup'] = 'REGISTREERI';
+
+$lang['profile_editprofile'] = 'Muuda profiili';
+$lang['profile_changepassword'] = 'Vaheta parool';
+$lang['profile_linkwithfacebook'] = 'Link with Facebook';
+$lang['profile_unlinkwithfacebook'] = 'Unlink with Facebook';
+$lang['profile_nouploads'] = 'Ma pole veel midagi üles laadinud.';
+$lang['profile_upload_stats'] = 'I have added total of %d memes, which includes %d pictures and %d videos.';
+$lang['profile_uploads'] = 'UPLOADS';
+$lang['profile_title_title'] = 'TITLE';
+$lang['profile_title_spicelevel'] = 'SPICE LEVEL';
+$lang['profile_title_comments'] = 'COMMENTS';
+$lang['profile_title_date'] = 'DATE';
+$lang['profile_spicelevel'] = 'Spice Level';
+$lang['profile_comments'] = 'Comments';
+$lang['profile_addedon'] = 'Added on';

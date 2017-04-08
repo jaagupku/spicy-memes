@@ -35,17 +35,17 @@ if (isset($username)) {
           </div>
 
           <div class="edit-profile-pswd">
-            <a href="<?= site_url('/edit_profile') ?>">edit profile</a>
-            <a href="#">change password</a>
+            <a href="<?= site_url('/edit_profile') ?>"><?= lang('profile_editprofile') ?></a>
+            <a href="#"><?= lang('profile_changepassword') ?></a>
           </div>
 
           <?php if(!$this->session->fb_linked) {
             echo '<div class="social-wrap">
-                    <button id="facebook" onClick="logInWithFacebook()" type="button">Link with Facebook</button>
+                    <button id="facebook" onClick="logInWithFacebook()" type="button">' . lang('profile_linkwithfacebook') . '</button>
                 </div>';
           } else {
             echo '<div class="social-wrap">
-                    <button id="facebook" onClick="unLinkFacebook()" type="button">Unlink Facebook</button>
+                    <button id="facebook" onClick="unLinkFacebook()" type="button">' . lang('profile_linkwithfacebook') . '</button>
                 </div>';
           } ?>
 
@@ -66,16 +66,16 @@ if (isset($username)) {
           <?php if (count($memes) == 0): ?>
 
           <p>
-            I haven't uploaded anything yet.
+            <?= lang('profile_nouploads') ?>
           </p>
 
           <?php else: ?>
 
           <p>
-            I have added total of <?php echo $meme_count['total'] ?> memes, which includes <?php echo $meme_count['picture'] ?> pictures and <?php echo $meme_count['video'] ?> videos.
+              <?= vsprintf(lang('profile_upload_stats'), array($meme_count['total'], $meme_count['picture'], $meme_count['video'])) ?>
           </p>
 
-          <h2>UPLOADS: </h2>
+          <h2><?= lang('profile_uploads') ?>: </h2>
 
           <div class="sortingsection-userpage">
             <p><strong>Sort by: </strong></p>
@@ -92,10 +92,10 @@ if (isset($username)) {
             <table class="table">
               <thead>
                 <tr>
-                  <th>TITLE</th>
-                  <th>SPICE LEVEL</th>
-                  <th>COMMENTS</th>
-                  <th>DATE</th>
+                  <th><?= lang('profile_title_title') ?></th>
+                  <th><?= lang('profile_title_spicelevel') ?></th>
+                  <th><?= lang('profile_title_comments') ?></th>
+                  <th><?= lang('profile_title_date') ?></th>
                 </tr>
               </thead>
               <tbody>
@@ -103,9 +103,9 @@ if (isset($username)) {
 
                 <tr>
                   <td><a href="<?= site_url('meme/' . $meme['Id']) ?>"><?= $meme['Title'] ?></a></td>
-                  <td>Spice Level: <?= $meme['Points'] ?></td>
-                  <td>Comments: <a href="<?= site_url('meme/' . $meme['Id']) ?>"><span class="badge">1001</span></a></td>
-                  <td>Added on: <?= $meme['Date'] ?></td>
+                  <td><?= lang('profile_spicelevel') ?>: <?= $meme['Points'] ?></td>
+                  <td><?= lang('profile_comments') ?>: <a href="<?= site_url('meme/' . $meme['Id']) ?>"><span class="badge"><?php echo $meme['comments'] ?></span></a></td>
+                  <td><?= lang('profile_addedon') ?>: <?= $meme['Date'] ?></td>
                 </tr>
 
                 <?php endforeach ?>
