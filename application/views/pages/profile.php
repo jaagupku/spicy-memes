@@ -78,10 +78,10 @@ if (isset($username)) {
           <h2><?= lang('profile_uploads') ?>: </h2>
 
           <div class="sortingsection-userpage">
-            <p><strong>Sort by: </strong></p>
-            <a href="<?= site_url("profile/$target/top") ?>"><span class="label label-default">top</span></a>
-            <a href="<?= site_url("profile/$target/comments") ?>"><span class="label label-default">comments</span></a>
-            <a href="<?= site_url("profile/$target/date") ?>"><span class="label label-default">date</span></a>
+            <p><strong><?= lang('profile_sortby') ?>: </strong></p>
+            <a href="<?= site_url("profile/$target/top") ?>"><span class="label label-default"><?= lang('profile_sortby_top') ?></span></a>
+            <a href="<?= site_url("profile/$target/comments") ?>"><span class="label label-default"><?= lang('profile_sortby_comments') ?></span></a>
+            <a href="<?= site_url("profile/$target/date") ?>"><span class="label label-default"><?= lang('profile_sortby_date') ?></span></a>
           </div>
 
           <div class="container-fluid"><div class="break"></div></div>
