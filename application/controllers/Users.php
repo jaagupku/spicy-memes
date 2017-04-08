@@ -293,6 +293,7 @@ class Users extends CI_Controller {
 
         $username_changed = !$this->_exists_and_equals($this->input->post('username'), $this->session->username);
         $email_changed = !$this->_exists_and_equals($this->input->post('email'), $this->session->email);
+        $language_changed = !$this->_exists_and_equals($this->input->post('language'), $this->session->language);
         $uploading_image = !empty($_FILES['userfile']) && file_exists($_FILES['userfile']['tmp_name']);
 
         $this->load->library('form_validation');
@@ -314,6 +315,11 @@ class Users extends CI_Controller {
 
             if ($username_changed) {
                 // TODO: Change usename
+            }
+
+            if (!$language_changed) {
+                $updated_columns['Language'] = $this->input->post('language');
+                $this->session->language = $this->input->post('language');
             }
 
             if ($uploading_image) {
@@ -356,7 +362,7 @@ class Users extends CI_Controller {
             'email' => $user_data->Email,
             'mobile_number' => $user_data->mobile_number,
             'profile_image' => $user_data->ProfileImg_Id,
-            'language' => $this->session->language ? $this->session->language : 'english',
+            'language' => $user_data->Language,
             'error' => $error
         );
 
@@ -385,6 +391,7 @@ class Users extends CI_Controller {
         $this->session->username = $user->User_Name;
         $this->session->email = $user->Email;
         $this->session->user_id = $user->Id;
+        $this->session->language = $user->Language;
         $this->session->fb_linked = isset($user->FB_Id) || $link_with_fb;
         redirect($this->session->referenced_form, 'refresh');
     }

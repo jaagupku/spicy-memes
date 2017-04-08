@@ -222,6 +222,7 @@ CREATE TABLE `users` (
   `Last_Login_Time` datetime DEFAULT CURRENT_TIMESTAMP,
   `ProfileImg_Id` varchar(100) COLLATE utf8_bin NOT NULL DEFAULT 'noprofileimg.jpg',
   `mobile_number` varchar(15) COLLATE utf8_bin DEFAULT NULL,
+  `Language` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT 'english',
   `FB_Id` varchar(64) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
