@@ -299,9 +299,9 @@ class Users extends CI_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('username', 'Username', 'required|max_length[32]|alpha_numeric' . ($username_changed ? '|is_unique[users.User_Name]' : ''));
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email' . ($email_changed ? '|is_unique[users.Email]' : ''));
-        $this->form_validation->set_rules('language', 'Language', function($value) {
+        $this->form_validation->set_rules('language', 'Language', array(function($value) {
             return in_array($value, array('english', 'estonian'));
-        });
+        }));
 
         if ($this->form_validation->run()) {
             $updated_columns = array();
@@ -362,7 +362,7 @@ class Users extends CI_Controller {
             'email' => $user_data->Email,
             'mobile_number' => $user_data->mobile_number,
             'profile_image' => $user_data->ProfileImg_Id,
-            'language' => $user_data->Language,
+            'language' => $this->session->language,
             'error' => $error
         );
 

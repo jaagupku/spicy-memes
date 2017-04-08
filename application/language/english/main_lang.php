@@ -65,3 +65,20 @@ $lang['profile_title_date'] = 'DATE';
 $lang['profile_spicelevel'] = 'Spice Level';
 $lang['profile_comments'] = 'Comments';
 $lang['profile_addedon'] = 'Added on';
+
+$lang['title_editprofile'] = 'Edit profile';
+$lang['editprofile_profileimage'] = 'Profile image';
+$lang['editprofile_username'] = 'Username';
+$lang['editprofile_email'] = 'E-mail';
+$lang['editprofile_language'] = 'Language';
+$lang['editprofile_update'] = 'UPDATE';
+
+$lang['title_addmeme'] = 'Add meme';
+$lang['addmeme_addmeme'] = 'Add meme';
+$lang['addmeme_title_placeholder'] = 'Title';
+$lang['addmeme_title_tooltip'] = 'This is place for spicy title.';
+$lang['addmeme_link_placeholder'] = 'https://www.youtube.com/watch?v=KMU0tzLwhbE';
+$lang['addmeme_link_tooltip'] = 'Clean youtube link or image link.';
+$lang['addmeme_or'] = 'OR';
+$lang['addmeme_file_tooltip'] = 'Only .jpg, .png and .gif under 4MB';
+$lang['addmeme_submit'] = 'Submit';

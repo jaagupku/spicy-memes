@@ -29,7 +29,7 @@ array_push($scripts, "/assets/js/comments.js");
           <div class="memedata">
             <p>Spice Level: <span class="badge"><?php echo $meme['Points']; ?></span></p>
             <p>Added by: <a href="<?php echo site_url('/profile/'.$meme['User_Name']) ?>"><?php echo $meme['User_Name'] ?></a></p>
-            <p>Comments: <a href="#"><span class="badge">1001</span></a></p>
+            <p>Comments: <a href="#"><span class="badge"><?= $meme['comments'] ?></span></a></p>
           </div>
 
         </div>

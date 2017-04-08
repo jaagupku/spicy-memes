@@ -65,3 +65,20 @@ $lang['profile_title_date'] = 'KUUPÄEV';
 $lang['profile_spicelevel'] = 'Spice Level';
 $lang['profile_comments'] = 'Kommentaarid';
 $lang['profile_addedon'] = 'Lisatud';
+
+$lang['title_editprofile'] = 'Muuda profiili';
+$lang['editprofile_profileimage'] = 'Profiilipilt';
+$lang['editprofile_username'] = 'Kasutajanimi';
+$lang['editprofile_email'] = 'E-mail';
+$lang['editprofile_language'] = 'Keel';
+$lang['editprofile_update'] = 'MUUDA';
+
+$lang['title_addmeme'] = 'Lisa meem';
+$lang['addmeme_addmeme'] = 'Lisa meem';
+$lang['addmeme_title_placeholder'] = 'Pealkiri';
+$lang['addmeme_title_tooltip'] = 'Siia lisa vürtsikas pealkiri';
+$lang['addmeme_link_placeholder'] = 'https://www.youtube.com/watch?v=KMU0tzLwhbE';
+$lang['addmeme_link_tooltip'] = 'YouTube\'i link või pildi link';
+$lang['addmeme_or'] = 'VÕI';
+$lang['addmeme_file_tooltip'] = 'Ainult .jpg, .png või .gif fail alla 4MB';
+$lang['addmeme_submit'] = 'Lisa';
