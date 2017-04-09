@@ -341,12 +341,12 @@ class Users extends CI_Controller {
                 try {
                     $result = upload_image($this, 'userfile');
                 } catch (Exception $exception) {
-                    $this->_load_edit_profile('Something went wrong with uploading to cloud.');
+                    $this->_load_edit_profile( lang('addmeme_upload_to_cloud_fail') );
                     return;
                 }
 
                 if ($result === false) {
-                    $this->_load_edit_profile('Something went wrong with upload');
+                    $this->_load_edit_profile( lang('addmeme_upload_fail'));
                     return;
                 }
 

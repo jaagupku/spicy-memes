@@ -11,7 +11,7 @@ array_push($scripts, '/assets/js/inittooltip.js');
       <input type="text" name="title" size="43" maxlength="255" placeholder="<?= lang('addmeme_title_placeholder') ?>" data-toggle="tooltip" title="<?= lang('addmeme_title_tooltip') ?>" data-placement="auto right" /><br />
       <input type="text" name="link" size="43" placeholder="<?= lang('addmeme_link_placeholder') ?>" data-toggle="tooltip" title="<?= lang('addmeme_link_tooltip') ?>" data-placement="auto right" /><br />
       <label><?= lang('addmeme_or') ?></label>
-      <input type="file" name="userfile" data-toggle="tooltip" title="<?= lang('addmeme_file_tooltip') ?>" data-placement="auto right" />
+      <input type="file" value="<?= lang('addmeme_choose') ?>" name="userfile" data-toggle="tooltip" title="<?= lang('addmeme_file_tooltip') ?>" data-placement="auto right" />
       <input type="submit" value="<?= lang('addmeme_submit') ?>"/>
     </form>
     </div>

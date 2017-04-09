@@ -83,8 +83,12 @@ $lang['addmeme_title_tooltip'] = 'This is place for spicy title.';
 $lang['addmeme_link_placeholder'] = 'https://www.youtube.com/watch?v=KMU0tzLwhbE';
 $lang['addmeme_link_tooltip'] = 'Clean youtube link or image link.';
 $lang['addmeme_or'] = 'OR';
+$lang['addmeme_choose'] = 'Choose File';
 $lang['addmeme_file_tooltip'] = 'Only .jpg, .png and .gif under 4MB';
 $lang['addmeme_submit'] = 'Submit';
+$lang['addmeme_upload_to_cloud_fail'] = 'Something went wrong with uploading to cloud.';
+$lang['addmeme_upload_fail'] = 'Something went wrong with upload.';
+$lang['addmeme_upload_checklink'] = 'Check your link. It is not valid.';
 
 $lang['title_aboutus'] = 'About us';
 $lang['aboutus_aboutus'] = 'ABOUT US';

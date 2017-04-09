@@ -37,7 +37,7 @@ class Upload extends CI_Controller {
           try {
             $data = upload_link($this, $this->input->post('link'));
           } catch (Exception $e) {
-            $this->_display_error('Check your link. It is not valid.');
+            $this->_display_error(lang('addmeme_upload_checklink'));
             return;
           }
         }
@@ -50,12 +50,12 @@ class Upload extends CI_Controller {
           try {
               $result = upload_image($this, 'userfile');
           } catch (Exception $exception) {
-              $this->_display_error('Something went wrong with uploading to cloud.');
+              $this->_display_error(lang('addmeme_upload_to_cloud_fail'));
               return;
           }
 
           if ($result === false) {
-              $this->_display_error('Something went wrong with upload');
+              $this->_display_error(lang('addmeme_upload_fail'));
               return;
           }
 

@@ -84,8 +84,12 @@ $lang['addmeme_title_tooltip'] = 'Siia lisa vürtsikas pealkiri';
 $lang['addmeme_link_placeholder'] = 'https://www.youtube.com/watch?v=KMU0tzLwhbE';
 $lang['addmeme_link_tooltip'] = 'YouTube\'i link või pildi link';
 $lang['addmeme_or'] = 'VÕI';
+$lang['addmeme_choose'] = 'Vali fail';
 $lang['addmeme_file_tooltip'] = 'Ainult .jpg, .png või .gif fail alla 4MB';
 $lang['addmeme_submit'] = 'Lisa';
+$lang['addmeme_upload_to_cloud_fail'] = 'Üleslaadimine pilve ebaõnnestus.';
+$lang['addmeme_upload_fail'] = 'Üleslaadimine ebaõnnestus.';
+$lang['addmeme_upload_checklink'] = 'Kontrolli oma linki, see ei vasta nõuetele.';
 
 $lang['title_aboutus'] = 'Meist';
 $lang['aboutus_aboutus'] = 'MEIST';
