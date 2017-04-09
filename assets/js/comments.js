@@ -43,7 +43,8 @@ $(document).ready(function() {
   });
 
   var submitComment = function (e) {
-    if (Offline.check()) {
+    Offline.check();
+    if (Offline.state == 'down') {
       e.preventDefault();
       var comment = $("#comment").val();
       if (comment.length > 0) {
