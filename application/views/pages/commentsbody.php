@@ -41,7 +41,7 @@ array_push($scripts, "/assets/js/comments.js");
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xs-12 col-custom-commentspage col-centered">
+        <div id="commentForm" class="col-xs-12 col-custom-commentspage col-centered">
           <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']===TRUE) : ?>
             <form method="POST">
               <div class="form-group insert-comments">

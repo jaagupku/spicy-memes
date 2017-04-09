@@ -1,9 +1,5 @@
 var offlineCounter = 0;
 
-window.addEventListener("storage", function(e) {
- console.debug(e);
-}, false);
-
 $(document).ready(function() {
   loadVoting('read-comments', 'comment');
 
@@ -27,17 +23,21 @@ $(document).ready(function() {
     });
     if (localStorage.comment0) {
       for (i = 0; i < offlineCounter; i++) {
-        console.log("Attempting upload nr " + offlineCounter + ". Message: " + comment);
+        console.log("Attempting upload nr " + offlineCounter + ". Message: " + localStorage.getItem("comment" + i));
         $.ajax({
           type: "POST",
           url: window.location.href,
           data: "message=" + localStorage.getItem("comment" + i),
           success: function () {
-            console.log("Uploaded comment nr " + offlineCounter + ". Message: " + comment);
+            console.log("Uploaded comment nr " + offlineCounter + ". Message: " + localStorage.getItem("comment" + i));
             localStorage.removeItem("comment" + i);
           }
         });
       }
+      $("#commentForm").append('<p id="uploadedLocal">Connection restored, comments uploaded.</p>');
+      setTimeout(function(){
+        $("#uploadedLocal").fadeOut("slow");
+      },5000)
       offlineCounter = 0;
     }
   });
@@ -51,6 +51,10 @@ $(document).ready(function() {
         $("#comment").val("");
         console.log("Saved comment nr " + offlineCounter + ". Message: " + comment);
         offlineCounter += 1;
+        $("#commentForm").append('<p class="savedLocal">You are offline, comment saved in local storage.</p>');
+        setTimeout(function(){
+          $(".savedLocal").fadeOut("slow");
+        },5000)
       }
     }
   };
