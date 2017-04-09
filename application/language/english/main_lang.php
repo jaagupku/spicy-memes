@@ -92,6 +92,7 @@ $lang['addmeme_upload_to_cloud_fail'] = 'Something went wrong with uploading to 
 $lang['addmeme_upload_fail'] = 'Something went wrong with upload.';
 $lang['addmeme_upload_checklink'] = 'Check your link. It is not valid.';
 $lang['addmeme_missing'] = 'Link or image is missing.';
+$lang['addmeme_title'] = 'Title';
 
 $lang['title_aboutus'] = 'About us';
 $lang['aboutus_aboutus'] = 'ABOUT US';
@@ -123,6 +124,7 @@ $lang['comment_commentsuccessfullyadded'] = 'Comment successfully added.';
 $lang['comment_readspicycommentshere'] = 'READ SPICY COMMENTS HERE';
 $lang['comment_nocomments'] = 'It seems to be empty. No comments here.';
 $lang['comment_points'] = 'Points';
+$lang['comment'] = 'Comment';
 
 $lang['meme_spicelevel'] = 'Spice Level';
 $lang['meme_addedby'] = 'Added by';

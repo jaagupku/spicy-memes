@@ -16,7 +16,7 @@ class Upload extends CI_Controller {
         redirect('/login', 'refresh');
       }
 
-      $this->form_validation->set_rules('title', 'title', 'required|max_length[255]');
+      $this->form_validation->set_rules('title', lang('addmeme_title'), 'required|max_length[255]');
       $this->form_validation->set_rules('link', 'link', 'valid_url');
 
       if ($this->form_validation->run() === FALSE) {
