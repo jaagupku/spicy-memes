@@ -79,7 +79,7 @@ array_push($scripts, "/assets/js/comments.js");
           <?php foreach($comments as $comment) : ?>
             <div class="container-fluid"><div class="break"></div></div>
             <div class="read-comments" data-id="<?= $comment['Id'] ?>">
-              <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>"><?php echo '<img class="profile-pic-comments" alt="' + lang('editprofile_profileimage') + '" src="https://res.cloudinary.com/spicy-memes/image/upload/t_profile/'.$comment['ProfileImg_Id'].'" />' ?></a>
+              <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>"><?php echo '<img class="profile-pic-comments" alt="Profile Image" src="https://res.cloudinary.com/spicy-memes/image/upload/t_profile/'.$comment['ProfileImg_Id'].'" />' ?></a>
               <div class="comment">
                 <a href="<?php echo site_url('/profile/'.$comment['User_Name']) ?>" class="user-comments"><?php echo $comment['User_Name'] ?></a>
                 <br>
