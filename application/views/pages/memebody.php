@@ -29,9 +29,9 @@ array_push($scripts, '/assets/js/main.js');
         </div>
 
         <div class="memedata">
-          <p>Spice Level: <span class="points badge"><?php echo $row['Points']; ?></span></p>
-          <p>Added by: <a href="<?php echo site_url('/profile/'.$row['User_Name']) ?>"><?php echo $row['User_Name'] ?></a></p>
-          <p>Comments: <a href="comments_page.html"><span class="badge"><?php echo $row['comments'] ?></span></a></p>
+          <p><?= lang('meme_spicelevel') ?>: <span class="points badge"><?php echo $row['Points']; ?></span></p>
+          <p><?= lang('meme_addedby') ?>: <a href="<?php echo site_url('/profile/'.$row['User_Name']) ?>"><?php echo $row['User_Name'] ?></a></p>
+          <p><?= lang('meme_comments') ?>: <a href="comments_page.html"><span class="badge"><?php echo $row['comments'] ?></span></a></p>
         </div>
 
         <div class="updownvote-frontpage">
@@ -58,7 +58,7 @@ array_push($scripts, '/assets/js/main.js');
 <?php else : ?>
 <div class="container-fluid">
   <div class="row col-centered col-custom-frontpage">
-    <p>End of page, no more memes.</p>
+    <p><?= lang('meme_endofpage') ?></p>
   </div>
 </div>
 <?php endif; ?>

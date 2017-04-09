@@ -113,3 +113,8 @@ $lang['comment_commentsuccessfullyadded'] = 'Kommentaar lisatud.';
 $lang['comment_readspicycommentshere'] = 'LOE VÜRTSIKAID KOMMENTAARE';
 $lang['comment_nocomments'] = 'Siin kommentaare pole.';
 $lang['comment_points'] = 'Punkte';
+
+$lang['meme_spicelevel'] = 'Vürtsikus';
+$lang['meme_addedby'] = 'Autor';
+$lang['meme_comments'] = 'Kommentaarid';
+$lang['meme_endofpage'] = 'Lehe lõpp, rohkem meeme pole.';

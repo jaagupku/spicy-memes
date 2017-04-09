@@ -110,6 +110,11 @@ $lang['comments_comments'] = 'Comments';
 $lang['comment_insertspicycommenthere'] = 'INSERT SPICY COMMENT HERE';
 $lang['comment_submit'] = 'Submit';
 $lang['comment_commentsuccessfullyadded'] = 'Comment successfully added.';
-$lang['comment_readspicycommentshere'] = 'READ SPICY COMMENTS HERE:';
+$lang['comment_readspicycommentshere'] = 'READ SPICY COMMENTS HERE';
 $lang['comment_nocomments'] = 'It seems to be empty. No comments here.';
 $lang['comment_points'] = 'Points';
+
+$lang['meme_spicelevel'] = 'Spice Level';
+$lang['meme_addedby'] = 'Added by';
+$lang['meme_comments'] = 'Comments';
+$lang['meme_endofpage'] = 'End of page, no more memes.';

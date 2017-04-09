@@ -56,6 +56,10 @@ class Main extends CI_Controller {
       }
     }
 
+    public function meme_xsl() {
+        $this->load->view('pages/meme_xsl');
+    }
+
     private function _display_ajax_memes($memes, $selection, $from, $amount) {
       if (count($memes) === 0) {
         echo "null";

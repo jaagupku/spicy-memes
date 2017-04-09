@@ -3,8 +3,9 @@ function startPolling() {
     var xsltFile;
     $.ajax({
         method: "GET",
-        url: location.protocol + '//' + location.hostname + "/assets/xlst/meme.xsl"
-    }).done(function(xlst) {
+        url: location.protocol + '//' + location.hostname + "/main/meme_xsl",
+        dataType: 'xml'
+    }).done(function (xlst) {
         xsltFile = xlst;
     });
 
@@ -37,6 +38,6 @@ function startPolling() {
     setTimeout(poll, 10000);
 }
 
-$(function() {
+$(function () {
     startPolling();
 });
