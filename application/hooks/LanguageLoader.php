@@ -16,7 +16,8 @@ class LanguageLoader {
     }
 
     // Load language files
-    $instance->config->set_item('language', 'estonian');
-    $instance->lang->load('main', $instance->session->language ? $instance->session->language : 'english');
+		$language = $instance->session->language ? $instance->session->language : 'english';
+    $instance->config->set_item('language', $language);
+    $instance->lang->load('main', $language);
   }
 }
