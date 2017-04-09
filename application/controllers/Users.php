@@ -199,7 +199,7 @@ class Users extends CI_Controller {
                   $this->_login_and_redirect($username);
                 }
             } else {
-                $error = <?= lang('signup_create_user_failed') ?>;
+                $error = lang('signup_create_user_failed');
             }
         } else {
             $email = $this->input->post('email');
