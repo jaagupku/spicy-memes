@@ -22,6 +22,8 @@ if (!isset($username)) {
     <link href="/assets/css/editprofilestyle.css" rel="stylesheet">
     <link href="/assets/css/aboutpagestyle.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/css/offline-theme-dark-indicator.css" rel="stylesheet">
+    <link href="/assets/css/offline-language-english-indicator.css" rel="stylesheet">
   </head>
   <body>
 

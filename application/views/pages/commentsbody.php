@@ -3,6 +3,7 @@ $title = $meme['Title'];
 $selection = null;
 include('header.php');
 
+array_push($scripts, '/assets/js/offline.min.js');
 array_push($scripts, "/assets/js/voting.js");
 array_push($scripts, "/assets/js/comments.js");
 ?>
@@ -45,9 +46,9 @@ array_push($scripts, "/assets/js/comments.js");
             <form method="POST">
               <div class="form-group insert-comments">
                 <label for="message">INSERT SPICY COMMENT HERE:</label>
-                <textarea name="message" class="form-control" rows="4"></textarea>
+                <textarea id="comment" name="message" class="form-control" rows="4"></textarea>
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button id="submitComment" type="submit" class="btn btn-default" >Submit</button>
             </form>
           <?php endif; ?>
           <?php if ($comment_added) : ?>
