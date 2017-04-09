@@ -76,7 +76,7 @@ if (!isset($username)) {
    <div class="container-fluid"><div class="break"></div></div>
    <div class="container-fluid"><div class="break"></div></div>
 
-   <?php if($selection !== 'addmeme') : ?>
+
     <!-- ADD SOME SPICE BODY  -->
     <div class="container-fluid">
       <div class="row">
@@ -86,12 +86,13 @@ if (!isset($username)) {
                 <a href="<?= site_url(strtok($_SERVER["REQUEST_URI"],'?') . '?language=estonian') ?>">EST</a>
             </p>
         </div>
+        <?php if($selection !== 'addmeme') : ?>
         <div class="addsomespice">
             <a role="button" class="btn btn-lg addsomespice-button" href="<?php echo site_url("meme/add"); ?>" <?php if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']===FALSE) {echo 'data-toggle="modal" data-remote="false" data-target="#signuploginmodal"';} ?>><?= lang('addsomespice') ?></a>
         </div>
+       <?php endif; ?>
       </div>
     </div>
-   <?php endif; ?>
 
     <?php if (!isset($username) && $selection !== 'login' && $selection !== 'register'): ?>
     <!-- signuploginmodal  -->

@@ -14,9 +14,8 @@
           <li><a href="<?php echo site_url("hot"); ?>"><?= lang('header_hot') ?></a></li>
           <li><a href="<?php echo site_url("top"); ?>"><?= lang('header_top') ?></a></li>
           <li><a href="<?php echo site_url("new"); ?>"><?= lang('header_new') ?></a></li>
-          <?php if (isset($_SESSION['logged_in'])) : ?>
           <li><a href="<?php echo site_url("meme/add"); ?>"><?= lang('footer_addsomepsice') ?></a></li>
-          <?php else : ?>
+          <?php  if (!isset($_SESSION['logged_in'])) : ?>
           <li><a href="<?php echo site_url("login"); ?>"><?= lang('footer_login') ?></a></li>
           <li><a href="<?php echo site_url("register"); ?>"><?= lang('footer_register') ?></a></li>
           <?php endif; ?>
