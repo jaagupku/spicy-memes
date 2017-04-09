@@ -2,7 +2,7 @@
     <div class="container-fluid"><div class="break"></div></div>
 
     <div class="container-fluid footer">
-      <a class="link-about" href="<?php echo site_url("aboutus"); ?>">ABOUT US</a>
+      <a class="link-about" href="<?php echo site_url("aboutus"); ?>"><?= lang('footer_about') ?></a>
       <div class="social-media">
         <a href="https://www.facebook.com/"><span id="social-fb" class="fa fa-facebook-square social"></span></a>
         <a href="https://twitter.com/"><span id="social-tw" class="fa fa-twitter-square social"></span></a>
@@ -11,16 +11,16 @@
       <div class="container-fluid"><div class="break"></div></div>
       <div class="site-map">
         <ul>
-          <li><a href="<?php echo site_url("hot"); ?>">HOT</a></li>
-          <li><a href="<?php echo site_url("top"); ?>">TOP</a></li>
-          <li><a href="<?php echo site_url("new"); ?>">NEW</a></li>
+          <li><a href="<?php echo site_url("hot"); ?>"><?= lang('footer_hot') ?></a></li>
+          <li><a href="<?php echo site_url("top"); ?>"><?= lang('footer_top') ?></a></li>
+          <li><a href="<?php echo site_url("new"); ?>"><?= lang('footer_new') ?></a></li>
           <?php if (isset($_SESSION['logged_in'])) : ?>
-          <li><a href="<?php echo site_url("meme/add"); ?>">ADD SOME SPICE</a></li>
+          <li><a href="<?php echo site_url("meme/add"); ?>"><?= lang('footer_addsomepsice') ?></a></li>
           <?php else : ?>
-          <li><a href="<?php echo site_url("login"); ?>">LOG IN</a></li>
-          <li><a href="<?php echo site_url("register"); ?>">REGISTER</a></li>
+          <li><a href="<?php echo site_url("login"); ?>"><?= lang('footer_login') ?></a></li>
+          <li><a href="<?php echo site_url("register"); ?>"><?= lang('footer_register') ?></a></li>
           <?php endif; ?>
-          <li><a href="<?php echo site_url("aboutus"); ?>">ABOUT US</a></li>
+          <li><a href="<?php echo site_url("aboutus"); ?>"><?= lang('footer_about') ?></a></li>
         </ul>
       </div>
     </div>

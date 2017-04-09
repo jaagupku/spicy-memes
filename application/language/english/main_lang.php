@@ -95,3 +95,11 @@ $lang['aboutus_name_placeholder'] = 'Enter your name';
 $lang['aboutus_bank'] = 'YOUR BANK ACCOUNT';
 $lang['aboutus_bank_placeholder'] = 'Enter your bank account';
 $lang['aboutus_donate'] = 'DONATE';
+
+$lang['footer_about'] = 'ABOUT US';
+$lang['footer_hot'] = 'HOT';
+$lang['footer_top'] = 'TOP';
+$lang['footer_new'] = 'NEW';
+$lang['footer_login'] = 'LOG IN';
+$lang['footer_register'] = 'SIGN UP';
+$lang['footer_addsomepsice'] = 'ADD SOME SPICE';

@@ -12,7 +12,7 @@ $lang['header_login'] = 'LOGI SISSE';
 $lang['header_signup'] = 'REGISTREERI';
 $lang['header_logout'] = 'LOGI VÄLJA';
 
-$lang['addsomespice'] = 'ADD SOME SPICE';
+$lang['addsomespice'] = 'LISA VÜRTSI';
 
 $lang['modal_login'] = 'LOGI SISSE';
 $lang['modal_username'] = 'Kasutajanimi';
@@ -95,3 +95,11 @@ $lang['aboutus_name_placeholder'] = 'Siseta oma nimi';
 $lang['aboutus_bank'] = 'SINU PANGAKONTO';
 $lang['aboutus_bank_placeholder'] = 'Sisesta oma pangakonto';
 $lang['aboutus_donate'] = 'ANNETA';
+
+$lang['footer_about'] = 'MEIST';
+$lang['footer_hot'] = 'HOT';
+$lang['footer_top'] = 'TOP';
+$lang['footer_new'] = 'NEW';
+$lang['footer_login'] = 'LOGI SISSE';
+$lang['footer_register'] = 'REGISTREERI';
+$lang['footer_addsomepsice'] = 'LISA VÜRTSI';
