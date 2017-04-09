@@ -4,7 +4,6 @@ class Main extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('meme_model');
-        $this->lang->load("main","estonian");
     }
 
     public function index() {
