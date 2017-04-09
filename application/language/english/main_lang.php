@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$lang['lang_code'] = 'en';
 $lang['title_spicymemes'] = 'Spicy Memes';
 
 $lang['header_spicymemes'] = 'SPICY MEMES';

@@ -2,13 +2,14 @@ var SPLITPATHNAME = location.pathname.split('/');
 var FROM = SPLITPATHNAME.length > 2 ? parseInt(SPLITPATHNAME[2]) : 0;
 var XLST = '';
 var LOADBUTTON = $('#load-button');
+var lang = $('html').attr('lang');
 
 $(function () {
     loadVoting('meme-container', 'meme');
 
     $.ajax({
         method: "GET",
-        url: location.protocol + '//' + location.hostname + "/main/meme_xsl",
+        url: location.protocol + '//' + location.hostname + "/assets/xlst/meme_" + lang + ".xsl",
         dataType: 'xml'
     }).done(function (xlst) {
         XLST = xlst;

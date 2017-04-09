@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$lang['lang_code'] = 'est';
 $lang['title_spicymemes'] = 'Vürtsikad Meemid';
 
 $lang['header_spicymemes'] = 'VÜRTSIKAD MEEMID';
