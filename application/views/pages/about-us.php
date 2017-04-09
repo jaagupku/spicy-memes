@@ -1,5 +1,5 @@
 <?php
-$title = 'About us';
+$title = lang('title_aboutus');
 $selection ='aboutus';
 include('header.php');
 
@@ -12,8 +12,8 @@ array_push($scripts, 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDuSD8hPd
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-custom-about col-centered">
-      <h2>ABOUT US</h2>
-      <p>Spicy Memes is a website founded by three students from University of Tartu. The idea was to create an ultimate scrolling simulator for the spiciest memes ever made. Our team includes: Jaagup Kuhi, Henri-Martin Jaakson ja Agu-Art Annuk. </p>
+      <h2><?= lang('aboutus_aboutus') ?></h2>
+      <p><?= lang('aboutus_aboutus_description') ?></p>
     </div>
   </div>
 </div>
@@ -21,7 +21,7 @@ array_push($scripts, 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDuSD8hPd
 <div class="container-fluid"><div class="break"></div></div>
 
 <div class="aboutus-location">
-  <h2>OUR BASE LOCATION</h2>
+  <h2><?= lang('aboutus_ourbase') ?></h2>
   <div id="map"></div>
 </div>
 
@@ -105,9 +105,9 @@ $fields["VK_MAC"] = base64_encode($signature);
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-custom-about col-centered">
-      <h2>DONATIONS</h2>
-      <p>To help us boost our creativity and make everything more spicy, we have included a big red donate button. So everyone who thinks we deserve some recognition, fill the form and hit that button. </p>
-      <strong>NB! Donations cost 5 euros!</strong>
+      <h2><?= lang('aboutus_donations') ?></h2>
+      <p><?= lang('aboutus_donations_description') ?></p>
+      <strong><?= lang('aboutus_donations_nb') ?></strong>
     </div>
   </div>
   <div class="break"></div>
@@ -118,14 +118,14 @@ $fields["VK_MAC"] = base64_encode($signature);
                     <input type="hidden" name="<?php echo $key; ?>" value="<?php echo htmlspecialchars($val); ?>" />
         <?php endforeach; ?>
         <div class="form-group">
-          <label for="PANGALINK_NAME">YOUR NAME : </label>
-          <input type="text" name="PANGALINK_NAME" id="PANGALINK_NAME" class="form-control" placeholder="Enter your name" required>
+          <label for="PANGALINK_NAME"><?= lang('aboutus_name') ?> : </label>
+          <input type="text" name="PANGALINK_NAME" id="PANGALINK_NAME" class="form-control" placeholder="<?= lang('aboutus_name_placeholder') ?>" required>
         </div>
         <div class="form-group">
-          <label for="PANGALINK_ACCOUNT">YOUR BANK ACCOUNT : </label>
-          <input type="text" id="PANGALINK_ACCOUNT" class="form-control" name="PANGALINK_ACCOUNT" placeholder="Enter your bank account" required>
+          <label for="PANGALINK_ACCOUNT"><?= lang('aboutus_bank') ?> : </label>
+          <input type="text" id="PANGALINK_ACCOUNT" class="form-control" name="PANGALINK_ACCOUNT" placeholder="<?= lang('aboutus_bank_placeholder') ?>" required>
         </div>
-        <button type="submit" class="btn btn-lg donate-button">DONATE</button>
+        <button type="submit" class="btn btn-lg donate-button"><?= lang('aboutus_donate') ?></button>
       </form>
     </div>
   </div>

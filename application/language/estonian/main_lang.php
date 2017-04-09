@@ -82,3 +82,16 @@ $lang['addmeme_link_tooltip'] = 'YouTube\'i link või pildi link';
 $lang['addmeme_or'] = 'VÕI';
 $lang['addmeme_file_tooltip'] = 'Ainult .jpg, .png või .gif fail alla 4MB';
 $lang['addmeme_submit'] = 'Lisa';
+
+$lang['title_aboutus'] = 'Meist';
+$lang['aboutus_aboutus'] = 'MEIST';
+$lang['aboutus_aboutus_description'] = 'Vürtsikad Meemid on veebirakendus kõige vürtsikamate meemide jagamiseks, vaatamiseks ja hindamiseks. See on loodud kolme Tartu Ülikooli tudengi poolt: Jaagup Kuhi, Henri-Martin Jaakson ja Agu-Art Annuk.';
+$lang['aboutus_ourbase'] = 'MEIE ASUKOHT';
+$lang['aboutus_donations'] = 'ANNETUSED';
+$lang['aboutus_donations_description'] = 'Selleks, et aidata kaasa Meie arendusprotsessile, oleme paigutanud siia ühe suure punase nupu annetuste jaoks. Kõik, kes soovivad, täitke järgnev ankeet ning vajutage nupule ANNETA.';
+$lang['aboutus_donations_nb'] = 'NB! Annetused maksavad 5 eurot!';
+$lang['aboutus_name'] = 'SINU NIMI';
+$lang['aboutus_name_placeholder'] = 'Siseta oma nimi';
+$lang['aboutus_bank'] = 'SINU PANGAKONTO';
+$lang['aboutus_bank_placeholder'] = 'Sisesta oma pangakonto';
+$lang['aboutus_donate'] = 'ANNETA';

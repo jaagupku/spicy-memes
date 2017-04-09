@@ -82,3 +82,16 @@ $lang['addmeme_link_tooltip'] = 'Clean youtube link or image link.';
 $lang['addmeme_or'] = 'OR';
 $lang['addmeme_file_tooltip'] = 'Only .jpg, .png and .gif under 4MB';
 $lang['addmeme_submit'] = 'Submit';
+
+$lang['title_aboutus'] = 'About us';
+$lang['aboutus_aboutus'] = 'ABOUT US';
+$lang['aboutus_aboutus_description'] = 'Spicy Memes is a website founded by three students from University of Tartu. The idea was to create an ultimate scrolling simulator for the spiciest memes ever made. Our team includes: Jaagup Kuhi, Henri-Martin Jaakson ja Agu-Art Annuk.';
+$lang['aboutus_ourbase'] = 'OUR BASE LOCATION';
+$lang['aboutus_donations'] = 'DONATIONS';
+$lang['aboutus_donations_description'] = 'To help us boost our creativity and make everything more spicy, we have included a big red donate button. So everyone who thinks we deserve some recognition, fill the form and hit that button.';
+$lang['aboutus_donations_nb'] = 'NB! Donations cost 5 euros!';
+$lang['aboutus_name'] = 'YOUR NAME';
+$lang['aboutus_name_placeholder'] = 'Enter your name';
+$lang['aboutus_bank'] = 'YOUR BANK ACCOUNT';
+$lang['aboutus_bank_placeholder'] = 'Enter your bank account';
+$lang['aboutus_donate'] = 'DONATE';
