@@ -93,7 +93,8 @@ $lang['addmeme_upload_to_cloud_fail'] = 'Üleslaadimine pilve ebaõnnestus.';
 $lang['addmeme_upload_fail'] = 'Üleslaadimine ebaõnnestus.';
 $lang['addmeme_upload_checklink'] = 'Kontrolli oma linki, see ei vasta nõuetele.';
 $lang['addmeme_missing'] = 'Link või pilt on puudu.';
-$lang['addmeme_title'] = 'Pealkiri';
+$lang['addmeme_validation_title'] = 'Pealkiri';
+$lang['addmeme_validation_link'] = 'Aadress';
 
 $lang['title_aboutus'] = 'Meist';
 $lang['aboutus_aboutus'] = 'MEIST';
