@@ -29,7 +29,7 @@ function loadVoting(containerClassName, ajaxSubPath) {
         vote = vote == previousVote ? 0 : vote;
 
         $.ajax({
-            url: location.protocol + '//' + location.hostname + '/index.php/voting/' + ajaxSubPath,
+            url: location.protocol + '//' + location.hostname + '/voting/' + ajaxSubPath,
             type: 'post',
             data: {id: id, vote: vote},
             success: function () {

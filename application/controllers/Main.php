@@ -42,7 +42,7 @@ class Main extends CI_Controller {
         }
     }
 
-    public function ajax() {
+    public function getMemesXML() {
       $type = $_REQUEST["type"];
 		  $from = $_REQUEST["from"];
       $amount = $_REQUEST["amount"];

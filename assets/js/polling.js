@@ -11,7 +11,7 @@ function startPolling() {
 
     function poll() {
         $.ajax({
-            url: location.protocol + '//' + location.hostname + '/index.php/main/newest',
+            url: location.protocol + '//' + location.hostname + '/main/newest',
             type: 'post',
             data: {lastMeme: lastMeme},
             success: function (result) {

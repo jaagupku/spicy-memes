@@ -1,4 +1,4 @@
-var uri = location.protocol + '//' + location.hostname + "/index.php/users/userMemesJSON?username=" + $(".user-profile-userpage h2").text() + "&order=";
+var uri = location.protocol + '//' + location.hostname + "/users/userMemesJSON?username=" + $(".user-profile-userpage h2").text() + "&order=";
 var correctHash = ['top', 'comments', 'date'];
 var fillTable = function(data) {
   var htmlData = "";

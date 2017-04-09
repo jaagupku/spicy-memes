@@ -1,7 +1,7 @@
 logInWithFacebook = function() {
   FB.login(function(response) {
     if (response.authResponse) {
-      window.location.href = location.protocol + '//' + location.hostname + "/index.php/login_fb_callback";
+      window.location.href = location.protocol + '//' + location.hostname + "/login_fb_callback";
     } else {
       alert('User cancelled login or did not fully authorize.');
     }
@@ -18,7 +18,7 @@ unLinkFacebook = function() {
         if (!response || response.error) {
           alert('Error occured');
         } else {
-          window.location.href = location.protocol + '//' + location.hostname + "/index.php/users/unlink_fb";
+          window.location.href = location.protocol + '//' + location.hostname + "/users/unlink_fb";
         }
       });
     } else {
