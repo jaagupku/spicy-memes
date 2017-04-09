@@ -92,6 +92,7 @@ $lang['addmeme_submit'] = 'Lisa';
 $lang['addmeme_upload_to_cloud_fail'] = 'Üleslaadimine pilve ebaõnnestus.';
 $lang['addmeme_upload_fail'] = 'Üleslaadimine ebaõnnestus.';
 $lang['addmeme_upload_checklink'] = 'Kontrolli oma linki, see ei vasta nõuetele.';
+$lang['addmeme_missing'] = 'Link või pilt on puudu.';
 
 $lang['title_aboutus'] = 'Meist';
 $lang['aboutus_aboutus'] = 'MEIST';
