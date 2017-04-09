@@ -64,7 +64,7 @@ class Upload extends CI_Controller {
       }
 
       if ($missing_link_or_img) {
-        $this->_display_error('Link or image is missing.');
+        $this->_display_error(lang('addmeme_missing'));
         return;
       }
 

@@ -91,6 +91,7 @@ $lang['addmeme_submit'] = 'Submit';
 $lang['addmeme_upload_to_cloud_fail'] = 'Something went wrong with uploading to cloud.';
 $lang['addmeme_upload_fail'] = 'Something went wrong with upload.';
 $lang['addmeme_upload_checklink'] = 'Check your link. It is not valid.';
+$lang['addmeme_missing'] = 'Link or image is missing.';
 
 $lang['title_aboutus'] = 'About us';
 $lang['aboutus_aboutus'] = 'ABOUT US';
