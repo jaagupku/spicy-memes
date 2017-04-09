@@ -317,7 +317,7 @@ class Users extends CI_Controller {
                 // TODO: Change usename
             }
 
-            if (!$language_changed) {
+            if ($language_changed) {
                 $updated_columns['Language'] = $this->input->post('language');
                 $this->session->language = $this->input->post('language');
             }
@@ -362,7 +362,7 @@ class Users extends CI_Controller {
             'email' => $user_data->Email,
             'mobile_number' => $user_data->mobile_number,
             'profile_image' => $user_data->ProfileImg_Id,
-            'language' => $this->session->language,
+            'language' => $user_data->Language,
             'error' => $error
         );
 

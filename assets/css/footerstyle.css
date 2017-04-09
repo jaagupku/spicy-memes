@@ -8,33 +8,53 @@
     color: #ffc62b;
 }
 .social {
+
   color: #fbfffe;
 }
 
 .footer {
   background-color: #2d1e2f;
   display: flex;
-  height: 285px;
+  height: auto;
   width: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
 }
 
-.footer div h3 {
+.footer .site-map {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+}
+
+.footer .site-map h3 {
   color: #fbfffe;
 }
 
-.footer div ul li a {
+.footer .site-map ul li {
+  display: inline;
+  padding: 0 8px;
+}
+
+.footer .site-map ul {
+  padding: 0;
+}
+
+.footer .site-map a {
   color: #fbfffe;
 }
 
-.footer div ul li a:hover {
+.footer .site-map a:hover {
   color: #ffc62b;
   text-decoration: none;
 }
 
 .link-about {
+  margin-top: 30px;
+  margin-bottom: 20px;
   font-size: 24px;
   text-decoration: none;
   border-radius: 10px;

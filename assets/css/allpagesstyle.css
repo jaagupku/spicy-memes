@@ -22,6 +22,9 @@ body {
 .addsomespice {
   text-align: right;
 }
+.changelanguage a{
+  color: #2d1e2f;
+}
 .addsomespice a{
   background-color: #f72c25;
   color: #fbfffe;
