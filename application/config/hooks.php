@@ -14,5 +14,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $hook['post_controller_constructor'] = function () {
     $instance = &get_instance();
+
+    // Switch language if needed
+    if ($instance->input->method(false) === 'get' && in_array($instance->input->get('language'), array('english', 'estonian'))) {
+        $instance->session->language = $instance->input->get('language');
+    }
+
+    // Load language files
     $instance->lang->load('main', $instance->session->language ? $instance->session->language : 'english');
 };

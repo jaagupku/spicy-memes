@@ -78,7 +78,10 @@ if (!isset($username)) {
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6 changelanguage">
-            <p><a href="">ENG</a> | <a href="">EST</a></p>
+            <p>
+                <a href="<?= site_url(strtok($_SERVER["REQUEST_URI"],'?') . '?language=english') ?>">ENG</a> |
+                <a href="<?= site_url(strtok($_SERVER["REQUEST_URI"],'?') . '?language=estonian') ?>">EST</a>
+            </p>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 addsomespice">
             <a role="button" class="btn btn-lg addsomespice-button" href="<?php echo site_url("meme/add"); ?>" <?php if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']===FALSE) {echo 'data-toggle="modal" data-remote="false" data-target="#signuploginmodal"';} ?>><?= lang('addsomespice') ?></a>
