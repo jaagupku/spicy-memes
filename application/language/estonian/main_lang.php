@@ -5,9 +5,9 @@ $lang['lang_code'] = 'et';
 $lang['title_spicymemes'] = 'Vürtsikad Meemid';
 
 $lang['header_spicymemes'] = 'VÜRTSIKAD MEEMID';
-$lang['header_hot'] = 'HOT';
+$lang['header_hot'] = 'KUUM';
 $lang['header_top'] = 'TOP';
-$lang['header_new'] = 'NEW';
+$lang['header_new'] = 'UUS';
 $lang['header_search'] = 'Otsi';
 $lang['header_login'] = 'LOGI SISSE';
 $lang['header_signup'] = 'REGISTREERI';
@@ -20,7 +20,7 @@ $lang['modal_username'] = 'Kasutajanimi';
 $lang['modal_password'] = 'Parool';
 $lang['modal_forgotpassword'] = 'Unustasid parooli?';
 $lang['modal_or'] = 'VÕI';
-$lang['modal_signupwithfacebook'] = 'Registreeri Facebookiga';
+$lang['modal_signupwithfacebook'] = 'Logi Sisse Facebookiga';
 $lang['modal_signup'] = 'REGISTREERI';
 $lang['modal_chooseusername'] = 'Vali kasutajanimi';
 $lang['modal_chooseusername_placeholder'] = 'Kasutajanimi';
@@ -98,9 +98,6 @@ $lang['aboutus_bank_placeholder'] = 'Sisesta oma pangakonto';
 $lang['aboutus_donate'] = 'ANNETA';
 
 $lang['footer_about'] = 'MEIST';
-$lang['footer_hot'] = 'HOT';
-$lang['footer_top'] = 'TOP';
-$lang['footer_new'] = 'NEW';
 $lang['footer_login'] = 'LOGI SISSE';
 $lang['footer_register'] = 'REGISTREERI';
 $lang['footer_addsomepsice'] = 'LISA VÜRTSI';
@@ -123,3 +120,15 @@ $lang['meme_morespice'] = 'Klikki siia, et suurendada vürtsikust!';
 $lang['meme_reachedend'] = 'Jõudsid lehe lõppu.';
 $lang['meme_loadmore'] = 'LAE JUURDE';
 $lang['meme_endofpage'] = 'Lehe lõpp, rohkem meeme pole.';
+
+$lang['receive_thankyoufordonation'] = 'Täname annetuse eest!';
+$lang['receive_hereisyourdonationinformation'] = "Siin on annetuse informatsioon";
+$lang['receive_yourname'] = 'TEIE NIMI';
+$lang['receive_yourbankaccount'] = 'TEIE PANGA KONTO';
+$lang['receive_amountdonated'] = 'ANNETUSE SUMMA';
+$lang['receive_description'] = 'KIRJELDUS';
+$lang['receive_date'] = 'KUUPÄEV';
+
+$lang['notreceive_didntworkout'] = 'Kahjuks otsustasite tühistada';
+$lang['notreceive_goto1'] = 'Mine';
+$lang['notreceive_gototryagain2'] = 'lehele ja tee uuesti.';

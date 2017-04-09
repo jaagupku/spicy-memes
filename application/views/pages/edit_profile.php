@@ -3,6 +3,7 @@ $title = lang('title_editprofile');
 $selection = 'edit-profile';
 
 include('header.php');
+array_push($scripts, '/assets/js/inittooltip.js');
 ?>
 
 <div class="container-fluid">
@@ -15,9 +16,9 @@ include('header.php');
 
         <div class="form-group">
           <label for="profile_image"><?= lang('editprofile_profileimage') ?>:</label>
-          <img class="profile-pic-userpage" alt="Profile Image"
+          <img class="profile-pic-userpage" alt="<?= lang('editprofile_profileimage') ?>"
                src="https://res.cloudinary.com/spicy-memes/image/upload/t_profile/<?= $profile_image; ?>"/>
-          <input type="file" name="userfile" data-toggle="tooltip" title="Only .jpg, .png and .gif under 4MB"
+          <input type="file" name="userfile" data-toggle="tooltip" title="<?=lang('addmeme_file_tooltip')?>"
                  data-placement="auto right" id="profile_image"/>
         </div>
 

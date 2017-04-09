@@ -68,29 +68,29 @@ if (openssl_verify ($data, base64_decode($fields["VK_MAC"]), $public_key) !== 1)
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-custom-about col-centered">
-          <h2>Thank you for your donation!</h2>
+          <h2><?= lang('receive_thankyoufordonation'); ?></h2>
             <div class="break"></div>
-            <h3>Here's the donation information: </h3>
+            <h3><?= lang('receive_hereisyourdonationinformation'); ?>: </h3>
             <table class="table">
               <tbody>
                 <tr>
-                  <th>YOUR NAME: </th>
+                  <th><?= lang('receive_yourname'); ?>: </th>
                     <td><?php echo $fields["VK_SND_NAME"]?></td>
                 </tr>
                 <tr>
-                  <th>YOUR BANK ACCOUNT: </th>
+                  <th><?= lang('receive_yourbankaccount'); ?>: </th>
                     <td><?php echo $fields["VK_SND_ACC"]?></td>
                 </tr>
                 <tr>
-                  <th>AMOUNT DONATED: </th>
+                  <th><?= lang('receive_amountdonated'); ?>: </th>
                     <td><?php echo $fields["VK_AMOUNT"]." ".$fields["VK_CURR"]?></td>
                 </tr>
                 <tr>
-                  <th>DESCRIPTION: </th>
+                  <th><?= lang('receive_description'); ?>: </th>
                     <td><?php echo $fields["VK_MSG"]?></td>
                 </tr>
                 <tr>
-                  <th>DATE: </th>
+                  <th><?= lang('receive_date'); ?>: </th>
                     <td><?php echo $fields["VK_T_DATETIME"]?></td>
                 </tr>
               </tbody>

@@ -20,7 +20,7 @@ $lang['modal_username'] = 'Username';
 $lang['modal_password'] = 'Password';
 $lang['modal_forgotpassword'] = 'Forgot password?';
 $lang['modal_or'] = 'OR';
-$lang['modal_signupwithfacebook'] = 'Sign up with Facebook';
+$lang['modal_signupwithfacebook'] = 'Log in with Facebook';
 $lang['modal_signup'] = 'SIGN UP';
 $lang['modal_chooseusername'] = 'Choose username';
 $lang['modal_chooseusername_placeholder'] = 'Username';
@@ -123,3 +123,15 @@ $lang['meme_morespice'] = 'Click here for more spice!';
 $lang['meme_reachedend'] = 'You have reached the end.';
 $lang['meme_loadmore'] = 'LOAD MORE';
 $lang['meme_endofpage'] = 'End of page, no more memes.';
+
+$lang['receive_thankyoufordonation'] = 'Thank you for your donation!';
+$lang['receive_hereisyourdonationinformation'] = "Here's the donation information";
+$lang['receive_yourname'] = 'YOUR NAME';
+$lang['receive_yourbankaccount'] = 'YOUR BANK ACCOUNT';
+$lang['receive_amountdonated'] = 'AMOUNT DONATED';
+$lang['receive_description'] = 'DESCRIPTION';
+$lang['receive_date'] = 'DATE';
+
+$lang['notreceive_didntworkout'] = 'Well, that didn\'t work out';
+$lang['notreceive_goto1'] = 'Go to';
+$lang['notreceive_gototryagain2'] = 'page and try again';

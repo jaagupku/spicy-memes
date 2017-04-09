@@ -168,7 +168,7 @@ class Users extends CI_Controller {
         if ($this->session->logged_in) {
             session_destroy();
         }
-
+        
         redirect($uri, 'refresh');
     }
 
@@ -291,7 +291,7 @@ class Users extends CI_Controller {
       } elseif ($order_by === 'comments') {
           $memes = $this->user_model->get_memes($userdata->Id, 'comments');
       }
-      
+
       echo json_encode($memes);
     }
 

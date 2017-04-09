@@ -11,9 +11,9 @@
       <div class="container-fluid"><div class="break"></div></div>
       <div class="site-map">
         <ul>
-          <li><a href="<?php echo site_url("hot"); ?>"><?= lang('footer_hot') ?></a></li>
-          <li><a href="<?php echo site_url("top"); ?>"><?= lang('footer_top') ?></a></li>
-          <li><a href="<?php echo site_url("new"); ?>"><?= lang('footer_new') ?></a></li>
+          <li><a href="<?php echo site_url("hot"); ?>"><?= lang('header_hot') ?></a></li>
+          <li><a href="<?php echo site_url("top"); ?>"><?= lang('header_top') ?></a></li>
+          <li><a href="<?php echo site_url("new"); ?>"><?= lang('header_new') ?></a></li>
           <?php if (isset($_SESSION['logged_in'])) : ?>
           <li><a href="<?php echo site_url("meme/add"); ?>"><?= lang('footer_addsomepsice') ?></a></li>
           <?php else : ?>
