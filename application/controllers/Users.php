@@ -22,7 +22,7 @@ class Users extends CI_Controller {
             if ($this->user_model->verify($username, $password)) {
                 $this->_login_and_redirect($username);
             } else {
-                $error = 'Invalid username or password';
+                $error = lang('login_error');
             }
         } else {
             $error = validation_errors();
@@ -199,7 +199,7 @@ class Users extends CI_Controller {
                   $this->_login_and_redirect($username);
                 }
             } else {
-                $error = 'Couldn\'t create the user';
+                $error = lang('signup_create_user_failed');
             }
         } else {
             $email = $this->input->post('email');

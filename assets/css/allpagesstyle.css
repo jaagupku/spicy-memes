@@ -22,13 +22,16 @@ body {
 .addsomespice {
   text-align: right;
   position: fixed;
-  top: 5em;
-  right: 0;
+  width: 80%;
+  right: 10px;
+  z-index: 1;
 }
 .changelanguage {
+  text-align: left;
   position: fixed;
-  top: 5em;
-  left: 0;
+  left: 10px;
+  width: 20%;
+  z-index: 1;
 }
 .changelanguage a{
   color: #2d1e2f;
@@ -48,16 +51,7 @@ body {
   width: 580px;
 }
 
-@media (max-width: 1050px) {
-  .addsomespice {
-    position: static;
-  }
-}
-
 @media (max-width: 839px) {
-  .changelanguage {
-    position: static;
-  }
   .navbar-header {
       float: none;
   }
@@ -91,8 +85,5 @@ body {
   }
   .collapse.in{
       display:block !important;
-  }
-  .addsomespice {
-    text-align: center;
   }
 }

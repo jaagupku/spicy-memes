@@ -37,6 +37,7 @@ $lang['login_forgotpassword'] = 'Forgot password?';
 $lang['login_or'] = 'OR';
 $lang['login_loginwithfacebook'] = 'Log in with Facebook';
 $lang['login_login'] = 'LOG IN';
+$lang['login_error'] = 'Invalid username or password';
 
 $lang['title_signup'] = 'Sign up';
 $lang['signup_chooseusername'] = 'Choose username';
@@ -47,6 +48,7 @@ $lang['signup_repeatpassword'] = 'Repeat password';
 $lang['signup_enteremail'] = 'Enter e-mail';
 $lang['signup_enteremail_placeholder'] = 'E-mail';
 $lang['signup_signup'] = 'SIGN UP';
+$lang['signup_create_user_failed'] = 'Couldn\'t create the user';
 
 $lang['profile_editprofile'] = 'Edit profile';
 $lang['profile_changepassword'] = 'Change password';
