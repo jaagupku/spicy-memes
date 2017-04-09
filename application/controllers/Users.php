@@ -236,18 +236,18 @@ class Users extends CI_Controller {
         $this->load->view('pages/register', $data);
     }
 
-    public function profile($username, $sort_by='top') {
+    public function profile($username, $order_by='top') {
         $userdata = $this->user_model->retrieve($username);
 
-        if ($userdata && in_array($sort_by, array('top', 'comments', 'date'))) {
+        if ($userdata && in_array($order_by, array('top', 'comments', 'date'))) {
             $memes = array();
 
-            if ($sort_by == 'top') {
+            if ($order_by === 'top') {
                 $memes = $this->user_model->get_top_memes($userdata->Id);
-            } else {
+            } elseif ($order_by === 'date') {
                 $memes = $this->user_model->get_new_memes($userdata->Id);
-
-                // TODO: Sort by comments
+            } elseif ($order_by === 'comments') {
+                $memes = $this->user_model->get_memes($userdata->Id, 'comments');
             }
 
             $data = $this->user_model->get_user_meme_data($userdata->Id);

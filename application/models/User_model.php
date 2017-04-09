@@ -40,6 +40,14 @@ class User_model extends Base_Model {
         return $this->db->get()->result_array();
     }
 
+    public function get_memes($user_id, $order_by = 'Date', $order = 'DESC') {
+        $this->db->from('v_new_memes');
+        $this->db->where('User_Id', $user_id);
+        $this->db->order_by($order_by, $order);
+
+        return $this->db->get()->result_array();
+    }
+
     public function create($username, $password, $email) {
         $arguments = array(
             0, // type
