@@ -37,6 +37,7 @@ $lang['login_forgotpassword'] = 'Unustasid parooli?';
 $lang['login_or'] = 'VÕI';
 $lang['login_loginwithfacebook'] = 'Logi sisse Facebookiga';
 $lang['login_login'] = 'LOGI SISSE';
+$lang['login_error'] = 'Vale parool või kasutajanimi';
 
 $lang['title_signup'] = 'Registreeri';
 $lang['signup_chooseusername'] = 'Vali kasutajanimi';
@@ -47,6 +48,8 @@ $lang['signup_repeatpassword'] = 'Korda parool';
 $lang['signup_enteremail'] = 'Sisesta e-mail';
 $lang['signup_enteremail_placeholder'] = 'E-mail';
 $lang['signup_signup'] = 'REGISTREERI';
+$lang['signup_create_user_failed'] = 'Kasutaja tegemine ebaõnnestus';
+
 
 $lang['profile_editprofile'] = 'Muuda profiili';
 $lang['profile_changepassword'] = 'Vaheta parool';
