@@ -51,7 +51,17 @@ array_push($scripts, '/assets/js/main.js');
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-custom-frontpage col-centered">
-        <a role="button" id="load-button" data-load-amount="<?php echo $amount; ?>" data-load-from="<?php echo $from; ?>" data-load-type="<?php echo $selection; ?>" class="btn btn-lg" href="<?php echo site_url($nextpage) ?>">LOAD MORE</a>
+        <a role="button" id="load-button"
+           data-load-amount="<?php echo $amount; ?>"
+           data-load-from="<?php echo $from; ?>"
+           data-load-type="<?php echo $selection; ?>"
+           data-text-loading="<?= lang('meme_loading') ?>"
+           data-text-morespice="<?= lang('meme_morespice') ?>"
+           data-text-reachedend="<?= lang('meme_reachedend') ?>"
+           class="btn btn-lg"
+           href="<?php echo site_url($nextpage) ?>">
+            <?= lang('meme_loadmore') ?>
+        </a>
     </div>
   </div>
 </div>
