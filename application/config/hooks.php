@@ -16,8 +16,14 @@ $hook['post_controller_constructor'] = function () {
     $instance = &get_instance();
 
     // Switch language if needed
-    if ($instance->input->method(false) === 'get' && in_array($instance->input->get('language'), array('english', 'estonian'))) {
-        $instance->session->language = $instance->input->get('language');
+    $language = $instance->input->get('language');
+
+    if (in_array($language, array('english', 'estonian'))) {
+        if ($instance->session->logged_in) {
+            $instance->user_model->update($instance->session->user_id, array('Language' => $language));
+        }
+
+        $instance->session->language = $language;
     }
 
     // Load language files

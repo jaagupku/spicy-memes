@@ -4,11 +4,6 @@ require_once __DIR__ . '/../third_party/Facebook/autoload.php';
 require_once __DIR__ . '/../config/facebook.php';
 
 class Users extends CI_Controller {
-    public function __construct() {
-        parent::__construct();
-        $this->load->model('user_model');
-    }
-
     public function login() {
         if ($this->session->logged_in) {
             redirect('/', 'refresh');
