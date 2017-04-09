@@ -5,6 +5,7 @@ include('header.php');
 if (isset($username)) {
   array_push($scripts, '/assets/js/facebook.js');
 }
+array_push($scripts, '/assets/js/profile.js');
 ?>
 <!-- USER PAGE -->
 
@@ -79,9 +80,9 @@ if (isset($username)) {
 
           <div class="sortingsection-userpage">
             <p><strong><?= lang('profile_sortby') ?>: </strong></p>
-            <a href="<?= site_url("profile/$target/top") ?>"><span class="label label-default"><?= lang('profile_sortby_top') ?></span></a>
-            <a href="<?= site_url("profile/$target/comments") ?>"><span class="label label-default"><?= lang('profile_sortby_comments') ?></span></a>
-            <a href="<?= site_url("profile/$target/date") ?>"><span class="label label-default"><?= lang('profile_sortby_date') ?></span></a>
+            <a class="sort" data-sortby="top" href="<?= site_url("profile/$target/top") ?>"><span class="label label-default"><?= lang('profile_sortby_top') ?></span></a>
+            <a class="sort" data-sortby="comments" href="<?= site_url("profile/$target/comments") ?>"><span class="label label-default"><?= lang('profile_sortby_comments') ?></span></a>
+            <a class="sort" data-sortby="date" href="<?= site_url("profile/$target/date") ?>"><span class="label label-default"><?= lang('profile_sortby_date') ?></span></a>
           </div>
 
           <div class="container-fluid"><div class="break"></div></div>
@@ -120,7 +121,11 @@ if (isset($username)) {
         </div>
       </div>
     </div>
-
+    <script type='text/javascript'>
+      var profile_spicelevel = "<?= lang('profile_spicelevel') ?>";
+      var profile_comments = "<?= lang('profile_comments') ?>";
+      var profile_addedon = "<?= lang('profile_addedon') ?>";
+    </script>
 <?php
 include('footer.php');
 ?>

@@ -22,8 +22,8 @@ include('header.php');
         </div>
 
         <div class="form-group">
-          <label for="username"><?= lang('editprofile_username') ?>:</label>
-          <input value="<?= $username ?>" name="username" type="text" class="form-control" id="username"
+          <label for="usernameEditProfile"><?= lang('editprofile_username') ?>:</label>
+          <input value="<?= $username ?>" name="username" type="text" class="form-control" id="usernameEditProfile"
                  placeholder="<?= lang('editprofile_username') ?>">
         </div>
 

@@ -279,6 +279,22 @@ class Users extends CI_Controller {
         }
     }
 
+    public function userMemesJSON() {
+      $username = $_REQUEST["username"];
+      $order_by = $_REQUEST["order"];
+
+      $userdata = $this->user_model->retrieve($username);
+      if ($order_by === 'top') {
+          $memes = $this->user_model->get_top_memes($userdata->Id);
+      } elseif ($order_by === 'date') {
+          $memes = $this->user_model->get_new_memes($userdata->Id);
+      } elseif ($order_by === 'comments') {
+          $memes = $this->user_model->get_memes($userdata->Id, 'comments');
+      }
+      
+      echo json_encode($memes);
+    }
+
     public function edit_profile() {
         if (!isset($this->session->logged_in)) {
             show_404();

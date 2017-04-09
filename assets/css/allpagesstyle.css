@@ -48,7 +48,16 @@ body {
   width: 580px;
 }
 
+@media (max-width: 1050px) {
+  .addsomespice {
+    position: static;
+  }
+}
+
 @media (max-width: 839px) {
+  .changelanguage {
+    position: static;
+  }
   .navbar-header {
       float: none;
   }

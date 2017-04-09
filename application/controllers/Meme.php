@@ -26,7 +26,7 @@ class Meme extends CI_Controller {
 
         $data['comment_added'] = FALSE;
 
-        $this->form_validation->set_rules('message', 'Message', 'required');
+        $this->form_validation->set_rules('message', 'Message', 'required|max_length[60000]');
         if ($this->form_validation->run() && $this->session->logged_in) {
             if ($this->comment_model->add($meme_id, $this->session->user_id, html_escape($this->input->post('message')))) {
                 $data['comment_added'] = TRUE;

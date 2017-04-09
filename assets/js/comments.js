@@ -17,10 +17,10 @@ $(document).ready(function() {
     console.log("NOW ONLINE");
     $offline.fadeOut(function () {
       $online.fadeIn();
-      setTimeout(function(){
-        $online.fadeOut("slow");
-      },5000)
     });
+    setTimeout(function(){
+      $online.fadeOut("slow");
+    },5000)
     if (localStorage.comment0) {
       for (i = 0; i < offlineCounter; i++) {
         console.log("Attempting upload nr " + offlineCounter + ". Message: " + localStorage.getItem("comment" + i));
