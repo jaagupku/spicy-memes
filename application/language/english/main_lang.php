@@ -103,3 +103,13 @@ $lang['footer_new'] = 'NEW';
 $lang['footer_login'] = 'LOG IN';
 $lang['footer_register'] = 'SIGN UP';
 $lang['footer_addsomepsice'] = 'ADD SOME SPICE';
+
+$lang['comments_spicelevel'] = 'Spice Level';
+$lang['comments_addedby'] = 'Added by';
+$lang['comments_comments'] = 'Comments';
+$lang['comment_insertspicycommenthere'] = 'INSERT SPICY COMMENT HERE';
+$lang['comment_submit'] = 'Submit';
+$lang['comment_commentsuccessfullyadded'] = 'Comment successfully added.';
+$lang['comment_readspicycommentshere'] = 'READ SPICY COMMENTS HERE:';
+$lang['comment_nocomments'] = 'It seems to be empty. No comments here.';
+$lang['comment_points'] = 'Points';

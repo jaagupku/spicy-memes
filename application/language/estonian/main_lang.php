@@ -59,10 +59,10 @@ $lang['profile_sortby_top'] = 'top';
 $lang['profile_sortby_comments'] = 'kommentaarid';
 $lang['profile_sortby_date'] = 'kuupäev';
 $lang['profile_title_title'] = 'PEALKIRI';
-$lang['profile_title_spicelevel'] = 'SPICE LEVEL';
+$lang['profile_title_spicelevel'] = 'VÜRTSIKUS';
 $lang['profile_title_comments'] = 'KOMMENTAARID';
 $lang['profile_title_date'] = 'KUUPÄEV';
-$lang['profile_spicelevel'] = 'Spice Level';
+$lang['profile_spicelevel'] = 'Vürtsikus';
 $lang['profile_comments'] = 'Kommentaarid';
 $lang['profile_addedon'] = 'Lisatud';
 
@@ -103,3 +103,13 @@ $lang['footer_new'] = 'NEW';
 $lang['footer_login'] = 'LOGI SISSE';
 $lang['footer_register'] = 'REGISTREERI';
 $lang['footer_addsomepsice'] = 'LISA VÜRTSI';
+
+$lang['comments_spicelevel'] = 'Vürtsikus';
+$lang['comments_addedby'] = 'Autor';
+$lang['comments_comments'] = 'Kommentaarid';
+$lang['comment_insertspicycommenthere'] = 'SISESTA VÜRTSIKAS KOMMENTAAR';
+$lang['comment_submit'] = 'Lisa';
+$lang['comment_commentsuccessfullyadded'] = 'Kommentaar lisatud.';
+$lang['comment_readspicycommentshere'] = 'LOE VÜRTSIKAID KOMMENTAARE';
+$lang['comment_nocomments'] = 'Siin kommentaare pole.';
+$lang['comment_points'] = 'Punkte';

@@ -28,9 +28,9 @@ array_push($scripts, "/assets/js/comments.js");
           </div>
 
           <div class="memedata">
-            <p>Spice Level: <span class="badge"><?php echo $meme['Points']; ?></span></p>
-            <p>Added by: <a href="<?php echo site_url('/profile/'.$meme['User_Name']) ?>"><?php echo $meme['User_Name'] ?></a></p>
-            <p>Comments: <a href="#"><span class="badge"><?= $meme['comments'] ?></span></a></p>
+            <p><?= lang('comments_spicelevel') ?>: <span class="badge"><?php echo $meme['Points']; ?></span></p>
+            <p><?= lang('comments_addedby') ?>: <a href="<?php echo site_url('/profile/'.$meme['User_Name']) ?>"><?php echo $meme['User_Name'] ?></a></p>
+            <p><?= lang('comments_comments') ?>: <a href="#"><span class="badge"><?= $meme['comments'] ?></span></a></p>
           </div>
 
         </div>
@@ -45,14 +45,14 @@ array_push($scripts, "/assets/js/comments.js");
           <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']===TRUE) : ?>
             <form method="POST">
               <div class="form-group insert-comments">
-                <label for="message">INSERT SPICY COMMENT HERE:</label>
+                <label for="message"><?= lang('comment_insertspicycommenthere') ?>:</label>
                 <textarea id="comment" name="message" class="form-control" rows="4"></textarea>
               </div>
-              <button id="submitComment" type="submit" class="btn btn-default" >Submit</button>
+              <button id="submitComment" type="submit" class="btn btn-default" ><?= lang('comment_submit') ?></button>
             </form>
           <?php endif; ?>
           <?php if ($comment_added) : ?>
-            <h3>Comment successfully added.</h3>
+            <h3><?= lang('comment_commentsuccessfullyadded') ?></h3>
           <?php endif; ?>
 
         </div>
@@ -68,13 +68,13 @@ array_push($scripts, "/assets/js/comments.js");
         <div class="col-xs-12 col-custom-commentspage col-centered">
 
           <div class="form-group">
-            <h3>READ SPICY COMMENTS HERE:</h3>
+            <h3><?= lang('comment_readspicycommentshere') ?>:</h3>
           </div>
 
           <!-- MUST START LOADING COMMENTS HERE -->
           <?php if(empty($comments)) : ?>
             <div class="container-fluid"><div class="break"></div></div>
-            <p>It seems to be empty. No comments here.</p>
+            <p><?= lang('comment_nocomments') ?></p>
           <?php else : ?>
           <?php foreach($comments as $comment) : ?>
             <div class="container-fluid"><div class="break"></div></div>
@@ -89,7 +89,7 @@ array_push($scripts, "/assets/js/comments.js");
                     <span class="glyphicon glyphicon-arrow-up upvote<?php if (isset($comment['User_Vote']) && $comment['User_Vote'] == 1) echo(' active-vote') ?>"></span>
                     <span class="glyphicon glyphicon-arrow-down downvote<?php if (isset($comment['User_Vote']) && $comment['User_Vote'] == -1) echo(' active-vote') ?>"></span>
                   </div>
-                  <p>Points: <span class="badge points"><?php echo $comment['Points'] ?></span></p>
+                  <p><?= lang('comment_points') ?>: <span class="badge points"><?php echo $comment['Points'] ?></span></p>
                 </div>
               </div>
             </div>
