@@ -3,7 +3,7 @@ var correctHash = ['top', 'comments', 'date'];
 var fillTable = function(data) {
   var htmlData = "";
   $.each(data, function(key, value) {
-    htmlData += '<tr><td><a href="' + location.protocol + '//' + location.hostname + 'meme/' + data.Id + '">' + value.Title + '</a></td><td>' + profile_spicelevel + ': ' + value.Points + '</td><td> ' + profile_comments + ': <a href="' + location.protocol + '//' + location.hostname + 'meme/' + value.Id + '"><span class="badge">' + value.comments + '</span></a></td><td>' + profile_addedon + ': ' + value.Date + '</td></tr>';
+    htmlData += '<tr><td><a href="' + location.protocol + '//' + location.hostname + '/meme/' + value.Id + '">' + value.Title + '</a></td><td>' + profile_spicelevel + ': ' + value.Points + '</td><td> ' + profile_comments + ': <a href="' + location.protocol + '//' + location.hostname + '/meme/' + value.Id + '"><span class="badge">' + value.comments + '</span></a></td><td>' + profile_addedon + ': ' + value.Date + '</td></tr>';
   });
   $(".uploads-userpage table tbody").html(htmlData);
 };
