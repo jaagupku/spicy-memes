@@ -10,8 +10,8 @@ class Users extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('username', 'Username', 'required|alpha_numeric');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('username', lang('validation_username'), 'required|alpha_numeric');
+        $this->form_validation->set_rules('password', lang('validation_password'), 'required');
 
         $error = null;
 
@@ -168,7 +168,7 @@ class Users extends CI_Controller {
         if ($this->session->logged_in) {
             session_destroy();
         }
-        
+
         redirect($uri, 'refresh');
     }
 
@@ -178,8 +178,8 @@ class Users extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('username', 'Username', 'required|max_length[32]|alpha_numeric|is_unique[users.User_Name]');
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[7]');
+        $this->form_validation->set_rules('username', lang('validation_username'), 'required|max_length[32]|alpha_numeric|is_unique[users.User_Name]');
+        $this->form_validation->set_rules('password', lang('validation_password'), 'required|min_length[7]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.Email]');
         $this->form_validation->set_rules('facebookid', '', 'numeric');
 

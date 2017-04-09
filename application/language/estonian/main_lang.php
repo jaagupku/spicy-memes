@@ -49,6 +49,8 @@ $lang['signup_enteremail'] = 'Sisesta e-mail';
 $lang['signup_enteremail_placeholder'] = 'E-mail';
 $lang['signup_signup'] = 'REGISTREERI';
 $lang['signup_create_user_failed'] = 'Kasutaja tegemine ebaõnnestus';
+$lang['validation_password'] = 'Parool';
+$lang['validation_username'] = 'Kasutajanimi';
 
 
 $lang['profile_editprofile'] = 'Muuda profiili';

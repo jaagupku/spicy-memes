@@ -49,6 +49,8 @@ $lang['signup_enteremail'] = 'Enter e-mail';
 $lang['signup_enteremail_placeholder'] = 'E-mail';
 $lang['signup_signup'] = 'SIGN UP';
 $lang['signup_create_user_failed'] = 'Couldn\'t create the user';
+$lang['validation_password'] = 'Password';
+$lang['validation_username'] = 'Username';
 
 $lang['profile_editprofile'] = 'Edit profile';
 $lang['profile_changepassword'] = 'Change password';
