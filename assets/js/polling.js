@@ -3,7 +3,7 @@ function startPolling() {
     var xsltFile;
     $.ajax({
         method: "GET",
-        url: location.protocol + '//' + location.hostname + "/main/meme_xsl",
+        url: location.protocol + '//' + location.hostname + "/assets/xlst/meme_" + $('html').attr('lang') + ".xsl",
         dataType: 'xml'
     }).done(function (xlst) {
         xsltFile = xlst;

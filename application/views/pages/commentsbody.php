@@ -30,7 +30,7 @@ array_push($scripts, "/assets/js/comments.js");
           <div class="memedata">
             <p><?= lang('comments_spicelevel') ?>: <span class="badge"><?php echo $meme['Points']; ?></span></p>
             <p><?= lang('comments_addedby') ?>: <a href="<?php echo site_url('/profile/'.$meme['User_Name']) ?>"><?php echo $meme['User_Name'] ?></a></p>
-            <p><?= lang('comments_comments') ?>: <a href="#"><span class="badge"><?= $meme['comments'] ?></span></a></p>
+            <p><?= lang('comments_comments') ?>: <a href="#comments"><span class="badge"><?= $meme['comments'] ?></span></a></p>
           </div>
 
         </div>
@@ -63,7 +63,7 @@ array_push($scripts, "/assets/js/comments.js");
 
     <div class="container-fluid"><div class="break"></div></div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="comments">
       <div class="row">
         <div class="col-xs-12 col-custom-commentspage col-centered">
 

@@ -53,7 +53,7 @@
             <p>Added by: <xsl:element name="a"><xsl:attribute name="href">
              <xsl:value-of select="profile"/>
            </xsl:attribute><xsl:value-of select="uploader"/></xsl:element></p>
-            <p>Comments: <a href="comments_page.html"><span class="badge"><xsl:value-of select="comments"/></span></a></p>
+              <p>Comments: <xsl:element name="a"><xsl:attribute name="href"><xsl:value-of select="link"/>#comments</xsl:attribute><span class="badge"><xsl:value-of select="comments"/></span></xsl:element></p>
           </div>
 
           <div class="updownvote-frontpage">
