@@ -9,6 +9,8 @@ if (!isset($username)) {
 <html lang="<?= lang('lang_code') ?>">
   <head>
     <meta charset="utf-8">
+    <meta name="description" content="Browse spiciest memes here.">
+    <meta name="keywords" content="Spicy Memes, memes, spicymemes, veebirakendus, spice, meme, spicymemes.cs.ut.ee">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?> - <?= lang('title_spicymemes') ?></title>
