@@ -9,6 +9,8 @@ if (!isset($username)) {
 <html lang="<?= lang('lang_code') ?>">
   <head>
     <meta charset="utf-8">
+    <meta name="description" content="Browse spiciest memes here.">
+    <meta name="keywords" content="Spicy Memes, memes, spicymemes, veebirakendus, spice, meme, spicymemes.cs.ut.ee">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?> - <?= lang('title_spicymemes') ?></title>
@@ -61,6 +63,9 @@ if (!isset($username)) {
 
           <ul class="nav navbar-nav navbar-right loginsignup">
             <?php if (isset($username)) { ?>
+              <?php if ($_SESSION['user_type'] > 0) : ?>
+                <li <?php if($selection==='report') {echo 'class="active"';} ?>><a href="<?php echo site_url('report/view') ?>"><?= lang('report') ?></a></li>
+              <?php endif; ?>
               <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="<?php echo site_url("profile/".$username) ?>" id="username"><span class="glyphicon glyphicon-user"></span> <?= $username ?></a></li>
               <li><a href="<?= site_url("logout") ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> <?= lang('header_logout') ?></a></li>
             <?php } else { ?>
