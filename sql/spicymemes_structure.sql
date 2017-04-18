@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2017 at 03:04 PM
+-- Generation Time: Apr 18, 2017 at 05:42 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -34,6 +34,9 @@ CREATE  PROCEDURE `sp_add_meme` (IN `a_title` VARCHAR(255), IN `a_user_id` INT, 
     COMMENT 'adds a new meme'
 INSERT INTO `meme` (`Id`, `Title`, `User_Id`, `Data_Type`, `Data`, `Date`, `Up_Points`, `Down_Points`, `hotness`) VALUES (NULL, a_title, a_user_id, a_data_type, a_data, CURRENT_TIMESTAMP, '0', '0', '0')$$
 
+CREATE  PROCEDURE `sp_add_report` (IN `a_meme_id` INT, IN `a_type` INT, IN `a_data` TINYTEXT)  MODIFIES SQL DATA
+INSERT INTO `report` (`Id`, `Meme_Id`, `Date`, `Type`, `Data`) VALUES (NULL, a_meme_id, CURRENT_TIMESTAMP, a_type, a_data)$$
+
 CREATE  PROCEDURE `sp_add_user` (IN `a_user_type` INT(1), IN `a_user_name` VARCHAR(32) CHARSET utf8, IN `a_passwdhash` VARCHAR(255) CHARSET utf8, IN `a_email` VARCHAR(128) CHARSET utf8, IN `a_mobile` VARCHAR(15) CHARSET utf8)  MODIFIES SQL DATA
 INSERT INTO `users` (`Id`, `User_Type`, `User_Name`, `Password_Hash`, `Email`, `Creation_Date`, `Last_Login_Time`, `ProfileImg_Id`, `mobile_number`) VALUES (NULL, a_user_type, a_user_name, a_passwdhash, a_email, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'noprofileimg.jpg', a_mobile)$$
 
@@ -47,7 +50,7 @@ UPDATE users SET users.FB_Id=NULL WHERE users.Id=a_user_id$$
 CREATE  PROCEDURE `sp_unlink_fb_by_fbid` (IN `a_fb_id` VARCHAR(64))  MODIFIES SQL DATA
 UPDATE users SET users.FB_Id=NULL WHERE users.FB_Id=a_fb_id$$
 
-CREATE  PROCEDURE `sp_update_user_last_login` (IN `a_user_id` INT, IN `a_datetime` DATETIME)  MODIFIES SQL DATA
+CREATE  PROCEDURE `sp_update_user_last_login` (IN `a_user_id` INT, IN `a_datetime` DATETIME)  NO SQL
 UPDATE users SET users.Last_Login_Time=a_datetime WHERE users.Id=a_user_id$$
 
 CREATE  PROCEDURE `sp_userid_to_username` (IN `a_user_id` INT)  READS SQL DATA
@@ -170,9 +173,9 @@ CREATE TRIGGER `tg_add_memevote` BEFORE INSERT ON `memepoints` FOR EACH ROW BEGI
     ELSE
     	SIGNAL SQLSTATE '45000';
     END IF;
-
-
-	UPDATE meme SET meme.hotness:=IF(TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP)<72,IF(NEW.Up_Vote=1,meme.hotness+(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/48,meme.hotness-(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/52),0) WHERE meme.Id=NEW.meme_Id;
+    
+    
+	UPDATE meme SET meme.hotness:=IF(TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP)<72,IF(NEW.Up_Vote=1,meme.hotness+(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/48,meme.hotness-(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/52),0) WHERE meme.Id=NEW.meme_Id; 
 END
 $$
 DELIMITER ;
@@ -187,7 +190,7 @@ CREATE TRIGGER `tg_remove_memevote` AFTER DELETE ON `memepoints` FOR EACH ROW BE
      		SET meme.Down_Points=meme.Down_Points-OLD.Up_Vote
    				WHERE id = OLD.meme_Id;
     END IF;
-    UPDATE meme SET meme.hotness:=IF(TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP)<72,IF(OLD.Up_Vote=1,meme.hotness-(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/48,meme.hotness+(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/52),0) WHERE meme.Id=OLD.meme_Id;
+    UPDATE meme SET meme.hotness:=IF(TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP)<72,IF(OLD.Up_Vote=1,meme.hotness-(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/48,meme.hotness+(72-TIMESTAMPDIFF(HOUR, meme.Date, CURRENT_TIMESTAMP))/52),0) WHERE meme.Id=OLD.meme_Id; 
 END
 $$
 DELIMITER ;
@@ -282,6 +285,21 @@ CREATE TABLE `v_new_memes` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `v_reports`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_reports` (
+`Id` int(11)
+,`Meme_Id` int(11)
+,`Meme_Title` varchar(255)
+,`Date` datetime
+,`Type` int(11)
+,`Data` tinytext
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `v_top_memes`
 -- (See below for the actual view)
 --
@@ -304,7 +322,7 @@ CREATE TABLE `v_top_memes` (
 --
 DROP TABLE IF EXISTS `v_comments`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_comments`  AS  select `comments`.`Id` AS `Id`,`comments`.`Meme_Id` AS `Meme_Id`,`comments`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`comments`.`Message` AS `Message`,`comments`.`Points` AS `Points`,`users`.`ProfileImg_Id` AS `ProfileImg_Id`,`comments`.`Date` AS `Date` from (`comments` join `users` on((`comments`.`User_Id` = `users`.`Id`))) ;
+CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_comments`  AS  select `comments`.`Id` AS `Id`,`comments`.`Meme_Id` AS `Meme_Id`,`comments`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`comments`.`Message` AS `Message`,`comments`.`Points` AS `Points`,`users`.`ProfileImg_Id` AS `ProfileImg_Id`,`comments`.`Date` AS `Date` from (`comments` join `users` on((`comments`.`User_Id` = `users`.`Id`))) ;
 
 -- --------------------------------------------------------
 
@@ -313,7 +331,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_comments`  AS  select `c
 --
 DROP TABLE IF EXISTS `v_hot_memes`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_hot_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points`,count(`comments`.`Id`) AS `comments` from ((`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) left join `comments` on((`comments`.`Meme_Id` = `meme`.`Id`))) group by `meme`.`Id` order by `meme`.`hotness` desc,(`meme`.`Up_Points` + `meme`.`Down_Points`) desc ;
+CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_hot_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points`,count(`comments`.`Id`) AS `comments` from ((`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) left join `comments` on((`comments`.`Meme_Id` = `meme`.`Id`))) group by `meme`.`Id` order by `meme`.`hotness` desc ;
 
 -- --------------------------------------------------------
 
@@ -322,7 +340,16 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_hot_memes`  AS  select `
 --
 DROP TABLE IF EXISTS `v_new_memes`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_new_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points`,count(`comments`.`Id`) AS `comments` from ((`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) left join `comments` on((`comments`.`Meme_Id` = `meme`.`Id`))) group by `meme`.`Id` order by `meme`.`Date` desc ;
+CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_new_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points`,count(`comments`.`Id`) AS `comments` from ((`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) left join `comments` on((`comments`.`Meme_Id` = `meme`.`Id`))) group by `meme`.`Id` order by `meme`.`Date` desc ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_reports`
+--
+DROP TABLE IF EXISTS `v_reports`;
+
+CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_reports`  AS  select `report`.`Id` AS `Id`,`report`.`Meme_Id` AS `Meme_Id`,`meme`.`Title` AS `Meme_Title`,`report`.`Date` AS `Date`,`report`.`Type` AS `Type`,`report`.`Data` AS `Data` from (`report` join `meme` on((`report`.`Meme_Id` = `meme`.`Id`))) order by `report`.`Date` desc ;
 
 -- --------------------------------------------------------
 
@@ -331,7 +358,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_new_memes`  AS  select `
 --
 DROP TABLE IF EXISTS `v_top_memes`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_top_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points`,count(`comments`.`Id`) AS `comments` from ((`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) left join `comments` on((`comments`.`Meme_Id` = `meme`.`Id`))) group by `meme`.`Id` order by (`meme`.`Up_Points` + `meme`.`Down_Points`) desc ;
+CREATE ALGORITHM=UNDEFINED  SQL SECURITY DEFINER VIEW `v_top_memes`  AS  select `meme`.`Id` AS `Id`,`meme`.`Title` AS `Title`,`meme`.`User_Id` AS `User_Id`,`users`.`User_Name` AS `User_Name`,`meme`.`Data_Type` AS `Data_Type`,`meme`.`Data` AS `Data`,`meme`.`Date` AS `Date`,(`meme`.`Up_Points` + `meme`.`Down_Points`) AS `Points`,count(`comments`.`Id`) AS `comments` from ((`meme` join `users` on((`meme`.`User_Id` = `users`.`Id`))) left join `comments` on((`comments`.`Meme_Id` = `meme`.`Id`))) group by `meme`.`Id` order by (`meme`.`Up_Points` + `meme`.`Down_Points`) desc ;
 
 --
 -- Indexes for dumped tables
@@ -392,32 +419,32 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `commentpoints`
 --
 ALTER TABLE `commentpoints`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 --
 -- AUTO_INCREMENT for table `meme`
 --
 ALTER TABLE `meme`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `memepoints`
 --
 ALTER TABLE `memepoints`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- Constraints for dumped tables
 --
@@ -426,15 +453,15 @@ ALTER TABLE `users`
 -- Constraints for table `commentpoints`
 --
 ALTER TABLE `commentpoints`
-  ADD CONSTRAINT `commentpoints_ibfk_1` FOREIGN KEY (`Comment_Id`) REFERENCES `comments` (`Id`),
-  ADD CONSTRAINT `commentpoints_ibfk_2` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`);
+  ADD CONSTRAINT `commentpoints_ibfk_1` FOREIGN KEY (`Comment_Id`) REFERENCES `comments` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `commentpoints_ibfk_2` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`Meme_Id`) REFERENCES `meme` (`Id`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`);
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`Meme_Id`) REFERENCES `meme` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `meme`
@@ -446,14 +473,14 @@ ALTER TABLE `meme`
 -- Constraints for table `memepoints`
 --
 ALTER TABLE `memepoints`
-  ADD CONSTRAINT `memepoints_ibfk_1` FOREIGN KEY (`Meme_Id`) REFERENCES `meme` (`Id`),
-  ADD CONSTRAINT `memepoints_ibfk_2` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`);
+  ADD CONSTRAINT `memepoints_ibfk_1` FOREIGN KEY (`Meme_Id`) REFERENCES `meme` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `memepoints_ibfk_2` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `report`
 --
 ALTER TABLE `report`
-  ADD CONSTRAINT `report_ibfk_1` FOREIGN KEY (`Meme_Id`) REFERENCES `meme` (`Id`);
+  ADD CONSTRAINT `report_ibfk_1` FOREIGN KEY (`Meme_Id`) REFERENCES `meme` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
