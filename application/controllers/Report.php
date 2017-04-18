@@ -8,7 +8,7 @@ class Report extends CI_Controller {
     }
 
     public function view() {
-      if (!(isset($this->session->logged_in) && $his->session->user_type > 0)) {
+      if (!(isset($this->session->logged_in) && $this->session->user_type > 0)) {
           show_404();
           exit;
       }
@@ -22,7 +22,21 @@ class Report extends CI_Controller {
         $data['is_more'] = FALSE;
       }
 
+      $data['username'] = $this->session->username;
+
       $this->load->view('pages/reports');
+    }
+
+    public function viewJSON() {
+      if (!(isset($this->session->logged_in) && $this->session->user_type > 0)) {
+          show_404();
+          exit;
+      }
+      $from = isset($_REQUEST["from"]) ? $_REQUEST["from"] : 0;
+      $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 20;
+      $reports = $this->report_model->get_reports($from, $amount);
+
+      echo json_encode($reports);
     }
 
     public function post_report() {

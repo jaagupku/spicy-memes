@@ -11,7 +11,7 @@ class Report_model extends Base_Model {
   }
 
   public function get_reports($from, $amount) {
-    $query = $this->db->limit($amount, $from)->get('v_report');
+    $query = $this->db->limit($amount, $from)->get('v_reports');
     return $query->result_array();
   }
 
