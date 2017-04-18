@@ -403,6 +403,7 @@ class Users extends CI_Controller {
         $this->session->email = $user->Email;
         $this->session->user_id = $user->Id;
         $this->session->language = $user->Language;
+        $this->session->user_type = $user->User_Type;
         $this->session->fb_linked = isset($user->FB_Id) || $link_with_fb;
         redirect($this->session->referenced_form, 'refresh');
     }
