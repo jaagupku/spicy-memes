@@ -31,8 +31,36 @@ array_push($scripts, "/assets/js/comments.js");
             <p><?= lang('comments_spicelevel') ?>: <span class="badge"><?php echo $meme['Points']; ?></span></p>
             <p><?= lang('comments_addedby') ?>: <a href="<?php echo site_url('/profile/'.$meme['User_Name']) ?>"><?php echo $meme['User_Name'] ?></a></p>
             <p><?= lang('comments_comments') ?>: <a href="#comments"><span class="badge"><?= $meme['comments'] ?></span></a></p>
+            <p><a href="#" role="button" class="btn-login" data-toggle="modal" data-target="#reportmodal" data-remote="false"><?= lang('report') ?></a></p>
           </div>
 
+        </div>
+      </div>
+    </div>
+
+    <!-- reportmodal  -->
+    <div class="modal fade" id="reportmodal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><?= lang('modal_report') ?></h4>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="<?php echo site_url("report/post_report"); ?>">
+              <div class="form-group">
+                <p><?= lang('report_type') ?>:</p>
+                <input type="radio" class="form-control" name="type" value="1"> <p><?= lang('report_type1') ?>:</p>
+                <input type="radio" class="form-control" name="type" value="2"> <p><?= lang('report_type2') ?>:</p>
+                <input type="radio" class="form-control" name="type" value="3"> <p><?= lang('report_type3') ?>:</p>
+                <input type="radio" class="form-control" name="type" value="4"> <p><?= lang('report_type4') ?>:</p>
+                <input type="radio" class="form-control" name="type" value="0"> <p><?= lang('report_other') ?>:</p>
+                <input name="data" type="text" class="form-control" id="data" placeholder="<?= lang('report_other') ?>">
+                <input name="memeid" type="hidden" value="<?=$meme['Id']?>">
+              </div>
+              <button type="submit" class="btn btn-login btn-sm"><?= lang('report') ?></button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

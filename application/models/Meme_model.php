@@ -32,14 +32,14 @@ class Meme_model extends Base_Model {
         return $this->db->get()->result();
     }
 
-    public function retrieve($id) {
+    public function retrieve($id) {// this is same as get($id)
         $this->db->from('meme');
         $this->db->where('Id', $id);
 
         return $this->db->get()->row();
     }
 
-    public function get($id) {
+    public function get($id) { // this is same as retrieve($id)
         $query = $this->db->query("SELECT * FROM v_top_memes WHERE Id=$id");
         return $query->row_array();
     }
@@ -69,5 +69,10 @@ class Meme_model extends Base_Model {
         $this->db->where('Date >', $date);
 
         return $this->db->get()->result_array();
+    }
+
+    public function delete_meme($memeid) {
+      $this->db->where('Id', $memeid);
+      $this->db->delete('meme');
     }
 }

@@ -18,4 +18,16 @@ class Report_model extends Base_Model {
   public function save_report($memeid, $type, $data="") {
     return $this->_call_procedure('sp_add_report', array($memeid, $type, $data));
   }
+
+  public function retrieve($id) {
+    $this->db->from($this->table);
+    $this->db->where('Id', $id);
+
+    return $this->db->get()->result_array();
+  }
+
+  public function delete($id) {
+    $this->db->where('Id', $id);
+    $this->db->delete('report');
+  }
 }
