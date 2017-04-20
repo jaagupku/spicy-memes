@@ -28,6 +28,9 @@ include('header.php');
           <?php endforeach; ?>
         </tbody>
       </table>
+      <?php if($is_more) : ?>
+      <a href="<?php echo site_url("report/view"."?amount=$amount&from=" . ($from+$amount)); ?>"><?= lang('report_load_more') ?></a>
+      <?php endif;?>
     </div>
   </div>
 </div>

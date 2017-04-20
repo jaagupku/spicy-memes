@@ -161,5 +161,4 @@ $lang['report_other'] = 'Muu/Taaspostitus';
 $lang['report_meme_title'] = 'Meemi pealkiri';
 $lang['report_show_mercy'] = 'Anna armu';
 $lang['report_remove_meme'] = 'Kustuta meem';
-$lang[''] = '';
-$lang[''] = '';
+$lang['report_load_more'] = 'Lae rohkem aruandeid';

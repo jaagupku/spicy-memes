@@ -50,19 +50,19 @@ array_push($scripts, "/assets/js/comments.js");
             <p><?= lang('report_type') ?>:</p>
             <form method="POST" action="<?php echo site_url("report/post_report"); ?>">
                 <div class="radio">
-                  <label><input type="radio" name="optradio"><?= lang('report_type1') ?></label>
+                  <label><input type="radio" name="type" value="1"><?= lang('report_type1') ?></label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="optradio"><?= lang('report_type2') ?></label>
+                  <label><input type="radio" name="type" value="2"><?= lang('report_type2') ?></label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="optradio"><?= lang('report_type3') ?></label>
+                  <label><input type="radio" name="type" value="3"><?= lang('report_type3') ?></label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="optradio"><?= lang('report_type4') ?></label>
+                  <label><input type="radio" name="type" value="4"><?= lang('report_type4') ?></label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="optradio"><?= lang('report_other') ?></label>
+                  <label><input type="radio" name="type" value="0"><?= lang('report_other') ?></label>
                 </div>
                 <div class="form-group">
                   <input name="data" type="text" class="form-control" id="data" placeholder="<?= lang('report_other') ?>">

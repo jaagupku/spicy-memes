@@ -163,3 +163,4 @@ $lang['report_other'] = 'Other/Repost';
 $lang['report_meme_title'] = 'Meme title';
 $lang['report_show_mercy'] = 'Show mercy';
 $lang['report_remove_meme'] = 'Remove meme';
+$lang['report_load_more'] = 'Load more reports';

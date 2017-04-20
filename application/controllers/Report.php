@@ -16,7 +16,7 @@ class Report extends CI_Controller {
       $data['from'] = isset($_REQUEST["from"]) ? $_REQUEST["from"] : 0;
       $data['amount'] = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 20;
       $data['reports'] = $this->report_model->get_reports($data['from'], $data['amount'] + 1);
-      if (count($data['reports']) == 21) {
+      if (count($data['reports']) == $data['amount']+1) {
         $data['is_more'] = TRUE;
         array_pop($data['reports']);
       } else {
