@@ -64,7 +64,7 @@ if (!isset($username)) {
           <ul class="nav navbar-nav navbar-right loginsignup">
             <?php if (isset($username)) { ?>
               <?php if ($_SESSION['user_type'] > 0) : ?>
-                <li <?php if($selection==='report') {echo 'class="active"';} ?>><a href="<?php echo site_url('report/view') ?>"><?= lang('report') ?></a></li>
+                <li <?php if($selection==='report') {echo 'class="active"';} ?>><a href="<?php echo site_url('report/view') ?>"><span class="glyphicon glyphicon-alert"></span> <?= lang('report') ?></a></li>
               <?php endif; ?>
               <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="<?php echo site_url("profile/".$username) ?>" id="username"><span class="glyphicon glyphicon-user"></span> <?= $username ?></a></li>
               <li><a href="<?= site_url("logout") ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> <?= lang('header_logout') ?></a></li>
