@@ -124,6 +124,7 @@ $lang['comment_readspicycommentshere'] = 'LOE VÜRTSIKAID KOMMENTAARE';
 $lang['comment_nocomments'] = 'Siin kommentaare pole.';
 $lang['comment_points'] = 'Punkte';
 $lang['comment'] = 'Kommentaar';
+$lang['comment_delete'] = 'Kustuta';
 
 $lang['meme_spicelevel'] = 'Vürtsikus';
 $lang['meme_addedby'] = 'Autor';

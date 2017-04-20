@@ -30,6 +30,9 @@
 .comment p {
   text-align: justify;
 }
+#deleteComment a {
+  color: DarkRed;
+}
 @media (max-width: 580px) {
   .col-custom-commentspage {
     width: auto;

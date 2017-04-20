@@ -23,4 +23,16 @@ class Comment_model extends Base_Model {
 
         return $this->db->get()->result();
     }
+
+    public function retrieve($id) {
+        $this->db->from('comments');
+        $this->db->where('Id', $id);
+
+        return $this->db->get()->row_array();
+    }
+
+    public function delete($commentid) {
+      $this->db->where('Id', $commentid);
+      $this->db->delete('comments');
+    }
 }

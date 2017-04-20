@@ -126,6 +126,7 @@ $lang['comment_readspicycommentshere'] = 'READ SPICY COMMENTS HERE';
 $lang['comment_nocomments'] = 'It seems to be empty. No comments here.';
 $lang['comment_points'] = 'Points';
 $lang['comment'] = 'Comment';
+$lang['comment_delete'] = 'Delete';
 
 $lang['meme_spicelevel'] = 'Spice Level';
 $lang['meme_addedby'] = 'Added by';

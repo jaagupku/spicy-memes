@@ -40,6 +40,21 @@ class Meme extends CI_Controller {
         $this->load->view('pages/commentsbody', $data);
     }
 
+    public function delete_comment() {
+      $commentid = $_REQUEST['id'];
+      if (!(isset($commentid) && isset($this->session->logged_in) && $this->session->logged_in)) {
+        show_404();
+        exit;
+      }
+
+      $comment = $this->comment_model->retrieve($commentid);
+      if ($comment['User_Id'] == $this->session->user_id || $this->session->user_type > 0) {
+        $this->comment_model->delete($commentid);
+      }
+
+      redirect($this->session->referenced_form);
+    }
+
     private function _add_votes_to_comments($comments) {
         if ($this->session->logged_in && count($comments) > 0) {
             $id_to_comment = array();
