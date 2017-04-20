@@ -31,7 +31,7 @@ array_push($scripts, "/assets/js/comments.js");
             <p><?= lang('comments_spicelevel') ?>: <span class="badge"><?php echo $meme['Points']; ?></span></p>
             <p><?= lang('comments_addedby') ?>: <a href="<?php echo site_url('/profile/'.$meme['User_Name']) ?>"><?php echo $meme['User_Name'] ?></a></p>
             <p><?= lang('comments_comments') ?>: <a href="#comments"><span class="badge"><?= $meme['comments'] ?></span></a></p>
-            <p><a href="#" role="button" class="btn-login" data-toggle="modal" data-target="#reportmodal" data-remote="false"><?= lang('report') ?></a></p>
+            <p><a href="#" role="button" class="btn-login" data-toggle="modal" data-target="<?= isset($username) ? '#reportmodal' : '#signuploginmodal' ?>" data-remote="false"><?= lang('report') ?></a></p>
           </div>
 
         </div>
