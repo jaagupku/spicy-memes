@@ -7,6 +7,10 @@ var lang = $('html').attr('lang');
 $(function () {
     loadVoting('meme-container', 'meme');
 
+    if (LOADBUTTON.length === 0) {
+        return;
+    }
+
     $.ajax({
         method: "GET",
         url: location.protocol + '//' + location.hostname + "/assets/xlst/meme_" + lang + ".xsl",
@@ -15,9 +19,9 @@ $(function () {
         XLST = xlst;
         window.onscroll = yHandler;
     });
-});
 
-LOADBUTTON.text(LOADBUTTON.attr('data-text-loading'));
+    LOADBUTTON.text(LOADBUTTON.attr('data-text-loading'));
+});
 
 function yHandler() {
     var body = document.getElementById('memebody');
