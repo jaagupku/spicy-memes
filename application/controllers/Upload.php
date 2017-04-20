@@ -5,6 +5,7 @@ class Upload extends CI_Controller {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('meme_model');
+        $this->load->helper('upload_helper');
     }
 
     private function _display_error($error) {
@@ -23,8 +24,6 @@ class Upload extends CI_Controller {
         $this->_display_error(validation_errors());
         return;
       }
-
-      $this->load->helper('upload_helper');
 
       $missing_link_or_img = TRUE;
       $youtube = FALSE;

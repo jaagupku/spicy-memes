@@ -6,6 +6,7 @@ class Report extends CI_Controller {
         $this->load->model('report_model');
         $this->load->model('meme_model');
         $this->load->library('form_validation');
+        $this->load->helper('upload_helper');
     }
 
     public function view() {
@@ -42,7 +43,7 @@ class Report extends CI_Controller {
 
     public function show_mercy() {
       $id = $_REQUEST['reportid'];
-      if (!isset($id)) {
+      if (!isset($id) && !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
         show_404();
         exit;
       }
@@ -52,11 +53,15 @@ class Report extends CI_Controller {
 
     public function delete_meme() {
       $id = $_REQUEST['reportid'];
-      if (!isset($id)) {
+      if (!isset($id) && !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
         show_404();
         exit;
       }
       $report = $this->report_model->retrieve($id);
+      $meme = $this->meme_model->retrieve($report[0]['Meme_Id']);
+      if ($meme->Data_Type == 'P') {
+        delete_image(substr($meme->Data, 0, -4));
+      }
       $this->meme_model->delete_meme($report[0]['Meme_Id']);
       $this->report_model->delete($id);
       redirect(site_url('report/view'));

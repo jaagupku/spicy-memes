@@ -26,3 +26,8 @@ function upload_image($controller, $input_name) {
 function upload_link($controller, $link) {
     return \Cloudinary\Uploader::upload($link);
 }
+
+function delete_image($imgid) {
+  $api = new \Cloudinary\Api();
+  $api->delete_resources(array($imgid));
+}
