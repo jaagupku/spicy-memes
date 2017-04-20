@@ -44,21 +44,33 @@ array_push($scripts, "/assets/js/comments.js");
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><?= lang('modal_report') ?></h4>
+            <h4 class="modal-title"><?= lang('title_report') ?></h4>
           </div>
           <div class="modal-body">
+            <p><?= lang('report_type') ?>:</p>
             <form method="POST" action="<?php echo site_url("report/post_report"); ?>">
-              <div class="form-group">
-                <p><?= lang('report_type') ?>:</p>
-                <input type="radio" class="form-control" name="type" value="1"> <p><?= lang('report_type1') ?>:</p>
-                <input type="radio" class="form-control" name="type" value="2"> <p><?= lang('report_type2') ?>:</p>
-                <input type="radio" class="form-control" name="type" value="3"> <p><?= lang('report_type3') ?>:</p>
-                <input type="radio" class="form-control" name="type" value="4"> <p><?= lang('report_type4') ?>:</p>
-                <input type="radio" class="form-control" name="type" value="0"> <p><?= lang('report_other') ?>:</p>
-                <input name="data" type="text" class="form-control" id="data" placeholder="<?= lang('report_other') ?>">
+                <div class="radio">
+                  <label><input type="radio" name="optradio"><?= lang('report_type1') ?></label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" name="optradio"><?= lang('report_type2') ?></label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" name="optradio"><?= lang('report_type3') ?></label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" name="optradio"><?= lang('report_type4') ?></label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" name="optradio"><?= lang('report_other') ?></label>
+                </div>
+                <div class="form-group">
+                  <input name="data" type="text" class="form-control" id="data" placeholder="<?= lang('report_other') ?>">
+                </div>
                 <input name="memeid" type="hidden" value="<?=$meme['Id']?>">
-              </div>
-              <button type="submit" class="btn btn-login btn-sm"><?= lang('report') ?></button>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-login btn-sm"><?= lang('report') ?></button>
+                </div>
             </form>
           </div>
         </div>
