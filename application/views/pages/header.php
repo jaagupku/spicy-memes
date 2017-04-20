@@ -69,8 +69,8 @@ if (!isset($username)) {
               <li <?php if($selection==='profile') {echo 'class="active"';} ?> ><a href="<?php echo site_url("profile/".$username) ?>" id="username"><span class="glyphicon glyphicon-user"></span> <?= $username ?></a></li>
               <li><a href="<?= site_url("logout") ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> <?= lang('header_logout') ?></a></li>
             <?php } else { ?>
-              <li><a href="<?= site_url("login") ?>" role="button" class="btn-login" data-toggle="modal" data-target="#signuploginmodal" data-remote="false"><span class="glyphicon glyphicon-log-in"></span> <?= lang('header_login') ?></a></li>
-              <li><a href="<?= site_url("register") ?>" role="button" class="btn-signup" data-toggle="modal" data-target="#signuploginmodal" data-remote="false"><span class="glyphicon glyphicon-user"></span> <?= lang('header_signup') ?></a></li>
+              <li><a href="<?= site_url("login") ?>" role="button" class="btn-login" <?php if (!in_array($selection, array('login', 'register'))) echo 'data-toggle="modal" data-target="#signuploginmodal" data-remote="false"' ?>><span class="glyphicon glyphicon-log-in"></span> <?= lang('header_login') ?></a></li>
+              <li><a href="<?= site_url("register") ?>" role="button" class="btn-signup" <?php if (!in_array($selection, array('login', 'register'))) echo 'data-toggle="modal" data-target="#signuploginmodal" data-remote="false"' ?>><span class="glyphicon glyphicon-user"></span> <?= lang('header_signup') ?></a></li>
             <?php } ?>
           </ul>
 
