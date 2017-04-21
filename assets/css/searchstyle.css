@@ -1,0 +1,21 @@
+.search-row {
+    width: 100%;
+}
+
+.search-thumbnail, .search-memeinfo {
+    float: left;
+}
+
+.search-thumbnail {
+    margin-right: 24px;
+}
+
+.search-image {
+    width: 120px;
+    height: 90px;
+}
+
+.search-title {
+    font-size: 1.5em;
+    margin-bottom: 16px;
+}

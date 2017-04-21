@@ -165,3 +165,14 @@ $lang['report_meme_title'] = 'Meme title';
 $lang['report_show_mercy'] = 'Show mercy';
 $lang['report_remove_meme'] = 'Remove meme';
 $lang['report_load_more'] = 'Load more reports';
+
+$lang['title_search'] = 'Search';
+$lang['search_invalid'] = 'Invalid search query';
+$lang['search_nomatches'] = 'No matches found';
+$lang['search_sortby'] = 'Sort by';
+$lang['search_sortby_top'] = 'top';
+$lang['search_sortby_comments'] = 'comments';
+$lang['search_sortby_date'] = 'date';
+$lang['search_addedby'] = 'Added by';
+$lang['search_spicelevel'] = 'Spice Level';
+$lang['search_comments'] = 'Comments';

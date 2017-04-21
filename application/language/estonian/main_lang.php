@@ -163,3 +163,14 @@ $lang['report_meme_title'] = 'Meemi pealkiri';
 $lang['report_show_mercy'] = 'Anna armu';
 $lang['report_remove_meme'] = 'Kustuta meem';
 $lang['report_load_more'] = 'Lae rohkem aruandeid';
+
+$lang['title_search'] = 'Otsing';
+$lang['search_invalid'] = 'Vale otsingu sisend';
+$lang['search_nomatches'] = 'Ei leidnud ühtegi vastavat meemi';
+$lang['search_sortby'] = 'Sorteeri';
+$lang['search_sortby_top'] = 'top';
+$lang['search_sortby_comments'] = 'kommentaarid';
+$lang['search_sortby_date'] = 'kuupäev';
+$lang['search_addedby'] = 'Autor';
+$lang['search_spicelevel'] = 'Vürtsikus';
+$lang['search_comments'] = 'Kommentaarid';

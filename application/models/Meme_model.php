@@ -71,6 +71,14 @@ class Meme_model extends Base_Model {
         return $this->db->get()->result_array();
     }
 
+    public function find_like($value, $order) {
+        $this->db->from('v_top_memes');
+        $this->db->like('Title', $value);
+        $this->db->order_by($order, 'DESC');
+
+        return $this->db->get()->result_array();
+    }
+
     public function delete_meme($memeid) {
       $this->db->where('Id', $memeid);
       $this->db->delete('meme');
