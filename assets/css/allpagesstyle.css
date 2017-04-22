@@ -22,7 +22,6 @@ body {
 .addsomespice {
   text-align: right;
   position: fixed;
-  width: 80%;
   right: 10px;
   z-index: 1;
 }
@@ -30,7 +29,6 @@ body {
   text-align: left;
   position: fixed;
   left: 10px;
-  width: 20%;
   z-index: 1;
 }
 .changelanguage a{
