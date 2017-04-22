@@ -129,7 +129,7 @@ array_push($scripts, "/assets/js/comments.js");
                     <span class="glyphicon glyphicon-arrow-up upvote<?php if (isset($comment['User_Vote']) && $comment['User_Vote'] == 1) echo(' active-vote') ?>"></span>
                     <span class="glyphicon glyphicon-arrow-down downvote<?php if (isset($comment['User_Vote']) && $comment['User_Vote'] == -1) echo(' active-vote') ?>"></span>
                   </div>
-                  <?php if ($_SESSION['user_id'] === $comment['User_Id'] || $_SESSION['user_type'] > 0) : ?>
+                  <?php if ($this->session->logged_in && ($_SESSION['user_id'] === $comment['User_Id'] || $_SESSION['user_type'] > 0)): ?>
                   <p id="deleteComment"><a href="<?php echo site_url('meme/delete_comment?id='.$comment['Id']);?>"><?= lang('comment_delete') ?></a></p>
                   <?php endif; ?>
                   <p><?= lang('comment_points') ?>: <span class="badge points"><?php echo $comment['Points'] ?></span></p>
