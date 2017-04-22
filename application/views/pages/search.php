@@ -25,9 +25,9 @@ include('header.php');
         <div class="col-xs-6 col-centered">
             <div class="sortingsection-userpage">
                 <p><strong><?= lang('search_sortby') ?>: </strong></p>
-                <a class="sort" href="<?= site_url("/search?" . http_build_query(array_merge($_GET, array('sort' => 'top')))) ?>"><span class="label label-default"><?= lang('search_sortby_top') ?></span></a>
-                <a class="sort" href="<?= site_url("/search?" . http_build_query(array_merge($_GET, array('sort' => 'comments'))))?>"><span class="label label-default"><?= lang('search_sortby_comments') ?></span></a>
-                <a class="sort" href="<?= site_url("/search?" . http_build_query(array_merge($_GET, array('sort' => 'date')))) ?>"><span class="label label-default"><?= lang('search_sortby_date') ?></span></a>
+                <a class="sort" href="<?= site_url(strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query(array_merge($_GET, array('sort' => 'top')))) ?>"><span class="label label-default"><?= lang('search_sortby_top') ?></span></a>
+                <a class="sort" href="<?= site_url(strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query(array_merge($_GET, array('sort' => 'comments'))))?>"><span class="label label-default"><?= lang('search_sortby_comments') ?></span></a>
+                <a class="sort" href="<?= site_url(strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query(array_merge($_GET, array('sort' => 'date')))) ?>"><span class="label label-default"><?= lang('search_sortby_date') ?></span></a>
             </div>
         </div>
     </div>

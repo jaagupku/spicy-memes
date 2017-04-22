@@ -116,6 +116,11 @@ array_push($scripts, "/assets/js/comments.js");
             <div class="container-fluid"><div class="break"></div></div>
             <p><?= lang('comment_nocomments') ?></p>
           <?php else : ?>
+            <div class="sortingsection-userpage">
+              <p><strong><?= lang('search_sortby') ?>: </strong></p>
+              <a class="sort" href="<?= site_url(strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query(array_merge($_GET, array('sort' => 'top')))  . '#comments') ?>"><span class="label label-default"><?= lang('search_sortby_top') ?></span></a>
+              <a class="sort" href="<?= site_url(strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query(array_merge($_GET, array('sort' => 'date')))  . '#comments') ?>"><span class="label label-default"><?= lang('search_sortby_date') ?></span></a>
+            </div>
           <?php foreach($comments as $comment) : ?>
             <div class="container-fluid"><div class="break"></div></div>
             <div class="read-comments" data-id="<?= $comment['Id'] ?>">

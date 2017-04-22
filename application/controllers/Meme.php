@@ -33,8 +33,19 @@ class Meme extends CI_Controller {
             }
         }
 
+        $order = array(
+            'top' => 'Points',
+            'date' => 'Date'
+        );
+
+        $sort = $this->input->get('sort');
+
+        if (!isset($sort) || !in_array($sort, array_keys($order))) {
+            $sort = 'top';
+        }
+
         $data['username'] = $this->session->username;
-        $data['comments'] = $this->_add_votes_to_comments($this->meme_model->get_comments($meme_id, 'Points'));
+        $data['comments'] = $this->_add_votes_to_comments($this->meme_model->get_comments($meme_id, $order[$sort]));
 
         $this->session->referenced_form = site_url("/meme/$meme_id");
         $this->load->view('pages/commentsbody', $data);
