@@ -46,7 +46,7 @@ array_push($scripts, '/assets/js/min/profile.min.js');
                 </div>';
           } else {
             echo '<div class="social-wrap">
-                    <button id="facebook" onClick="unLinkFacebook()" type="button">' . lang('profile_linkwithfacebook') . '</button>
+                    <button id="facebook" onClick="unLinkFacebook()" type="button">' . lang('profile_unlinkwithfacebook') . '</button>
                 </div>';
           } ?>
 
