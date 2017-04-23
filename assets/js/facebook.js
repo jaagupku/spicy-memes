@@ -3,7 +3,7 @@ logInWithFacebook = function() {
     if (response.authResponse) {
       window.location.href = location.protocol + '//' + location.hostname + "/login_fb_callback";
     } else {
-      alert('User cancelled login or did not fully authorize.');
+      //alert('User cancelled login or did not fully authorize.');
     }
   }, {scope: 'email'});
   return false;
@@ -34,10 +34,10 @@ window.fbAsyncInit = function() {
   });
 };
 
-window.load = function() {(function(d, s, id){
+$('#signuploginmodal').on('shown.bs.modal', function() {(function(d, s, id){
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'))};
+}(document, 'script', 'facebook-jssdk'))});
