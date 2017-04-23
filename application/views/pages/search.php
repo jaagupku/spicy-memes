@@ -55,7 +55,7 @@ include('header.php');
                         <div class="search-data">
                             <div><?= lang('search_addedby') ?>: <a href="<?= site_url('/profile/' . $meme['User_Name']) ?>"><?= $meme['User_Name'] ?></a></div>
                             <div><?= lang('search_spicelevel') ?>: <span class="badge"><?= $meme['Points'] ?></span></div>
-                            <div><span class="badge"><?= lang('search_comments') ?>: <a href="<?= site_url('/meme/' . $meme['Id'] . '#comments') ?>"><?= $meme['comments'] ?></a></span></div>
+                            <div><?= lang('search_comments') ?>: <span class="badge"><a href="<?= site_url('/meme/' . $meme['Id'] . '#comments') ?>"><?= $meme['comments'] ?></a></span></div>
                         </div>
                     </div>
                 </div>
