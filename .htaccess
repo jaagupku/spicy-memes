@@ -13,3 +13,9 @@
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteRule ^(.*)$ index.php?/$1 [QSA,L]
 </IfModule>
+
+# http://httpd.apache.org/docs/current/mod/mod_deflate.html#enable
+<IfModule mod_deflate.c>
+    SetOutputFilter DEFLATE
+    SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip
+</IfModule>

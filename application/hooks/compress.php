@@ -1,5 +1,5 @@
-// https://github.com/bcit-ci/CodeIgniter/wiki/Compress-HTML-output
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+// https://github.com/bcit-ci/CodeIgniter/wiki/Compress-HTML-output
 function compress()
 {
     ini_set("pcre.recursion_limit", "16777");
