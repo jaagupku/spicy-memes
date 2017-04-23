@@ -1,7 +1,7 @@
 <?php
 $scripts = array();
 if (!isset($username)) {
-  array_push($scripts, '/assets/js/facebook.js');
+  array_push($scripts, '/assets/js/min/facebook.min.js');
 }
 ?>
 <!DOCTYPE html>
