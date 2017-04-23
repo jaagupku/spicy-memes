@@ -23,7 +23,7 @@ array_push($scripts, '/assets/js/min/main.min.js');
             <?php else: ?>
                 <div class="embed-responsive embed-responsive-16by9 video not-loaded-video" data-id="<?= $row['Data'] ?>">
                     <img class="preview-image" alt="<?= $row['Title'] ?>" src="https://img.youtube.com/vi/<?= $row['Data'] ?>/hqdefault.jpg"/>
-                    <a href="https://www.youtube.com/watch?v=<?= $row['Data'] ?>" class="play-button"></a>
+                    <a title="https://www.youtube.com/watch?v=<?= $row['Data'] ?>" href="https://www.youtube.com/watch?v=<?= $row['Data'] ?>" class="play-button"></a>
                 </div>
             <?php endif ?>
         </div>

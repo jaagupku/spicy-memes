@@ -50,6 +50,9 @@
                         <xsl:attribute name="href">
                             https://www.youtube.com/watch?v=<xsl:value-of select="data"/>
                         </xsl:attribute>
+                        <xsl:attribute name="title">
+                            https://www.youtube.com/watch?v=<xsl:value-of select="data"/>
+                        </xsl:attribute>
                     </xsl:element>
                 </xsl:element>
             </xsl:if>
