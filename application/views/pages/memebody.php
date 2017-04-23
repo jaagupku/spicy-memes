@@ -18,14 +18,13 @@ array_push($scripts, '/assets/js/main.js');
       <div class="col-xs-12 col-custom-frontpage col-centered">
         <div class="meme">
           <h2><a href="<?php echo site_url('/meme/'.$row['Id'])?>"><?php echo $row['Title']; ?></a></h2>
-          <?php if ($row['Data_Type']=="P") {
-             echo '<img alt="'.$row['Title'].'" src="https://res.cloudinary.com/spicy-memes/image/upload/t_meme/'.$row['Data'].'" />';
-          } else {
-             echo "<div class=\"embed-responsive embed-responsive-16by9\">
-             <iframe class=\"embed-responsive-item\" src=\"https://www.youtube.com/embed/{$row['Data']}\" allowfullscreen></iframe>
-               </div>";
-          }
-          ?>
+            <?php if ($row['Data_Type'] === 'P') : ?>
+                <img alt="<?= $row['Title'] ?>" src="https://res.cloudinary.com/spicy-memes/image/upload/t_meme/<?= $row['Data'] ?>" />
+            <?php else: ?>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?= $row['Data'] ?>?version=3&enablejsapi=1" allowfullscreen></iframe>
+                </div>
+            <?php endif ?>
         </div>
 
         <div class="memedata">
