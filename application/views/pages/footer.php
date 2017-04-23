@@ -3,11 +3,6 @@
 
     <div class="container-fluid footer">
       <a class="link-about" href="<?php echo site_url("aboutus"); ?>"><?= lang('footer_about') ?></a>
-      <div class="social-media">
-        <a href="https://www.facebook.com/"><span id="social-fb" class="fa fa-facebook-square social"></span></a>
-        <a href="https://twitter.com/"><span id="social-tw" class="fa fa-twitter-square social"></span></a>
-        <a href="https://instagram.com/"><span id="social-ig" class="fa fa-instagram social"></span></a>
-      </div>
       <div class="container-fluid"><div class="break"></div></div>
       <div class="site-map">
         <ul>
