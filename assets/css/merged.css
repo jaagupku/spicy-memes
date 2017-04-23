@@ -313,8 +313,7 @@ div#memebody {
   left: 0;
   right: 0;
   position: absolute;
-}@import url(https://fonts.googleapis.com/css?family=Merriweather+Sans);
-.navbar-default {
+}.navbar-default {
   background-color: #f72c25;
   border-color: #2d1e2f;
 }
