@@ -53,7 +53,7 @@ if (!isset($username)) {
 
           <ul class="nav navbar-nav navbar-right loginsignup">
             <?php if (isset($username)) { ?>
-              <?php if ($_SESSION['user_type'] > 0) : ?>
+              <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] > 0) : ?>
                 <li <?php if($selection==='report') {echo 'class="active"';} ?>><a href="<?php echo site_url('report/view') ?>"><span class="glyphicon glyphicon-alert"></span> <?= lang('report') ?></a></li>
                 <li <?php if($selection==='users') {echo 'class="active"';} ?>><a href="<?php echo site_url('admin/view_users') ?>"><span class="glyphicon glyphicon-eye-open"></span> <?= lang('users') ?></a></li>
               <?php endif; ?>
