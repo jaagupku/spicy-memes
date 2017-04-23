@@ -34,10 +34,16 @@ window.fbAsyncInit = function() {
   });
 };
 
-$('#signuploginmodal').on('shown.bs.modal', function() {(function(d, s, id){
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'))});
+var loadFB = function() {(function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'))};
+
+if (location.pathname === '/login') {
+  loadFB();
+} else {
+    $('#signuploginmodal').on('shown.bs.modal', loadFB());
+}
