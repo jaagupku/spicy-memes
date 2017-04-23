@@ -44,33 +44,36 @@ array_push($scripts, "/assets/js/min/comments.min.js");
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><?= lang('title_report') ?></h4>
+            <h3 class="modal-title"><?= lang('title_report') ?></h3>
           </div>
           <div class="modal-body">
-            <p><?= lang('report_type') ?>:</p>
             <form method="POST" action="<?php echo site_url("report/post_report"); ?>">
+              <fieldset>
+                <legend><?= lang('report_type') ?>:</legend>
                 <div class="radio">
-                  <label><input type="radio" name="type" value="1"><?= lang('report_type1') ?></label>
+                  <label for="option1"><input id="option1" type="radio" name="type" value="1"><?= lang('report_type1') ?></label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="type" value="2"><?= lang('report_type2') ?></label>
+                  <label for="option2"><input id="option2" type="radio" name="type" value="2"><?= lang('report_type2') ?></label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="type" value="3"><?= lang('report_type3') ?></label>
+                  <label for="option3"><input id="option3" type="radio" name="type" value="3"><?= lang('report_type3') ?></label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="type" value="4"><?= lang('report_type4') ?></label>
+                  <label for="option4"><input id="option4" type="radio" name="type" value="4"><?= lang('report_type4') ?></label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="type" value="0"><?= lang('report_other') ?></label>
+                  <label for="option5"><input id="option5" type="radio" name="type" value="0"><?= lang('report_other') ?></label>
                 </div>
                 <div class="form-group">
+                  <label for="data"><?= lang('report_other') ?></label>
                   <input name="data" type="text" class="form-control" id="data" placeholder="<?= lang('report_other') ?>">
                 </div>
                 <input name="memeid" type="hidden" value="<?=$meme['Id']?>">
                 <div class="form-group">
                   <button type="submit" class="btn btn-login btn-sm"><?= lang('report') ?></button>
                 </div>
+              </fieldset>
             </form>
           </div>
         </div>
