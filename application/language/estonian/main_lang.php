@@ -163,3 +163,12 @@ $lang['report_meme_title'] = 'Meemi pealkiri';
 $lang['report_show_mercy'] = 'Anna armu';
 $lang['report_remove_meme'] = 'Kustuta meem';
 $lang['report_load_more'] = 'Lae rohkem aruandeid';
+
+$lang['user_name'] = 'Kasutajanimi';
+$lang['user_email'] = 'Email';
+$lang['user_create_date'] = 'Loomiskuupäev';
+$lang['user_last_login_date'] = 'Viimane meldimine';
+$lang['user_delete_user'] = 'Kustuta kasutaja';
+$lang['users_load_more'] = 'Lae rohkem kasutajaid';
+$lang['title_users'] = 'Kasutajad';
+$lang['users'] = 'Kasutajad';

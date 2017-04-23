@@ -165,3 +165,12 @@ $lang['report_meme_title'] = 'Meme title';
 $lang['report_show_mercy'] = 'Show mercy';
 $lang['report_remove_meme'] = 'Remove meme';
 $lang['report_load_more'] = 'Load more reports';
+
+$lang['user_name'] = 'User name';
+$lang['user_email'] = 'Email';
+$lang['user_create_date'] = 'Creation date';
+$lang['user_last_login_date'] = 'Last login';
+$lang['user_delete_user'] = 'Delete user';
+$lang['users_load_more'] = 'Load more users';
+$lang['title_users'] = 'Users';
+$lang['users'] = 'Users';

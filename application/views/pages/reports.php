@@ -5,7 +5,7 @@ include('header.php');
 ?>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 .col-custom-block col-centered">
+    <div class="col-xs-12 col-custom-block col-centered">
       <table class="table">
         <thead>
           <tr>
@@ -23,7 +23,7 @@ include('header.php');
               <td><a href="<?php echo site_url("meme/".$row['Meme_Id']); ?>"><?= $row['Meme_Title']?></a></td>
               <td><?php if($row['Type'] == 0) {echo lang('report_other').': '.$row['Data'];} else {echo lang('report_type'.$row['Type']);} ?></td>
               <td><?= $row['Date'] ?></td>
-              <td><a href="<?php echo site_url('report/show_mercy?reportid='.$row['Id']); ?>"><?= lang('report_show_mercy') ?></a> <a href="<?php echo site_url('report/delete_meme?reportid='.$row['Id']); ?>"><?= lang('report_remove_meme') ?></a></td>
+              <td><a href="<?php echo site_url('report/show_mercy?reportid='.$row['Id']); ?>"><span class="glyphicon glyphicon-ok"></span><?= lang('report_show_mercy') ?></a><br><a href="<?php echo site_url('report/delete_meme?reportid='.$row['Id']); ?>"><span class="glyphicon glyphicon-trash"></span><?= lang('report_remove_meme') ?></a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
