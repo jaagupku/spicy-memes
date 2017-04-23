@@ -112,7 +112,7 @@
 button#facebook {
     border-color: #2d5073;
     background-color: #3b5998;
-    background-image: url(https://spicymemes.cs.ut.ee/assets/facebook-icon.png);
+    background-image: url(/assets/facebook-icon.png);
 }
 button#facebook:hover {
   background-color: #4563B3;
