@@ -107,4 +107,14 @@ class User_model extends Base_Model {
 
       return $this->db->get()->row();
     }
+
+    public function delete($id) {
+      $this->db->where('Id', $id);
+      $this->db->delete('users');
+    }
+
+    public function get_users($from, $amount) {
+      $query = $this->db->limit($amount, $from)->get('users');
+      return $query->result_array();
+    }
 }

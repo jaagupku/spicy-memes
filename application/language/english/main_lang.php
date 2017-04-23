@@ -166,6 +166,15 @@ $lang['report_show_mercy'] = 'Show mercy';
 $lang['report_remove_meme'] = 'Remove meme';
 $lang['report_load_more'] = 'Load more reports';
 
+$lang['user_name'] = 'User name';
+$lang['user_email'] = 'Email';
+$lang['user_create_date'] = 'Creation date';
+$lang['user_last_login_date'] = 'Last login';
+$lang['user_delete_user'] = 'Delete user';
+$lang['users_load_more'] = 'Load more users';
+$lang['title_users'] = 'Users';
+$lang['users'] = 'Users';
+
 $lang['title_search'] = 'Search';
 $lang['search_invalid'] = 'Invalid search query';
 $lang['search_nomatches'] = 'No matches found';
@@ -176,3 +185,4 @@ $lang['search_sortby_date'] = 'date';
 $lang['search_addedby'] = 'Added by';
 $lang['search_spicelevel'] = 'Spice Level';
 $lang['search_comments'] = 'Comments';
+
