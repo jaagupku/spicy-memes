@@ -21,8 +21,9 @@ array_push($scripts, '/assets/js/main.js');
             <?php if ($row['Data_Type'] === 'P') : ?>
                 <img alt="<?= $row['Title'] ?>" src="https://res.cloudinary.com/spicy-memes/image/upload/t_meme/<?= $row['Data'] ?>" />
             <?php else: ?>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?= $row['Data'] ?>?version=3&enablejsapi=1" allowfullscreen></iframe>
+                <div class="embed-responsive embed-responsive-16by9 video not-loaded-video" data-id="<?= $row['Data'] ?>">
+                    <img class="preview-image" alt="<?= $row['Title'] ?>" src="https://img.youtube.com/vi/<?= $row['Data'] ?>/hqdefault.jpg"/>
+                    <a href="https://www.youtube.com/watch?v=<?= $row['Data'] ?>" class="play-button"></a>
                 </div>
             <?php endif ?>
         </div>
