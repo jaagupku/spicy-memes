@@ -47,5 +47,5 @@ var path = location.pathname.split('/')[1];
 if (['login', 'profile'].indexOf(path) >= 0) {
   loadFB();
 } else {
-    $('#signuploginmodal').on('shown.bs.modal', loadFB());
+    $('#signuploginmodal').on('shown.bs.modal', loadFB);
 }
