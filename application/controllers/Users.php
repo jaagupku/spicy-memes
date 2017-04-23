@@ -349,7 +349,10 @@ class Users extends CI_Controller {
                     $this->_load_edit_profile( lang('addmeme_upload_fail'));
                     return;
                 }
-
+                $prev_image = $this->user_model->retrieve($this->session->user_id)->ProfileImg_Id;
+                if ($prev_image !== 'noprofileimg.jpg') {
+                  delete_image(substr($prev_image, 0, -4));
+                }
                 $updated_columns['ProfileImg_Id'] = $result['public_id'] . '.' . $result['format'];
             }
 
