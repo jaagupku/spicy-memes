@@ -15,18 +15,10 @@ if (!isset($username)) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?> - <?= lang('title_spicymemes') ?></title>
     <link href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/headerstyle.css" rel="stylesheet">
-    <link href="/assets/css/footerstyle.css" rel="stylesheet">
-    <link href="/assets/css/allpagesstyle.css" rel="stylesheet">
-    <link href="/assets/css/commentspagestyle.css" rel="stylesheet">
-    <link href="/assets/css/frontpagebodystyle.css" rel="stylesheet">
-    <link href="/assets/css/userpagestyle.css" rel="stylesheet">
-    <link href="/assets/css/editprofilestyle.css" rel="stylesheet">
-    <link href="/assets/css/aboutpagestyle.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/assets/css/offline-theme-dark-indicator.css" rel="stylesheet">
-    <link href="/assets/css/offline-language-english-indicator.css" rel="stylesheet">
-    <link href="/assets/css/searchstyle.css" rel="stylesheet">
+    <style>
+        <?php include(BASEPATH . '/../assets/css/merged.css') ?>
+    </style>
   </head>
   <body>
 
