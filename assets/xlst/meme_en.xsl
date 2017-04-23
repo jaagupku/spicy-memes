@@ -32,18 +32,26 @@
               </xsl:element>
             </xsl:if>
             <xsl:if test="datatype='V'">
-              <div class="embed-responsive embed-responsive-16by9">
-                <xsl:element name="iframe">
-                  <xsl:attribute name="class">
-                    embed-responsive-item
-                  </xsl:attribute>
-                  <xsl:attribute name="src">
-      			       https://www.youtube.com/embed/<xsl:value-of select="data"/>
-      		        </xsl:attribute>
-                  <xsl:attribute name="allowfullscreen">
-      		        </xsl:attribute>
+                <xsl:element name="div">
+                    <xsl:attribute name="class">
+                        embed-responsive embed-responsive-16by9 video not-loaded-video
+                    </xsl:attribute>
+                    <xsl:attribute name="data-id">
+                        <xsl:value-of select="data"/>
+                    </xsl:attribute>
+                    <xsl:element name="img">
+                        <xsl:attribute name="class">preview-image</xsl:attribute>
+                        <xsl:attribute name="alt">
+                            <xsl:value-of select="title"/></xsl:attribute>
+                        <xsl:attribute name="src">https://img.youtube.com/vi/<xsl:value-of select="data" />/hqdefault.jpg</xsl:attribute>
+                    </xsl:element>
+                    <xsl:element name="a">
+                        <xsl:attribute name="class">play-button</xsl:attribute>
+                        <xsl:attribute name="href">
+                            https://www.youtube.com/watch?v=<xsl:value-of select="data"/>
+                        </xsl:attribute>
+                    </xsl:element>
                 </xsl:element>
-              </div>
             </xsl:if>
 
           </div>
