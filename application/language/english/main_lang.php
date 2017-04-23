@@ -174,3 +174,15 @@ $lang['user_delete_user'] = 'Delete user';
 $lang['users_load_more'] = 'Load more users';
 $lang['title_users'] = 'Users';
 $lang['users'] = 'Users';
+
+$lang['title_search'] = 'Search';
+$lang['search_invalid'] = 'Invalid search query';
+$lang['search_nomatches'] = 'No matches found';
+$lang['search_sortby'] = 'Sort by';
+$lang['search_sortby_top'] = 'top';
+$lang['search_sortby_comments'] = 'comments';
+$lang['search_sortby_date'] = 'date';
+$lang['search_addedby'] = 'Added by';
+$lang['search_spicelevel'] = 'Spice Level';
+$lang['search_comments'] = 'Comments';
+

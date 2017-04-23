@@ -26,6 +26,7 @@ if (!isset($username)) {
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="/assets/css/offline-theme-dark-indicator.css" rel="stylesheet">
     <link href="/assets/css/offline-language-english-indicator.css" rel="stylesheet">
+    <link href="/assets/css/searchstyle.css" rel="stylesheet">
   </head>
   <body>
 
@@ -49,10 +50,10 @@ if (!isset($username)) {
             <li <?php if($selection==='new') {echo 'class="active"';} ?> ><a href="<?php echo site_url('new') ?>" class="new"><?= lang('header_new') ?></a></li>
           </ul>
 
-          <form class="navbar-form navbar-left">
+          <form class="navbar-form navbar-left" method="GET" action="/search">
             <div class="input-group">
               <label for="srch" class="hidden-label"><?= lang('header_search') ?>: </label>
-              <input type="search" class="form-control" placeholder="<?= lang('header_search') ?>" id="srch">
+              <input type="search" class="form-control" placeholder="<?= lang('header_search') ?>" id="srch" name="value">
               <div class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                   <span class="glyphicon glyphicon-search"></span>
@@ -88,8 +89,8 @@ if (!isset($username)) {
       <div class="row">
         <div class="changelanguage">
             <p>
-                <a href="<?= site_url(strtok($_SERVER["REQUEST_URI"],'?') . '?language=english') ?>">ENG</a> |
-                <a href="<?= site_url(strtok($_SERVER["REQUEST_URI"],'?') . '?language=estonian') ?>">EST</a>
+                <a href="<?= site_url(strtok($_SERVER["REQUEST_URI"],'?') . '?' . http_build_query(array_merge($_GET, array('language' => 'english')))) ?>">ENG</a> |
+                <a href="<?= site_url(strtok($_SERVER["REQUEST_URI"],'?') . '?' . http_build_query(array_merge($_GET, array('language' => 'estonian')))) ?>">EST</a>
             </p>
         </div>
         <?php if($selection !== 'addmeme') : ?>

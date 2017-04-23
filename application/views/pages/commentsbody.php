@@ -116,6 +116,11 @@ array_push($scripts, "/assets/js/comments.js");
             <div class="container-fluid"><div class="break"></div></div>
             <p><?= lang('comment_nocomments') ?></p>
           <?php else : ?>
+            <div class="sortingsection-userpage">
+              <p><strong><?= lang('search_sortby') ?>: </strong></p>
+              <a class="sort" href="<?= site_url(strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query(array_merge($_GET, array('sort' => 'top')))  . '#comments') ?>"><span class="label label-default"><?= lang('search_sortby_top') ?></span></a>
+              <a class="sort" href="<?= site_url(strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query(array_merge($_GET, array('sort' => 'date')))  . '#comments') ?>"><span class="label label-default"><?= lang('search_sortby_date') ?></span></a>
+            </div>
           <?php foreach($comments as $comment) : ?>
             <div class="container-fluid"><div class="break"></div></div>
             <div class="read-comments" data-id="<?= $comment['Id'] ?>">
@@ -129,7 +134,7 @@ array_push($scripts, "/assets/js/comments.js");
                     <span class="glyphicon glyphicon-arrow-up upvote<?php if (isset($comment['User_Vote']) && $comment['User_Vote'] == 1) echo(' active-vote') ?>"></span>
                     <span class="glyphicon glyphicon-arrow-down downvote<?php if (isset($comment['User_Vote']) && $comment['User_Vote'] == -1) echo(' active-vote') ?>"></span>
                   </div>
-                  <?php if ($_SESSION['user_id'] === $comment['User_Id'] || $_SESSION['user_type'] > 0) : ?>
+                  <?php if ($this->session->logged_in && ($_SESSION['user_id'] === $comment['User_Id'] || $_SESSION['user_type'] > 0)): ?>
                   <p id="deleteComment"><a href="<?php echo site_url('meme/delete_comment?id='.$comment['Id']);?>"><?= lang('comment_delete') ?></a></p>
                   <?php endif; ?>
                   <p><?= lang('comment_points') ?>: <span class="badge points"><?php echo $comment['Points'] ?></span></p>
