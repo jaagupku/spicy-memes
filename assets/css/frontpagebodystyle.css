@@ -38,23 +38,3 @@ div#memebody {
 .meme a:hover {
   opacity: 1;
 }
-.video {
-  cursor: pointer;
-  background-color: black;
-}
-.play-button {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  position: absolute;
-  background: url("https://www.gstatic.com/images/icons/material/product/2x/youtube_64dp.png") center center no-repeat;
-  background-size: 60px 60px;
-}
-.preview-image {
-  top: -16.84%;
-  left: 0;
-  right: 0;
-  position: absolute;
-}

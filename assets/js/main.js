@@ -7,19 +7,6 @@ var lang = $('html').attr('lang');
 $(function () {
     loadVoting('meme-container', 'meme');
 
-    $('.not-loaded-video').on('click tap', function () {
-        var element = $(this);
-        var iframe = $('<iframe class="embed-responsive-item" allowfullscreen></iframe>');
-        iframe.attr('src', 'https://www.youtube.com/embed/' + element.attr('data-id') + '?autoplay=1');
-
-        element.removeClass('not-loaded-video');
-        element.html(iframe);
-    });
-
-    $('.not-loaded-video a').on('click tap', function (event) {
-        event.preventDefault();
-    });
-
     if (LOADBUTTON.length === 0) {
         return;
     }

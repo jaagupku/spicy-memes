@@ -18,10 +18,3 @@ $hook['post_controller_constructor'] = array(
     'filename' => 'LanguageLoader.php',
     'filepath' => 'hooks'
 );
-
-$hook['display_override'][] = array(
-    'class' => '',
-    'function' => 'compress',
-    'filename' => 'compress.php',
-    'filepath' => 'hooks'
-);
