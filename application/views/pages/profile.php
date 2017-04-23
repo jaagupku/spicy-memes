@@ -3,9 +3,9 @@ $title = $target;
 $selection = 'profile';
 include('header.php');
 if (isset($username)) {
-  array_push($scripts, '/assets/js/facebook.js');
+  array_push($scripts, '/assets/js/min/facebook.min.js');
 }
-array_push($scripts, '/assets/js/profile.js');
+array_push($scripts, '/assets/js/min/profile.min.js');
 ?>
 <!-- USER PAGE -->
 

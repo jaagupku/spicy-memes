@@ -15,7 +15,7 @@ if (!isset($username)) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?> - <?= lang('title_spicymemes') ?></title>
     <link href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/merged.css" rel="stylesheet"/>
+    <link href="/assets/css/merged.min.css" rel="stylesheet"/>
   </head>
   <body>
 

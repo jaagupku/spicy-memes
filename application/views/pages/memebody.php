@@ -2,11 +2,11 @@
 include('header.php');
 
 if ($selection === 'new') {
-    array_push($scripts, '/assets/js/polling.js');
+    array_push($scripts, '/assets/js/min/polling.min.js');
 }
 
-array_push($scripts, '/assets/js/voting.js');
-array_push($scripts, '/assets/js/main.js');
+array_push($scripts, '/assets/js/min/voting.min.js');
+array_push($scripts, '/assets/js/min/main.min.js');
 ?>
 <div id="memebody">
   <?php foreach($memes as $row) : ?>

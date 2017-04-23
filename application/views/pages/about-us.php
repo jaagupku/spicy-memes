@@ -3,7 +3,7 @@ $title = lang('title_aboutus');
 $selection ='aboutus';
 include('header.php');
 
-array_push($scripts, '/assets/js/googlemap.js');
+array_push($scripts, '/assets/js/min/googlemap.min.js');
 array_push($scripts, 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDuSD8hPdFABJxJjQeS9HtCNQs08neegNg&callback=initMap'); // async defer
 ?>
 

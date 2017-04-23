@@ -3,9 +3,9 @@ $title = $meme['Title'];
 $selection = null;
 include('header.php');
 
-array_push($scripts, '/assets/js/offline.min.js');
-array_push($scripts, "/assets/js/voting.js");
-array_push($scripts, "/assets/js/comments.js");
+array_push($scripts, '/assets/js/lib/offline.min.js');
+array_push($scripts, "/assets/js/min/voting.min.js");
+array_push($scripts, "/assets/js/min/comments.min.js");
 ?>
 
     <div class="container-fluid"><div class="break"></div></div>

@@ -3,7 +3,7 @@ $title = lang('title_editprofile');
 $selection = 'edit-profile';
 
 include('header.php');
-array_push($scripts, '/assets/js/inittooltip.js');
+array_push($scripts, '/assets/js/min/inittooltip.min.js');
 ?>
 
 <div class="container-fluid">

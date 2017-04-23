@@ -2,7 +2,7 @@
 $title = lang('title_addmeme');
 $selection = 'addmeme';
 include('header.php');
-array_push($scripts, '/assets/js/inittooltip.js');
+array_push($scripts, '/assets/js/min/inittooltip.min.js');
 ?>
     <div class="container-fluid col-xs-12 col-custom-frontpage col-centered">
     <h1><?= lang('addmeme_addmeme') ?></h1>

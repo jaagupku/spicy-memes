@@ -3,7 +3,7 @@ $title = lang('title_login');
 $selection = 'login';
 include('header.php');
 
-array_push($scripts, '/assets/js/facebook.js');
+array_push($scripts, '/assets/js/min/facebook.min.js');
 ?>
 
 <div class="container-fluid">
