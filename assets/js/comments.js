@@ -6,6 +6,8 @@ $(document).ready(function() {
   var $online = $('.online'),
       $offline = $('.offline');
 
+    Offline.options = {checks: {xhr: {url: '/online'}}};
+
   Offline.on('down', function () {
     console.log("NOW OFFLINE");
     $online.fadeOut(function () {
