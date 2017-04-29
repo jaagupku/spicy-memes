@@ -24,7 +24,7 @@ application/config/facebook.php
 # IDE Files
 #-------------------------
 /nbproject/
-.idea/*
+.idea/
 .editorconfig
 
 ## Sublime Text cache files
@@ -33,3 +33,18 @@ application/config/facebook.php
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+
+## Test files
+#Gradle
+test/.gradle/
+test/build/
+
+# Eclipse
+test/.classpath
+test/.project
+test/.settings/
+test/bin/
+
+# IntelliJ IDEA
+test/*.iml
+test/*.iws

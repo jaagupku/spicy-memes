@@ -1,0 +1,22 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '4.12'
+    seleniumVersion = '3.4.0'
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: junitVersion
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: seleniumVersion
+}
+
+task("selenium", type: JavaExec) {
+    main = 'org.openqa.grid.selenium.GridLauncherV3'
+    classpath = sourceSets.test.runtimeClasspath
+}
