@@ -38,6 +38,7 @@ application/config/facebook.php
 #Gradle
 test/.gradle/
 test/build/
+test/debug.log
 
 # Eclipse
 test/.classpath
