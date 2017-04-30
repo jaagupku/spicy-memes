@@ -13,10 +13,5 @@ ext {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: junitVersion
-    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: seleniumVersion
-}
-
-task("selenium", type: JavaExec) {
-    main = 'org.openqa.grid.selenium.GridLauncherV3'
-    classpath = sourceSets.test.runtimeClasspath
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
 }
