@@ -15,3 +15,11 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: junitVersion
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
 }
+
+test {
+    afterSuite { suite, result ->
+        if (!suite.parent) {
+            println "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+        }
+    }
+}
