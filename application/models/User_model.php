@@ -41,7 +41,7 @@ class User_model extends Base_Model {
     }
 
     public function get_memes($user_id, $order_by = 'Date', $order = 'DESC') {
-        $this->db->from('v_new_memes');
+        $this->db->from('memes');
         $this->db->where('User_Id', $user_id);
         $this->db->order_by($order_by, $order);
 

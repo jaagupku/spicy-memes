@@ -49,6 +49,12 @@ class Admin extends CI_Controller {
     if ($user->ProfileImg_Id !== 'noprofileimg.jpg') {
       delete_image(substr($user->ProfileImg_Id, 0, -4));
     }
+    $memes = $this->get_memes($id);
+    foreach ($memes as $meme) {
+      if ($meme->Data_Type === 'P') {
+        delete_image(substr($meme->Data, 0, -4));
+      }
+    }
     //if (isset($user->FB_Id)) {
     // //TODO
     //}
