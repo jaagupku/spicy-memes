@@ -11,6 +11,8 @@ public class FirefoxTests extends ChromeTests {
 
         driver = new FirefoxDriver();
         driver.get("https://spicymemes.cs.ut.ee");
+
+        login();
     }
 
     @Override
