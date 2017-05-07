@@ -17,6 +17,12 @@ dependencies {
 }
 
 test {
+    test {
+        afterTest { desc, result ->
+            println "${desc.name} [${desc.className}]: ${result.resultType}"
+        }
+    }
+
     afterSuite { suite, result ->
         if (!suite.parent) {
             println "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"

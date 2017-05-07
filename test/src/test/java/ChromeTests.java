@@ -1,6 +1,4 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,22 +9,34 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public class ChromeTests {
-    RemoteWebDriver driver;
+    static RemoteWebDriver driver;
+    private static Runnable waitForRedirect;
 
-    @Before
-    public void before() {
-        System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
-
-        driver = new ChromeDriver();
-        driver.get("https://spicymemes.cs.ut.ee");
-
-        login();
+    @BeforeClass
+    public static void before() throws IllegalAccessException, InstantiationException {
+        initialize(ChromeDriver.class, "chrome", () -> {
+        });
     }
 
-    @After
-    public void after() {
+    @AfterClass
+    public static void after() {
         logout();
         driver.quit();
+    }
+
+    @Before
+    public void beforeTest() {
+        driver.get("https://spicymemes.cs.ut.ee");
+    }
+
+    @Test
+    public void loadMemes() {
+        int memeCount = driver.findElementsByClassName("meme-container").size();
+
+        driver.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+
+        // Wait until there are more memes
+        new WebDriverWait(driver, 10).until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("meme-container"), memeCount));
     }
 
     @Test
@@ -39,25 +49,25 @@ public class ChromeTests {
         new WebDriverWait(driver, 10).until(ExpectedConditions.attributeContains(upvote, "class", "active"));
 
         downvote.click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.not(ExpectedConditions.attributeContains(downvote, "class", "active")));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.attributeContains(downvote, "class", "active"));
 
         downvote.click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.not(ExpectedConditions.not(ExpectedConditions.attributeContains(downvote, "class", "active"))));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.not(ExpectedConditions.attributeContains(downvote, "class", "active")));
     }
 
     @Test
     public void writeAndVoteComment() {
         driver.findElementsByClassName("meme-container").get(0).findElement(By.tagName("a")).click();
-        waitForRedirect();
+        waitForRedirect.run();
 
         // Leave some comments
         for (int i = 0; i < 5; ++i) {
             driver.findElementById("comment").sendKeys("Autotest comment xD [" + (i + 1) + "]");
             driver.findElementById("submitComment").submit();
-            waitForRedirect();
+            waitForRedirect.run();
         }
 
-        WebElement firstComment = driver.findElementByXPath("//a[contains(concat(' ', @class, ' '), 'user-comments')]/..");
+        WebElement firstComment = driver.findElementByXPath("//a[contains(concat(' ', @class, ' '), ' user-comments ')]/..");
         WebElement upvote = firstComment.findElement(By.className("upvote"));
         WebElement downvote = firstComment.findElement(By.className("downvote"));
 
@@ -73,33 +83,82 @@ public class ChromeTests {
 
         // Delete all comments left by user `autotest`
         while (true) {
-            List<WebElement> autotestComments = driver.findElementsByXPath("//a[contains(concat(' ', @class, ' '), 'user-comments') and . = 'autotest']/..");
+            List<WebElement> autotestComments = driver.findElementsByXPath("//a[contains(concat(' ', @class, ' '), ' user-comments ') and . = 'autotest']/..");
 
             if (autotestComments.size() == 0) {
                 break;
             }
 
             autotestComments.get(0).findElement(By.id("deleteComment")).click();
-            waitForRedirect();
+            waitForRedirect.run();
         }
     }
 
-    void waitForRedirect() {
+    @Test
+    public void addMemes() {
+        driver.findElementByClassName("addsomespice-button").click();
+        waitForRedirect.run();
+
+        driver.findElementByName("title").sendKeys("Autotest YouTube");
+        driver.findElementByName("link").sendKeys("https://www.youtube.com/watch?v=WBu2pJpgKEo");
+        driver.findElementByXPath("//input[@value='Submit']").click();
+        waitForRedirect.run();
+
+        driver.findElementByClassName("addsomespice-button").click();
+        waitForRedirect.run();
+
+        driver.findElementByName("title").sendKeys("Autotest Image");
+        driver.findElementByName("link").sendKeys("http://www.amautaspanish.com/blog/wp-content/uploads/2015/10/translations-of-the-word-ok-2.jpg");
+        driver.findElementByXPath("//input[@value='Submit']").click();
+        waitForRedirect.run();
     }
 
-    void login() {
+    @Test
+    public void search() {
+        driver.findElementById("srch").sendKeys("Autotest");
+        driver.findElementByXPath("//button[@type='submit']").click();
+        waitForRedirect.run();
+
+        List<WebElement> autotestUploads = driver.findElementsByXPath("//a[. = 'autotest']/../../..");
+
+        Assert.assertTrue("Found autotest uploads", autotestUploads.size() > 0);
+    }
+
+    @Test
+    public void languageChange() {
+        driver.findElementByClassName("changelanguage").findElement(By.xpath("//a[. = 'EST']")).click();
+        waitForRedirect.run();
+        Assert.assertEquals("et", driver.findElementByTagName("html").getAttribute("lang"));
+
+        driver.findElementByClassName("changelanguage").findElement(By.xpath("//a[. = 'ENG']")).click();
+        waitForRedirect.run();
+        Assert.assertEquals("en", driver.findElementByTagName("html").getAttribute("lang"));
+    }
+
+    static void initialize(Class driverClass, String name, Runnable runnable) throws IllegalAccessException, InstantiationException {
+        System.setProperty("webdriver." + name + ".driver", "./drivers/" + name + "driver.exe");
+
+        driver = (RemoteWebDriver) driverClass.newInstance();
+        driver.get("https://spicymemes.cs.ut.ee");
+
+        waitForRedirect = runnable;
+
+        login("autotest", "autotest");
+    }
+
+    private static void login(String username, String password) {
         driver.findElement(By.xpath("//ul[contains(concat(' ', @class, ' '), ' loginsignup ')]/li[1]")).click();
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(driver.findElement(By.id("signuploginmodal"))));
 
-        driver.findElementByName("username").sendKeys("autotest");
-        driver.findElementByName("password").sendKeys("autotest");
+        driver.findElementByName("username").sendKeys(username);
+        driver.findElementByName("password").sendKeys(password);
         driver.findElement(By.xpath("//button[contains(concat(' ', @class, ' '), ' btn-login ')]")).click();
 
-        waitForRedirect();
+        waitForRedirect.run();
     }
 
-    private void logout() {
+    static private void logout() {
         driver.findElement(By.xpath("//ul[contains(concat(' ', @class, ' '), ' loginsignup ')]/li[last()]")).click();
-        waitForRedirect();
+        waitForRedirect.run();
     }
 }
