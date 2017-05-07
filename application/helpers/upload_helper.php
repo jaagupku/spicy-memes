@@ -1,13 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'third_party/cloudinary/Cloudinary.php';
-require APPPATH . 'third_party/cloudinary/Uploader.php';
-require APPPATH . 'third_party/cloudinary/Api.php';
-
-if (file_exists('application/config/cloudinary.php')) {
-    include 'application/config/cloudinary.php';
-}
+require_once APPPATH . 'third_party/cloudinary/Cloudinary.php';
+require_once APPPATH . 'third_party/cloudinary/Uploader.php';
+require_once APPPATH . 'third_party/cloudinary/Api.php';
+require_once 'application/config/cloudinary.php';
 
 function upload_image($controller, $input_name) {
     $config['upload_path'] = './temp/';

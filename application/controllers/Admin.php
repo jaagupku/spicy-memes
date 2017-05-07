@@ -41,13 +41,15 @@ class Admin extends CI_Controller {
   }
 
   public function delete_user() {
+    if (!(isset($_REQUEST['userid']) || isset($_REQUEST['username'])) || !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
+      show_404();
+      exit;
+    }
     if (isset($_REQUEST['userid'])) {
       $id = $_REQUEST['userid'];
     }
-    $username = $_REQUEST['username'];
-    if (!(isset($id) || isset($username)) && !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
-      show_404();
-      exit;
+    elseif (isset($_REQUEST['username'])) {
+      $username = $_REQUEST['username'];
     }
     if (isset($id)) {
       $user = $this->user_model->retrieve_id($id);
@@ -63,8 +65,8 @@ class Admin extends CI_Controller {
     $memes = $this->user_model->get_memes($user->Id);
     if (count($memes) > 0) {
       foreach ($memes as $meme) {
-        if ($meme->Data_Type === 'P') {
-          delete_image(substr($meme->Data, 0, -4));
+        if ($meme['Data_Type'] === 'P') {
+          delete_image(substr($meme['Data'], 0, -4));
         }
       }
     }
@@ -77,14 +79,17 @@ class Admin extends CI_Controller {
   }
 
   public function delete_meme() {
-    $id = $_REQUEST['id'];
-
-    if (!isset($id) && !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
+    if (!isset($_REQUEST['id']) || !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
       show_404();
       exit;
     }
 
+    $id = $_REQUEST['id'];
+
     $meme = $this->meme_model->retrieve($id);
+    if (!isset($meme)) {
+      show_404();
+    }
     if ($meme->Data_Type == 'P') {
       delete_image(substr($meme->Data, 0, -4));
     }
