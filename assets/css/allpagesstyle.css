@@ -48,6 +48,9 @@ body {
   display: block;
   width: 580px;
 }
+.validationError {
+  margin-top: 0;
+}
 
 @media (max-width: 839px) {
   .navbar-header {
@@ -83,5 +86,8 @@ body {
   }
   .collapse.in{
       display:block !important;
+  }
+  .validationError {
+    margin-top: 3.5em;
   }
 }

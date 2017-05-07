@@ -7,7 +7,7 @@ include('header.php');
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-custom-block col-centered">
-      <?php if (isset($error)) echo "<p>".$error."</p>" ?>
+      <?php if (isset($error)) echo '<p class="validationError">'.$error."</p>" ?>
       <form method="POST" action="<?php echo site_url("register"); ?>">
         <div class="form-group">
           <label for="usr_choose"><?= lang('signup_chooseusername') ?>:</label>
