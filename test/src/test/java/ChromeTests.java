@@ -1,4 +1,5 @@
 import org.junit.*;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,25 +9,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ChromeTests {
     static RemoteWebDriver driver;
     private static Runnable waitForRedirect;
+    private static final String HOST = "http://localhost";
 
     @BeforeClass
     public static void before() throws IllegalAccessException, InstantiationException {
-        initialize(ChromeDriver.class, "chrome", () -> {
-        });
+        initialize(ChromeDriver.class, "chrome", () -> {});
     }
 
     @AfterClass
     public static void after() {
-        logout();
+        deleteAccount();
         driver.quit();
     }
 
     @Before
     public void beforeTest() {
-        driver.get("https://spicymemes.cs.ut.ee");
+        driver.get(HOST);
     }
 
     @Test
@@ -150,26 +152,34 @@ public class ChromeTests {
         System.setProperty("webdriver." + name + ".driver", "./drivers/" + name + "driver.exe");
 
         driver = (RemoteWebDriver) driverClass.newInstance();
-        driver.get("https://spicymemes.cs.ut.ee");
+        driver.get(HOST);
 
         waitForRedirect = runnable;
 
-        login("autotest", "autotest");
+        register("autotest", "autotest");
     }
 
-    private static void login(String username, String password) {
+    private static void register(String username, String password) {
         driver.findElement(By.xpath("//ul[contains(concat(' ', @class, ' '), ' loginsignup ')]/li[1]")).click();
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(driver.findElement(By.id("signuploginmodal"))));
 
-        driver.findElementByName("username").sendKeys(username);
-        driver.findElementByName("password").sendKeys(password);
-        driver.findElement(By.xpath("//button[contains(concat(' ', @class, ' '), ' btn-login ')]")).click();
+        driver.findElementById("usr_choose").sendKeys(username);
+        driver.findElementById("pwd_choose").sendKeys(password);
+        driver.findElementById("pwd_repeat").sendKeys(password);
+        driver.findElementById("email").sendKeys("auto@te.st");
+        driver.findElement(By.xpath("//button[contains(concat(' ', @class, ' '), ' btn-signup ')]")).click();
 
         waitForRedirect.run();
     }
 
-    static private void logout() {
-        driver.findElement(By.xpath("//ul[contains(concat(' ', @class, ' '), ' loginsignup ')]/li[last()]")).click();
+    static private void deleteAccount() {
+        driver.findElementById("username").click();
+        waitForRedirect.run();
+
+        driver.findElementByClassName("edit-profile-pswd").findElement(By.tagName("a")).click();
+        waitForRedirect.run();
+
+        driver.findElementByClassName("btn-delete-account").click();
         waitForRedirect.run();
     }
 }

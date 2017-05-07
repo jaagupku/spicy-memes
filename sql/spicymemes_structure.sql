@@ -467,7 +467,7 @@ ALTER TABLE `comments`
 -- Constraints for table `meme`
 --
 ALTER TABLE `meme`
-  ADD CONSTRAINT `meme_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`);
+  ADD CONSTRAINT `meme_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `memepoints`

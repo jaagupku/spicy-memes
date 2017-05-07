@@ -314,6 +314,11 @@ class Users extends CI_Controller {
             return in_array($value, array('english', 'estonian'));
         }));
 
+        if (!is_null($this->input->post('btn_delete'))) {
+            $this->_detete_user();
+            return;
+        }
+
         if ($this->form_validation->run()) {
             $updated_columns = array();
 
@@ -409,5 +414,31 @@ class Users extends CI_Controller {
         $this->session->user_type = $user->User_Type;
         $this->session->fb_linked = isset($user->FB_Id) || $link_with_fb;
         redirect($this->session->referenced_form, 'refresh');
+    }
+
+    private function _detete_user() {
+        $user = $this->user_model->retrieve_id($this->session->user_id);
+
+        $this->load->helper('upload_helper');
+
+        if ($user->ProfileImg_Id !== 'noprofileimg.jpg') {
+            delete_image(substr($user->ProfileImg_Id, 0, -4));
+        }
+
+        $memes = $this->user_model->get_memes($this->session->user_id);
+
+        foreach ($memes as $meme) {
+            if ($meme['Data_Type'] === 'P') {
+                delete_image(substr($meme['Data'], 0, -4));
+            }
+        }
+
+        //if (isset($user->FB_Id)) {
+        // //TODO
+        //}
+
+        $this->user_model->delete($this->session->user_id);
+        $this->session->referenced_form = '/';
+        $this->logout();
     }
 }
