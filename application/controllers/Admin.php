@@ -65,8 +65,8 @@ class Admin extends CI_Controller {
     $memes = $this->user_model->get_memes($user->Id);
     if (count($memes) > 0) {
       foreach ($memes as $meme) {
-        if ($meme->Data_Type === 'P') {
-          delete_image(substr($meme->Data, 0, -4));
+        if ($meme['Data_Type'] === 'P') {
+          delete_image(substr($meme['Data'], 0, -4));
         }
       }
     }
