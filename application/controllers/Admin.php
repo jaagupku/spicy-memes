@@ -40,7 +40,9 @@ class Admin extends CI_Controller {
   }
 
   public function delete_user() {
-    $id = $_REQUEST['userid'];
+    if (isset($_REQUEST['userid'])) {
+      $id = $_REQUEST['userid'];
+    }
     $username = $_REQUEST['username'];
     if (!(isset($id) || isset($username)) && !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
       show_404();
@@ -69,7 +71,7 @@ class Admin extends CI_Controller {
     //if (isset($user->FB_Id)) {
     // //TODO
     //}
-    $this->user_model->delete($id);
+    $this->user_model->delete($user->Id);
     redirect(site_url('admin/view_users'));
   }
 
