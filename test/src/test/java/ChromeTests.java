@@ -79,10 +79,10 @@ public class ChromeTests {
         new WebDriverWait(driver, 10).until(ExpectedConditions.attributeContains(upvote, "class", "active"));
 
         downvote.click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.not(ExpectedConditions.attributeContains(downvote, "class", "active")));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.attributeContains(downvote, "class", "active"));
 
         downvote.click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.not(ExpectedConditions.not(ExpectedConditions.attributeContains(downvote, "class", "active"))));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.not(ExpectedConditions.attributeContains(downvote, "class", "active")));
 
         Assert.assertEquals(0, firstComment.findElements(By.className("active")).size());
 
@@ -109,6 +109,9 @@ public class ChromeTests {
         driver.findElementByXPath("//input[@value='Submit']").click();
         waitForRedirect.run();
 
+        WebElement elements = driver.findElementByClassName("meme-container");
+        Assert.assertTrue(elements.findElements(By.xpath("//h2[. = 'Autotest YouTube']")).size() > 0);
+
         driver.findElementByClassName("addsomespice-button").click();
         waitForRedirect.run();
 
@@ -117,13 +120,8 @@ public class ChromeTests {
         driver.findElementByXPath("//input[@value='Submit']").click();
         waitForRedirect.run();
 
-        // Check if these posts exist in new
-        driver.findElementByClassName("new").click();
-        waitForRedirect.run();
-
-        List<WebElement> elements = driver.findElementsByClassName("meme-container");
-        Assert.assertTrue(elements.get(0).findElements(By.xpath("//h2[. = 'Autotest Image']")).size() > 0);
-        Assert.assertTrue(elements.get(1).findElements(By.xpath("//h2[. = 'Autotest YouTube']")).size() > 0);
+        elements = driver.findElementByClassName("meme-container");
+        Assert.assertTrue(elements.findElements(By.xpath("//h2[. = 'Autotest Image']")).size() > 0);
     }
 
     @Test
