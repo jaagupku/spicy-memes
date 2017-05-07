@@ -72,4 +72,19 @@ class Admin extends CI_Controller {
     $this->user_model->delete($id);
     redirect(site_url('admin/view_users'));
   }
+
+  public function delete_meme() {
+    $id = $_REQUEST['id'];
+
+    if (!isset($id) && !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
+      show_404();
+      exit;
+    }
+
+    $meme = $this->meme_model->retrieve($id);
+    if ($meme->Data_Type == 'P') {
+      delete_image(substr($meme->Data, 0, -4));
+    }
+    $this->meme_model->delete_meme($id);
+  }
 }
