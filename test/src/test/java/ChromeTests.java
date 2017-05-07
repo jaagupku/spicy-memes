@@ -32,10 +32,7 @@ public class ChromeTests {
     @Test
     public void loadMemes() {
         int memeCount = driver.findElementsByClassName("meme-container").size();
-
         driver.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-
-        // Wait until there are more memes
         new WebDriverWait(driver, 10).until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("meme-container"), memeCount));
     }
 
@@ -45,6 +42,8 @@ public class ChromeTests {
         WebElement upvote = memeContainer.findElement(By.className("upvote"));
         WebElement downvote = memeContainer.findElement(By.className("downvote"));
 
+        Assert.assertEquals(0, memeContainer.findElements(By.className("active")).size());
+
         upvote.click();
         new WebDriverWait(driver, 10).until(ExpectedConditions.attributeContains(upvote, "class", "active"));
 
@@ -53,6 +52,8 @@ public class ChromeTests {
 
         downvote.click();
         new WebDriverWait(driver, 10).until(ExpectedConditions.not(ExpectedConditions.attributeContains(downvote, "class", "active")));
+
+        Assert.assertEquals(0, memeContainer.findElements(By.className("active")).size());
     }
 
     @Test
@@ -67,11 +68,13 @@ public class ChromeTests {
             waitForRedirect.run();
         }
 
+        // Test (up|down)voting on the first comment
         WebElement firstComment = driver.findElementByXPath("//a[contains(concat(' ', @class, ' '), ' user-comments ')]/..");
         WebElement upvote = firstComment.findElement(By.className("upvote"));
         WebElement downvote = firstComment.findElement(By.className("downvote"));
 
-        // Test (up|down)voting on the first comment
+        Assert.assertEquals(0, firstComment.findElements(By.className("active")).size());
+
         upvote.click();
         new WebDriverWait(driver, 10).until(ExpectedConditions.attributeContains(upvote, "class", "active"));
 
@@ -80,6 +83,8 @@ public class ChromeTests {
 
         downvote.click();
         new WebDriverWait(driver, 10).until(ExpectedConditions.not(ExpectedConditions.not(ExpectedConditions.attributeContains(downvote, "class", "active"))));
+
+        Assert.assertEquals(0, firstComment.findElements(By.className("active")).size());
 
         // Delete all comments left by user `autotest`
         while (true) {
@@ -111,6 +116,14 @@ public class ChromeTests {
         driver.findElementByName("link").sendKeys("http://www.amautaspanish.com/blog/wp-content/uploads/2015/10/translations-of-the-word-ok-2.jpg");
         driver.findElementByXPath("//input[@value='Submit']").click();
         waitForRedirect.run();
+
+        // Check if these posts exist in new
+        driver.findElementByClassName("new").click();
+        waitForRedirect.run();
+
+        List<WebElement> elements = driver.findElementsByClassName("meme-container");
+        Assert.assertTrue(elements.get(0).findElements(By.xpath("//h2[. = 'Autotest Image']")).size() > 0);
+        Assert.assertTrue(elements.get(1).findElements(By.xpath("//h2[. = 'Autotest YouTube']")).size() > 0);
     }
 
     @Test

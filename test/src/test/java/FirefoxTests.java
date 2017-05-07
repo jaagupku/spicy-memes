@@ -17,8 +17,6 @@ public class FirefoxTests extends ChromeTests {
 
             // Wait until document.readyState == "complete"
             new WebDriverWait(driver, 5).until((driver) -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
-
-            System.out.println("WAIT");
         });
     }
 }
