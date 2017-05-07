@@ -41,8 +41,15 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
           </select>
         </div>
 
-        <button type="submit" class="btn btn-login btn-sm"><?= lang('editprofile_update') ?></button>
-        <br><br>
+        <div class="form-group">
+          <button type="submit" class="btn btn-edit btn-sm"><?= lang('editprofile_update') ?></button>
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+         <button class="btn btn-delete-account btn-sm" name="btn_delete"><?=lang('editprofile_delete') ?></button>
+        </div>
       </form>
     </div>
   </div>

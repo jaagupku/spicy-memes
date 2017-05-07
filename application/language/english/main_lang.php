@@ -76,6 +76,7 @@ $lang['editprofile_profileimage'] = 'Profile image';
 $lang['editprofile_username'] = 'Username';
 $lang['editprofile_email'] = 'E-mail';
 $lang['editprofile_language'] = 'Language';
+$lang['editprofile_delete'] = 'Delete account';
 $lang['editprofile_update'] = 'UPDATE';
 
 $lang['title_addmeme'] = 'Add meme';

@@ -77,6 +77,7 @@ $lang['editprofile_profileimage'] = 'Profiilipilt';
 $lang['editprofile_username'] = 'Kasutajanimi';
 $lang['editprofile_email'] = 'E-mail';
 $lang['editprofile_language'] = 'Keel';
+$lang['editprofile_delete'] = 'Kustuta kasutaja';
 $lang['editprofile_update'] = 'MUUDA';
 
 $lang['title_addmeme'] = 'Lisa meem';
