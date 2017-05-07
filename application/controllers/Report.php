@@ -42,22 +42,24 @@ class Report extends CI_Controller {
     }
 
     public function show_mercy() {
-      $id = $_REQUEST['reportid'];
-      if (!isset($id) && !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
+      if (!isset($_REQUEST['reportid']) || !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
         show_404();
         exit;
       }
-      $this->report_model->delete($id);
+      $this->report_model->delete($_REQUEST['reportid']);
       redirect(site_url('report/view'));
     }
 
     public function delete_meme() {
-      $id = $_REQUEST['reportid'];
-      if (!isset($id) && !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
+      if (!isset($_REQUEST['reportid']) || !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
         show_404();
         exit;
       }
+      $id = $_REQUEST['reportid'];
       $report = $this->report_model->retrieve($id);
+      if (!isset($report)) {
+        show_404();
+      }
       $meme = $this->meme_model->retrieve($report[0]['Meme_Id']);
       if ($meme->Data_Type == 'P') {
         delete_image(substr($meme->Data, 0, -4));
