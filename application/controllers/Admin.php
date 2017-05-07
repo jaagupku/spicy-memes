@@ -41,15 +41,23 @@ class Admin extends CI_Controller {
 
   public function delete_user() {
     $id = $_REQUEST['userid'];
-    if (!isset($id) && !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
+    $username = $_REQUEST['username'];
+    if (!(isset($id) || isset($username)) && !(isset($this->session->logged_in) && $this->session->user_type > 0)) {
       show_404();
       exit;
     }
-    $user = $this->user_model->retrieve_id($id);
+    if (isset($id)) {
+      $user = $this->user_model->retrieve_id($id);
+    } else {
+      $user = $this->user_model->retrieve($username);
+    }
+    if (!isset($user)) {
+      show_404();
+    }
     if ($user->ProfileImg_Id !== 'noprofileimg.jpg') {
       delete_image(substr($user->ProfileImg_Id, 0, -4));
     }
-    $memes = $this->user_model->get_memes($id);
+    $memes = $this->user_model->get_memes($user->Id);
     if (count($memes) > 0) {
       foreach ($memes as $meme) {
         if ($meme->Data_Type === 'P') {
