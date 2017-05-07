@@ -4,6 +4,7 @@ class Admin extends CI_Controller {
   public function __construct() {
       parent::__construct();
       $this->load->model('user_model');
+      $this->load->model('meme_model');
       $this->load->helper('upload_helper');
   }
 
