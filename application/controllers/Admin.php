@@ -45,16 +45,19 @@ class Admin extends CI_Controller {
       show_404();
       exit;
     }
-    $user = $this->user_model->retrieve($id);
+    $user = $this->user_model->retrieve_id($id);
     if ($user->ProfileImg_Id !== 'noprofileimg.jpg') {
       delete_image(substr($user->ProfileImg_Id, 0, -4));
     }
-    $memes = $this->get_memes($id);
-    foreach ($memes as $meme) {
-      if ($meme->Data_Type === 'P') {
-        delete_image(substr($meme->Data, 0, -4));
+    $memes = $this->user_model->get_memes($id);
+    if (count($memes) > 0) {
+      foreach ($memes as $meme) {
+        if ($meme->Data_Type === 'P') {
+          delete_image(substr($meme->Data, 0, -4));
+        }
       }
     }
+
     //if (isset($user->FB_Id)) {
     // //TODO
     //}

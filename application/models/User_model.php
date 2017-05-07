@@ -41,7 +41,7 @@ class User_model extends Base_Model {
     }
 
     public function get_memes($user_id, $order_by = 'Date', $order = 'DESC') {
-        $this->db->from('memes');
+        $this->db->from('meme');
         $this->db->where('User_Id', $user_id);
         $this->db->order_by($order_by, $order);
 
@@ -92,6 +92,13 @@ class User_model extends Base_Model {
         $this->db->where('User_Name', $username);
 
         return $this->db->get()->row();
+    }
+
+    public function retrieve_id($id) {
+      $this->db->from($this->table);
+      $this->db->where('Id', $id);
+
+      return $this->db->get()->row();
     }
 
     public function retrieve_fb($fb_id) {
