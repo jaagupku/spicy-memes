@@ -13,7 +13,7 @@ import java.util.List;
 public class ChromeTests {
     static RemoteWebDriver driver;
     private static Runnable waitForRedirect;
-    private static final String HOST = "http://localhost";
+    private static final String HOST = "https://spicymemes.cs.ut.ee";
 
     @BeforeClass
     public static void before() throws IllegalAccessException, InstantiationException {
