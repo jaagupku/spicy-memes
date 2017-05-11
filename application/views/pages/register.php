@@ -11,7 +11,7 @@ include('header.php');
       <form method="POST" action="<?php echo site_url("register"); ?>">
         <div class="form-group">
           <label for="usr_choose"><?= lang('signup_chooseusername') ?>:</label>
-          <input name="username" type="text" class="form-control" id="usr_choose" placeholder="<?= lang('signup_chooseusername_placeholder') ?>"  value="<?php if(isset($username)) echo $username; ?>">
+          <input name="username" type="text" class="form-control" id="usr_choose" placeholder="<?= lang('signup_chooseusername_placeholder') ?>"  value="<?php if(isset($usernameform)) echo $usernameform; ?>">
         </div>
         <div class="form-group">
           <label for="pwd_choose"><?= lang('signup_choosepassword') ?>:</label>

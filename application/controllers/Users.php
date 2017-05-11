@@ -212,7 +212,7 @@ class Users extends CI_Controller {
               $data['fbid'] = $fbid;
             }
             if (isset($username)) {
-              $data['username'] = $username;
+              $data['usernameform'] = $username;
             }
             $error = validation_errors();
         }
