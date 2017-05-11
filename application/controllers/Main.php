@@ -42,9 +42,9 @@ class Main extends CI_Controller {
     }
 
     public function getMemesXML() {
-      $type = $_REQUEST["type"];
-		  $from = $_REQUEST["from"];
-      $amount = $_REQUEST["amount"];
+      $type = isset($_REQUEST["type"]) ? $_REQUEST["type"] : 'hot';
+		  $from = isset($_REQUEST["from"]) ? $_REQUEST["from"] : 0;
+      $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 5;
 
       if ($type === "new") {
         $this->_display_ajax_memes( $this->meme_model->get_new_memes($from, $amount), 'new', $from, $amount);
