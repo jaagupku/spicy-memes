@@ -239,17 +239,14 @@ class Users extends CI_Controller {
     public function profile($username, $order_by='top') {
         $userdata = $this->user_model->retrieve($username);
 
-        if ($userdata && in_array($order_by, array('top', 'comments', 'date'))) {
-            $memes = array();
+        $orders = array(
+            'top' => 'Points',
+            'comments' => 'comments',
+            'date' => 'Date'
+        );
 
-            if ($order_by === 'top') {
-                $memes = $this->user_model->get_top_memes($userdata->Id);
-            } elseif ($order_by === 'date') {
-                $memes = $this->user_model->get_new_memes($userdata->Id);
-            } elseif ($order_by === 'comments') {
-                $memes = $this->user_model->get_memes($userdata->Id, 'comments');
-            }
-
+        if ($userdata && in_array($order_by, array_keys($orders))) {
+            $memes = $this->user_model->get_memes($userdata->Id, $orders[$order_by]);
             $data = $this->user_model->get_user_meme_data($userdata->Id);
             $processed_data = array('picture' => 0, 'video' => 0, 'total' => 0);
 
@@ -280,19 +277,17 @@ class Users extends CI_Controller {
     }
 
     public function userMemesJSON() {
+      $orders = array(
+          'top' => 'Points',
+          'comments' => 'comments',
+          'date' => 'Date'
+      );
+
       $username = $_REQUEST["username"];
       $order_by = $_REQUEST["order"];
-
       $userdata = $this->user_model->retrieve($username);
-      if ($order_by === 'top') {
-          $memes = $this->user_model->get_top_memes($userdata->Id);
-      } elseif ($order_by === 'date') {
-          $memes = $this->user_model->get_new_memes($userdata->Id);
-      } elseif ($order_by === 'comments') {
-          $memes = $this->user_model->get_memes($userdata->Id, 'comments');
-      }
 
-      echo json_encode($memes);
+      echo json_encode($this->user_model->get_memes($userdata->Id, $orders[$order_by]));
     }
 
     public function edit_profile() {
@@ -322,20 +317,16 @@ class Users extends CI_Controller {
         if ($this->form_validation->run()) {
             $updated_columns = array();
 
-            // TODO: save language to db
-            $this->session->language = $this->input->post('language');
-
             if ($email_changed) {
-                // TODO: Change email
+                $updated_columns['Email'] = $this->input->post('email');
             }
 
             if ($username_changed) {
-                // TODO: Change usename
+                $updated_columns['User_Name'] = $this->input->post('username');
             }
 
             if ($language_changed) {
                 $updated_columns['Language'] = $this->input->post('language');
-                $this->session->language = $this->input->post('language');
             }
 
             if ($uploading_image) {
@@ -365,6 +356,7 @@ class Users extends CI_Controller {
                 $this->user_model->update($this->session->user_id, $updated_columns);
             }
 
+            $this->_update_session_data();
             redirect('/profile/' . $this->session->username, 'refresh');
         } else {
             $error = validation_errors();
@@ -406,6 +398,15 @@ class Users extends CI_Controller {
 
     private function _login_and_redirect_data($user, $link_with_fb=false) {
         $this->user_model->update_last_login_date($user->Id);
+        $this->_update_session_data($user, $link_with_fb);
+        redirect($this->session->referenced_form, 'refresh');
+    }
+
+    private function _update_session_data($user=null, $link_with_fb=false) {
+        if (is_null($user)) {
+            $user = $this->user_model->retrieve_id($this->session->user_id);
+        }
+
         $this->session->logged_in = true;
         $this->session->username = $user->User_Name;
         $this->session->email = $user->Email;
@@ -413,7 +414,6 @@ class Users extends CI_Controller {
         $this->session->language = $user->Language;
         $this->session->user_type = $user->User_Type;
         $this->session->fb_linked = isset($user->FB_Id) || $link_with_fb;
-        redirect($this->session->referenced_form, 'refresh');
     }
 
     private function _detete_user() {
