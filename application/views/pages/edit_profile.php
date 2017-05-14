@@ -41,6 +41,23 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
           </select>
         </div>
 
+        <hr>
+
+        <div class="form-group">
+          <label for="new_password"><?= lang('editprofile_newpassword') ?>:</label>
+          <input name="new_password" type="password" class="form-control" id="new_password" placeholder="<?= lang('editprofile_newpassword') ?>">
+
+          <label for="repeat_new_password"><?= lang('editprofile_repeatnewpassword') ?>:</label>
+          <input name="repeat_new_password" type="password" class="form-control" id="repeat_new_password" placeholder="<?= lang('editprofile_repeatnewpassword') ?>">
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+          <label for="email"><?= lang('editprofile_currentpassword') ?>:</label>
+          <input name="current_password" type="password" class="form-control" id="current_password" placeholder="<?= lang('editprofile_currentpassword') ?>">
+        </div>
+
         <div class="form-group">
           <button type="submit" class="btn btn-edit btn-sm"><?= lang('editprofile_update') ?></button>
         </div>

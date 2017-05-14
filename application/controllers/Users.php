@@ -180,6 +180,7 @@ class Users extends CI_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('username', lang('validation_username'), 'required|max_length[32]|alpha_numeric|is_unique[users.User_Name]');
         $this->form_validation->set_rules('password', lang('validation_password'), 'required|min_length[7]');
+        $this->form_validation->set_rules('password_rpt', lang('validation_repeatedpassword'), 'matches[password]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.Email]');
         $this->form_validation->set_rules('facebookid', '', 'numeric');
 
@@ -301,6 +302,7 @@ class Users extends CI_Controller {
         $email_changed = !$this->_exists_and_equals($this->input->post('email'), $this->session->email);
         $language_changed = !$this->_exists_and_equals($this->input->post('language'), $this->session->language);
         $uploading_image = !empty($_FILES['userfile']) && file_exists($_FILES['userfile']['tmp_name']);
+        $password_changed = $this->input->post('new_password') !== '' || $this->input->post('repeat_new_password') !== '';
 
         $this->load->library('form_validation');
         $this->form_validation->set_rules('username', lang('editprofile_username'), 'required|max_length[32]|alpha_numeric' . ($username_changed ? '|is_unique[users.User_Name]' : ''));
@@ -308,6 +310,12 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('language', lang('editprofile_language'), array(function($value) {
             return in_array($value, array('english', 'estonian'));
         }));
+
+        if ($password_changed) {
+            $this->form_validation->set_rules('new_password', lang('editprofile_newpassword'), 'required|min_length[7]');
+            $this->form_validation->set_rules('repeat_new_password', lang('validation_repeatedpassword'), 'matches[new_password]', array('matches' => lang('editprofile_passwordsdiffer')));
+            $this->form_validation->set_rules('current_password', lang('validation_password'), 'required');
+        }
 
         if (!is_null($this->input->post('btn_delete'))) {
             $this->_detete_user();
@@ -327,6 +335,20 @@ class Users extends CI_Controller {
 
             if ($language_changed) {
                 $updated_columns['Language'] = $this->input->post('language');
+            }
+
+            if ($password_changed) {
+                if ($this->user_model->verify($this->session->username, $this->input->post('current_password'))) {
+                    if (!$this->user_model->verify($this->session->username, $this->input->post('new_password'))) {
+                        $updated_columns['Password_Hash'] = password_hash($this->input->post('new_password'), PASSWORD_BCRYPT);
+                    } else {
+                        $this->_load_edit_profile(lang('editprofile_samepassword'));
+                        return;
+                    }
+                } else {
+                    $this->_load_edit_profile(lang('editprofile_wrongpassword'));
+                    return;
+                }
             }
 
             if ($uploading_image) {

@@ -51,7 +51,7 @@ $lang['signup_signup'] = 'REGISTREERI';
 $lang['signup_create_user_failed'] = 'Kasutaja tegemine ebaõnnestus';
 $lang['validation_password'] = 'Parool';
 $lang['validation_username'] = 'Kasutajanimi';
-
+$lang['validation_repeatedpassword'] = 'Korratud parool';
 
 $lang['profile_editprofile'] = 'Muuda profiili';
 $lang['profile_changepassword'] = 'Vaheta parool';
@@ -77,8 +77,14 @@ $lang['editprofile_profileimage'] = 'Profiilipilt';
 $lang['editprofile_username'] = 'Kasutajanimi';
 $lang['editprofile_email'] = 'E-mail';
 $lang['editprofile_language'] = 'Keel';
+$lang['editprofile_newpassword'] = 'Uus parool';
+$lang['editprofile_repeatnewpassword'] = 'Korda uut parooli';
+$lang['editprofile_currentpassword'] = 'Praegune parool';
 $lang['editprofile_delete'] = 'Kustuta kasutaja';
 $lang['editprofile_update'] = 'MUUDA';
+$lang['editprofile_wrongpassword'] = 'Sisestatud on vale parool';
+$lang['editprofile_samepassword'] = 'Uus parool on sama mis praegune parool';
+$lang['editprofile_passwordsdiffer'] = 'Sisestatud uued paroolid peavad olema samad';
 
 $lang['title_addmeme'] = 'Lisa meem';
 $lang['addmeme_addmeme'] = 'Lisa meem';

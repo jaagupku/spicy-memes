@@ -51,6 +51,7 @@ $lang['signup_signup'] = 'SIGN UP';
 $lang['signup_create_user_failed'] = 'Couldn\'t create the user';
 $lang['validation_password'] = 'Password';
 $lang['validation_username'] = 'Username';
+$lang['validation_repeatedpassword'] = 'Repeated password';
 
 $lang['profile_editprofile'] = 'Edit profile';
 $lang['profile_changepassword'] = 'Change password';
@@ -76,8 +77,14 @@ $lang['editprofile_profileimage'] = 'Profile image';
 $lang['editprofile_username'] = 'Username';
 $lang['editprofile_email'] = 'E-mail';
 $lang['editprofile_language'] = 'Language';
+$lang['editprofile_newpassword'] = 'New password';
+$lang['editprofile_repeatnewpassword'] = 'Repeat new password';
+$lang['editprofile_currentpassword'] = 'Current password';
 $lang['editprofile_delete'] = 'Delete account';
 $lang['editprofile_update'] = 'UPDATE';
+$lang['editprofile_wrongpassword'] = 'Entered password is wrong';
+$lang['editprofile_samepassword'] = 'Entered password is the same as previous one';
+$lang['editprofile_passwordsdiffer'] = 'New passwords must be the same';
 
 $lang['title_addmeme'] = 'Add meme';
 $lang['addmeme_addmeme'] = 'Add meme';
