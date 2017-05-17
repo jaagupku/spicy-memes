@@ -90,11 +90,11 @@ function loadMore() {
             addFromXML(result, XLST, '#load-more', 'append');
             var nextFrom = parseInt(from) + parseInt(amount);
             LOADBUTTON.attr('data-load-from', nextFrom);
-            LOADBUTTON.attr('href', "/" + type + "/" + nextFrom + "/" + amount);
+            LOADBUTTON.attr('href', "/" + type + "?from" + nextFrom + "&amount=" + amount);
             window.onscroll = yHandler;
 
             var memeCount = $('.meme').length;
-            history.replaceState({}, '', '/' + type + '/' + FROM + '/' + memeCount);
+            history.replaceState({}, '', '/' + type + '?from=' + FROM + '?amount=' + memeCount);
         }
     });
 }

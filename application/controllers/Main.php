@@ -10,15 +10,21 @@ class Main extends CI_Controller {
         $this->hot();
     }
 
-    public function hot($from = 0, $amount = 5) {
+    public function hot() {
+      $from = isset($_REQUEST["from"]) ? $_REQUEST["from"] : 0;
+      $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 5;
       $this->_display_memes($this->meme_model->get_hot_memes($from, $amount+1), "Hot", 'hot', $from, $amount);
     }
 
-    public function top($from = 0, $amount = 5) {
+    public function top() {
+      $from = isset($_REQUEST["from"]) ? $_REQUEST["from"] : 0;
+      $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 5;
       $this->_display_memes($this->meme_model->get_top_memes($from, $amount+1), "Top", 'top', $from, $amount);
     }
 
-    public function new_memes($from = 0, $amount = 5) {
+    public function new_memes() {
+      $from = isset($_REQUEST["from"]) ? $_REQUEST["from"] : 0;
+      $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 5;
       $this->_display_memes($this->meme_model->get_new_memes($from, $amount+1), "New", 'new', $from, $amount);
     }
 
@@ -73,7 +79,7 @@ class Main extends CI_Controller {
         $data = array();
 
         if (count($memes) > $amount) {
-          $data['nextpage'] = $selection."/".($from + $amount)."/".$amount;
+          $data['nextpage'] = $selection."?from=".($from + $amount)."&amount=".$amount;
           $data['from'] = $from + $amount;
           $data['amount'] = $amount;
           array_pop($memes);
@@ -87,7 +93,7 @@ class Main extends CI_Controller {
         $data['memes'] = $this->_add_votes_to_memes($memes);
 
         $this->load->view('pages/memebody.php', $data);
-        $this->session->referenced_form = site_url("$selection/$from/$amount");
+        $this->session->referenced_form = site_url("$selection?from=$from&amount=$amount");
     }
 
     private function _add_votes_to_memes($memes) {

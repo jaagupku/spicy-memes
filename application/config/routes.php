@@ -64,15 +64,7 @@ $route['edit_profile'] = 'users/edit_profile';
 $route['meme/(:num)'] = 'meme/view/$1';
 
 $route['hot'] = 'main/hot';
-$route['hot/(:num)'] = 'main/hot/$1';
-$route['hot/(:num)/(:num)'] = 'main/hot/$1/$2';
-
 $route['top'] = 'main/top';
-$route['top/(:num)'] = 'main/top/$1';
-$route['top/(:num)/(:num)'] = 'main/top/$1/$2';
-
 $route['new'] = 'main/new_memes';
-$route['new/(:num)'] = 'main/new_memes/$1';
-$route['new/(:num)/(:num)'] = 'main/new_memes/$1/$2';
 
 //$route['(.*)'] = 'errors/show_404';
