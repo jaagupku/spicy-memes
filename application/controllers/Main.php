@@ -11,20 +11,20 @@ class Main extends CI_Controller {
     }
 
     public function hot() {
-      $from = isset($_REQUEST["from"]) ? $_REQUEST["from"] : 0;
-      $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 5;
+      $from = isset($_REQUEST["from"]) && $_REQUEST["from"] >= 0 ? $_REQUEST["from"] : 0;
+      $amount = isset($_REQUEST["amount"]) && $_REQUEST["amount"] >= 0 ? $_REQUEST["amount"] : 5;
       $this->_display_memes($this->meme_model->get_hot_memes($from, $amount+1), "Hot", 'hot', $from, $amount);
     }
 
     public function top() {
-      $from = isset($_REQUEST["from"]) ? $_REQUEST["from"] : 0;
-      $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 5;
+      $from = isset($_REQUEST["from"]) && $_REQUEST["from"] >= 0 ? $_REQUEST["from"] : 0;
+      $amount = isset($_REQUEST["amount"]) && $_REQUEST["amount"] >= 0 ? $_REQUEST["amount"] : 5;
       $this->_display_memes($this->meme_model->get_top_memes($from, $amount+1), "Top", 'top', $from, $amount);
     }
 
     public function new_memes() {
-      $from = isset($_REQUEST["from"]) ? $_REQUEST["from"] : 0;
-      $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 5;
+      $from = isset($_REQUEST["from"]) && $_REQUEST["from"] >= 0 ? $_REQUEST["from"] : 0;
+      $amount = isset($_REQUEST["amount"]) && $_REQUEST["amount"] >= 0 ? $_REQUEST["amount"] : 5;
       $this->_display_memes($this->meme_model->get_new_memes($from, $amount+1), "New", 'new', $from, $amount);
     }
 
@@ -49,8 +49,8 @@ class Main extends CI_Controller {
 
     public function getMemesXML() {
       $type = isset($_REQUEST["type"]) ? $_REQUEST["type"] : 'hot';
-		  $from = isset($_REQUEST["from"]) ? $_REQUEST["from"] : 0;
-      $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 5;
+		  $from = isset($_REQUEST["from"]) && $_REQUEST["from"] >= 0 ? $_REQUEST["from"] : 0;
+      $amount = isset($_REQUEST["amount"]) && $_REQUEST["amount"] >= 0 ? $_REQUEST["amount"] : 5;
 
       if ($type === "new") {
         $this->_display_ajax_memes( $this->meme_model->get_new_memes($from, $amount), 'new', $from, $amount);
@@ -58,6 +58,8 @@ class Main extends CI_Controller {
         $this->_display_ajax_memes( $this->meme_model->get_top_memes($from, $amount), 'top', $from, $amount);
       } else if ($type === "hot") {
         $this->_display_ajax_memes( $this->meme_model->get_hot_memes($from, $amount), 'hot', $from, $amount);
+      } else {
+        show_404();
       }
     }
 
