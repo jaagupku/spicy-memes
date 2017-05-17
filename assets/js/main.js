@@ -94,7 +94,7 @@ function loadMore() {
             window.onscroll = yHandler;
 
             var memeCount = $('.meme').length;
-            history.replaceState({}, '', '/' + type + '?from=' + FROM + '?amount=' + memeCount);
+            history.replaceState({}, '', '/' + type + '?from=' + FROM + '&amount=' + memeCount);
         }
     });
 }
