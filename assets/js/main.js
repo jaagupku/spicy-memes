@@ -15,9 +15,15 @@ $(function () {
         var element = $(this);
         var iframe = $('<iframe class="embed-responsive-item" allowfullscreen></iframe>');
         iframe.attr('src', 'https://www.youtube.com/embed/' + element.attr('data-id') + '?autoplay=1');
-
+        ga('send', {
+             hitType: 'event',
+             eventCategory: 'Video',
+             eventAction: 'play',
+             eventLabel: element.attr('data-id')
+         });
         element.removeClass('not-loaded-video');
         element.html(iframe);
+
     });
 
     if (LOADBUTTON.length === 0) {
