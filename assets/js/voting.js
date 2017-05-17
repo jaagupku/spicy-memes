@@ -1,4 +1,6 @@
 function loadVoting(containerClassName, ajaxSubPath) {
+    var votes = ["Down", "Remove", "Up"];
+
     var updatePoints = function (container, vote, previousVote) {
         container.find('.active-vote').removeClass('active-vote');
 
@@ -33,6 +35,14 @@ function loadVoting(containerClassName, ajaxSubPath) {
             type: 'post',
             data: {id: id, vote: vote},
             success: function () {
+               ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Voting',
+                    eventAction: votes[vote + 1],
+                    eventLabel: ajaxSubPath,
+                    eventValue: parseInt(id)
+                });
+                console.log(parseInt(id));
                 updatePoints(container, vote, previousVote);
             },
             error: function (jqXHR, status, error) {

@@ -20,6 +20,8 @@ if (!isset($username)) {
   </head>
   <body>
 
+    <?php include_once("analyticstracking.php") ?>
+
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
 
