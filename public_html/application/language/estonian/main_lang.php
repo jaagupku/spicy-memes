@@ -142,6 +142,7 @@ $lang['meme_reachedend'] = 'Jõudsid lehe lõppu.';
 $lang['meme_loadmore'] = 'LAE JUURDE';
 $lang['meme_endofpage'] = 'Lehe lõpp, rohkem meeme pole.';
 
+$lang['receive_title'] = 'Annetus õnnestus';
 $lang['receive_thankyoufordonation'] = 'Täname annetuse eest!';
 $lang['receive_hereisyourdonationinformation'] = "Siin on annetuse informatsioon";
 $lang['receive_yourname'] = 'TEIE NIMI';
@@ -150,6 +151,7 @@ $lang['receive_amountdonated'] = 'ANNETUSE SUMMA';
 $lang['receive_description'] = 'KIRJELDUS';
 $lang['receive_date'] = 'KUUPÄEV';
 
+$lang['notreceive_title'] = 'Annetus tühistatud';
 $lang['notreceive_didntworkout'] = 'Kahjuks otsustasite tühistada';
 $lang['notreceive_goto1'] = 'Mine';
 $lang['notreceive_gototryagain2'] = 'lehele ja tee uuesti.';
@@ -191,4 +193,3 @@ $lang['search_sortby_date'] = 'kuupäev';
 $lang['search_addedby'] = 'Autor';
 $lang['search_spicelevel'] = 'Vürtsikus';
 $lang['search_comments'] = 'Kommentaarid';
-
