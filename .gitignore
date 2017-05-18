@@ -1,15 +1,15 @@
 .DS_Store
 
-temp/*
-!temp/index.html
+public_html/temp/*
+!public_html/temp/index.html
 
-application/cache/*
-!application/cache/index.html
-!application/cache/.htaccess
+public_html/application/cache/*
+!public_html/application/cache/index.html
+!public_html/application/cache/.htaccess
 
-application/logs/*
-!application/logs/index.html
-!application/logs/.htaccess
+public_html/application/logs/*
+!public_html/application/logs/index.html
+!public_html/application/logs/.htaccess
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
@@ -17,9 +17,9 @@ user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 /vendor/
 
-application/config/database.php
-application/config/cloudinary.php
-application/config/facebook.php
+public_html/application/config/database.php
+public_html/application/config/cloudinary.php
+public_html/application/config/facebook.php
 
 # IDE Files
 #-------------------------
