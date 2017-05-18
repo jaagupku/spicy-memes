@@ -9,7 +9,7 @@ class Upload extends CI_Controller {
     }
 
     private function _display_error($error) {
-      $this->load->view('pages/addmeme', array('username' => $this->session->username, 'error' => $error));
+      $this->load->view('addmeme', array('username' => $this->session->username, 'error' => $error));
     }
 
     public function index() {

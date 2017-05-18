@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+include('templates/header.php');
 
 if ($selection === 'new') {
     array_push($scripts, '/assets/js/min/polling.min.js');
@@ -74,5 +74,5 @@ array_push($scripts, '/assets/js/min/main.min.js');
 <?php endif; ?>
 
 <?php
-include('footer.php')
+include('templates/footer.php')
 ?>

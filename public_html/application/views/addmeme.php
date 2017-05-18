@@ -1,7 +1,7 @@
 <?php
 $title = lang('title_addmeme');
 $selection = 'addmeme';
-include('header.php');
+include('templates/header.php');
 array_push($scripts, '/assets/js/min/inittooltip.min.js');
 ?>
     <div class="container-fluid col-xs-12 col-custom-frontpage col-centered">
@@ -17,5 +17,5 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
     </div>
 
 <?php
-include('footer.php')
+include('templates/footer.php')
 ?>

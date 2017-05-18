@@ -1,7 +1,7 @@
 <?php
 $title = lang('title_report');
 $selection = 'report';
-include('header.php');
+include('templates/header.php');
 ?>
 <div class="container-fluid">
   <div class="row">
@@ -35,5 +35,5 @@ include('header.php');
   </div>
 </div>
 <?php
-include('footer.php');
+include('templates/footer.php');
 ?>

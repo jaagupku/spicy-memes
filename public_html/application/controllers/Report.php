@@ -26,7 +26,7 @@ class Report extends CI_Controller {
 
       $data['username'] = $this->session->username;
 
-      $this->load->view('pages/reports', $data);
+      $this->load->view('reports', $data);
     }
 
     public function viewJSON() {

@@ -1,7 +1,7 @@
 <?php
 $title = $target;
 $selection = 'profile';
-include('header.php');
+include('templates/header.php');
 if (isset($username)) {
   array_push($scripts, '/assets/js/min/facebook.min.js');
 }
@@ -126,5 +126,5 @@ array_push($scripts, '/assets/js/min/profile.min.js');
       var profile_addedon = "<?= lang('profile_addedon') ?>";
     </script>
 <?php
-include('footer.php');
+include('templates/footer.php');
 ?>

@@ -73,7 +73,7 @@ class Main extends CI_Controller {
 
       $data['memes'] = $this->_add_votes_to_memes($memes);
 
-      $this->load->view("pages/meme_xml", $data);
+      $this->load->view('meme_xml', $data);
       $this->session->referenced_form = site_url("$selection/$from/$amount");
     }
 
@@ -94,7 +94,7 @@ class Main extends CI_Controller {
         $data['selection'] = $selection;
         $data['memes'] = $this->_add_votes_to_memes($memes);
 
-        $this->load->view('pages/memebody.php', $data);
+        $this->load->view('memebody.php', $data);
         $this->session->referenced_form = site_url("$selection?from=$from&amount=$amount");
     }
 

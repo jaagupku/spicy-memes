@@ -2,7 +2,7 @@
 $title = lang('title_search');
 $selection = 'search';
 
-include('header.php');
+include('templates/header.php');
 ?>
 
 <div class="container-fluid"><div class="break"></div></div>
@@ -65,5 +65,5 @@ include('header.php');
 <?php endif ?>
 
 <?php
-include('footer.php');
+include('templates/footer.php');
 ?>

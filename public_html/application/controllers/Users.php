@@ -28,7 +28,7 @@ class Users extends CI_Controller {
             $error = validation_errors();
         }
 
-        $this->load->view('pages/login', array('error' => $error));
+        $this->load->view('login', array('error' => $error));
     }
 
     public function login_fb_callback() {
@@ -234,7 +234,7 @@ class Users extends CI_Controller {
           $data['email'] = $fbemail;
         }
 
-        $this->load->view('pages/register', $data);
+        $this->load->view('register', $data);
     }
 
     public function profile($username, $order_by='top') {
@@ -271,7 +271,7 @@ class Users extends CI_Controller {
             );
 
             $this->session->referenced_form = site_url("/profile/$username");
-            $this->load->view('pages/profile', $data);
+            $this->load->view('profile', $data);
         } else {
             show_404();
         }
@@ -399,7 +399,7 @@ class Users extends CI_Controller {
             'error' => $error
         );
 
-        $this->load->view('pages/edit_profile', $data);
+        $this->load->view('edit_profile', $data);
     }
 
     private function _exists_and_equals($what, $from) {

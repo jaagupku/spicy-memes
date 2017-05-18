@@ -25,7 +25,7 @@ class Admin extends CI_Controller {
 
     $data['username'] = $this->session->username;
 
-    $this->load->view('pages/users', $data);
+    $this->load->view('users', $data);
   }
 
   public function view_usersJSON() {

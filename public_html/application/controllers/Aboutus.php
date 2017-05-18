@@ -6,12 +6,12 @@ class Aboutus extends CI_Controller {
     }
 
     public function index() {
-      $this->load->view("pages/about-us", array('username' => $this->session->username));
+      $this->load->view("about-us", array('username' => $this->session->username));
     }
     public function received() {
-      $this->load->view('pages/receive', array('username' => $this->session->username));
+      $this->load->view('receive', array('username' => $this->session->username));
     }
     public function notreceived() {
-      $this->load->view('pages/notreceived', array('username' => $this->session->username));
+      $this->load->view('notreceived', array('username' => $this->session->username));
     }
 }

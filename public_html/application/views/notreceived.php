@@ -1,7 +1,7 @@
 <?php
 $title = 'About us';
 $selection =null;
-include('header.php');
+include('templates/header.php');
 ?>
 
 
@@ -20,5 +20,5 @@ include('header.php');
     <div class="break"></div>
 
 <?php
-include('footer.php');
+include('templates/footer.php');
 ?>

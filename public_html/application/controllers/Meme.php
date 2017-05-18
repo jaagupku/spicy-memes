@@ -15,7 +15,7 @@ class Meme extends CI_Controller {
             redirect('/login', 'refresh');
         }
 
-        $this->load->view('pages/addmeme', array('username' => $this->session->username));
+        $this->load->view('addmeme', array('username' => $this->session->username));
     }
 
     public function view($meme_id) {
@@ -48,7 +48,7 @@ class Meme extends CI_Controller {
         $data['comments'] = $this->_add_votes_to_comments($this->meme_model->get_comments($meme_id, $order[$sort]));
 
         $this->session->referenced_form = site_url("/meme/$meme_id");
-        $this->load->view('pages/commentsbody', $data);
+        $this->load->view('commentsbody', $data);
     }
 
     public function delete_comment() {

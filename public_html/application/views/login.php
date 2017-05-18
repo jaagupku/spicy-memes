@@ -1,7 +1,7 @@
 <?php
 $title = lang('title_login');
 $selection = 'login';
-include('header.php');
+include('templates/header.php');
 
 array_push($scripts, '/assets/js/min/facebook.min.js');
 ?>
@@ -32,5 +32,5 @@ array_push($scripts, '/assets/js/min/facebook.min.js');
   </div>
 </div>
 <?php
-include('footer.php');
+include('templates/footer.php');
 ?>

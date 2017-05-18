@@ -2,7 +2,7 @@
 $title = lang('title_editprofile');
 $selection = 'edit-profile';
 
-include('header.php');
+include('templates/header.php');
 array_push($scripts, '/assets/js/min/inittooltip.min.js');
 ?>
 
@@ -73,5 +73,5 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
 </div>
 
 <?php
-include('footer.php')
+include('templates/footer.php')
 ?>

@@ -1,7 +1,7 @@
 <?php
 $title = $meme['Title'];
 $selection = null;
-include('header.php');
+include('templates/header.php');
 
 if ($this->session->logged_in === true) {
     array_push($scripts, '/assets/js/lib/offline.min.js');
@@ -153,5 +153,5 @@ if ($this->session->logged_in === true) {
       </div>
     </div>
 <?php
-include('footer.php');
+include('templates/footer.php');
 ?>

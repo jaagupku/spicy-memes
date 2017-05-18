@@ -37,6 +37,6 @@ class Search extends CI_Controller
             $data['error'] = 'Invalid search text';
         }
 
-        $this->load->view('pages/search', $data);
+        $this->load->view('search', $data);
     }
 }

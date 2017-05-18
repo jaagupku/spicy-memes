@@ -1,7 +1,7 @@
 <?php
 $title = lang('title_signup');
 $selection = 'register';
-include('header.php');
+include('templates/header.php');
 ?>
 
 <div class="container-fluid">
@@ -32,5 +32,5 @@ include('header.php');
   </div>
 </div>
 <?php
-include('footer.php');
+include('templates/footer.php');
 ?>

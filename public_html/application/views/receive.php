@@ -1,7 +1,7 @@
 <?php
 $title = 'About us';
 $selection =null;
-include('header.php');
+include('templates/header.php');
 ?>
 
 <?php
@@ -104,5 +104,5 @@ if (openssl_verify ($data, base64_decode($fields["VK_MAC"]), $public_key) !== 1)
 <?php endif; ?>
 
 <?php
-include('footer.php');
+include('templates/footer.php');
 ?>
