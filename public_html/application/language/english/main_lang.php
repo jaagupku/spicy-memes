@@ -29,6 +29,9 @@ $lang['modal_choosepassword_placeholder'] = 'Password';
 $lang['modal_repeatpassword'] = 'Repeat password';
 $lang['modal_enteremail'] = 'Enter e-mail';
 $lang['modal_enteremail_placeholder'] = 'E-mail';
+$lang['modal_confirmation'] = 'CONFIRMATION';
+$lang['modal_enterusername'] = 'Please enter your username';
+$lang['modal_deletemyaccount'] = 'Delete my account';
 
 $lang['title_login'] = 'Log in';
 $lang['login_username'] = 'Username';
@@ -85,6 +88,7 @@ $lang['editprofile_update'] = 'UPDATE';
 $lang['editprofile_wrongpassword'] = 'Entered password is wrong';
 $lang['editprofile_samepassword'] = 'Entered password is the same as previous one';
 $lang['editprofile_passwordsdiffer'] = 'New passwords must be the same';
+$lang['editprofile_wrongusername'] = 'Entered wrong username';
 
 $lang['title_addmeme'] = 'Add meme';
 $lang['addmeme_addmeme'] = 'Add meme';

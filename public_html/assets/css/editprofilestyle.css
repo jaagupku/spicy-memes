@@ -13,3 +13,10 @@ img {
 .btn-delete-account:hover {
     background-color: #ff0000;
 }
+
+.btn-confirmdelete {
+    background-color: #f72c25;
+    color: white;
+    width: 100%;
+    font-weight: bold;
+}

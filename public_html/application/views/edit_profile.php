@@ -6,6 +6,26 @@ include('templates/header.php');
 array_push($scripts, '/assets/js/min/inittooltip.min.js');
 ?>
 
+<div class="modal fade" id="confirmationmodal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?= lang('modal_confirmation') ?></h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="<?= site_url("users/delete"); ?>">
+                    <div class="form-group">
+                        <label for="usr"><?= lang('modal_enterusername') ?>:</label>
+                        <input name="username" type="text" class="form-control" id="usr" placeholder="<?= lang('modal_username') ?>">
+                    </div>
+                    <button type="submit" class="btn btn-confirmdelete btn-sm"><?= lang('modal_deletemyaccount') ?></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-custom-block col-centered">
@@ -63,9 +83,11 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
         </div>
 
         <hr>
+      </form>
 
+      <form action="<?= site_url("users/confirm/") ?>" onsubmit="return false">
         <div class="form-group">
-         <button class="btn button btn-delete-account btn-sm" name="btn_delete"><?=lang('editprofile_delete') ?></button>
+          <button class="btn button btn-delete-account btn-sm" role="button" data-toggle="modal" data-target="#confirmationmodal" data-remote="false"><?=lang('editprofile_delete') ?></button>
         </div>
       </form>
     </div>

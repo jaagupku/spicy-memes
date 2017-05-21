@@ -290,6 +290,20 @@ class Users extends CI_Controller {
 
       echo json_encode($this->user_model->get_memes($userdata->Id, $orders[$order_by]));
     }
+    
+    public function delete() {
+        $username = $this->input->post('username');
+
+        if (strcasecmp($username, $this->session->username) === 0) {
+            $this->_detete_user();
+        } else {
+            $this->_load_edit_profile(lang('editprofile_wrongusername'));
+        }
+    }
+
+    public function confirm() {
+        $this->load->view('confirm', array('username' => $this->session->username));
+    }
 
     public function edit_profile() {
         if (!isset($this->session->logged_in)) {
