@@ -32,15 +32,15 @@ class Meme_model extends Base_Model {
         return $this->db->get()->result();
     }
 
-    public function retrieve($id) {// this is same as get($id)
+    public function retrieve($id) {
         $this->db->from('meme');
         $this->db->where('Id', $id);
 
         return $this->db->get()->row();
     }
 
-    public function get($id) { // this is same as retrieve($id)
-        $this->db->from('meme');
+    public function get($id) { // Almost same as retrieve, but v_top_memes has some extra columns
+        $this->db->from('v_top_memes');
         $this->db->where('Id', $id);
 
         return $this->db->get()->row_array();
@@ -65,7 +65,7 @@ class Meme_model extends Base_Model {
         $this->db->from('v_comments');
         $this->db->where('Meme_Id', $id);
         $this->db->order_by($order, 'DESC');
-        
+
         return  $this->db->get()->result_array();
     }
 
