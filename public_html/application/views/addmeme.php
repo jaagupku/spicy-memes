@@ -6,6 +6,13 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
 ?>
     <div class="container-fluid col-xs-12 col-custom-frontpage col-centered">
     <h1><?= lang('addmeme_addmeme') ?></h1>
+
+    <?php if (isset($email_not_confirmed) && $email_not_confirmed): ?>
+
+    <span><?= lang('addmeme_emailnotconfirmed') ?> <a href="<?= site_url("/edit_profile") ?>"><?= lang('title_editprofile') ?></a>.</span>
+
+    <?php else : ?>
+
     <?php if (isset($error)) echo '<p class="validationError">'.$error."</p>" ?>
     <?php echo form_open_multipart('upload');?>
       <input type="text" name="title" size="43" maxlength="136" placeholder="<?= lang('addmeme_title_placeholder') ?>" data-toggle="tooltip" title="<?= lang('addmeme_title_tooltip') ?>" data-placement="auto right" /><br />
@@ -14,8 +21,10 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
       <input type="file" value="<?= lang('addmeme_choose') ?>" name="userfile" data-toggle="tooltip" title="<?= lang('addmeme_file_tooltip') ?>" data-placement="auto right" />
       <input class="button meme-submit-button" type="submit" value="<?= lang('addmeme_submit') ?>"/>
     </form>
-    </div>
 
+    <?php endif ?>
+
+    </div>
 <?php
 include('templates/footer.php')
 ?>

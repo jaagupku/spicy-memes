@@ -109,6 +109,7 @@ $lang['addmeme_upload_checklink'] = 'Kontrolli oma linki, see ei vasta nõuetele
 $lang['addmeme_missing'] = 'Link või pilt on puudu.';
 $lang['addmeme_validation_title'] = 'Pealkiri';
 $lang['addmeme_validation_link'] = 'Aadress';
+$lang['addmeme_emailnotconfirmed'] = 'Meemide lisamine nõuab emaili kinnitamist.';
 
 $lang['title_aboutus'] = 'Meist';
 $lang['aboutus_aboutus'] = 'MEIST';

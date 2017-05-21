@@ -109,6 +109,7 @@ $lang['addmeme_upload_checklink'] = 'Check your link. It is not valid.';
 $lang['addmeme_missing'] = 'Link or image is missing.';
 $lang['addmeme_validation_title'] = 'Title';
 $lang['addmeme_validation_link'] = 'Link';
+$lang['addmeme_emailnotconfirmed'] = 'You can\'t add memes without confirming your email.';
 
 $lang['title_aboutus'] = 'About us';
 $lang['aboutus_aboutus'] = 'ABOUT US';
