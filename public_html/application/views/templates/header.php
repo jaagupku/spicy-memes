@@ -14,14 +14,12 @@ if (!isset($username)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?> - <?= lang('title_spicymemes') ?></title>
+    <?php include_once("analyticstracking.php") ?>
     <link href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
     <link href="/assets/css/merged.min.css" rel="stylesheet"/>
   </head>
   <body>
-
-    <?php include_once("analyticstracking.php") ?>
-
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
 
