@@ -52,7 +52,7 @@ class User_model extends Base_Model {
         $arguments = array(
             0, // type
             $username,
-            password_hash($password, PASSWORD_BCRYPT),
+            password_hash($password, PASSWORD_BCRYPT, array('cost' => 12)),
             $email,
             "1234567" // mobile
         );
@@ -123,5 +123,19 @@ class User_model extends Base_Model {
     public function get_users($from, $amount) {
       $query = $this->db->limit($amount, $from)->get('users');
       return $query->result_array();
+    }
+
+    public function set_confirmation($id, $value) {
+        $this->db->where('Id', $id);
+        $this->db->set('confirmation', $value);
+        $this->db->update($this->table);
+    }
+
+    public function find_id_by_confirmation($confirmation) {
+        $this->db->where('confirmation', $confirmation);
+        $this->db->select('Id');
+        $this->db->from($this->table);
+
+        return $this->db->get()->result_array();
     }
 }

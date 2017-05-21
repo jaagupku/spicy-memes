@@ -195,9 +195,9 @@ class Users extends CI_Controller {
 
             if ($this->user_model->create($username, $password, $email)) {
                 if (isset($fbid)) {
-                  $this->_login_and_redirect($username, true, $fbid);
+                  $this->_login_and_redirect($username, true, $fbid, true);
                 } else {
-                  $this->_login_and_redirect($username);
+                  $this->_login_and_redirect($username, false, null, true);
                 }
             } else {
                 $error = lang('signup_create_user_failed');
@@ -339,16 +339,21 @@ class Users extends CI_Controller {
         if ($this->form_validation->run()) {
             $updated_columns = array();
 
-            if ($email_changed) {
-                $updated_columns['Email'] = $this->input->post('email');
-            }
-
             if ($username_changed) {
                 $updated_columns['User_Name'] = $this->input->post('username');
             }
 
             if ($language_changed) {
                 $updated_columns['Language'] = $this->input->post('language');
+            }
+
+            if ($email_changed) {
+                $updated_columns['Email'] = $this->input->post('email');
+
+                if (!$this->_confirm_email($this->session->user_id, $this->input->post('email'))) {
+                    $this->_load_edit_profile(lang('editprofile_couldntsendemail'));
+                    return;
+                }
             }
 
             if ($password_changed) {
@@ -401,6 +406,33 @@ class Users extends CI_Controller {
         $this->_load_edit_profile($error);
     }
 
+    public function email_confirmation($string) {
+        $result = $this->user_model->find_id_by_confirmation($string);
+
+        if (count($result) === 0) {
+            show_404();
+        }
+
+        $this->user_model->set_confirmation($result[0]['Id'], null);
+
+        if ($this->session->logged_in) {
+            $this->_update_session_data();
+        }
+
+        redirect('/', 'refresh');
+    }
+
+    public function resend_confirmation() {
+        var_dump($this->session->email_not_confirmed);
+
+        /*if ($this->session->logged_in && $this->session->email_not_confirmed) {
+            $this->_confirm_email($this->session->user_id, $this->session->email);
+            redirect(site_url('/edit_profile'), 'refresh');
+        } else {
+            show_404();
+        }*/
+    }
+
     private function _load_edit_profile($error = null) {
         $user_data = $this->user_model->retrieve($this->session->username);
 
@@ -410,6 +442,7 @@ class Users extends CI_Controller {
             'mobile_number' => $user_data->mobile_number,
             'profile_image' => $user_data->ProfileImg_Id,
             'language' => $user_data->Language,
+            'email_not_confirmed' => $this->session->email_not_confirmed,
             'error' => $error
         );
 
@@ -424,17 +457,23 @@ class Users extends CI_Controller {
         return $what === $from;
     }
 
-    private function _login_and_redirect($username, $link_with_fb=false, $fbid=null) {
+    private function _login_and_redirect($username, $link_with_fb=false, $fbid=null, $confirm=false) {
       $user = $this->user_model->retrieve($username);
       if ($link_with_fb) {
         $this->_link_user_facebook($user->Id, $fbid);
       }
-      $this->_login_and_redirect_data($user, $link_with_fb);
+      $this->_login_and_redirect_data($user, $link_with_fb, $confirm);
     }
 
-    private function _login_and_redirect_data($user, $link_with_fb=false) {
+    private function _login_and_redirect_data($user, $link_with_fb=false, $confirm=false) {
         $this->user_model->update_last_login_date($user->Id);
+
+        if ($confirm) {
+            $this->_confirm_email($user->Id, $user->Email);
+        }
+
         $this->_update_session_data($user, $link_with_fb);
+
         redirect($this->session->referenced_form, 'refresh');
     }
 
@@ -452,6 +491,7 @@ class Users extends CI_Controller {
         $this->session->language = $user->Language;
         $this->session->user_type = $user->User_Type;
         $this->session->fb_linked = isset($user->FB_Id) || $link_with_fb;
+        $this->session->email_not_confirmed = is_null($user->confirmation) === true;
     }
 
     private function _detete_user() {
@@ -474,5 +514,41 @@ class Users extends CI_Controller {
         $this->user_model->delete($this->session->user_id);
         $this->session->referenced_form = '/';
         $this->logout();
+    }
+
+    private function _confirm_email($user_id, $email) {
+        do {
+            $random_string = $this->_generate_random_string(32);
+        } while (count($this->user_model->find_id_by_confirmation($random_string)) !== 0);
+
+        $confirmation_url = site_url('/users/email_confirmation/' . $random_string);
+
+        $message = '';
+        $message .= 'Click on this link to confirm your email<br>';
+        $message .= '<a href="' . $confirmation_url . '">' . $confirmation_url . '</a>';
+
+        $this->user_model->set_confirmation($user_id, $random_string);
+
+        return $this->_send_email($email, 'Email confirmation', $message);
+    }
+
+    private function _generate_random_string($length) {
+        return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);
+    }
+
+    private function _send_email($to, $subject, $message) {
+        $config = array();
+        require(APPPATH . 'config/email.php');
+
+        $this->load->library('email');
+
+        $this->email->initialize($config);
+        $this->email->from($config['from']);
+        $this->email->to($to);
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->set_newline("\r\n");
+
+        return $this->email->send();
     }
 }
