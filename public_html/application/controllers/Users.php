@@ -422,8 +422,13 @@ class Users extends CI_Controller {
         redirect('/', 'refresh');
     }
 
+    private function _is_email_confirmed($id) {
+      $user = $this->user_model->retrieve_id($id);
+      return gettype($user->confirmation) === 'string';
+    }
+
     public function resend_confirmation() {
-        if ($this->session->logged_in && $this->session->email_not_confirmed) {
+        if ($this->session->logged_in && $this->_is_email_confirmed($this->session->user_id)) {
             $this->_confirm_email($this->session->user_id, $this->session->email);
             redirect(site_url('/edit_profile'), 'refresh');
         } else {
@@ -440,7 +445,7 @@ class Users extends CI_Controller {
             'mobile_number' => $user_data->mobile_number,
             'profile_image' => $user_data->ProfileImg_Id,
             'language' => $user_data->Language,
-            'email_not_confirmed' => $this->session->email_not_confirmed,
+            'email_not_confirmed' => $this->_is_email_confirmed($this->session->user_id),
             'error' => $error
         );
 
@@ -489,7 +494,6 @@ class Users extends CI_Controller {
         $this->session->language = $user->Language;
         $this->session->user_type = $user->User_Type;
         $this->session->fb_linked = isset($user->FB_Id) || $link_with_fb;
-        $this->session->email_not_confirmed = gettype($user->confirmation) === 'string';
     }
 
     private function _detete_user() {
