@@ -424,7 +424,8 @@ class Users extends CI_Controller {
 
     private function _is_email_confirmed($id) {
       $user = $this->user_model->retrieve_id($id);
-      return gettype($user->confirmation) === 'string';
+      $this->session->email_not_confirmed = gettype($user->confirmation) === 'string';
+      return $this->session->email_not_confirmed;
     }
 
     public function resend_confirmation() {
@@ -494,6 +495,7 @@ class Users extends CI_Controller {
         $this->session->language = $user->Language;
         $this->session->user_type = $user->User_Type;
         $this->session->fb_linked = isset($user->FB_Id) || $link_with_fb;
+        $this->session->email_not_confirmed = gettype($user->confirmation) === 'string';
     }
 
     private function _detete_user() {
