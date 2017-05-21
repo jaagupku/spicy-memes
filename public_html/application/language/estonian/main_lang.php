@@ -29,6 +29,9 @@ $lang['modal_choosepassword_placeholder'] = 'Parool';
 $lang['modal_repeatpassword'] = 'Korda parool';
 $lang['modal_enteremail'] = 'Sisesta e-mail';
 $lang['modal_enteremail_placeholder'] = 'E-mail';
+$lang['modal_confirmation'] = 'KINNITAMINE';
+$lang['modal_enterusername'] = 'Sisestage enda kasutajanimi';
+$lang['modal_deletemyaccount'] = 'Kustuta mu kasutaja';
 
 $lang['title_login'] = 'Logi sisse';
 $lang['login_username'] = 'Kasutajanimi';
@@ -85,6 +88,7 @@ $lang['editprofile_update'] = 'MUUDA';
 $lang['editprofile_wrongpassword'] = 'Sisestatud on vale parool';
 $lang['editprofile_samepassword'] = 'Uus parool on sama mis praegune parool';
 $lang['editprofile_passwordsdiffer'] = 'Sisestatud uued paroolid peavad olema samad';
+$lang['editprofile_wrongusername'] = 'Sisestatud oli vale kasutajanimi';
 
 $lang['title_addmeme'] = 'Lisa meem';
 $lang['addmeme_addmeme'] = 'Lisa meem';

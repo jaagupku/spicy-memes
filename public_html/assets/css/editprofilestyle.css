@@ -10,3 +10,10 @@ img {
     color: red;
     font-weight: bold;
 }
+
+.btn-confirmdelete {
+    background-color: #f72c25;
+    color: white;
+    width: 100%;
+    font-weight: bold;
+}

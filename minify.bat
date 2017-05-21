@@ -15,4 +15,4 @@ java -jar ..\..\..\yuicompressor-2.4.8.jar *.js -o ".js$:.min.js"
 :: move all .min.js files to min folder
 move *.min.js min\
 
-cd ..\..
+cd ..\..\..
