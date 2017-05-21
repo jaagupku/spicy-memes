@@ -20,6 +20,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 public_html/application/config/database.php
 public_html/application/config/cloudinary.php
 public_html/application/config/facebook.php
+public_html/application/config/email.php
 
 # IDE Files
 #-------------------------
