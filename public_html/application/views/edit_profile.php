@@ -51,8 +51,8 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
         <div class="form-group">
           <label for="email"><?= lang('editprofile_email') ?>:</label>
           <input value="<?= $email ?>" name="email" type="email" class="form-control" id="email" placeholder="<?= lang('editprofile_email') ?>">
-          <?php if (isset($email_not_confirmed)): ?>
-              <span class="email-not-confirmed">Email not confirmed. Click <a href="<?= site_url('/users/resend_confirmation') ?>">here</a> to resend confirmation</span>
+          <?php if (isset($email_not_confirmed) && $email_not_confirmed): ?>
+              <span class="email-not-confirmed"><?= sprintf(lang('editprofile_emailnotconfirmed'), '<a href="' . site_url('/users/resend_confirmation') . '">' . lang('editprofile_here') . '</a>') ?></span>
           <?php endif ?>
         </div>
 

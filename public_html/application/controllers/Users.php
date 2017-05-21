@@ -423,14 +423,12 @@ class Users extends CI_Controller {
     }
 
     public function resend_confirmation() {
-        var_dump($this->session->email_not_confirmed);
-
-        /*if ($this->session->logged_in && $this->session->email_not_confirmed) {
+        if ($this->session->logged_in && $this->session->email_not_confirmed) {
             $this->_confirm_email($this->session->user_id, $this->session->email);
             redirect(site_url('/edit_profile'), 'refresh');
         } else {
             show_404();
-        }*/
+        }
     }
 
     private function _load_edit_profile($error = null) {
@@ -491,7 +489,7 @@ class Users extends CI_Controller {
         $this->session->language = $user->Language;
         $this->session->user_type = $user->User_Type;
         $this->session->fb_linked = isset($user->FB_Id) || $link_with_fb;
-        $this->session->email_not_confirmed = is_null($user->confirmation) === true;
+        $this->session->email_not_confirmed = gettype($user->confirmation) === 'string';
     }
 
     private function _detete_user() {

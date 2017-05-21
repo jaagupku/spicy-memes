@@ -90,6 +90,8 @@ $lang['editprofile_wrongpassword'] = 'Sisestatud on vale parool';
 $lang['editprofile_samepassword'] = 'Uus parool on sama mis praegune parool';
 $lang['editprofile_passwordsdiffer'] = 'Sisestatud uued paroolid peavad olema samad';
 $lang['editprofile_wrongusername'] = 'Sisestatud oli vale kasutajanimi';
+$lang['editprofile_emailnotconfirmed'] = 'Email ei ole kinnitatud. Vajuta %s, et saata kinnitus email uuesti';
+$lang['editprofile_here'] = 'siia';
 
 $lang['title_addmeme'] = 'Lisa meem';
 $lang['addmeme_addmeme'] = 'Lisa meem';
