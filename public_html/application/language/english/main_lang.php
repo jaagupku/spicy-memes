@@ -55,6 +55,7 @@ $lang['signup_create_user_failed'] = 'Couldn\'t create the user';
 $lang['validation_password'] = 'Password';
 $lang['validation_username'] = 'Username';
 $lang['validation_repeatedpassword'] = 'Repeated password';
+$lang['unlinked_facebook'] = 'Facebook accont is not linked to any Spicy Memes account. Create account and it will be linked with your Facebook.';
 
 $lang['profile_editprofile'] = 'Edit profile';
 $lang['profile_changepassword'] = 'Change password';

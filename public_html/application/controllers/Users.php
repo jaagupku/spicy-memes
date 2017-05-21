@@ -10,8 +10,8 @@ class Users extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('username', lang('validation_username'), 'required|alpha_numeric');
-        $this->form_validation->set_rules('password', lang('validation_password'), 'required');
+        $this->form_validation->set_rules('username', lang('validation_username'), 'required|alpha_numeric|max_length[32]');
+        $this->form_validation->set_rules('password', lang('validation_password'), 'required|max_length[1024]');
 
         $error = null;
 
@@ -100,7 +100,7 @@ class Users extends CI_Controller {
         if (is_null($userData)) {
           $userData = $this->user_model->retrieve_email($userNode->getField('email'));
           if (is_null($userData)) {
-            $this->session->set_flashdata('login_error', "Facebook accont is not linked to any Spicy Memes account. Create account and it will be linked with your Facebook.");
+            $this->session->set_flashdata('login_error', lang('unlinked_facebook'));
             $this->session->set_flashdata('facebook_id', $userNode->getId());
             $this->session->set_flashdata('facebook_email', $userNode->getField('email'));
             redirect(site_url("register")); // user is not logged in, facebook acc is unlinked, facebook email is not used in this site.
@@ -290,7 +290,7 @@ class Users extends CI_Controller {
 
       echo json_encode($this->user_model->get_memes($userdata->Id, $orders[$order_by]));
     }
-    
+
     public function delete() {
         $username = $this->input->post('username');
 

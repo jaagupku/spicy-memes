@@ -55,6 +55,7 @@ $lang['signup_create_user_failed'] = 'Kasutaja tegemine ebaõnnestus';
 $lang['validation_password'] = 'Parool';
 $lang['validation_username'] = 'Kasutajanimi';
 $lang['validation_repeatedpassword'] = 'Korratud parool';
+$lang['unlinked_facebook'] = 'Facebooki konto pole seotud ühegi Spicy Memes kontoga. Loo Spicy Memes konto ja see seotakse Facebooki kontoga.';
 
 $lang['profile_editprofile'] = 'Muuda profiili';
 $lang['profile_changepassword'] = 'Vaheta parool';
