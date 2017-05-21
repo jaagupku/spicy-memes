@@ -112,7 +112,7 @@ if (!isset($username)) {
                 <input name="password" type="password" class="form-control" id="pwd" placeholder="<?= lang('modal_password') ?>">
               </div>
               <button type="submit" class="btn btn-login btn-sm button"><?= lang('modal_login') ?></button><br><br>
-              <a href="#"><?= lang('modal_forgotpassword') ?></a>
+              <!-- <a href="#"><?= lang('modal_forgotpassword') ?></a> -->
               <div class="form-group">
                 <p><?= lang('modal_or') ?></p>
                 <div class="social-wrap">

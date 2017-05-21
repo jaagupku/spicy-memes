@@ -20,7 +20,7 @@ array_push($scripts, '/assets/js/min/facebook.min.js');
           <input name="password" type="password" class="form-control" id="pwd" placeholder="<?= lang('login_password') ?>">
         </div>
         <button type="submit" class="btn btn-login btn-sm button"><?= lang('login_login') ?></button><br><br>
-        <a href="#"><?= lang('login_forgotpassword') ?></a>
+        <!-- <a href="#"><?= lang('login_forgotpassword') ?></a> -->
         <div class="form-group">
           <p><?= lang('login_or') ?></p>
           <div class="social-wrap">
