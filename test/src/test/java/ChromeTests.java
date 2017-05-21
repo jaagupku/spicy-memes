@@ -13,7 +13,8 @@ import java.util.List;
 public class ChromeTests {
     static RemoteWebDriver driver;
     private static Runnable waitForRedirect;
-    private static final String HOST = "https://spicymemes.cs.ut.ee";
+    //private static final String HOST = "https://spicymemes.cs.ut.ee";
+    private static final String HOST = "http://localhost";
 
     @BeforeClass
     public static void before() throws IllegalAccessException, InstantiationException {
@@ -180,6 +181,10 @@ public class ChromeTests {
         waitForRedirect.run();
 
         driver.findElementByClassName("btn-delete-account").click();
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(driver.findElement(By.id("confirmationmodal"))));
+
+        driver.findElementById("usr").sendKeys("autotest");
+        driver.findElementByClassName("btn-confirmdelete").click();
         waitForRedirect.run();
     }
 }
