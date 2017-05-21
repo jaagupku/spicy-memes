@@ -26,7 +26,7 @@ include('templates/header.php');
           <input name="email" type="email" class="form-control" id="email" placeholder="<?= lang('signup_enteremail_placeholder') ?>" value="<?php if(isset($email)) echo $email; ?>">
         </div>
         <?php if(isset($fbid)) echo "<input type=\"hidden\" name=\"facebookid\" value=\"$fbid\">"; ?>
-        <button type="submit" class="btn btn-signup btn-sm"><?= lang('signup_signup') ?></button>
+        <button type="submit" class="btn btn-signup btn-sm button"><?= lang('signup_signup') ?></button>
       </form>
     </div>
   </div>

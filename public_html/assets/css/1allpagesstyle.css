@@ -2,6 +2,24 @@ body {
   background-color: #fbfffe;
   min-height: 100%;
 }
+.button {
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    border-radius: 6px;
+    -webkit-transition-duration: 0.3s; /* Safari */
+    transition-duration: 0.3s;
+}
+.button:hover {
+    background-color: #333333;
+    color: white;
+}
+
 .hidden-label {
   display: none;
 }

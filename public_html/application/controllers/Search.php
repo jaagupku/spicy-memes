@@ -37,6 +37,7 @@ class Search extends CI_Controller
             $data['error'] = 'Invalid search text';
         }
 
+        $this->session->referenced_form = "/search?value=$search&sort=$sort_by";
         $this->load->view('search', $data);
     }
 }

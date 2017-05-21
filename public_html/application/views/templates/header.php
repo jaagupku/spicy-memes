@@ -113,7 +113,7 @@ if (!isset($username)) {
                 <label for="pwd"><?= lang('modal_password') ?>:</label>
                 <input name="password" type="password" class="form-control" id="pwd" placeholder="<?= lang('modal_password') ?>">
               </div>
-              <button type="submit" class="btn btn-login btn-sm"><?= lang('modal_login') ?></button><br><br>
+              <button type="submit" class="btn btn-login btn-sm button"><?= lang('modal_login') ?></button><br><br>
               <a href="#"><?= lang('modal_forgotpassword') ?></a>
               <div class="form-group">
                 <p><?= lang('modal_or') ?></p>
@@ -144,7 +144,7 @@ if (!isset($username)) {
                 <label for="email"><?= lang('modal_enteremail') ?>:</label>
                 <input name="email" type="email" class="form-control" id="email" placeholder="<?= lang('modal_enteremail_placeholder') ?>">
               </div>
-              <button type="submit" class="btn btn-signup btn-sm"><?= lang('modal_signup') ?></button>
+              <button type="submit" class="btn btn-signup btn-sm button"><?= lang('modal_signup') ?></button>
             </form>
           </div>
         </div>

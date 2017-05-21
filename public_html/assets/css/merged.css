@@ -1,39 +1,25 @@
-.col-custom-about {
-  display: block;
-  width: 580px;
-}
-.col-custom-about h2 {
-  text-align: center;
-}
-.col-custom-about p {
-  text-align: justify;
-}
-.donate-button {
-  text-align: center;
-  width: 100%;
-  background-color: #f72c25;
-  color: #fbfffe;
-}
-.donate-button:hover {
-  color: #ffc62b;
-}
-#map {
-  height: 400px;
-  width: 100%;
-}
-.aboutus-location h2{
-  text-align: center;
-}
-
-@media (max-width: 580px) {
-  .col-custom-about {
-    width: auto;
-  }
-}
 body {
   background-color: #fbfffe;
   min-height: 100%;
 }
+.button {
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    border-radius: 6px;
+    -webkit-transition-duration: 0.3s; /* Safari */
+    transition-duration: 0.3s;
+}
+.button:hover {
+    background-color: #333333;
+    color: white;
+}
+
 .hidden-label {
   display: none;
 }
@@ -123,6 +109,44 @@ body {
     margin-top: 3.5em;
   }
 }
+.col-custom-about {
+  display: block;
+  width: 580px;
+}
+.col-custom-about h2 {
+  text-align: center;
+}
+.col-custom-about p {
+  text-align: justify;
+}
+.donate-button {
+  text-align: center;
+  width: 100%;
+  background-color: #f72c25;
+  color: #fbfffe;
+}
+.donate-button:hover {
+  color: #ffc62b;
+}
+#map {
+  height: 400px;
+  width: 100%;
+}
+.aboutus-location h2{
+  text-align: center;
+}
+
+@media (max-width: 580px) {
+  .col-custom-about {
+    width: auto;
+  }
+}
+.meme-submit-button {
+  background-color: #ff8a2b;
+}
+.meme-submit-button:hover {
+  background-color: #ff7607;
+}
 .col-custom-commentspage {
   display: block;
   width: 580px;
@@ -174,15 +198,19 @@ body {
 img {
     display: block;
 }
-
 .btn-edit {
     width: 100%;
 }
-
 .btn-delete-account {
-    color: red;
-    font-weight: bold;
-}#social-fb:hover {
+    background-color: #ff5454;
+    padding: 13px 18px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+.btn-delete-account:hover {
+    background-color: #ff0000;
+}
+#social-fb:hover {
     color: #ffc62b;
 }
 #social-tw:hover {

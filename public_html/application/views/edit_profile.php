@@ -65,7 +65,7 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
         <hr>
 
         <div class="form-group">
-         <button class="btn btn-delete-account btn-sm" name="btn_delete"><?=lang('editprofile_delete') ?></button>
+         <button class="btn button btn-delete-account btn-sm" name="btn_delete"><?=lang('editprofile_delete') ?></button>
         </div>
       </form>
     </div>

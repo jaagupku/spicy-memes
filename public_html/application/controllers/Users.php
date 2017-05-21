@@ -428,7 +428,9 @@ class Users extends CI_Controller {
         if (is_null($user)) {
             $user = $this->user_model->retrieve_id($this->session->user_id);
         }
-
+        if (!isset($this->session->referenced_form)) {
+          $this->session->referenced_form = '/';
+        }
         $this->session->logged_in = true;
         $this->session->username = $user->User_Name;
         $this->session->email = $user->Email;
@@ -454,10 +456,6 @@ class Users extends CI_Controller {
                 delete_image(substr($meme['Data'], 0, -4));
             }
         }
-
-        //if (isset($user->FB_Id)) {
-        // //TODO
-        //}
 
         $this->user_model->delete($this->session->user_id);
         $this->session->referenced_form = '/';

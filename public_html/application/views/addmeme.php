@@ -12,7 +12,7 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
       <input type="text" name="link" size="43" placeholder="<?= lang('addmeme_link_placeholder') ?>" data-toggle="tooltip" title="<?= lang('addmeme_link_tooltip') ?>" data-placement="auto right" /><br />
       <label><?= lang('addmeme_or') ?></label>
       <input type="file" value="<?= lang('addmeme_choose') ?>" name="userfile" data-toggle="tooltip" title="<?= lang('addmeme_file_tooltip') ?>" data-placement="auto right" />
-      <input type="submit" value="<?= lang('addmeme_submit') ?>"/>
+      <input class="button meme-submit-button" type="submit" value="<?= lang('addmeme_submit') ?>"/>
     </form>
     </div>
 
