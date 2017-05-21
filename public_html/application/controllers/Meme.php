@@ -15,7 +15,7 @@ class Meme extends CI_Controller {
             redirect('/login', 'refresh');
         }
 
-        $this->load->view('addmeme', array('username' => $this->session->username));
+        $this->load->view('addmeme', array('username' => $this->session->username, 'email_not_confirmed' => $this->session->email_not_confirmed));
     }
 
     public function view($meme_id) {
