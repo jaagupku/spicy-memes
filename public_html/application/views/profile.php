@@ -36,7 +36,7 @@ array_push($scripts, '/assets/js/min/profile.min.js');
           </div>
 
           <div class="edit-profile-pswd">
-            <a href="<?= site_url('/edit_profile') ?>"><?= lang('profile_editprofile') ?></a>
+            <a class="btn button" href="<?= site_url('/edit_profile') ?>"><?= lang('profile_editprofile') ?></a>
           </div>
 
           <?php if(!$this->session->fb_linked) {

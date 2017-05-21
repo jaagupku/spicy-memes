@@ -8,6 +8,7 @@
 }
 .edit-profile-pswd {
   display: inline-block;
+  margin-bottom: 1em;
 }
 .edit-profile-pswd a {
   margin-right: 20px;

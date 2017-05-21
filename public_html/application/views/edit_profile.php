@@ -79,7 +79,7 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
         </div>
 
         <div class="form-group">
-          <button type="submit" class="btn btn-edit btn-sm"><?= lang('editprofile_update') ?></button>
+          <button type="submit" class="btn button btn-edit btn-sm"><?= lang('editprofile_update') ?></button>
         </div>
 
         <hr>
