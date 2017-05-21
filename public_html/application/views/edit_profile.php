@@ -87,7 +87,7 @@ array_push($scripts, '/assets/js/min/inittooltip.min.js');
 
       <form action="<?= site_url("users/confirm/") ?>" onsubmit="return false">
         <div class="form-group">
-          <button a href="<?= site_url("register") ?>" class="btn btn-delete-account btn-sm" role="button" data-toggle="modal" data-target="#confirmationmodal" data-remote="false"><?=lang('editprofile_delete') ?></button>
+          <button class="btn btn-delete-account btn-sm" role="button" data-toggle="modal" data-target="#confirmationmodal" data-remote="false"><?=lang('editprofile_delete') ?></button>
         </div>
       </form>
     </div>
