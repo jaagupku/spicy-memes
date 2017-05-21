@@ -52,7 +52,7 @@ class User_model extends Base_Model {
         $arguments = array(
             0, // type
             $username,
-            password_hash($password, PASSWORD_BCRYPT),
+            password_hash($password, PASSWORD_BCRYPT, array('cost' => 12)),
             $email,
             "1234567" // mobile
         );
