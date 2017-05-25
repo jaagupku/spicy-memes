@@ -92,6 +92,7 @@ $lang['editprofile_passwordsdiffer'] = 'Sisestatud uued paroolid peavad olema sa
 $lang['editprofile_wrongusername'] = 'Sisestatud oli vale kasutajanimi';
 $lang['editprofile_emailnotconfirmed'] = 'Email ei ole kinnitatud. Vajuta %s, et saata kinnitus email uuesti';
 $lang['editprofile_here'] = 'siia';
+$lang['editprofile_couldntsendemail'] = 'Emaili saatmine ebaõnnestus';
 
 $lang['title_addmeme'] = 'Lisa meem';
 $lang['addmeme_addmeme'] = 'Lisa meem';

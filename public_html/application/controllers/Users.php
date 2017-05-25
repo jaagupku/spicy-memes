@@ -430,8 +430,11 @@ class Users extends CI_Controller {
 
     public function resend_confirmation() {
         if ($this->session->logged_in && $this->_is_email_confirmed($this->session->user_id)) {
-            $this->_confirm_email($this->session->user_id, $this->session->email);
-            redirect(site_url('/edit_profile'), 'refresh');
+            if ($this->_confirm_email($this->session->user_id, $this->session->email)) {
+                redirect(site_url('/edit_profile'), 'refresh');
+            } else {
+                echo "Something went wrong";
+            }
         } else {
             show_404();
         }
@@ -531,9 +534,12 @@ class Users extends CI_Controller {
         $message .= 'Click on this link to confirm your email<br>';
         $message .= '<a href="' . $confirmation_url . '">' . $confirmation_url . '</a>';
 
-        $this->user_model->set_confirmation($user_id, $random_string);
-
-        return $this->_send_email($email, 'Email confirmation', $message);
+        if ($this->_send_email($email, 'Email confirmation', $message)) {
+            $this->user_model->set_confirmation($user_id, $random_string);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private function _generate_random_string($length) {

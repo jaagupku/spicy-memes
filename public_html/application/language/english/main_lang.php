@@ -92,6 +92,7 @@ $lang['editprofile_passwordsdiffer'] = 'New passwords must be the same';
 $lang['editprofile_wrongusername'] = 'Entered wrong username';
 $lang['editprofile_emailnotconfirmed'] = 'Email not confirmed. Click %s to resend confirmation';
 $lang['editprofile_here'] = 'here';
+$lang['editprofile_couldntsendemail'] = 'Something went wrong with sending email';
 
 $lang['title_addmeme'] = 'Add meme';
 $lang['addmeme_addmeme'] = 'Add meme';
